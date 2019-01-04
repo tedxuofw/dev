@@ -33,12 +33,8 @@ body {
 
 @for $i from 1 through $grid-cols {
   .col-#{$i} {
-    //position: relative;
-    //float: left;
     width: percentage($i / $grid-cols);
     margin: $grid-margins / 2;
-    //width: $grid-width * $i / $grid-cols - $grid-margins;
-    //margin: $grid-margins / 2;
 
     @media only screen and (max-width: $grid-break) {
       width: 100%;
