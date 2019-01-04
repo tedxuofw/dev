@@ -37,15 +37,38 @@
 
             <button class="full-width">Register</button>
         </div>
+
+        <h2>Tabs</h2>
+        <tab-set>
+            <tab-option :selected="tab1Index == 0" :click="() => { tab1Index = 0 }">Conference</tab-option>
+            <tab-option :selected="tab1Index == 1" :click="() => { tab1Index = 1 }">Speakers</tab-option>
+            <tab-option :selected="tab1Index == 2" :click="() => { tab1Index = 2 }">Sponsors</tab-option>
+        </tab-set>
+        <p>
+            For the primary tab set, you've selected tab index <b>{{ tab1Index }}</b>!
+        </p>
+        <tab-set secondary>
+            <tab-option :selected="tab2Index == 0" :click="() => { tab2Index = 0 }" secondary>Conference</tab-option>
+            <tab-option :selected="tab2Index == 1" :click="() => { tab2Index = 1 }" secondary>Speakers</tab-option>
+            <tab-option :selected="tab2Index == 2" :click="() => { tab2Index = 2 }" secondary>Sponsors</tab-option>
+        </tab-set>
+        <p>
+            For the secondary tab set, you've selected tab index <b>{{ tab2Index }}</b>!
+        </p>
     </div>
 </template>
 
 <script>
+import TabSet from './TabSet';
+import TabOption from './TabOption';
 export default {
     name: 'HelloWorld',
+    components: { TabSet, TabOption },
     data () {
         return {
-            emailAddress: ''
+            emailAddress: '',
+            tab1Index: 0,
+            tab2Index: 0
         }
     },
     methods: {
