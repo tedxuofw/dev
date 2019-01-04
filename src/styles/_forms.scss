@@ -1,0 +1,80 @@
+.button-set {
+  display: flex;
+  flex-direction: row;
+
+  button,
+  .button {
+    flex-grow: 1;
+
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+button,
+.button {
+  display: block;
+  font-size: 19px;
+  border-radius: 4px;
+  margin-bottom: 0.5em;
+  padding: 12px;
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  color: $color-text;
+  border: 1px solid $color-primary;
+  outline: none;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $color-secondary;
+  }
+}
+
+button,
+.button {
+  background-color: $color-primary;
+  color: $color-text-light;
+  border: none;
+  cursor: pointer;
+
+  &.secondary {
+    background-color: $color-secondary-2;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background-color: darken($color-secondary-2, 10%);
+    }
+
+    &:active {
+      background-color: darken($color-secondary-2, 20%);
+    }
+  }
+
+  &:hover {
+    background-color: darken($color-primary, 10%);
+  }
+
+  &:active {
+    background-color: darken($color-primary, 20%);
+  }
+}

@@ -1,0 +1,55 @@
+#app {
+  font-family: 'Open Sans', sans-serif;
+  color: $color-text;
+  font-size: 19px;
+  line-height: 1.5em;
+  padding: 32px;
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: 700;
+
+  &.super-head {
+    font-size: 150px;
+    line-height: 1em;
+    font-weight: 400;
+    word-break: break-all;
+  }
+
+  &.poster-head {
+    font-size: 100px;
+  }
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.callout {
+  font-size: 22px;
+  color: $color-secondary;
+}
+
+.footnote {
+  font-size: 17px;
+  color: $color-secondary;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: $color-secondary;
+
+  &:hover {
+    color: darken($color-secondary, 10%);
+  }
+
+  &:active {
+    color: darken($color-secondary, 20%);
+  }
+}
