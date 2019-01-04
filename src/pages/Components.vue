@@ -79,6 +79,9 @@
           <tab-option :selected="tabIndex == 0" :click="() => { tabIndex = 0 }" :secondary="tabSecondary">Conference</tab-option>
           <tab-option :selected="tabIndex == 1" :click="() => { tabIndex = 1 }" :secondary="tabSecondary">Speakers</tab-option>
           <tab-option :selected="tabIndex == 2" :click="() => { tabIndex = 2 }" :secondary="tabSecondary">Sponsors</tab-option>
+          <tab-option :click="() => { tabIndex = 3 }" :secondary="tabSecondary" container>
+            <button class="primary-2 no-margin full-width">Sign in</button>
+          </tab-option>
         </tab-set>
       </div>
     </div>

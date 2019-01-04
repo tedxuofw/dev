@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-option" :class="{ selected, secondary }" @click="click">   
+    <div class="tab-option" :class="{ selected, secondary, container }" @click="click">   
       <div class="tab-option-label">
         <slot></slot>
       </div>
@@ -15,6 +15,10 @@ export default {
       default: false
     },
     selected: {
+      type: Boolean,
+      default: false
+    },
+    container: {
       type: Boolean,
       default: false
     },
@@ -43,6 +47,10 @@ export default {
 
   &.selected {
     border-bottom: 8px solid $color-primary-2;
+  }
+
+  &.container .tab-option-label {
+    width: 100%;
   }
 
   &.secondary {
