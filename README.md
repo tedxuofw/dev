@@ -15,4 +15,4 @@ npm run dev
 npm run build
 
 ```
-Note that the site tedxuofw.github.io/TEDxUofW-Main is tied to the static page in the /docs folder. To update the live site, build the production site and push.
+Published to [dev.tedxuofw.com](https://dev.tedxuofw.com) is tied to the static page in the /docs folder. To update the live site, build the production site and push.
