@@ -15,4 +15,6 @@ npm run dev
 npm run build
 
 ```
-Published to [dev.tedxuofw.com](https://dev.tedxuofw.com) is tied to the static page in the /docs folder. To update the live site, build the production site and push.
+See this live at [dev.tedxuofw.com](https://dev.tedxuofw.com)
+
+The live webpage displays the /docs folder. To update the live site, build the production site and push.
