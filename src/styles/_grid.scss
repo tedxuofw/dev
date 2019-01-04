@@ -1,0 +1,48 @@
+$grid-cols: 12;
+$max-width: 90%;
+$grid-width: 1260px;
+$grid-margins: 32px;
+$grid-break: 750px;
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.row {
+  width: $grid-width;
+  max-width: $max-width;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 $grid-margins / 2;
+
+  @media only screen and (max-width: $grid-break) {
+    flex-direction: column;
+  }
+}
+
+@for $i from 1 through $grid-cols {
+  .col-#{$i} {
+    //position: relative;
+    //float: left;
+    width: percentage($i / $grid-cols);
+    margin: $grid-margins / 2;
+    //width: $grid-width * $i / $grid-cols - $grid-margins;
+    //margin: $grid-margins / 2;
+
+    @media only screen and (max-width: $grid-break) {
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
