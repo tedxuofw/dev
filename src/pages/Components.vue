@@ -1,5 +1,5 @@
 <template>
-    <div class="hello">
+    <div class="components-page">
         <h1 class="super-head">Components</h1>
         <h1>TEDxUofW</h1>
 
@@ -12,7 +12,7 @@
 
         <h2>Form Elements</h2>
         <div class="example-container">
-            <p>Sign up to learn more about TEDxUofW!</p>
+            <p class="spacer">Join our mailing list to learn more about TEDxUofW!</p>
             <input type="email" v-model="emailAddress" placeholder="Email" class="full-width">
             <button @click="emailSignUp()" class="full-width">Sign up</button>
         </div>
@@ -33,9 +33,9 @@
                 <span>I am a current UW student</span>
             </label>
 
-            <a href="#">Forgot your password?</a>
+            <a href="#" class="spacer">Forgot your password?</a>
 
-            <button class="full-width">Register</button>
+            <button class="full-width">Sign up</button>
         </div>
 
         <h2>Tabs</h2>
@@ -59,10 +59,10 @@
 </template>
 
 <script>
-import TabSet from './TabSet';
-import TabOption from './TabOption';
+import TabSet from '@/components/TabSet';
+import TabOption from '@/components/TabOption';
 export default {
-    name: 'HelloWorld',
+    name: 'ComponentsPage',
     components: { TabSet, TabOption },
     data () {
         return {
@@ -96,5 +96,10 @@ export default {
 .sign-in-set {
     width: 300px;
     max-width: 100%;
+}
+
+.spacer {
+    display: block;
+    margin: 8px 0;
 }
 </style>
