@@ -17,7 +17,8 @@
           :ticketType="ticket.ticket" :confirmationCode="`SB110${ticketIndex}`"
           maxWidth="300px" />
       </div>
-      <div class="col-6">
+      <div class="col-6 ticket-form">
+        <h1>{{ ticket.name ? `${ticket.name.split(' ')[0]}'s Ticket` : `Ticket ${ticketIndex + 1}` }}</h1>
         <h2>Name</h2>
         <input type="text" placeholder="First Name" class="full-width" v-model="ticket.name" >
 
@@ -75,4 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+.ticket-form h2 {
+  margin-bottom: 8px;
+}
 </style>
