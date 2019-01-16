@@ -9,12 +9,26 @@
         <h1>Checkout</h1>
       </div>
     </div>
+    <div class ="row">
+      <div class="col-6">
+        <Ticket
+          conferenceTitle="Two Steps Forward" conferenceYear="2019"
+          personName="Andrey" personMeal="Vegan"
+          ticketType="UW Student Ticket" confirmationCode="SB1103"
+          maxWidth="300px" />
+      </div>
+      <div class="col-6">
+
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Ticket from "@/components/Ticket";
 export default {
   name: "CheckoutPage",
+  components: { Ticket },
   data() {
     return {
     };
