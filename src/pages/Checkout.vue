@@ -22,15 +22,14 @@
         <h2>Name</h2>
         <input type="text" placeholder="First Name" class="full-width" v-model="ticket.name" >
 
-        <h2>Meal Type</h2>
-        <select v-model="ticket.ticket">
-          <option disabled value="">Select a ticket</option>
+        <h2>Ticket Type</h2>
+        <select v-model="ticket.ticket" class="full-width">
           <option>General Ticket</option>
           <option>UW Student Ticket</option>
         </select>
 
         <h2>Meal Type</h2>
-        <select v-model="ticket.meal">
+        <select v-model="ticket.meal" class="full-width">
           <option disabled value="">Select a meal</option>
           <option>None</option>
           <option>Vegan</option>
@@ -67,7 +66,7 @@ export default {
       return {
         name: '',
         meal: '',
-        ticket: ''
+        ticket: 'General Ticket'
       };
     }
   }
