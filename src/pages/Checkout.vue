@@ -18,7 +18,10 @@
           maxWidth="300px" />
       </div>
       <div class="col-6 ticket-form">
-        <h1>{{ ticket.name ? `${ticket.name.split(' ')[0]}'s Ticket` : `Ticket ${ticketIndex + 1}` }}</h1>
+        <div class="ticket-control">
+          <h1>{{ ticket.name ? `${ticket.name.split(' ')[0]}'s Ticket` : `Ticket ${ticketIndex + 1}` }}</h1>
+          <button v-if="tickets.length > 1" @click="removeTicketAtIndex(ticketIndex)">Remove</button>
+        </div>
         <h2>Name</h2>
         <input type="text" placeholder="First Name" class="full-width" v-model="ticket.name" >
 
@@ -59,6 +62,9 @@ export default {
     this.addTicket();
   },
   methods: {
+    removeTicketAtIndex(index) {
+      this.tickets.splice(index, 1);
+    },
     addTicket() {
       this.tickets.push(this.getEmptyTicket())
     },
@@ -77,5 +83,14 @@ export default {
 @import "@/styles/_variables.scss";
 .ticket-form h2 {
   margin-bottom: 8px;
+}
+
+.ticket-control {
+  display: flex;
+  flex-direction: row;
+
+  h1 {
+    flex-grow: 1;
+  }
 }
 </style>
