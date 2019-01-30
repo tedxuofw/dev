@@ -14,11 +14,11 @@
       <div class="person-info">
         <div class="info-set">
           <p class="footnote">Name</p>
-          <p class="person-name">{{ personName }}</p>
+          <p class="person-name">{{ personName }}&nbsp;</p>
         </div>
         <div class="info-set">
           <p class="footnote">Meal Choice</p>
-          <p class="person-meal">{{ personMeal }}</p>
+          <p class="person-meal">{{ personMeal }}&nbsp;</p>
         </div>
       </div>
     </div>
