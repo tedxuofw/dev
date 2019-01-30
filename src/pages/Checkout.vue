@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="row" v-if="currentlyEditing">
+    <div class="row edit-screen-row" v-if="isCurrentlyEditing">
       <div class="col-8 center-children">
         <Ticket
           conferenceTitle="Two Steps Forward" conferenceYear="2019"
@@ -18,7 +18,7 @@
           :ticketType="currentTicket.ticket" :confirmationCode="`SB1105`"
           maxWidth="300px" />
       </div>
-      <div class="col-4 ticket-form">
+      <div class="col-4 sidebar-container ticket-form">
         <h2>Ticket Information</h2>
         <p class="footnote show-label">Ticket Type</p>
         <select v-model="currentTicket.ticket" class="full-width">
@@ -29,7 +29,7 @@
         <p class="footnote show-label">Meal Type</p>
         <select v-model="currentTicket.meal" class="full-width">
           <option disabled value="">Select a meal</option>
-          <option>None</option>
+          <option>No Meal</option>
           <option>Vegan</option>
           <option>Non-Vegan</option>
         </select>
@@ -41,25 +41,28 @@
         <input type="text" placeholder="Last Name" class="full-width" v-model="currentTicket.lastName">
 
         <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
-        <button class="full-width" :class="{ 'extra-margin-top': !showError }" @click="commitTicket()">Save</button>
-        <button class="full-width secondary" @click="cancelTicket()">Cancel</button>
+        <button class="full-width" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
+        <button class="full-width secondary" @click="cancelTicket()">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
       </div>
     </div>
 
-    <div class="row" v-else>
-      <div class="col-8">
-        <!-- <Ticket
-          conferenceTitle="Two Steps Forward" conferenceYear="2019"
-          :personName="`${currentTicket.firstName} ${currentTicket.lastName}`" :personMeal="currentTicket.meal"
-          :ticketType="currentTicket.ticket" :confirmationCode="`SB1105`"
-          maxWidth="300px" /> -->
-      </div>
-      <div class="col-4 ticket-selection">
+    <div class="row overview-screen-row" v-else>
+      <div class="col-8 tickets-container">
+        <div class="ticket-container" v-for="(ticket, ticketIndex) in spotlightTickets" :key="ticketIndex" @click="editTicket(ticket.index)">
+          <Ticket
+            :class="{ 'non-spotlight-ticket': !ticket.spotlight }"
+            conferenceTitle="Two Steps Forward" conferenceYear="2019"
+            :personName="`${ticket.firstName} ${ticket.lastName}`" :personMeal="ticket.meal"
+            :ticketType="ticket.ticket" :confirmationCode="`SB1105`"
+            maxWidth="300px" />
+          </div>
+      </div>  
+      <div class="col-4 sidebar-container ticket-selection">
         <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticketIndex" @click="editTicket(ticketIndex)">
           <h2>{{ `${ticket.firstName} ${ticket.lastName}` }}</h2>
           {{ ticket.ticket }} &middot; {{ ticket.meal }}
         </div>
-        <button class="full-width extra-margin-top" @click="addTicket()">Add Another Ticket</button>
+        <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
         <button class="full-width" @click="goToPayment()">Continue to Payment</button>
       </div>
     </div>
@@ -67,45 +70,88 @@
 </template>
 
 <script>
+const DEMO_MODE = true;
 import Ticket from "@/components/Ticket";
 export default {
   name: "CheckoutPage",
   components: { Ticket },
   data() {
     return {
-      ticketEditIndex: 0,
+      ticketEditIndex: -1,
       tickets: [],
+      creatingTicket: false,
       showError: false
     };
   },
   mounted() {
+    if(DEMO_MODE) {
+      this.tickets = [
+        {
+          firstName: 'Andrey',
+          lastName: 'Butenko',
+          meal: 'No Meal',
+          ticket: 'General Ticket'
+        },
+        {
+          firstName: 'Jenny',
+          lastName: 'Liang',
+          meal: 'No Meal',
+          ticket: 'General Ticket'
+        },
+        {
+          firstName: 'Nick',
+          lastName: 'Zhao',
+          meal: 'No Meal',
+          ticket: 'General Ticket'
+        },
+        {
+          firstName: 'Soham',
+          lastName: 'Lastname',
+          meal: 'No Meal',
+          ticket: 'General Ticket'
+        }
+      ];
+      return;
+    }
+
     this.addTicket();
   },
   methods: {
-    removeTicketAtIndex(index) {
-      this.tickets.splice(index, 1);
-    },
+    // Adds a new ticket and sends user to edit it.
     addTicket() {
       this.tickets.push(this.getEmptyTicket());
       this.editTicket(this.tickets.length - 1);
+      this.creatingTicket = true;
     },
-    commitTicket() {
+    // Saves changes to the currently-editing ticket, or displays error if there's a problem.
+    saveTicket() {
       if(!this.currentTicketIsValid) {
         this.showError = true;
         return;
       }
 
-      this.showError = false;
-      this.ticketEditIndex = -1;
+      this.commitChanges();
     },
+    // Deletes currently-editing ticket.
     cancelTicket() {
       this.removeTicketAtIndex(this.ticketEditIndex);
+      this.commitChanges();
+    },
+    // Escapes user from ticket-editing interface.
+    commitChanges() {
       this.showError = false;
       this.ticketEditIndex = -1;
+      this.creatingTicket = false;
     },
+    // Sends user to ticket-editing interface for a given ticket.
     editTicket(index) {
       this.ticketEditIndex = index;
     },
+    // Deletes ticket at a given index.
+    removeTicketAtIndex(index) {
+      this.tickets.splice(index, 1);
+    },
+    // Returns an empty ticket object.
     getEmptyTicket() {
       return {
         firstName: '',
@@ -116,19 +162,30 @@ export default {
     }
   },
   computed: {
-    currentlyEditing() {
+    isCurrentlyEditing() {
       return this.ticketEditIndex != -1;
     },
     currentTicket() {
       return this.tickets[this.ticketEditIndex] || {};
     },
     currentTicketIsValid() {
-      if(!this.currentlyEditing) {
+      if(!this.isCurrentlyEditing) {
         return true;
       }
 
       return !!this.currentTicket.firstName && !!this.currentTicket.lastName &&
         !!this.currentTicket.meal && this.currentTicket.ticket;
+    },
+    spotlightTickets() {
+      let result = this.tickets
+        .filter((ticket, ticketIndex) => ticketIndex < 3)
+        .map((ticket, ticketIndex) => ({ ...ticket, spotlight: ticketIndex == 0, index: ticketIndex }));
+
+      if(result.length == 3) {
+        result.unshift(result.pop());
+      }
+
+      return result;
     }
   }
 };
@@ -146,6 +203,23 @@ p.footnote {
   &.show-label {
     opacity: 1;
     height: 1.5em;
+  }
+}
+
+.sidebar-container {
+  padding: 32px;
+  border: 1px solid transparent;
+}
+
+.overview-screen-row .tickets-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: pointer;
+
+  .non-spotlight-ticket {
+    opacity: 0.8;
+    transform: scale(0.8);
   }
 }
 
