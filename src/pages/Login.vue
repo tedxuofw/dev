@@ -5,7 +5,7 @@
                 <div class="inner-container">
                     <center>
                         <h1> Welcome to TEDxUofW </h1>
-                        <p> Be a part of our community. <br/> Sign into your account to purchase tickets, talk to speakers, and view our curated content. </p>
+                        <p class="responsive"> Be a part of our community. <br/> Sign into your account to purchase tickets, talk to speakers, and view our curated content. </p>
                         <div class="container login-container">
                             <div class="button-set sign-in-set">
                                 <button>Sign in</button>
@@ -15,7 +15,7 @@
                             <input type="password" placeholder="Password" class="full-width login-input">
                             <small> <a href="#" class="spacer">Forgot your password?</a> </small>
 
-                            <button class="full-width">Sign in</button>
+                            <button class="full-width primary">Sign in</button>
                         </div>
                     </center>
                 </div>
@@ -51,6 +51,12 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+center {
+    max-height: 4%;
+    overflow: hidden;
+}
+
 .example-container {
     max-width: 500px;
     border: 1px dashed $color-secondary;
@@ -78,8 +84,8 @@ input.login-input:focus {
 
 .outer-container {
     background-color: $color-secondary-2;
-    height: 80vh;
-    margin-top: 10vh;
+    height: 80%;
+    margin: 10vh 0;
     width: 80vw;
 }
 
@@ -94,14 +100,10 @@ input.login-input:focus {
   margin: 8px 0;
 }
 
-/*@media (max-width: 768px) {
+@media (max-width: 768px) {
     .responsive {
         display: none;
     }
-
-    .inner-container {
-        padding: 5%;
-    }
-}*/
+}
 
 </style>
