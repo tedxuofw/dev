@@ -3,21 +3,21 @@
         <div class="row">
             <div class="col-12 outer-container">
                 <div class="inner-container">
-                    <center>
-                        <h1> Welcome to TEDxUofW </h1>
-                        <p class="responsive"> Be a part of our community. <br/> Sign into your account to purchase tickets, talk to speakers, and view our curated content. </p>
-                        <div class="container login-container">
+                    <h1> Welcome to TEDxUofW </h1>
+                    <p class="responsive"> Be a part of our community. <br/> Sign into your account to purchase tickets, talk to speakers, and view our curated content. </p>
+                    <div class="outer-login-container"> 
+                        <div class="container inner-login-container">
                             <div class="button-set sign-in-set">
                                 <button>Sign in</button>
                                 <button class="secondary">Sign up</button>
                             </div>
                             <input type="email" placeholder="Email" class="full-width login-input">
                             <input type="password" placeholder="Password" class="full-width login-input">
-                            <small> <a href="#" class="spacer">Forgot your password?</a> </small>
+                            <a href="#" class="spacer small">Forgot your password?</a>
 
                             <button class="full-width primary">Sign in</button>
                         </div>
-                    </center>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,9 +52,17 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
-center {
-    max-height: 4%;
-    overflow: hidden;
+a.small {
+    line-height: 1.3;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+
+button.primary {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .example-container {
@@ -66,10 +74,13 @@ center {
 
 .inner-container {
     padding: 5% 20%;
+    text-align: center;
 }
 
 input.login-input {
     background-color: $color-secondary-2;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 3.5%;
     width: 90%;
 }
@@ -78,8 +89,14 @@ input.login-input:focus {
     background-color: $color-text-light;
 } 
 
-.login-container {
-    width: 400px;
+.inner-login-container {
+    display: inline;
+    width: 90%;
+}
+
+.outer-login-container {
+    width: 80%;
+    margin: auto;
 }
 
 .outer-container {
@@ -95,12 +112,18 @@ input.login-input:focus {
   margin: 4% 0%;
 }
 
-.spacer {
-  display: block;
-  margin: 8px 0;
+.small {
+    width: 90%;
+    font-size: 0.6em;
+    text-align: right;
 }
 
-@media (max-width: 768px) {
+.spacer {
+    display: block;
+    margin: 8px 0;
+}
+
+@media (max-width: 550px) {
     .responsive {
         display: none;
     }
