@@ -11,11 +11,7 @@
                                 <button>Sign in</button>
                                 <button class="secondary">Sign up</button>
                             </div>
-                            <input type="email" placeholder="Email" class="full-width login-input">
-                            <input type="password" placeholder="Password" class="full-width login-input">
-                            <a href="#" class="spacer small">Forgot your password?</a>
-
-                            <button class="full-width primary">Sign in</button>
+                            <sign-up-form> </sign-up-form>
                         </div>
                     </div>
                 </div>
@@ -25,11 +21,12 @@
 </template>
 
 <script>
-import TabSet from "@/components/TabSet";
-import TabOption from "@/components/TabOption";
+import SignInForm from "@/components/SignInForm";
+import SignUpForm from "@/components/SignUpForm";
+
 export default {
-  name: "ComponentsPage",
-  components: { TabSet, TabOption },
+  name: "LoginPage",
+  components: { SignInForm, SignUpForm },
   data() {
     return {
       emailAddress: "",
@@ -38,32 +35,12 @@ export default {
     };
   },
   methods: {
-    emailSignUp() {
-      if (!this.emailAddress) {
-        alert("No email address entered!");
-      } else {
-        alert(`Thank you for registering: ${this.emailAddress}`);
-      }
-    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
-
-a.small {
-    line-height: 1.3;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5%;
-}
-
-button.primary {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .example-container {
     max-width: 500px;
@@ -76,18 +53,6 @@ button.primary {
     padding: 5% 20%;
     text-align: center;
 }
-
-input.login-input {
-    background-color: $color-secondary-2;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3.5%;
-    width: 90%;
-}
-
-input.login-input:focus {
-    background-color: $color-text-light;
-} 
 
 .inner-login-container {
     display: inline;
@@ -112,15 +77,8 @@ input.login-input:focus {
   margin: 4% 0%;
 }
 
-.small {
-    width: 90%;
-    font-size: 0.6em;
-    text-align: right;
-}
-
-.spacer {
-    display: block;
-    margin: 8px 0;
+.hidden {
+    display: none;
 }
 
 @media (max-width: 550px) {
