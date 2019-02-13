@@ -4,7 +4,7 @@
         <input type="text" placeholder="Last Name" class="full-width login-input">
         <input type="email" placeholder="Email" class="full-width login-input">
         <input type="password" placeholder="Password" class="full-width login-input">
-        <button class="full-width primary">Sign in</button>
+        <a href="/"> <button class="full-width primary" href="www.google.com/">Sign in</button> </a>
     </div>
 </template>
 

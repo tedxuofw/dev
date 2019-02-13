@@ -2,16 +2,20 @@
     <div>
         <input type="email" placeholder="Email" class="full-width login-input">
         <input type="password" placeholder="Password" class="full-width login-input">
-        <a href="#" class="spacer small">Forgot your password?</a>
-        <button class="full-width primary">Sign in</button>
+        <a href="/" class="spacer small">Forgot your password?</a>
+        <a href="/"> <button class="full-width primary">Sign in</button></a>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'SignInForm',
-  props: {
-  }
+    name: 'SignInForm',
+    props: {
+        selected: {
+            type: Boolean,
+            default: false
+        }
+    }
 }
 </script>
 

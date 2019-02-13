@@ -8,10 +8,11 @@
                     <div class="outer-login-container"> 
                         <div class="container inner-login-container">
                             <div class="button-set sign-in-set">
-                                <button>Sign in</button>
-                                <button class="secondary">Sign up</button>
+                                <button id="sign-in" @click="toggle(true)" v-bind:class="{secondary: !signIn}">Sign in</button>
+                                <button id="sign-up" @click="toggle(false)" v-bind:class="{secondary: signIn}">Sign up</button>
                             </div>
-                            <sign-up-form> </sign-up-form>
+                            <sign-in-form  v-if="signIn"/>
+                            <sign-up-form v-else/>
                         </div>
                     </div>
                 </div>
@@ -25,17 +26,18 @@ import SignInForm from "@/components/SignInForm";
 import SignUpForm from "@/components/SignUpForm";
 
 export default {
-  name: "LoginPage",
-  components: { SignInForm, SignUpForm },
-  data() {
-    return {
-      emailAddress: "",
-      tabIndex: 0,
-      tabSecondary: false
-    };
-  },
-  methods: {
-  }
+    name: "LoginPage",
+    components: { SignInForm, SignUpForm },
+    data() {
+        return {
+            signIn: true,
+        };
+    },
+    methods: {
+        toggle: function(signIn) {
+            this.signIn = signIn;
+        }
+    }
 };
 </script>
 
@@ -57,6 +59,10 @@ export default {
 .inner-login-container {
     display: inline;
     width: 90%;
+}
+
+.invisible {
+    display: none;
 }
 
 .outer-login-container {
