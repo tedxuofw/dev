@@ -10,18 +10,26 @@
       </div>
     </div>
 
-    <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }">
-      <transition-group name="fade" tag="div" class="tickets-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }">
-        <div class="ticket-container" v-for="ticket in spotlightTickets" :key="ticket.id" @click="editTicket(ticket.index)">
-          <Ticket
-            class="ticket"
-            :class="{ 'non-spotlight-ticket': !ticket.spotlight }"
-            conferenceTitle="Two Steps Forward" conferenceYear="2019"
-            :personName="`${ticket.firstName} ${ticket.lastName}`" :personMeal="ticket.meal"
-            :ticketType="ticket.ticket" :confirmationCode="`SB11054${ticket.id}`"
-            maxWidth="300px" />
+    <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }" v-if="!paymentScreen">
+      <template v-if="!(mobileView && isCurrentlyEditing) && tickets.length > 0">
+        <transition-group name="fade" tag="div" class="tickets-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }">
+          <div class="ticket-container" v-for="ticket in spotlightTickets" :key="ticket.id" @click="editTicket(ticket.index)">
+            <Ticket
+              class="ticket"
+              :class="{ 'non-spotlight-ticket': !ticket.spotlight }"
+              conferenceTitle="Two Steps Forward" conferenceYear="2019"
+              :personName="`${ticket.firstName} ${ticket.lastName}`" :personMeal="ticket.meal"
+              :ticketType="ticket.ticket" :confirmationCode="`SB11054${ticket.id}`"
+              maxWidth="300px" />
+          </div>
+        </transition-group>
+      </template>
+
+      <div class="tickets-container empty-state-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }" v-if="tickets.length == 0">
+        <div class="empty-state-text">
+          <p>You haven't selected any tickets to purchase yet. <a @click="addTicket()">Add a ticket now.</a></p>
         </div>
-      </transition-group>
+      </div>
 
       <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
         <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
@@ -29,8 +37,9 @@
           {{ ticket.ticket }} &middot; {{ ticket.meal }}
         </div>
         <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
-        <button class="full-width" @click="goToPayment()">Continue to Payment</button>
+        <button class="full-width" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
       </div>
+
       <div class="col-4 sidebar-container ticket-form" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-else>
         <h2>Ticket Information</h2>
         <p class="footnote show-label">Ticket Type</p>
@@ -55,14 +64,18 @@
 
         <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
         <button class="full-width" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
-        <button class="full-width secondary" @click="cancelTicket()">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
+        <button class="full-width secondary" @click="cancelTicket()" v-if="tickets.length > 1">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
       </div>
+    </div>
+
+    <div class="row" v-else>
+      <p>Screen where you submit payment details will come soon, based on Jenny's payments work :)</p>
     </div>
   </div>
 </template>
 
 <script>
-const DEMO_MODE = true;
+const DEMO_MODE = false;
 const MOBILE_MAX_WIDTH = 1350;
 import Ticket from "@/components/Ticket";
 export default {
@@ -75,7 +88,8 @@ export default {
       tickets: [],
       creatingTicket: false,
       showError: false,
-      mobileView: false
+      mobileView: false,
+      paymentScreen: false
     };
   },
   mounted() {
@@ -125,13 +139,14 @@ export default {
     window.removeEventListener('resize', this.recalculateMobileView);
   },
   methods: {
-    // Adds a new ticket and sends user to edit it.
+    /** Adds a new ticket and switches to editing interface for new ticket. */
     addTicket() {
       this.tickets.push(this.getEmptyTicket());
       this.editTicket(this.tickets.length - 1);
       this.creatingTicket = true;
     },
-    // Saves changes to the currently-editing ticket, or displays error if there's a problem.
+
+    /** Saves changes to currently-editing ticket, or displays error if there's a problem */
     saveTicket() {
       if(!this.currentTicketIsValid) {
         this.showError = true;
@@ -140,28 +155,33 @@ export default {
 
       this.commitChanges();
     },
-    // Deletes currently-editing ticket.
+
+    /** Deletes the currently-editing ticket. */
     cancelTicket() {
       this.removeTicketAtIndex(this.ticketEditIndex);
       this.commitChanges();
     },
-    // Escapes user from ticket-editing interface.
+    
+    /** Exits ticket-editing interface. */
     commitChanges() {
       this.showError = false;
       this.ticketEditIndex = -1;
       this.creatingTicket = false;
       this.scrollToTop();
     },
-    // Sends user to ticket-editing interface for a given ticket.
+
+    /** Sends user to ticket-editing interface for a given ticket. */
     editTicket(index) {
       this.ticketEditIndex = index;
       this.scrollToTop();
     },
-    // Deletes ticket at a given index.
+    
+    /** Deletes ticket at a given index. */
     removeTicketAtIndex(index) {
       this.tickets.splice(index, 1);
     },
-    // Returns an empty ticket object.
+    
+    /** Returns an empty ticket object. */
     getEmptyTicket() {
       return {
         firstName: '',
@@ -173,21 +193,34 @@ export default {
 
       this.ticketIdCounter++;
     },
+
+    /** Scrolls to top of webpage. */
     scrollToTop() {
       window.scrollTo(0,0);
     },
+
+    /** Calculates whether mobileView should be enabled based on screen width. */
     recalculateMobileView() {
-      console.log('recalculate', window.innerWidth)
       this.mobileView = window.innerWidth < MOBILE_MAX_WIDTH;
+    },
+
+    /** Switches to payment interface. */
+    goToPayment() {
+      this.paymentScreen = true;
     }
   },
   computed: {
+    /** Returns whether a ticket is currently being edited. */
     isCurrentlyEditing() {
       return this.ticketEditIndex != -1;
     },
+
+    /** Returns the currently-edited ticket. Returns an empty object if no ticket is being edited. */
     currentTicket() {
       return this.tickets[this.ticketEditIndex] || {};
     },
+
+    /** Returns whether the currently-edited ticket is totally complete. */
     currentTicketIsValid() {
       if(!this.isCurrentlyEditing) {
         return true;
@@ -204,10 +237,6 @@ export default {
      * Otherwise, the tickets are reordered and the first one is emphasized.
      */
     spotlightTickets() {
-      if(this.isCurrentlyEditing && this.mobileView) {
-        return [];
-      }
-
       if(this.isCurrentlyEditing) {
         return this.tickets
           .filter((ticket, ticketIndex) => ticketIndex == this.ticketEditIndex)
@@ -342,6 +371,25 @@ p.error {
   }
 }
 
+.empty-state-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+
+  .empty-state-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid black;
+    box-shadow: 10px 10px 31px 0px rgba(194,194,194,1);
+    padding: 16px;
+  }
+}
+
+/** Transitions for spotlight tickets. */
 .fade-enter, .fade-leave-to  {
   opacity: 0;
   transform: translateY(30px);
