@@ -29,6 +29,10 @@ body {
   @media only screen and (max-width: $grid-break) {
     flex-direction: column;
   }
+
+  &.allow-wrap {
+    flex-wrap: wrap;
+  }
 }
 
 @for $i from 1 through $grid-cols {

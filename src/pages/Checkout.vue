@@ -1,5 +1,5 @@
 <template>
-  <div class="container components-page">
+  <div class="container components-page" :class="{ 'mobile-view': mobileView }">
     <div class="row">
       <div class="col-12">
         <div>
@@ -10,8 +10,8 @@
       </div>
     </div>
 
-    <div class="row overview-screen-row">
-      <transition-group name="fade" tag="div" class="col-8 tickets-container">
+    <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }">
+      <transition-group name="fade" tag="div" class="tickets-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }">
         <div class="ticket-container" v-for="ticket in spotlightTickets" :key="ticket.id" @click="editTicket(ticket.index)">
           <Ticket
             class="ticket"
@@ -23,7 +23,7 @@
         </div>
       </transition-group>
 
-      <div class="col-4 sidebar-container ticket-selection" v-if="!isCurrentlyEditing">
+      <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
         <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
           <h2>{{ `${ticket.firstName} ${ticket.lastName}` }}</h2>
           {{ ticket.ticket }} &middot; {{ ticket.meal }}
@@ -31,7 +31,7 @@
         <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
         <button class="full-width" @click="goToPayment()">Continue to Payment</button>
       </div>
-      <div class="col-4 sidebar-container ticket-form" v-else>
+      <div class="col-4 sidebar-container ticket-form" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-else>
         <h2>Ticket Information</h2>
         <p class="footnote show-label">Ticket Type</p>
         <select v-model="currentTicket.ticket" class="full-width">
@@ -63,6 +63,7 @@
 
 <script>
 const DEMO_MODE = true;
+const MOBILE_MAX_WIDTH = 1350;
 import Ticket from "@/components/Ticket";
 export default {
   name: "CheckoutPage",
@@ -73,10 +74,17 @@ export default {
       ticketEditIndex: -1,
       tickets: [],
       creatingTicket: false,
-      showError: false
+      showError: false,
+      mobileView: false
     };
   },
   mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.recalculateMobileView);
+    });
+    console.log('mount')
+    this.recalculateMobileView();
+
     if(DEMO_MODE) {
       this.tickets = [
         {
@@ -113,6 +121,9 @@ export default {
 
     this.addTicket();
   },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.recalculateMobileView);
+  },
   methods: {
     // Adds a new ticket and sends user to edit it.
     addTicket() {
@@ -139,10 +150,12 @@ export default {
       this.showError = false;
       this.ticketEditIndex = -1;
       this.creatingTicket = false;
+      this.scrollToTop();
     },
     // Sends user to ticket-editing interface for a given ticket.
     editTicket(index) {
       this.ticketEditIndex = index;
+      this.scrollToTop();
     },
     // Deletes ticket at a given index.
     removeTicketAtIndex(index) {
@@ -159,6 +172,13 @@ export default {
       };
 
       this.ticketIdCounter++;
+    },
+    scrollToTop() {
+      window.scrollTo(0,0);
+    },
+    recalculateMobileView() {
+      console.log('recalculate', window.innerWidth)
+      this.mobileView = window.innerWidth < MOBILE_MAX_WIDTH;
     }
   },
   computed: {
@@ -176,11 +196,27 @@ export default {
       return !!this.currentTicket.firstName && !!this.currentTicket.lastName &&
         !!this.currentTicket.meal && this.currentTicket.ticket;
     },
+
+    /**
+     * Returns an array that should be used to display tickets on spotlight view.
+     * When editing, only the currently-selected ticket is spotlighted.
+     * When on mobile view, there is no special formatting.
+     * Otherwise, the tickets are reordered and the first one is emphasized.
+     */
     spotlightTickets() {
+      if(this.isCurrentlyEditing && this.mobileView) {
+        return [];
+      }
+
       if(this.isCurrentlyEditing) {
         return this.tickets
           .filter((ticket, ticketIndex) => ticketIndex == this.ticketEditIndex)
           .map(ticket => ({ ...ticket, spotlight: true }));
+      }
+
+      if(this.mobileView) {
+        return this.tickets
+          .map((ticket, ticketIndex) => ({ ...ticket, index: ticketIndex }));
       }
 
       let result = this.tickets
@@ -216,6 +252,29 @@ p.footnote {
 .sidebar-container {
   padding: 32px;
   border: 1px solid transparent;
+}
+
+.mobile-view {
+  .row.overview-screen-row {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    width: 100%;
+
+    .tickets-container {
+      justify-content: flex-start;
+      overflow-x: scroll;
+    }
+
+    .sidebar-container {
+      padding: 16px;
+      width: 90%;
+    }
+
+    .ticket-form {
+      border: 0;
+    }
+  }
 }
 
 .overview-screen-row .tickets-container {
