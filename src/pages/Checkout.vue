@@ -10,15 +10,28 @@
       </div>
     </div>
 
-    <div class="row edit-screen-row" v-if="isCurrentlyEditing">
-      <div class="col-8 center-children">
-        <Ticket
-          conferenceTitle="Two Steps Forward" conferenceYear="2019"
-          :personName="`${currentTicket.firstName} ${currentTicket.lastName}`" :personMeal="currentTicket.meal"
-          :ticketType="currentTicket.ticket" :confirmationCode="`SB1105`"
-          maxWidth="300px" />
+    <div class="row overview-screen-row">
+      <transition-group name="fade" tag="div" class="col-8 tickets-container">
+        <div class="ticket-container" v-for="ticket in spotlightTickets" :key="ticket.id" @click="editTicket(ticket.index)">
+          <Ticket
+            class="ticket"
+            :class="{ 'non-spotlight-ticket': !ticket.spotlight }"
+            conferenceTitle="Two Steps Forward" conferenceYear="2019"
+            :personName="`${ticket.firstName} ${ticket.lastName}`" :personMeal="ticket.meal"
+            :ticketType="ticket.ticket" :confirmationCode="`SB11054${ticket.id}`"
+            maxWidth="300px" />
+        </div>
+      </transition-group>
+
+      <div class="col-4 sidebar-container ticket-selection" v-if="!isCurrentlyEditing">
+        <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
+          <h2>{{ `${ticket.firstName} ${ticket.lastName}` }}</h2>
+          {{ ticket.ticket }} &middot; {{ ticket.meal }}
+        </div>
+        <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
+        <button class="full-width" @click="goToPayment()">Continue to Payment</button>
       </div>
-      <div class="col-4 sidebar-container ticket-form">
+      <div class="col-4 sidebar-container ticket-form" v-else>
         <h2>Ticket Information</h2>
         <p class="footnote show-label">Ticket Type</p>
         <select v-model="currentTicket.ticket" class="full-width">
@@ -45,27 +58,6 @@
         <button class="full-width secondary" @click="cancelTicket()">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
       </div>
     </div>
-
-    <div class="row overview-screen-row" v-else>
-      <div class="col-8 tickets-container">
-        <div class="ticket-container" v-for="(ticket, ticketIndex) in spotlightTickets" :key="ticketIndex" @click="editTicket(ticket.index)">
-          <Ticket
-            :class="{ 'non-spotlight-ticket': !ticket.spotlight }"
-            conferenceTitle="Two Steps Forward" conferenceYear="2019"
-            :personName="`${ticket.firstName} ${ticket.lastName}`" :personMeal="ticket.meal"
-            :ticketType="ticket.ticket" :confirmationCode="`SB1105`"
-            maxWidth="300px" />
-          </div>
-      </div>  
-      <div class="col-4 sidebar-container ticket-selection">
-        <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticketIndex" @click="editTicket(ticketIndex)">
-          <h2>{{ `${ticket.firstName} ${ticket.lastName}` }}</h2>
-          {{ ticket.ticket }} &middot; {{ ticket.meal }}
-        </div>
-        <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
-        <button class="full-width" @click="goToPayment()">Continue to Payment</button>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -77,6 +69,7 @@ export default {
   components: { Ticket },
   data() {
     return {
+      ticketIdCounter: 0,
       ticketEditIndex: -1,
       tickets: [],
       creatingTicket: false,
@@ -90,25 +83,29 @@ export default {
           firstName: 'Andrey',
           lastName: 'Butenko',
           meal: 'No Meal',
-          ticket: 'General Ticket'
+          ticket: 'General Ticket',
+          id: -4
         },
         {
           firstName: 'Jenny',
           lastName: 'Liang',
           meal: 'No Meal',
-          ticket: 'General Ticket'
+          ticket: 'General Ticket',
+          id: -3
         },
         {
           firstName: 'Nick',
           lastName: 'Zhao',
           meal: 'No Meal',
-          ticket: 'General Ticket'
+          ticket: 'General Ticket',
+          id: -2
         },
         {
           firstName: 'Soham',
-          lastName: 'Lastname',
+          lastName: 'Pardeshi',
           meal: 'No Meal',
-          ticket: 'General Ticket'
+          ticket: 'General Ticket',
+          id: -1
         }
       ];
       return;
@@ -157,8 +154,11 @@ export default {
         firstName: '',
         lastName: '',
         meal: '',
-        ticket: 'General Ticket'
+        ticket: 'General Ticket',
+        id: this.ticketIdCounter
       };
+
+      this.ticketIdCounter++;
     }
   },
   computed: {
@@ -177,9 +177,16 @@ export default {
         !!this.currentTicket.meal && this.currentTicket.ticket;
     },
     spotlightTickets() {
+      if(this.isCurrentlyEditing) {
+        return this.tickets
+          .filter((ticket, ticketIndex) => ticketIndex == this.ticketEditIndex)
+          .map(ticket => ({ ...ticket, spotlight: true }));
+      }
+
       let result = this.tickets
+        .map((ticket, ticketIndex) => ({ ...ticket, index: ticketIndex }))
         .filter((ticket, ticketIndex) => ticketIndex < 3)
-        .map((ticket, ticketIndex) => ({ ...ticket, spotlight: ticketIndex == 0, index: ticketIndex }));
+        .map((ticket, ticketIndex) => ({ ...ticket, spotlight: ticketIndex == 0 }));
 
       if(result.length == 3) {
         result.unshift(result.pop());
@@ -217,9 +224,15 @@ p.footnote {
   justify-content: center;
   cursor: pointer;
 
-  .non-spotlight-ticket {
-    opacity: 0.8;
-    transform: scale(0.8);
+  .ticket {
+    transition: all 250ms;
+    display: inline-block;
+    margin-right: 10px;
+
+    &.non-spotlight-ticket {
+      opacity: 0.8;
+      transform: scale(0.8);
+    }
   }
 }
 
@@ -268,5 +281,18 @@ p.error {
       margin: 0.25em 0;
     }
   }
+}
+
+.fade-enter, .fade-leave-to  {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-leave-active:not(.non-spotlight-ticket) {
+  position: absolute;
+  transition: 250ms transform, 100ms opacity;
+  transform: translateY(30px);
+}
+.fade-move:not(.non-spotlight-ticket) {
+  transition: 250ms transform, 100ms opacity;
 }
 </style>
