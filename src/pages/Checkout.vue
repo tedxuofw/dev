@@ -172,6 +172,7 @@ export default {
 
     /** Sends user to ticket-editing interface for a given ticket. */
     editTicket(index) {
+      if(this.isCurrentlyEditing) return;
       this.ticketEditIndex = index;
       this.scrollToTop();
     },
