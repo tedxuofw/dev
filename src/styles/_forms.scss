@@ -21,6 +21,7 @@ input[type="password"],
 input[type="email"],
 button,
 select,
+.input,
 .button {
   display: block;
   font-size: 19px;
@@ -43,7 +44,8 @@ label {
 
 input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+.input {
   color: $color-text;
   border: 1px solid $color-primary;
   outline: none;

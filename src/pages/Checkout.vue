@@ -69,7 +69,7 @@
     </div>
 
     <div class="row" v-else>
-      <p>Screen where you submit payment details will come soon, based on Jenny's payments work :)</p>
+      <CheckoutForm/>
     </div>
   </div>
 </template>
@@ -78,9 +78,10 @@
 const DEMO_MODE = false;
 const MOBILE_MAX_WIDTH = 1350;
 import Ticket from "@/components/Ticket";
+import CheckoutForm from "@/components/CheckoutForm";
 export default {
   name: "CheckoutPage",
-  components: { Ticket },
+  components: { Ticket, CheckoutForm },
   data() {
     return {
       ticketIdCounter: 0,
@@ -91,6 +92,11 @@ export default {
       mobileView: false,
       paymentScreen: false
     };
+  },
+  created() {
+    var script = document.createElement('script');
+    script.setAttribute('src', "https://js.stripe.com/v3/");
+    document.head.appendChild(script);
   },
   mounted() {
     this.$nextTick(() => {
