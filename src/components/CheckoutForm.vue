@@ -1,34 +1,27 @@
 <template>
-    <form action="/charge" method="post" id="payment-form">
-        <div class="row">
-            <input type="text" placeholder="First Name" class="full-width">
-        </div>
-        <div class="row">
-            <input type="text" placeholder="Last Name" class="full-width">
-        </div>
-        <div class="form-row">
-            <div id="card-element" class="input">
-            <!-- A Stripe Element will be inserted here. -->
-            </div>
+    <div id="payment-container">
+        <h2> Card Information </h2>
+        <form action="/charge" method="post" id="payment-form">
+            <div class="row">
+                <div id="card-number" class="full-width col-12">
 
-            <!-- Used to display form errors. -->
-            <div id="card-errors" role="alert"></div>
-        </div>
-        <div class="row">
-            <input type="text" placeholder="Address Line #1" class="full-width">
-        </div>
-        <div class="row">
-            <input type="text" placeholder="Address Line #2 (Optional)" class="full-width">
-        </div>
-        <div class="row">
-            <input type="text" placeholder="City" class="full-width">
-        </div>
-        <div class="row">
-            <input type="text" placeholder="State" class="full-width">
-            <input type="text" placeholder="Zip Code" class="full-width">
-        </div>
-        <button>Continue to Summary</button>
-    </form>
+                </div>
+            </div>
+            <div class="row">
+                <input type="text" placeholder="Card Holder Name" class="full-width col-12">
+            </div>
+            <div class="row">
+                <div id="card-expire" class="full width col-6"></div>
+                <div id="card-cvc" class="full width col-6"></div>
+            </div>
+            <div class="row">
+                <input type="text" placeholder="Zip Code" class="full-width col-4">
+            </div>
+            <div class="row">
+                <button class="full-width">Continue</button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -40,41 +33,72 @@ export default {
 
         // Create an instance of Elements.
         var elements = stripe.elements();
+  var styles = {
+    base: {
+      fontSize: '19px',
+      width: '100%',
 
-        // Custom styling can be passed to options when creating an Element.
-        // (Note that this demo uses a wider set of styles than the guide below.)
-        var style = {
-            base: {
-                color: '#32325d',
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSmoothing: 'antialiased',
-                fontSize: '16px',
-                '::placeholder': {
-                    color: '#aab7c4'
-                },
-                border: '1px solid #e62b1e'
-            },
-            invalid: {
-                color: '#fa755a',
-                iconColor: '#fa755a'
-            }
-        };
+      ':focus': {
+        color: 'black',
+      },
+
+      '::placeholder': {
+        // primary-color-2
+        color: '#e09b8b',
+      },
+
+      ':focus::placeholder': {
+        color: '#e09b8b',
+      },
+    },
+    invalid: {
+      color: '#FA755A',
+      ':focus': {
+        color: '#FA755A',
+      },
+      '::placeholder': {
+        color: '#FA755A',
+      },
+    },
+  };
 
         // Create an instance of the card Element.
-        var card = elements.create('card', {style: style});
+        var number = elements.create('cardNumber', { style: styles });
+        var expire = elements.create('cardExpiry', { style: styles });
+        var cvc = elements.create('cardCvc', { style: styles });
 
-        // Add an instance of the card Element into the `card-element` <div>.
-        card.mount('#card-element');
+        number.mount("#card-number");
+        expire.mount("#card-expire");
+        cvc.mount("#card-cvc");
     },
+    data() {
+    },
+    methods: {
+    }
 }
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/_variables.scss";
+p.callout,
+p.footnote {
+    margin-bottom: 0px;
+    opacity: 0;
+    height: 0;
+    transition: 250ms all;
+
+    &.show-label {
+        opacity: 1;
+        height: 1.5em;
+    }
+}
+
 /* Styling for Stripe element */
 .StripeElement {
     box-sizing: border-box;
 
     height: 40px;
+    width: 100%;
 
     padding: 10px 12px;
 
@@ -99,7 +123,33 @@ export default {
     background-color: #fefde5 !important;
 }
 
-#payment-form {
+div.row > div.StripeElement {
+    border: 1px solid $color-primary;
+    height: 48px;
+}
+
+div.ElementsApp input.InputElement {
+    height: 100% !important;
+    font-size: 19px !important;
+}
+
+button.full-width {
+    margin: 2em 0;
+    height: 60px;
+}
+
+.form-row {
     width: 100%;
+}
+
+#payment-container {
+    width: 40%;
+    border: 1px solid $color-primary;
+    padding: 0.5em 2em;
+}
+
+h2 {
+    border-bottom: 3px solid $color-primary;
+    line-height: 1.5;
 }
 </style>
