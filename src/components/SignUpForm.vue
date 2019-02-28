@@ -1,11 +1,11 @@
 <template>
-    <div>
-        <input type="text" placeholder="First Name" class="full-width login-input">
-        <input type="text" placeholder="Last Name" class="full-width login-input">
-        <input type="email" placeholder="Email" class="full-width login-input">
-        <input type="password" placeholder="Password" class="full-width login-input">
-        <a href="/"> <button class="full-width primary" href="www.google.com/">Sign in</button> </a>
-    </div>
+    <form action="https://students.washington.edu/tedxuofw/test/public/index.php/api/register" method="get">
+        <input type="text" placeholder="First Name" class="full-width login-input" name="first">
+        <input type="text" placeholder="Last Name" class="full-width login-input" name="last">
+        <input type="email" placeholder="Email" class="full-width login-input" name="email">
+        <input type="password" placeholder="Password" class="full-width login-input" name="password">
+        <button class="full-width primary" type="submit">Sign in</button>
+    </form>
 </template>
 
 <script>

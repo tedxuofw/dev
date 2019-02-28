@@ -4,7 +4,7 @@
             <div class="col-12 outer-container">
                 <div class="inner-container">
                     <h1> Welcome to TEDxUofW </h1>
-                    <p class="responsive"> Be a part of our community. <br/> Sign into your account to purchase tickets, talk to speakers, and view our curated content. </p>
+                    <p> Be a part of our community. <br/> Sign into your account to purchase tickets, talk to speakers, and view our curated content. </p>
                     <div class="outer-login-container"> 
                         <div class="container inner-login-container">
                             <div class="button-set sign-in-set">
@@ -88,8 +88,16 @@ export default {
 }
 
 @media (max-width: 550px) {
-    .responsive {
+    div.inner-container > p {
         display: none;
+    }
+
+    div.button-set button {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 32px;
     }
 }
 

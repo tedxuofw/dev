@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <input type="email" placeholder="Email" class="full-width login-input">
-        <input type="password" placeholder="Password" class="full-width login-input">
+    <form action="https://students.washington.edu/tedxuofw/test/public/index.php/api/login" method="get">
+        <input type="email" placeholder="Email" class="full-width login-input" name="email">
+        <input type="password" placeholder="Password" class="full-width login-input" name="password">
         <a href="/" class="spacer small">Forgot your password?</a>
-        <a href="/"> <button class="full-width primary">Sign in</button></a>
-    </div>
+        <button type="submit" class="full-width primary">Sign in</button>
+    </form>
 </template>
 
 <script>
@@ -56,6 +56,16 @@ input.login-input:focus, .focus {
 .spacer {
     display: block;
     margin: 8px 0;
+}
+
+@media (max-width: 550px) {
+    input, button {
+        font-size: 14px;
+    }
+
+    .small {
+        font-size: 10px;
+    }
 }
 
 </style>
