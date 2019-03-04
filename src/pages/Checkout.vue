@@ -89,7 +89,6 @@ export default {
     this.$nextTick(() => {
       window.addEventListener('resize', this.recalculateMobileView);
     });
-    console.log('mount')
     this.recalculateMobileView();
 
     if(DEMO_MODE) {
