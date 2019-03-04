@@ -12,6 +12,7 @@
 
     <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }" v-if="!paymentScreen">
       <SpotlightTicketView
+        :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
         :tickets="spotlightTickets"
         :onClickTicket="ticket => editTicket(ticket.index)"
         :mobileView="mobileView" />

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="tickets.length > 0" :class="{ 'col-12': mobileView, 'col-8': !mobileView, 'mobile-view': mobileView }">
+  <div v-if="tickets.length > 0" :class="{ 'mobile-view': mobileView }">
     <transition-group name="fade" tag="div" class="tickets-container">
       <div class="ticket-container" v-for="ticket in spotlightTickets" :key="ticket.id" @click="onClickTicket(ticket)">
         <Ticket
