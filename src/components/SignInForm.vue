@@ -1,13 +1,16 @@
 <template>
     <div>
-        <input type="email" placeholder="Email" class="full-width login-input">
-        <input type="password" placeholder="Password" class="full-width login-input">
+        <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input">
+        <input v-model="form.password" type="password" placeholder="Password" class="full-width login-input">
         <a href="/" class="spacer small">Forgot your password?</a>
-        <a href="/"> <button class="full-width primary">Sign in</button></a>
+        <button class="full-width primary" v-on:click="signIn">Sign in</button>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { globalStore } from '../main.js';
+    
 export default {
     name: 'SignInForm',
     props: {
@@ -15,7 +18,41 @@ export default {
             type: Boolean,
             default: false
         }
-    }
+    },
+    data() {
+        return {
+            form: {
+                email: '',
+                password:  ''
+            }
+        }
+    },
+    methods: {
+        signIn: function () {
+            let url = "https://students.washington.edu/tedxuofw/index.php/api/login";
+            axios.get(url, { params: this.form }).then((response)  =>  {
+                var resp = response.data;
+                if(resp.status === "success") {
+                    // Store any information given
+                    globalStore.set('jwt', resp.token);
+                    
+                    // Redirect to where we wanna go on success
+                    
+                } else {
+                    // User Error
+                    
+                    // Error message
+                    var message = resp.message;
+                    console.log(response.data);
+                }
+            }, (error)  =>  {
+                // There was an error with the way the request was made!
+                // This is really bad (either the API broke or the frontend)
+                // isn't properly validating the input
+                alert(error.response.data);
+            });
+        }
+    },
 }
 </script>
 
