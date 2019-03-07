@@ -21,9 +21,11 @@ export default {
 
 .tab-set {
   display: flex;
-  height: 80px;
+  height: $height-tabset;
   width: 100%;
   background-color: $color-primary;
+  align-items: stretch;
+  justify-content: center;
 
   &.secondary {
     background-color: $color-secondary-2;

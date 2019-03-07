@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-option" :class="{ selected, secondary, container }" @click="click">   
+    <div class="tab-option" :class="{ selected, secondary, container, spacer }" @click="click">   
       <div class="tab-option-label">
         <slot></slot>
       </div>
@@ -18,6 +18,10 @@ export default {
       type: Boolean,
       default: false
     },
+    spacer: {
+      type: Boolean,
+      default: false
+    },
     container: {
       type: Boolean,
       default: false
@@ -33,24 +37,25 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/_variables.scss';
 .tab-option {
-  flex: 1;
   height: 100%;
   text-align: center;
-  margin: 0 16px;
+  margin: 0 8px;
+  padding: 0 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   color: $color-primary-2;
   box-sizing: border-box;
-  border-bottom: 8px solid transparent;
+  white-space: nowrap;
 
-  &.selected {
-    border-bottom: 8px solid $color-primary-2;
+  &.spacer {
+    width: 100%;
   }
 
-  &.container .tab-option-label {
-    width: 100%;
+  &.selected {
+    color: white;
+    font-weight: 700;
   }
 
   &.secondary {
@@ -58,7 +63,7 @@ export default {
 
     &.selected {
       color: $color-primary;
-      border-bottom: 8px solid $color-primary;
+      font-weight: 700;
     }
   }
 }
