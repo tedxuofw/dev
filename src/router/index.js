@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ComponentsPage from '@/pages/Components'
 import CheckoutPage from '@/pages/Checkout'
+import HomePage from '@/pages/Home'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/checkout',
       name: 'CheckoutPage',
       component: CheckoutPage
+    }, 
+    {
+      path: '/home',
+      name: 'HomePage',
+      component: HomePage
     }
   ]
 })
