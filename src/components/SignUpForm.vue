@@ -1,18 +1,57 @@
 <template>
-    <form action="https://students.washington.edu/tedxuofw/test/public/index.php/api/register" method="get">
-        <input type="text" placeholder="First Name" class="full-width login-input" name="first">
-        <input type="text" placeholder="Last Name" class="full-width login-input" name="last">
-        <input type="email" placeholder="Email" class="full-width login-input" name="email">
-        <input type="password" placeholder="Password" class="full-width login-input" name="password">
-        <button class="full-width primary" type="submit">Sign in</button>
-    </form>
+    <div>
+        <input v-model="form.first" type="text" placeholder="First Name" class="full-width login-input">
+        <input v-model="form.last" type="text" placeholder="Last Name" class="full-width login-input">
+        <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input">
+        <input v-model="form.password" type="password" placeholder="Password" class="full-width login-input">
+        <button class="full-width primary" v-on:click="register">Sign in</button>
+    </div>
 </template>
 
 <script>
+// Import axios and globalState
+import axios from 'axios';
+import { globalStore } from '../main.js';
+    
 export default {
-  name: 'SignInForm',
-  props: {
-  }
+    name: 'SignInForm',
+    props: {},
+    data() {
+        return {
+            form: {
+                first: '',
+                last:  '',
+                email: '',
+                password:  ''
+            }
+        }
+    },
+    methods: {
+        register: function () {
+            let url = "https://students.washington.edu/tedxuofw/index.php/api/register";
+            axios.get(url, { params: this.form }).then((response)  =>  {
+                var resp = response.data;
+                if(resp.status === "success") {
+                    // Store JWT and other things into the global state
+                    globalStore.set('jwt', resp.token);
+                    
+                    // Redirect to where we wanna go on success
+
+                } else {
+                    // User Error
+                    
+                    // Error message
+                    var message = resp.message;
+                    console.log(response.data);
+                }
+            }, (error)  =>  {
+                // There was an error with the way the request was made!
+                // This is really bad (either the API broke or the frontend)
+                // isn't properly validating the input
+                alert(error.response.data);
+            });
+        }
+    },
 }
 </script>
 
