@@ -11,19 +11,11 @@
     </div>
 
     <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }" v-if="!paymentScreen">
-      <template v-if="!(mobileView && isCurrentlyEditing) && tickets.length > 0">
-        <transition-group name="fade" tag="div" class="tickets-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }">
-          <div class="ticket-container" v-for="ticket in spotlightTickets" :key="ticket.id" @click="editTicket(ticket.index)">
-            <Ticket
-              class="ticket"
-              :class="{ 'non-spotlight-ticket': !ticket.spotlight }"
-              conferenceTitle="Two Steps Forward" conferenceYear="2019"
-              :personName="`${ticket.firstName} ${ticket.lastName}`" :personMeal="ticket.meal"
-              :ticketType="ticket.ticket" :confirmationCode="`SB11054${ticket.id}`"
-              maxWidth="300px" />
-          </div>
-        </transition-group>
-      </template>
+      <SpotlightTicketView
+        :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
+        :tickets="spotlightTickets"
+        :onClickTicket="ticket => editTicket(ticket.index)"
+        :mobileView="mobileView" />
 
       <div class="tickets-container empty-state-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }" v-if="tickets.length == 0">
         <div class="empty-state-text">
@@ -34,7 +26,7 @@
       <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
         <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
           <h2>{{ `${ticket.firstName} ${ticket.lastName}` }}</h2>
-          {{ ticket.ticket }} &middot; {{ ticket.meal }}
+          {{ ticket.ticket }}
         </div>
         <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
         <button class="full-width" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
@@ -46,14 +38,6 @@
         <select v-model="currentTicket.ticket" class="full-width">
           <option>General Ticket</option>
           <option>UW Student Ticket</option>
-        </select>
-
-        <p class="footnote show-label">Meal Type</p>
-        <select v-model="currentTicket.meal" class="full-width">
-          <option disabled value="">Select a meal</option>
-          <option>No Meal</option>
-          <option>Vegan</option>
-          <option>Non-Vegan</option>
         </select>
 
         <h2 class="extra-margin-top">Ticket Holder</h2>
@@ -75,13 +59,14 @@
 </template>
 
 <script>
-const DEMO_MODE = false;
+const DEMO_MODE = true;
 const MOBILE_MAX_WIDTH = 1350;
+import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 export default {
   name: "CheckoutPage",
-  components: { Ticket, CheckoutForm },
+  components: { SpotlightTicketView, Ticket },
   data() {
     return {
       ticketIdCounter: 0,
@@ -102,7 +87,6 @@ export default {
     this.$nextTick(() => {
       window.addEventListener('resize', this.recalculateMobileView);
     });
-    console.log('mount')
     this.recalculateMobileView();
 
     if(DEMO_MODE) {
@@ -178,6 +162,7 @@ export default {
 
     /** Sends user to ticket-editing interface for a given ticket. */
     editTicket(index) {
+      if(this.isCurrentlyEditing) return;
       this.ticketEditIndex = index;
       this.scrollToTop();
     },
@@ -232,38 +217,25 @@ export default {
         return true;
       }
 
-      return !!this.currentTicket.firstName && !!this.currentTicket.lastName &&
-        !!this.currentTicket.meal && this.currentTicket.ticket;
+      return !!this.currentTicket.firstName && !!this.currentTicket.lastName && this.currentTicket.ticket;
     },
 
     /**
-     * Returns an array that should be used to display tickets on spotlight view.
+     * Returns an array to be used with SpotlightTicketView component.
      * When editing, only the currently-selected ticket is spotlighted.
-     * When on mobile view, there is no special formatting.
-     * Otherwise, the tickets are reordered and the first one is emphasized.
+     * When editing on mobile view, no ticket is spotlighted.
      */
     spotlightTickets() {
+      if(this.isCurrentlyEditing && this.mobileView) {
+        return [];
+      }
+
       if(this.isCurrentlyEditing) {
         return this.tickets
-          .filter((ticket, ticketIndex) => ticketIndex == this.ticketEditIndex)
-          .map(ticket => ({ ...ticket, spotlight: true }));
+          .filter((ticket, ticketIndex) => ticketIndex == this.ticketEditIndex);
       }
 
-      if(this.mobileView) {
-        return this.tickets
-          .map((ticket, ticketIndex) => ({ ...ticket, index: ticketIndex }));
-      }
-
-      let result = this.tickets
-        .map((ticket, ticketIndex) => ({ ...ticket, index: ticketIndex }))
-        .filter((ticket, ticketIndex) => ticketIndex < 3)
-        .map((ticket, ticketIndex) => ({ ...ticket, spotlight: ticketIndex == 0 }));
-
-      if(result.length == 3) {
-        result.unshift(result.pop());
-      }
-
-      return result;
+      return this.tickets;
     }
   }
 };
@@ -296,11 +268,6 @@ p.footnote {
     max-width: 100%;
     width: 100%;
 
-    .tickets-container {
-      justify-content: flex-start;
-      overflow-x: scroll;
-    }
-
     .sidebar-container {
       padding: 16px;
       width: 90%;
@@ -308,24 +275,6 @@ p.footnote {
 
     .ticket-form {
       border: 0;
-    }
-  }
-}
-
-.overview-screen-row .tickets-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  cursor: pointer;
-
-  .ticket {
-    transition: all 250ms;
-    display: inline-block;
-    margin-right: 10px;
-
-    &.non-spotlight-ticket {
-      opacity: 0.8;
-      transform: scale(0.8);
     }
   }
 }
@@ -393,19 +342,5 @@ p.error {
     box-shadow: 10px 10px 31px 0px rgba(194,194,194,1);
     padding: 16px;
   }
-}
-
-/** Transitions for spotlight tickets. */
-.fade-enter, .fade-leave-to  {
-  opacity: 0;
-  transform: translateY(30px);
-}
-.fade-leave-active:not(.non-spotlight-ticket) {
-  position: absolute;
-  transition: 250ms transform, 100ms opacity;
-  transform: translateY(30px);
-}
-.fade-move:not(.non-spotlight-ticket) {
-  transition: 250ms transform, 100ms opacity;
 }
 </style>
