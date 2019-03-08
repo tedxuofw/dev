@@ -3,6 +3,10 @@
     <div class="row">
       <div class="col-12">
         <h1 class="super-head">TEDxUofW</h1>
+        <div>
+          <router-link to="/">Components</router-link> &middot;
+          <router-link to="/checkout">Checkout</router-link>
+        </div>
         <h1>Grid</h1>
       </div>
     </div>
