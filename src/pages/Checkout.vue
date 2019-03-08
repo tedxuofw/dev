@@ -66,7 +66,7 @@ import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 export default {
   name: "CheckoutPage",
-  components: { SpotlightTicketView, Ticket },
+  components: { SpotlightTicketView, Ticket, CheckoutForm },
   data() {
     return {
       ticketIdCounter: 0,
