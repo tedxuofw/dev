@@ -7,23 +7,29 @@
                 <div class="row card-row">
                     <div class="col-4"> 
                         <div class="header"> Profile </div>
-                        <center class="card-container">
+                        <div class="card-container">
                             <div class="card-body"> 
-                                <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png"/>
-                                <p class="name"> Christina Buckman </p>
-                                <p> cbe2019@uw.edu </p>
-                                <button class="secondary"> View Profile </button>
+                                <div class="card-child">
+                                    <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png"/>
+                                </div>
+                                <p class="name card-child"> Christina Buckman </p>
+                                <p class="card-child"> cbe2019@uw.edu </p>
+                                <div class="card-child">
+                                    <button class="secondary"> View Profile </button>
+                                </div>
                             </div>
-                        </center>
+                        </div>
                     </div>
                     <div class="col-8"> 
                         <div class="header"> Your Tickets </div>
-                        <center class="card-container">
+                        <div class="card-container">
                             <div class="card-body"> 
-                                <p class="warning"> You don't have tickets for TEDx2019 yet. </p>
-                                <button class="secondary"> Get Tickets </button>
+                                <p class="warning card-child"> You don't have tickets for TEDx2019 yet. </p>
+                                <div class="card-child">
+                                    <button class="secondary"> Get Tickets </button>
+                                </div>
                             </div>
-                        </center>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,6 +62,17 @@ h1 {
     background-color: $color-secondary-2;
     padding: 1em;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.card-body > div {
+    display: flex;
+    justify-content: center;
 }
 
 .card-body img {
@@ -65,6 +82,15 @@ h1 {
 .card-body img {
     border-radius: 100%;
     width: 130px;
+    height: 130px;
+}
+
+.card-body p {
+    margin: 0;
+}
+
+div button {
+    margin-top: 1.5em;
 }
 
 .header {
@@ -79,6 +105,9 @@ h1 {
 }
 
 .card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 85%;
 }
 
@@ -88,6 +117,10 @@ h1 {
 
 .name {
     font-size: 1.25em;
+}
+
+.card-child {
+    width: 100%;
 }
 
 </style>
