@@ -16,15 +16,11 @@
             </div>
             <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
         </nav>
-        <div id="user-nav" class="row">
-            <!-- <div id="user">
-                <div class="col-3">
+        <div id="user-nav">
+            <div id="user">
                     <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png">
-                </div>
-                <div class="col-9">
                     <p> Christina Buckman </p>
-                </div> 
-            </div> -->
+            </div>
         </div>
     </div>
 </template>
@@ -37,63 +33,63 @@
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
-nav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: $color-primary;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-nav > div {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    color: $color-primary-2;
-    display: block;
-    margin: 0.5em 0em;
-    height: 50px;
-    position: relative;
-}
-
-nav > div:hover, nav a:hover {
-    color: $color-text-light;
-}
-
-nav a {
-    text-decoration: none;
-    color: $color-primary-2;
-    font-size: 1em;
-}
-
-#user-nav {
-    height: 100px;
-    background-color: #fcfbfa;
-    position: relative;
-}
-
-.logo {
-    font-size: 1.9em;
-    color: $color-text-light;
-    text-align: center;
-}
 
 .bold {
     font-weight: 900;
+}
+
+div.bottom {
+    bottom: 0;
+    font-size: 0.75em;;
+    position: fixed;
+    margin: 0;
 }
 
 div > i {
     margin-right: 1em;
 }
 
-div.bottom {
-    font-size: 0.75em;;
-    bottom: 0;
+div.nav-element {
+    position: absolute;
+    top: 25%;
+}
+
+.logo {
+    color: $color-text-light;
+    font-size: 1.9em;
+    text-align: center;
+}
+
+nav {
+    background-color: $color-primary;
+    height: 100%;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
     position: fixed;
-    margin: 0;
+    top: 0;
+    width: 200px;
+    z-index: 1;
+}
+
+nav a {
+    color: $color-primary-2;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+nav > div {
+    color: $color-primary-2;
+    display: block;
+    height: 50px;
+    margin: 0.5em 0em;
+    padding: 6px 8px 6px 16px;
+    position: relative;
+    text-decoration: none;
+}
+
+nav > div:hover, nav a:hover {
+    color: $color-text-light;
 }
 
 nav div.active {
@@ -110,26 +106,32 @@ nav div.active i {
     color: $color-primary;
 }
 
-div.nav-element {
+#user {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
     position: absolute;
-    top: 25%;
+    right: 0;
 }
 
-#user {
-    right: 0;
-    position: absolute;
+#user img {
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
 }
 
 #user p {
     color: black;
-    vertical-align: middle;
     margin: 0;
 }
 
-#user img {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    display: inline-block;
+#user-nav {
+    align-items: center;
+    display: flex;
+    background-color: #fcfbfa;
+    height: 100px;
+    position: relative;
 }
+
 </style>

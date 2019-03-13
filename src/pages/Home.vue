@@ -55,7 +55,7 @@ main {
 }
 
 h1 {
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .card-body {
