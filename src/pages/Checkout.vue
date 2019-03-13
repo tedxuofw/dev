@@ -1,14 +1,10 @@
 <template>
   <div>
-      <SideNavBar/>
+      <SideNavBar checkout/>
       <main>
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">
           <div class="col-12">
-            <div>
-              <router-link to="/">Components</router-link> &middot;
-              <router-link to="/checkout">Checkout</router-link>
-            </div>
             <h1>Checkout</h1>
           </div>
         </div>
@@ -58,7 +54,7 @@
         <div class="row" v-else>
           <CheckoutForm/>
         </div>
-      </div
+      </div>
     </main>
   </div>
 </template>
@@ -69,9 +65,11 @@ const MOBILE_MAX_WIDTH = 1350;
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
+import SideNavBar from "@/components/SideNavBar";
+
 export default {
   name: "CheckoutPage",
-  components: { SpotlightTicketView, Ticket, CheckoutForm },
+  components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar },
   data() {
     return {
       ticketIdCounter: 0,
@@ -347,5 +345,11 @@ p.error {
     box-shadow: 10px 10px 31px 0px rgba(194,194,194,1);
     padding: 16px;
   }
+}
+
+main {
+    margin-left: 200px;
+    padding: 1em 3em;
+    height: 100%;
 }
 </style>
