@@ -1,60 +1,65 @@
 <template>
-  <div class="container components-page" :class="{ 'mobile-view': mobileView }">
-    <div class="row">
-      <div class="col-12">
-        <div>
-          <router-link to="/">Components</router-link> &middot;
-          <router-link to="/checkout">Checkout</router-link>
+  <div>
+      <SideNavBar/>
+      <main>
+        <div class="container components-page" :class="{ 'mobile-view': mobileView }">
+        <div class="row">
+          <div class="col-12">
+            <div>
+              <router-link to="/">Components</router-link> &middot;
+              <router-link to="/checkout">Checkout</router-link>
+            </div>
+            <h1>Checkout</h1>
+          </div>
         </div>
-        <h1>Checkout</h1>
-      </div>
-    </div>
 
-    <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }" v-if="!paymentScreen">
-      <SpotlightTicketView
-        :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
-        :tickets="spotlightTickets"
-        :onClickTicket="ticket => editTicket(ticket.index)"
-        :mobileView="mobileView" />
+        <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }" v-if="!paymentScreen">
+          <SpotlightTicketView
+            :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
+            :tickets="spotlightTickets"
+            :onClickTicket="ticket => editTicket(ticket.index)"
+            :mobileView="mobileView" />
 
-      <div class="tickets-container empty-state-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }" v-if="tickets.length == 0">
-        <div class="empty-state-text">
-          <p>You haven't selected any tickets to purchase yet. <a @click="addTicket()">Add a ticket now.</a></p>
+          <div class="tickets-container empty-state-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }" v-if="tickets.length == 0">
+            <div class="empty-state-text">
+              <p>You haven't selected any tickets to purchase yet. <a @click="addTicket()">Add a ticket now.</a></p>
+            </div>
+          </div>
+
+          <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
+            <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
+              <h2>{{ `${ticket.firstName} ${ticket.lastName}` }}</h2>
+              {{ ticket.ticket }}
+            </div>
+            <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
+            <button class="full-width" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
+          </div>
+
+          <div class="col-4 sidebar-container ticket-form" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-else>
+            <h2>Ticket Information</h2>
+            <p class="footnote show-label">Ticket Type</p>
+            <select v-model="currentTicket.ticket" class="full-width">
+              <option>General Ticket</option>
+              <option>UW Student Ticket</option>
+            </select>
+
+            <h2 class="extra-margin-top">Ticket Holder</h2>
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }">First Name</p>
+            <input type="text" placeholder="First Name" class="full-width" v-model="currentTicket.firstName">
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.lastName }">Last Name</p>
+            <input type="text" placeholder="Last Name" class="full-width" v-model="currentTicket.lastName">
+
+            <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
+            <button class="full-width" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
+            <button class="full-width secondary" @click="cancelTicket()" v-if="tickets.length > 1">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
+          </div>
         </div>
-      </div>
 
-      <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
-        <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
-          <h2>{{ `${ticket.firstName} ${ticket.lastName}` }}</h2>
-          {{ ticket.ticket }}
+        <div class="row" v-else>
+          <CheckoutForm/>
         </div>
-        <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
-        <button class="full-width" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
-      </div>
-
-      <div class="col-4 sidebar-container ticket-form" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-else>
-        <h2>Ticket Information</h2>
-        <p class="footnote show-label">Ticket Type</p>
-        <select v-model="currentTicket.ticket" class="full-width">
-          <option>General Ticket</option>
-          <option>UW Student Ticket</option>
-        </select>
-
-        <h2 class="extra-margin-top">Ticket Holder</h2>
-        <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }">First Name</p>
-        <input type="text" placeholder="First Name" class="full-width" v-model="currentTicket.firstName">
-        <p class="footnote" :class="{ 'show-label': !!currentTicket.lastName }">Last Name</p>
-        <input type="text" placeholder="Last Name" class="full-width" v-model="currentTicket.lastName">
-
-        <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
-        <button class="full-width" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
-        <button class="full-width secondary" @click="cancelTicket()" v-if="tickets.length > 1">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
-      </div>
-    </div>
-
-    <div class="row" v-else>
-      <CheckoutForm/>
-    </div>
+      </div
+    </main>
   </div>
 </template>
 
