@@ -1,6 +1,6 @@
 <template>
   <div>
-      <SideNavBar checkout/>
+      <SideNavBar v-bind:tickets="true"/>
       <main>
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">

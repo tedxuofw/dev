@@ -2,17 +2,17 @@
     <div style="background-color: #fcfbfa;">
         <nav> 
             <p class="logo"> <span class="bold">TEDx</span>UofW </p>
-            <div class="active"> 
-                <div class="nav-element" v-bind:class="{ active: this.dashboard }"> <i class="fas fa-columns"></i> <a href="/"> Dashboard </a> </div>
+            <div v-bind:class="{ active: this.dashboard }"> 
+                <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/"> Dashboard </a> </div>
             </div>
-            <div> 
-                <div class="nav-element" v-bind:class="{ active: this.checkout }"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
+            <div v-bind:class="{ active: this.tickets }"> 
+                <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
             </div>
             <div> 
                 <div class="nav-element"> <i class="fas fa-heart"></i> <a href="/"> Volunteer </a> </div>
             </div>
-            <div> 
-                <div class="nav-element" v-bind:class="{ active: this.feedback }"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>
+            <div v-bind:class="{ active: this.feedback }"> 
+                <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>
             </div>
             <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
         </nav>
@@ -28,7 +28,11 @@
 <script>
     export default {
         name: "SideNavBar",
-        props: ['dashboard', 'tickets', 'feedback']
+        props: {
+            dashboard: Boolean,
+            tickets: Boolean,
+            feedback: Boolean
+        }
     };
 </script>
 
