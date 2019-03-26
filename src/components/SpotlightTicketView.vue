@@ -28,6 +28,9 @@ export default {
     },
     mobileView: {
       type: Boolean
+    },
+    maxView: {
+      type: Number
     }
   },
   computed: {
@@ -45,7 +48,7 @@ export default {
 
       let result = this.tickets
         .map((ticket, ticketIndex) => ({ ...ticket, index: ticketIndex }))
-        .filter((ticket, ticketIndex) => ticketIndex < 3)
+        .filter((ticket, ticketIndex) => ticketIndex < this.maxView)
         .map((ticket, ticketIndex) => ({ ...ticket, spotlight: ticketIndex == 0 }));
 
       if(result.length == 3) {

@@ -14,7 +14,8 @@
             :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
             :tickets="spotlightTickets"
             :onClickTicket="ticket => editTicket(ticket.index)"
-            :mobileView="mobileView" />
+            :mobileView="mobileView" 
+            :maxView="3"/>
 
           <div class="tickets-container empty-state-container" :class="{ 'col-12': mobileView, 'col-8': !mobileView }" v-if="tickets.length == 0">
             <div class="empty-state-text">
@@ -246,6 +247,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+h1 {
+  font-weight: 300;
+}
+
 p.callout,
 p.footnote {
   margin-bottom: 0px;
