@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ComponentsPage from '@/pages/Components'
+import LoginPage from '@/pages/Login'
 import CheckoutPage from '@/pages/Checkout'
 import ConfirmationPage from '@/components/Confirmation'
 
@@ -14,6 +15,12 @@ export default new Router({
       component: ComponentsPage
     },
     {
+      path: '/login',
+      name: 'LoginPage',
+      component: LoginPage
+    },
+    {
+      
       path: '/checkout',
       name: 'CheckoutPage',
       component: CheckoutPage
