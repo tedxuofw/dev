@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import ComponentsPage from '@/pages/Components'
+import LoginPage from '@/pages/Login'
 import CheckoutPage from '@/pages/Checkout'
 import HomePage from '@/pages/Home'
+import ConfirmationPage from '@/components/Confirmation'
 
 Vue.use(Router)
 
@@ -14,6 +16,12 @@ export default new Router({
       component: ComponentsPage
     },
     {
+      path: '/login',
+      name: 'LoginPage',
+      component: LoginPage
+    },
+    {
+      
       path: '/checkout',
       name: 'CheckoutPage',
       component: CheckoutPage
@@ -22,6 +30,12 @@ export default new Router({
       path: '/home',
       name: 'HomePage',
       component: HomePage
+    },
+    /* For testing purposes! */
+    {
+      path: '/confirmation',
+      name: 'Confirmation',
+      component: ConfirmationPage
     }
   ]
 })

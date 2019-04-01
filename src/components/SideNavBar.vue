@@ -1,25 +1,31 @@
 <template>
-    <div style="background-color: #fcfbfa;">
+    <div>
         <nav> 
             <p class="logo"> <span class="bold">TEDx</span>UofW </p>
-            <div class="active"> 
+            <div v-bind:class="{ active: this.dashboard }"> 
                 <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/"> Dashboard </a> </div>
             </div>
-            <div> 
+            <div v-bind:class="{ active: this.tickets }"> 
                 <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
             </div>
             <div> 
                 <div class="nav-element"> <i class="fas fa-heart"></i> <a href="/"> Volunteer </a> </div>
             </div>
-            <div> 
+            <div v-bind:class="{ active: this.feedback }"> 
                 <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>
             </div>
             <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
         </nav>
         <div id="user-nav">
-            <div id="user">
-                    <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png">
-                    <p> Christina Buckman </p>
+            <div id="user" class="dropdown">
+                <img class="dropdown" src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png">
+                <p class="dropdown"> Christina Buckman </p>
+
+                <div class="dropdown-content dropdown">
+                    
+                    <a href="#">Edit Profile</a>
+                    <a href="#">Logout</a>
+                </div>
             </div>
         </div>
     </div>
@@ -28,6 +34,11 @@
 <script>
     export default {
         name: "SideNavBar",
+        props: {
+            dashboard: Boolean,
+            tickets: Boolean,
+            feedback: Boolean
+        }
     };
 </script>
 
@@ -46,6 +57,7 @@ div.bottom {
 }
 
 div > i {
+    margin-left: 16px;
     margin-right: 1em;
 }
 
@@ -69,7 +81,7 @@ nav {
     position: fixed;
     top: 0;
     width: 200px;
-    z-index: 1;
+    z-index: 10;
 }
 
 nav a {
@@ -104,6 +116,7 @@ nav div.active a {
 
 nav div.active i {
     color: $color-primary;
+    margin-left: 0;
 }
 
 #user {
@@ -132,6 +145,37 @@ nav div.active i {
     background-color: #fcfbfa;
     height: 100px;
     position: relative;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: $color-secondary-2;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    margin-top: 110px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: darken($color-secondary-2, 5%);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 </style>
