@@ -29,7 +29,7 @@
               {{ ticket.ticket }}
             </div>
             <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
-            <button class="full-width" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
+            <button class="full-width primary" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
           </div>
 
           <div class="col-4 sidebar-container ticket-form" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-else>

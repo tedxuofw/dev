@@ -15,7 +15,7 @@
             <input type="text" placeholder="Zip Code" id="card-zip" class="full-width col-4">
         </div>
         <div class="row">
-            <button class="full-width">Continue</button>
+            <a href="/#/confirmation"> <button class="full-width primary">Continue</button> </a>
         </div>
     </div>
 </template>

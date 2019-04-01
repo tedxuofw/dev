@@ -44,7 +44,7 @@
                                 <p class="data"> $19.50 </p>
                             </div>
                         </div>
-                        <button>Confirm</button>
+                        <button class="primary">Confirm</button>
                     </div>
                 </div>
             </div>
