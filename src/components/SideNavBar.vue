@@ -3,7 +3,7 @@
         <nav> 
             <p class="logo"> <span class="bold">TEDx</span>UofW </p>
             <div v-bind:class="{ active: this.dashboard }"> 
-                <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/"> Dashboard </a> </div>
+                <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/home"> Dashboard </a> </div>
             </div>
             <div v-bind:class="{ active: this.tickets }"> 
                 <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
@@ -22,9 +22,17 @@
                 <p class="dropdown"> Christina Buckman </p>
 
                 <div class="dropdown-content dropdown">
-                    
-                    <a href="#">Edit Profile</a>
-                    <a href="#">Logout</a>
+                    <div id="profile-info">
+                        <div>
+                            <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png"/>
+                        </div>
+                        <p> Christina Buckman </p>
+                        <p class="email"> cbe2019@uw.edu </p>
+                    </div>
+                    <div id="profile-nav">
+                        <a href="#">Edit Profile</a>
+                        <a href="#">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -160,14 +168,17 @@ nav div.active i {
     z-index: 1;
     position: absolute;
     left: 0;
-    margin-top: 110px;
+    margin-top: 200px;
+    padding: 1.5em;
 }
 
 .dropdown-content a {
-    color: black;
+    color: $color-primary;
     padding: 12px 16px;
     text-decoration: none;
+    text-align: center;
     display: block;
+    width: 70%;
 }
 
 .dropdown-content a:hover {
@@ -176,6 +187,38 @@ nav div.active i {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+#profile-info {
+    margin-bottom: 1em;
+}
+
+#profile-info div {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+#profile-info p {
+    text-align: center;
+}
+
+#profile-info img {
+    height: 90px;
+    margin-bottom: 1em;
+    width: 90px;
+}
+
+#profile-nav {
+    text-align: -webkit-center;
+}
+
+.email {
+    font-size: 0.85em;
+}
+
+.dropdown-content a:first-child {
+    border-bottom: 1px solid $color-primary;
 }
 
 </style>
