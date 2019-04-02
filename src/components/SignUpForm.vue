@@ -4,7 +4,7 @@
         <input v-model="form.last" type="text" placeholder="Last Name" class="full-width login-input">
         <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input">
         <input v-model="form.password" type="password" placeholder="Password" class="full-width login-input">
-        <button class="full-width primary" v-on:click="register">Sign in</button>
+        <button class="full-width primary" v-on:click="register">Sign up</button>
     </div>
 </template>
 
@@ -50,8 +50,21 @@ export default {
                 // isn't properly validating the input
                 alert(error.response.data);
             });
+        }, 
+        enterSignUp: function(event) {
+            var code = (event.keyCode ? event.keyCode : event.which);
+            if(code == 13) {
+                event.preventDefault();
+                this.register();
+            }
         }
     },
+    created() {
+        window.addEventListener('keypress',this.enterSignUp);
+    }, 
+    destroyed() {
+        window.removeEventListener('keypress', this.enterSignUp);
+    }
 }
 </script>
 
