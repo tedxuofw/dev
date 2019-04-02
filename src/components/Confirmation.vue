@@ -99,14 +99,14 @@ export default {
           lastName: 'Butenko',
           meal: 'No Meal',
           ticket: 'General Ticket',
-          id: -4
+          id: -3
         },
         {
           firstName: 'Andrey',
           lastName: 'Butenko',
           meal: 'No Meal',
           ticket: 'General Ticket',
-          id: -4
+          id: -2
         },
       ];
       return;
