@@ -73,7 +73,7 @@ export default {
 .outer-container {
     background-color: $color-secondary-2;
     height: 80%;
-    margin: 10vh 0;
+    margin: 10vh auto;
     width: 80vw;
 }
 
@@ -87,13 +87,15 @@ export default {
     display: none;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
     div.inner-container > p {
         display: none;
     }
 
     div.button-set button {
-        font-size: 14px;
+        height: 2em;
+        font-size: 0.8em;
+        padding:0;
     }
 
     h1 {

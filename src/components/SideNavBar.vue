@@ -191,9 +191,10 @@ div.nav-element {
     top: 25%;
 }
 
-.dropdown {
+p.dropdown {
   position: relative;
   display: inline-block;
+  padding: 20px 0;
 }
 
 .dropdown-content {
