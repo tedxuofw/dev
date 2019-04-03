@@ -8,6 +8,7 @@ export const user = new Vue({
       
       loggedIn: false,
       jwt: null,
+      cached: Date.now(),
       
       meta: {
         iat: 0,
@@ -24,8 +25,22 @@ export const user = new Vue({
       }
     }
   },
-  mounted() {
+  created() {
     
+    // Handle case where uncached or tampered cache
+    if(!localStorage.cached) {
+      return;
+    }
+    
+    // Handle case where cache expires
+    var threshold = 1000 * 60 * 1;
+    var time = Date.now();
+    if(time - localStorage.cached > threshold) {
+      return;
+    }
+    
+    
+    // Load in cache!
     if(localStorage.loggedIn) {
       this.loggedIn = localStorage.loggedIn;
     }
@@ -43,19 +58,26 @@ export const user = new Vue({
   watch: {
     loggedIn(tmp) {
       localStorage.loggedIn = tmp;
+      localStorage.cached = Date.now();
     },
     jwt(tmp) {
       localStorage.jwt = tmp;
+      localStorage.cached =  Date.now();
+    },
+    cached(tmp) {
+      localStorage.cached =  Date.now();
     },
     meta: {
       handler(tmp) {
         localStorage.meta = JSON.stringify(tmp);
+        localStorage.cached = Date.now();
       },
       deep: true
     },
     info: {
       handler(tmp) {
         localStorage.info = JSON.stringify(tmp);
+        localStorage.cached = Date.now();
       },
       deep: true
     }
@@ -112,6 +134,7 @@ export const user = new Vue({
     },
     
     logout() {
+      this.cached = 0;
       this.loggedIn = false;
       
       // Remove meta data
@@ -121,6 +144,9 @@ export const user = new Vue({
       // Remove user info
       this.info.id = 0;
       this.info.first =  this.info.last = this.info.email = this.info.profile = '';
+      
+      
+      localStorage.clear();
     },
     
     

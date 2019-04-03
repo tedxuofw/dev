@@ -12,7 +12,8 @@
 <script>
 // Import axios and globalState
 import axios from 'axios';
-    
+import router from "../router";
+
 export default {
     name: 'SignInForm',
     props: {},
