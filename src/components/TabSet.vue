@@ -23,6 +23,8 @@ export default {
   display: flex;
   height: $height-tabset;
   width: 100%;
+  max-width: 100vw;
+  overflow-x: scroll;
   background-color: $color-primary;
   align-items: stretch;
   justify-content: center;

@@ -16,6 +16,7 @@
   }
 }
 
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -27,6 +28,13 @@ select,
   border-radius: 4px;
   margin-bottom: 0.5em;
   padding: 12px;
+  font-family: 'nimbus-sans', sans-serif;
+  font-size: 19px;
+
+  &.half-width {
+    display: inline-block;
+    width: calc(50% - 3px);
+  }
 
   &.full-width {
     width: 100%;
@@ -41,6 +49,7 @@ label {
   display: block;
 }
 
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="email"] {

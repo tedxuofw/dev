@@ -1,5 +1,5 @@
 <template>
-  <span class="arrows" :style="style">{{ reverse ? '&laquo;' : '&raquo;' }}</span>
+  <span class="arrows">{{ reverse ? '&laquo;' : '&raquo;' }}</span>
 </template>
 
 <script>
@@ -9,10 +9,6 @@ export default {
     reverse: {
       type: Boolean,
       default: false
-    },
-    style: {
-      type: String | Object,
-      default: {}
     }
   }
 };
