@@ -1,8 +1,8 @@
 <template>
     <div>
-        <SideNavBar dashboard="true"/>
+        <SideNavBar dashboard/>
         <main>
-            <h1> Welcome, Christina! </h1>
+            <h1> Welcome, {{ user.first }}! </h1>
             <div class="col-12">
                 <div class="row card-row">
                     <div class="col-4"> 
@@ -12,8 +12,8 @@
                                 <div class="card-child">
                                     <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png"/>
                                 </div>
-                                <p class="name card-child"> Christina Buckman </p>
-                                <p class="card-child"> cbe2019@uw.edu </p>
+                                <p class="name card-child"> {{ user.first }} {{ user.last }} </p>
+                                <p class="card-child"> {{ user.email }} </p>
                                 <div class="card-child">
                                     <button class="secondary"> View Profile </button>
                                 </div>
@@ -34,15 +34,27 @@
                 </div>
             </div>
         </main>
-    </div>
+    </div> 
 </template>
 
 <script>
+import { userStore } from '../main.js';
 import SideNavBar from "@/components/SideNavBar";
 
 export default {
-  name: "HomePage",
-  components: { SideNavBar }
+    name: "HomePage",
+    data () {
+        return {
+            user: {
+                first: userStore.first,
+                last: userStore.last,
+                email: userStore.email,
+                profile: userStore.profile,
+                jwt: userStore.jwt
+            }
+        }
+    },
+    components: { SideNavBar }
 };
 </script>
 

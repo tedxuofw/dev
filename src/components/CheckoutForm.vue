@@ -23,6 +23,7 @@
 <script>
 export default {
     name: 'CheckoutForm',
+    props: ['tickets'],
     mounted() {
         // Create a Stripe client.
         var stripe = Stripe('pk_test_EsLnXbnCKw4JnlLnQKdTBNyh');

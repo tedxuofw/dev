@@ -9,7 +9,8 @@
 
 <script>
 import axios from 'axios';
-import { globalStore } from '../main.js';
+import router from "../router";
+import { userStore } from '../main.js';
     
 export default {
     name: 'SignInForm',
@@ -34,10 +35,15 @@ export default {
                 var resp = response.data;
                 if(resp.status === "success") {
                     // Store any information given
-                    globalStore.set('jwt', resp.token);
+                    userStore.first = resp.first;
+                    userStore.last = resp.last;
+                    userStore.email = resp.email;
+                    userStore.profile = resp.profile;
+                    userStore.jwt = resp.token;
+                    console.log("Successfully logged in as: " + resp.email);
                     
                     // Redirect to where we wanna go on success
-                    
+                    router.push('/home');
                 } else {
                     // User Error
                     
@@ -47,9 +53,15 @@ export default {
                 }
             }, (error)  =>  {
                 // There was an error with the way the request was made!
-                // This is really bad (either the API broke or the frontend)
-                // isn't properly validating the input
-                alert(error.response.data + "\n There was an error processing your request. Please contact tedxuofw@uw.edu.");
+                // This is really bad (either the API broke or more likely
+                // the frontend isn't properly validating the input)
+                var err = error.response;
+                console.log(err);
+                if(err.status == 422) {
+                    // Did not properly validate the input before sending (e.g. missing field)
+                }
+                
+                alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
             });
         },
         enterSignIn: function(event) {

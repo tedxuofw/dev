@@ -23,16 +23,18 @@
                         <p class="label"> Payment Card: </p>
                         <p> **** **** **** 1234 </p>
                     </div>
-                </div>
+                </div>                
                 <div class="content-container">
                     <h2> Summary </h2>
-                    <div class="data-container">
-                        <p> UW Student Ticket <span class="data"> (x2) </span> </p>
-                        <p class="data"> $19.50 </p>
-                    </div>
-                    <div class="data-container">
-                        <p> General Admission Ticket </p>
-                        <p class="data"> $19.50 </p>
+                    <div class="content-container">
+                        <div class="data-container">
+                            <p> UW Student Ticket <span class="data"> (x2) </span> </p>
+                            <p class="data"> $19.50 </p>
+                        </div>
+                        <div class="data-container">
+                            <p> General Admission Ticket </p>
+                            <p class="data"> $19.50 </p>
+                        </div>
                     </div>
                 </div>
                 <a href="/#/home"> <button class="primary">Confirm</button> </a>
@@ -43,7 +45,7 @@
 </template>
 
 <script>
-const DEMO_MODE = true;
+const DEMO_MODE = false;
 const MOBILE_MAX_WIDTH = 1350;
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
@@ -51,8 +53,9 @@ import CheckoutForm from "@/components/CheckoutForm";
 import SideNavBar from "@/components/SideNavBar";
 
 export default {
-  name: "CheckoutPage",
+  name: "ConfirmationPage",
   components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar },
+  props: ["tickets"],
   data() {
     return {
       tickets: [],

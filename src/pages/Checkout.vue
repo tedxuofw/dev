@@ -47,7 +47,7 @@
             <input type="text" placeholder="Last Name" class="full-width" v-model="currentTicket.lastName">
 
             <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
-            <button class="full-width" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
+            <button class="full-width primary" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
             <button class="full-width secondary" @click="cancelTicket()" v-if="tickets.length > 1">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
           </div>
         </div>
@@ -65,7 +65,7 @@
 </template>
 
 <script>
-const DEMO_MODE = true;
+const DEMO_MODE = false;
 const MOBILE_MAX_WIDTH = 1350;
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
@@ -331,6 +331,8 @@ p.footnote {
 
 p.error {
   color: $color-primary;
+  font-size: 0.9em;
+  line-height: 1;
 }
 
 .ticket-selection {

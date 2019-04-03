@@ -5,21 +5,20 @@ import router from "./router";
 Vue.config.productionTip = false;
 
 // Create a global state (prob need to better)
-export const globalStore = new Vue({
+export const userStore = new Vue({
   data() {
     return {
-      attrs: {}
+      first: 'Not Logged In',
+      last: '',
+      email: '',
+      profile: '',
+      jwt: ''
     }
   },
   methods: {
-    set(key, val) {
-      this.attrs[key] = val;
-    },
-    get(key) {
-      return this.attrs[key];
-    },
-    remove(key) {
-      delete attrs[key];
+    logout() {
+      this.first = 'Not Logged In';
+      this.last = this.email = this.profile = this.jwt = '';
     }
   }
 })

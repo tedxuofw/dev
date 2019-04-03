@@ -19,15 +19,15 @@
         <div id="user-nav">
             <div id="user" class="dropdown">
                 <img class="dropdown" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg">
-                <p class="dropdown"> Christina Buckman </p>
+                <p class="dropdown"> {{ user.first }} {{ user.last }} </p>
 
                 <div class="dropdown-content">
                     <div id="profile-info">
                         <div>
                             <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
                         </div>
-                        <p> Christina Buckman </p>
-                        <p class="email"> cbe2019@uw.edu </p>
+                        <p> {{ user.first }} {{ user.last }} </p>
+                        <p class="email"> {{ user.email }} </p>
                     </div>
                     <div id="profile-nav">
                         <a @click="this.openModal">Edit Profile</a>
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="modal">
             <div class="modal-content">
                 <h2>Profile</h2>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <p class="col-12"> Email: lalalala@uw.edu </p>
+                        <p class="col-12"> Email: {{ user.email }} </p>
                     </div>
                 </div>
 
@@ -81,41 +81,53 @@
 </template>
 
 <script>
-    export default {
-        name: "SideNavBar",
-        props: {
-            dashboard: Boolean,
-            tickets: Boolean,
-            feedback: Boolean
-        },
-        methods: {
-            submit: function() {
-                // Do other stuff
-                this.closeModal();
-            },
-            closeModal: function() {
-                document.querySelector('div.modal').classList.remove('show-modal');
-            },
-            openModal: function() {
-                console.log('fa123sdf');
-                document.querySelector('div.modal').classList.toggle('show-modal');
-            },
-            keypressCloseModal: function() {
-                console.log("HERE");
-                var code = (event.keyCode ? event.keyCode : event.which);
-                if(code == 27) {
-                    event.preventDefault();
-                    this.closeModal();
-                }
+import { userStore } from '../main.js';
+export default {
+    name: "SideNavBar",
+    props: {
+        dashboard: Boolean,
+        tickets: Boolean,
+        feedback: Boolean
+    },
+    data () {
+        return {
+            user: {
+                first: userStore.first,
+                last: userStore.last,
+                email: userStore.email,
+                profile: userStore.profile,
+                jwt: userStore.jwt
             }
-        },
-        created() {
-            window.addEventListener('keyup',this.keypressCloseModal);
-        }, 
-        destroyed() {
-            window.removeEventListener('keyup', this.keypressCloseModal);
         }
-    };
+    },
+    methods: {
+        submit: function() {
+            // Do other stuff
+            this.closeModal();
+        },
+        closeModal: function() {
+            document.querySelector('div.modal').classList.remove('show-modal');
+        },
+        openModal: function() {
+            console.log('fa123sdf');
+            document.querySelector('div.modal').classList.toggle('show-modal');
+        },
+        keypressCloseModal: function() {
+            console.log("HERE");
+            var code = (event.keyCode ? event.keyCode : event.which);
+            if(code == 27) {
+                event.preventDefault();
+                this.closeModal();
+            }
+        }
+    },
+    created() {
+        window.addEventListener('keyup',this.keypressCloseModal);
+    }, 
+    destroyed() {
+        window.removeEventListener('keyup', this.keypressCloseModal);
+    }
+}
 </script>
 
 <style lang="scss" scoped>

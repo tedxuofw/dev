@@ -11,7 +11,6 @@
 <script>
 // Import axios and globalState
 import axios from 'axios';
-import { globalStore } from '../main.js';
     
 export default {
     name: 'SignInForm',
@@ -31,24 +30,28 @@ export default {
             let url = "https://students.washington.edu/tedxuofw/index.php/api/register";
             axios.get(url, { params: this.form }).then((response)  =>  {
                 var resp = response.data;
-                if(resp.status === "success") {
-                    // Store JWT and other things into the global state
-                    globalStore.set('jwt', resp.token);
-                    
+                if(resp.status === "success") {                
                     // Redirect to where we wanna go on success
-
+                    router.push('/login');
                 } else {
                     // User Error
                     
-                    // Error message
+                    
+                    // User-friendly error message
                     var message = resp.message;
                     console.log(response.data);
                 }
             }, (error)  =>  {
                 // There was an error with the way the request was made!
-                // This is really bad (either the API broke or the frontend)
-                // isn't properly validating the input
-                alert(error.response.data);
+                // This is really bad (either the API broke or more likely
+                // the frontend isn't properly validating the input)
+                var err = error.response;
+                console.log(err);
+                if(err.status == 422) {
+                    // Did not properly validate the input before sending (e.g. missing field)
+                }
+                
+                alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
             });
         }, 
         enterSignUp: function(event) {
