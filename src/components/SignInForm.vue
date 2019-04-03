@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input">
-        <input v-model="form.password" type="password" placeholder="Password" class="full-width login-input">
+        <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input" @change="addFocus($event)">
+        <input v-model="form.password" type="password" placeholder="Password" class="full-width login-input" @change="addFocus($event)">
         <a href="mailto:tedxuofw@uw.edu?Subject=TEDxUofW%20Account%20Password%20Recovery" class="spacer small">Forgot your password?</a>
         <button class="full-width primary" v-on:click="signIn">Sign in</button>
     </div>
@@ -70,6 +70,9 @@ export default {
                 event.preventDefault();
                 this.signIn();
             }
+        },
+        addFocus: function(event) {
+            event.target.classList.add('focus');
         }
     },
     created() {
@@ -105,7 +108,7 @@ input.login-input {
     width: 90%;
 }
 
-input.login-input:focus, .focus {
+input.login-input:focus, input.focus {
     background-color: $color-text-light;
 } 
 

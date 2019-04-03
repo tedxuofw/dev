@@ -4,8 +4,11 @@
       <main>
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">
+          <div> 
+            <i class="fas fa-arrow-left"> </i> Back to...
+          </div>
           <div class="col-12">
-            <h1>Checkout</h1>
+            <h1>Get new tickets</h1>
           </div>
         </div>
 
@@ -25,7 +28,7 @@
 
           <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
             <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
-              <h2>{{ `${ticket.firstName} ${ticket.lastName}` }}</h2>
+              <h2>{{ `${ticket.firstName}` }}</h2>
               {{ ticket.ticket }}
             </div>
             <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
@@ -41,10 +44,10 @@
             </select>
 
             <h2 class="extra-margin-top">Ticket Holder</h2>
-            <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }">First Name</p>
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }"> Name</p>
             <input type="text" placeholder="First Name" class="full-width" v-model="currentTicket.firstName">
-            <p class="footnote" :class="{ 'show-label': !!currentTicket.lastName }">Last Name</p>
-            <input type="text" placeholder="Last Name" class="full-width" v-model="currentTicket.lastName">
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email</p>
+            <input type="text" placeholder="Email" class="full-width" v-model="currentTicket.email">
 
             <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
             <button class="full-width primary" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
@@ -65,7 +68,6 @@
 </template>
 
 <script>
-const DEMO_MODE = false;
 const MOBILE_MAX_WIDTH = 1350;
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
@@ -98,40 +100,6 @@ export default {
       window.addEventListener('resize', this.recalculateMobileView);
     });
     this.recalculateMobileView();
-
-    if(DEMO_MODE) {
-      this.tickets = [
-        {
-          firstName: 'Andrey',
-          lastName: 'Butenko',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -4
-        },
-        {
-          firstName: 'Jenny',
-          lastName: 'Liang',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -3
-        },
-        {
-          firstName: 'Nick',
-          lastName: 'Zhao',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -2
-        },
-        {
-          firstName: 'Soham',
-          lastName: 'Pardeshi',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -1
-        }
-      ];
-      return;
-    }
 
     this.addTicket();
   },
@@ -186,7 +154,7 @@ export default {
     getEmptyTicket() {
       return {
         firstName: '',
-        lastName: '',
+        email: '',
         meal: '',
         ticket: 'General Ticket',
         id: this.ticketIdCounter
@@ -233,7 +201,7 @@ export default {
         return true;
       }
 
-      return !!this.currentTicket.firstName && !!this.currentTicket.lastName && this.currentTicket.ticket;
+      return !!this.currentTicket.firstName && !!this.currentTicket.email && this.currentTicket.ticket;
     },
 
     /**
@@ -262,6 +230,7 @@ export default {
 
 h1 {
   font-weight: 300;
+  text-align: center;
 }
 
 p.callout,

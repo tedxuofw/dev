@@ -6,8 +6,8 @@
           class="ticket"
           :class="{ 'non-spotlight-ticket': !ticket.spotlight }"
           conferenceTitle="Two Steps Forward" conferenceYear="2019"
-          :personName="`${ticket.firstName} ${ticket.lastName}`" :personMeal="ticket.meal"
-          :ticketType="ticket.ticket" :confirmationCode="`SB11054${ticket.id}`"
+          :personName="`${ticket.firstName}`"
+          :ticketType="ticket.ticket" :email="`${ticket.email}`"
           maxWidth="300px" />
       </div>
     </transition-group>
