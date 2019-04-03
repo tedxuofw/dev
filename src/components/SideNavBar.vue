@@ -18,13 +18,13 @@
         </nav>
         <div id="user-nav">
             <div id="user" class="dropdown">
-                <img class="dropdown" src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png">
+                <img class="dropdown" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg">
                 <p class="dropdown"> Christina Buckman </p>
 
-                <div class="dropdown-content dropdown">
+                <div class="dropdown-content">
                     <div id="profile-info">
                         <div>
-                            <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png"/>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
                         </div>
                         <p> Christina Buckman </p>
                         <p class="email"> cbe2019@uw.edu </p>
@@ -34,6 +34,37 @@
                         <a href="#">Logout</a>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="modal show-modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Profile</h2>
+                <div id="avatars">
+                    <div id="images">
+                        <p class="label"> Avatar </p>
+                        <img class="" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                        <img class="" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                        <img class="" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                        <img class="" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 input-group">
+                            <label class="label" for="first-name">First name</label>
+                            <input type="text" class="full-width" id="first-name"/>
+                        </div>
+                        <div class="col-6 input-group">
+                            <label class="label" for="last-name">Last name</label>
+                            <input type="text" class="full-width" id="last-name"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="col-12"> Email: lalalala@uw.edu </p>
+                    </div>
+                </div>
+
+                <button> Save </button>
+                <button> Cancel </button>
             </div>
         </div>
     </div>
@@ -219,6 +250,97 @@ nav div.active i {
 
 .dropdown-content a:first-child {
     border-bottom: 1px solid $color-primary;
+}
+
+h2 {
+    font-weight: 300;
+    border-bottom: 1px solid $color-primary;
+    line-height: 2;
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+p.dropdown {
+    margin-left: 1em;
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.493);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 1;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem;
+    width: 40%;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.close-button:hover {
+    background-color: darkgray;
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+#avatars img {
+    height: 13%;
+    width: 13%;
+    border-radius: 100%;
+    margin-right: 3%;
+}
+
+#images > p {
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+#images {
+    margin: 0.75em 16px;
+}
+
+.row:nth-child(3) {
+    margin: 0;
+}
+
+#avatars .col-6 {
+    margin: 0;
+}
+
+#avatars div.row > .col-6.input-group  {
+    margin: 0 0.3em;
+}
+
+.label {
+    color: $color-primary;
+    font-weight: 300;
 }
 
 </style>

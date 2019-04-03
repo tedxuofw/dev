@@ -63,8 +63,21 @@ export default {
                 
                 alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
             });
+        },
+        enterSignIn: function(event) {
+            var code = (event.keyCode ? event.keyCode : event.which);
+            if(code == 13) {
+                event.preventDefault();
+                this.signIn();
+            }
         }
     },
+    created() {
+        window.addEventListener('keypress',this.enterSignIn);
+    }, 
+    destroyed() {
+        window.removeEventListener('keypress', this.enterSignIn);
+    }
 }
 </script>
 
