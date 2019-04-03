@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { userStore } from '../main.js';
+import { user } from '../user.js';
 import SideNavBar from "@/components/SideNavBar";
 
 export default {
@@ -46,11 +46,10 @@ export default {
     data () {
         return {
             user: {
-                first: userStore.first,
-                last: userStore.last,
-                email: userStore.email,
-                profile: userStore.profile,
-                jwt: userStore.jwt
+                first: user.first(),
+                last: user.last(),
+                email: user.email(),
+                profile: user.profile(),
             }
         }
     },
