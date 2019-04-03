@@ -89,6 +89,14 @@ h1 {
     margin: 0;
 }
 
+.card-child {
+    width: 100%;
+}
+
+.col-4, .col-8 {
+    margin-bottom: 2em;
+}
+
 div button {
     margin-top: 1.5em;
 }
@@ -119,8 +127,10 @@ div button {
     font-size: 1.25em;
 }
 
-.card-child {
-    width: 100%;
+@media (max-width: 600px) {
+    main {
+        margin-left: 0;
+    }
 }
 
 </style>

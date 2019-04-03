@@ -37,16 +37,24 @@
             </div>
         </div>
         
-        <div class="modal show-modal">
+        <div class="modal">
             <div class="modal-content">
                 <h2>Profile</h2>
                 <div id="avatars">
                     <div id="images">
                         <p class="label"> Avatar </p>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                        <div class='img-container'>
+                            <img class="selected" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                        </div>
+                        <div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                        </div>
+                        <div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                        </div>
+                        <div> 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-6 input-group">
@@ -64,7 +72,7 @@
                 </div>
 
                 <div class="buttons">
-                    <button class="primary"> Save </button>
+                    <button class="primary" @click="this.closeModal"> Save </button>
                     <button @click="this.submit"> Cancel </button>
                 </div>
             </div>
@@ -231,6 +239,15 @@ h2 {
     margin: 0;
 }
 
+#images img.selected {
+    border: 5px solid $color-primary;
+    height: 70px;
+    width: 70px;
+}
+
+#images div {
+    display: inline;
+}
 
 .label {
     color: $color-primary;
@@ -315,10 +332,6 @@ nav div.active i {
     margin-left: 0;
 }
 
-p.dropdown {
-    margin-left: 1em;
-}
-
 #profile-info {
     margin-bottom: 1em;
 }
@@ -374,6 +387,10 @@ p.dropdown {
     margin: 0;
 }
 
+#user p.dropdown {
+    margin-left: 1em;
+}
+
 #user-nav {
     align-items: center;
     display: flex;
@@ -398,6 +415,10 @@ p.dropdown {
 
     #images p.label {
         text-align: left;
+    }
+
+    nav {
+        visibility: hidden;
     }
 }
 </style>

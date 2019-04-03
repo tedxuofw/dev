@@ -358,4 +358,10 @@ main {
     padding: 1em 3em;
     height: 100%;
 }
+
+@media (max-width: 600px) {
+  main {
+    margin-left: 0;
+  }
+}
 </style>
