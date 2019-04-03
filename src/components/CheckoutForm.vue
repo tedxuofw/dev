@@ -15,7 +15,7 @@
             <input type="text" placeholder="Zip Code" id="card-zip" class="full-width col-4">
         </div>
         <div class="row">
-            <a href="/#/confirmation"> <button class="full-width primary">Continue</button> </a>
+            <button class="full-width primary" @click="updateParent()">Continue</button>
         </div>
     </div>
 </template>
@@ -73,6 +73,9 @@ export default {
             console.log(event);
             alert(event);
             event.preventDefault();
+        },
+        updateParent: function() {
+            this.$emit("changed");
         }
     }
 }

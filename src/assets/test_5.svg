@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88.755" height="88.755" viewBox="0 0 88.755 88.755">
+  <g id="Symbol_39_1" data-name="Symbol 39 – 1" transform="translate(-8554.866 -1851.123)">
+    <g id="Group_1190" data-name="Group 1190" transform="translate(8554.866 1851.123)">
+      <circle id="Ellipse_33" data-name="Ellipse 33" cx="44.377" cy="44.377" r="44.377" transform="translate(0)" fill="#fff"/>
+      <g id="Group_1186" data-name="Group 1186" transform="translate(22.124 22.081)">
+        <g id="Layer_4" transform="translate(15.014 0)">
+          <path id="Path_23" data-name="Path 23" d="M867.374,120.472c2.041-3.331,11.169-17.874,12.8-20.8a.61.61,0,0,1,.614-.375q7.508.017,15.014.01c.122,0,.245.017.417.031-.13.2-.224.349-.323.5q-6.937,10.424-13.881,20.842a.679.679,0,0,0-.013.9q5.459,8.211,10.888,16.442,1.974,2.982,3.963,5.956H881.5a1.072,1.072,0,0,1-.914-.526c-1.857-3.055-11.315-18.488-13.177-21.551A1.354,1.354,0,0,1,867.374,120.472Z" transform="translate(-867.188 -99.3)" fill="#2b2b2b"/>
+        </g>
+        <g id="Layer_12" transform="translate(8.354 0.008)">
+          <path id="Path_24" data-name="Path 24" d="M516.665,143.9c1.784-2.931,11.54-18.8,13.375-21.873a1.051,1.051,0,0,0-.075-1.112c-2-3.189-11.4-18.17-12.833-20.817a.647.647,0,0,0-.524-.4c-3.71,0-6.966,0-7.09,0,.126.2,9.609,14.464,14.268,21.444a.572.572,0,0,1,.013.749c-4.892,7.378-14.818,22.364-14.9,22.473h6.895A1.255,1.255,0,0,0,516.665,143.9Z" transform="translate(-508.9 -99.7)" fill="#e62b1e" stroke="#e62b1e" stroke-miterlimit="10" stroke-width="1"/>
+        </g>
+        <g id="Layer_10" transform="translate(0 0.008)">
+          <g id="Group_985" data-name="Group 985" transform="translate(0 0)">
+            <path id="Path_25" data-name="Path 25" d="M86.855,121.144C82.2,114.17,72.727,99.921,72.588,99.7h-5.47c.126.2,9.609,14.464,14.267,21.444a.572.572,0,0,1,.013.749c-4.892,7.378-14.818,22.364-14.9,22.473h5.47c.078-.107,10-15.095,14.9-22.473A.574.574,0,0,0,86.855,121.144Z" transform="translate(-66.5 -99.7)" fill="#e62b1e" stroke="#e62b1e" stroke-miterlimit="10" stroke-width="1"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

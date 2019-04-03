@@ -44,16 +44,16 @@
                     <div id="images">
                         <p class="label"> Avatar </p>
                         <div class='img-container'>
-                            <img class="selected" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                            <img class="selected" src="../assets/test_4.svg"/>
                         </div>
                         <div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                            <img src="../assets/test_2.svg"/>
                         </div>
                         <div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                            <img src="../assets/test_3.svg"/>
                         </div>
                         <div> 
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                            <img src="../assets/test_1.svg"/>
                         </div>
                     </div>
                     <div class="row">
@@ -133,7 +133,7 @@
     height: 80px;
     width: 80px;
     border-radius: 100%;
-    margin-right: 3%;
+    margin-right: 2%;
 }
 
 .bold {

@@ -26,7 +26,7 @@
                             <div class="card-body"> 
                                 <p class="warning card-child"> You don't have tickets for TEDx2019 yet. </p>
                                 <div class="card-child">
-                                    <button class="secondary"> Get Tickets </button>
+                                    <a href="/#/checkout"> <button class="secondary"> Get Tickets </button> </a>
                                 </div>
                             </div>
                         </div>

@@ -9,7 +9,7 @@
           </div>
         </div>
 
-        <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }" v-if="!paymentScreen">
+        <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }" v-if="this.screen == 0">
           <SpotlightTicketView
             :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
             :tickets="spotlightTickets"
@@ -52,8 +52,12 @@
           </div>
         </div>
 
+        <div class="row" v-else-if="this.screen == 1">
+          <CheckoutForm @changed="goToConfirmation()"/>
+        </div>
+
         <div class="row" v-else>
-          <CheckoutForm/>
+          <Confirmation :tickets="tickets"/>
         </div>
       </div>
     </main>
@@ -66,11 +70,12 @@ const MOBILE_MAX_WIDTH = 1350;
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
+import Confirmation from "@/components/Confirmation";
 import SideNavBar from "@/components/SideNavBar";
 
 export default {
   name: "CheckoutPage",
-  components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar },
+  components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar, Confirmation },
   data() {
     return {
       ticketIdCounter: 0,
@@ -79,7 +84,8 @@ export default {
       creatingTicket: false,
       showError: false,
       mobileView: false,
-      paymentScreen: false
+      // 0 = ticket selection, 1 = checkout, 2 = confirmation
+      screen: 0 
     };
   },
   created() {
@@ -201,7 +207,13 @@ export default {
 
     /** Switches to payment interface. */
     goToPayment() {
-      this.paymentScreen = true;
+      this.screen = 1;
+    },
+
+    /** Switches to confirmation interface. */
+    goToConfirmation() {
+      alert();
+      this.screen = 2;
     }
   },
   computed: {

@@ -1,55 +1,45 @@
 <template>
-    <div>
-        <SideNavBar v-bind:tickets="true"/>
-        <main>
-            <div class="container components-page" :class="{ 'mobile-view': mobileView }">
-                <div class="row">
-                    <div class="col-12">
-                        <h1>Checkout</h1>
-                    </div>
-                </div>
-
-                <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }">
-                    <div class="col-8">
-                        <SpotlightTicketView
-                            :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
-                            :tickets="spotlightTickets"
-                            :mobileView="mobileView / 2" 
-                            :maxView="2"/>
-                    </div>
-                    <div class="col-4">
-                        <div class="content-container">
-                            <h2> Payment Information </h2>
-                            <div class="data-container">
-                                <p class="label"> Name: </p>
-                                <p> Jenny Liang</p>
-                            </div>
-                            <div class="data-container">
-                                <p class="label"> Email Address: </p>
-                                <p> jliang9@uw.edu </p>
-                            </div>
-                            <div class="data-container">
-                                <p class="label"> Payment Card: </p>
-                                <p> **** **** **** 1234 </p>
-                            </div>
-                        </div>
-                        <div class="content-container">
-                            <h2> Summary </h2>
-                            <div class="data-container">
-                                <p> UW Student Ticket <span class="data"> (x2) </span> </p>
-                                <p class="data"> $19.50 </p>
-                            </div>
-                            <div class="data-container">
-                                <p> General Admission Ticket </p>
-                                <p class="data"> $19.50 </p>
-                            </div>
-                        </div>
-                        <button class="primary">Confirm</button>
-                    </div>
-                </div>
+    <div class="container components-page" :class="{ 'mobile-view': mobileView }">
+        <div class="row overview-screen-row" :class="{ 'allow-wrap': mobileView }">
+            <div class="col-8">
+                <SpotlightTicketView
+                    :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
+                    :tickets="spotlightTickets"
+                    :mobileView="mobileView / 2" 
+                    :maxView="2"/>
             </div>
-        </main>
+            <div class="col-4">
+                <div class="content-container">
+                    <h2> Payment Information </h2>
+                    <div class="data-container">
+                        <p class="label"> Name: </p>
+                        <p> Jenny Liang</p>
+                    </div>
+                    <div class="data-container">
+                        <p class="label"> Email Address: </p>
+                        <p> jliang9@uw.edu </p>
+                    </div>
+                    <div class="data-container">
+                        <p class="label"> Payment Card: </p>
+                        <p> **** **** **** 1234 </p>
+                    </div>
+                </div>
+                <div class="content-container">
+                    <h2> Summary </h2>
+                    <div class="data-container">
+                        <p> UW Student Ticket <span class="data"> (x2) </span> </p>
+                        <p class="data"> $19.50 </p>
+                    </div>
+                    <div class="data-container">
+                        <p> General Admission Ticket </p>
+                        <p class="data"> $19.50 </p>
+                    </div>
+                </div>
+                <a href="/#/home"> <button class="primary">Confirm</button> </a>
+            </div>
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -65,14 +55,14 @@ export default {
   components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar },
   data() {
     return {
-      ticketIdCounter: 0,
-      ticketEditIndex: -1,
       tickets: [],
-      creatingTicket: false,
-      showError: false,
       mobileView: false,
-      paymentScreen: false
     };
+  },
+  props: {
+    tickets: {
+        type: Array
+    },
   },
   created() {
     var script = document.createElement('script');
@@ -84,46 +74,11 @@ export default {
       window.addEventListener('resize', this.recalculateMobileView);
     });
     this.recalculateMobileView();
-
-    if(DEMO_MODE) {
-      this.tickets = [
-        {
-          firstName: 'Andrey',
-          lastName: 'Butenko',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -4
-        },
-        {
-          firstName: 'Andrey',
-          lastName: 'Butenko',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -3
-        },
-        {
-          firstName: 'Andrey',
-          lastName: 'Butenko',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -2
-        },
-      ];
-      return;
-    }
-
-    this.addTicket();
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.recalculateMobileView);
   },
   methods: {
-
-    /** Scrolls to top of webpage. */
-    scrollToTop() {
-      window.scrollTo(0,0);
-    },
-
     /** Calculates whether mobileView should be enabled based on screen width. */
     recalculateMobileView() {
       this.mobileView = window.innerWidth < MOBILE_MAX_WIDTH;
@@ -136,15 +91,7 @@ export default {
      * When editing on mobile view, no ticket is spotlighted.
      */
     spotlightTickets() {
-      if(this.isCurrentlyEditing && this.mobileView) {
-        return [];
-      }
-
-      if(this.isCurrentlyEditing) {
-        return this.tickets
-          .filter((ticket, ticketIndex) => ticketIndex == this.ticketEditIndex);
-      }
-
+      console.log(this.props);
       return this.tickets;
     }
   }
