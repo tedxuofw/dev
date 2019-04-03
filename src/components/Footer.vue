@@ -38,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $footer-break: 1000px;
+$footer-tiny-break: 515px;
 
 .footer {
   display: flex;
@@ -48,7 +49,6 @@ $footer-break: 1000px;
   box-sizing: border-box;
 
   @media screen and (max-width: $footer-break) {
-    //flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     padding: 48px 16px;
@@ -110,6 +110,10 @@ $footer-break: 1000px;
 
       @media screen and (max-width: $footer-break) { 
         font-size: 42px;
+      }
+
+      @media screen and (max-width: $footer-tiny-break) {
+        font-size: 32px;
       }
     }
   }

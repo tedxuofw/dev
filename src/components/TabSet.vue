@@ -24,10 +24,9 @@ export default {
   height: $height-tabset;
   width: 100%;
   max-width: 100vw;
-  overflow-x: scroll;
+  overflow-x: auto;
   background-color: $color-primary;
   align-items: stretch;
-  justify-content: center;
 
   &.secondary {
     background-color: $color-secondary-2;
