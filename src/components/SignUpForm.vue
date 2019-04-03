@@ -4,7 +4,7 @@
         <input v-model="form.last" type="text" placeholder="Last Name" class="full-width login-input" @change="addFocus($event)">
         <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input" @change="addFocus($event)">
         <input v-model="form.password" type="password" placeholder="Password" class="full-width login-input" @change="addFocus($event)">
-        <p class="error"> Please enter a valid email address. </p>
+        <p class="error"> </p>
         <button class="full-width primary" v-on:click="register">Sign up</button>
     </div>
 </template>
@@ -28,7 +28,9 @@ export default {
     },
     methods: {
         register: function () {
-            if (this.validate()) {
+            var error = this.validate();
+            console.log(error);
+            if (error === '') {
                 let url = "https://students.washington.edu/tedxuofw/index.php/api/register";
                 axios.get(url, { params: this.form }).then((response)  =>  {
                     var resp = response.data;
@@ -56,7 +58,9 @@ export default {
                     alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
                 });
             } else {
-                alert();
+                var errorElement = document.querySelector('p.error');
+                errorElement.classList.add("visible");
+                errorElement.textContent = error;
             }
         }, 
         enterSignUp: function(event) {
@@ -71,16 +75,23 @@ export default {
         }, 
         validate: function() {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            
-            return re.test(this.form.email) && this.form.first !== '' && this.form.last !== '' && validPassword();
+            if (this.form.first == '' || this.form.last == '' || this.form.email == '' || this.form.password == '') {
+                return "Please fill in all fields."
+            } else if (!(re.test(this.form.email))) {
+                return "Please enter a valid email.";
+            } else {
+                return this.validPassword();
+            }
         },
         validPassword: function() {
             if (this.form.password.length < 8) {
-                return false;
+                return "Please enter a password with at least 8 characters.";
             } else if (!(/^[\x00-\x7F]*$/.test(this.form.password))) {
-                return false;
+                return "Please enter a password with only keyboard characters.";
             } else if (!(/[A-Z]/.test(this.form.password))) {
-                return false;
+                return "Please include at least one capital letter.";
+            } else {
+                return "";
             }
         }
     },
@@ -122,14 +133,19 @@ input.login-input:focus, input.focus {
 } 
 
 .visible {
-    visibility: visible;
+    visibility: visible !important;
 }
 
 p.error {
   color: $color-primary;
   font-size: 0.9em;
   line-height: 1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -5px; 
   text-align: left;
+  visibility: hidden;
+  width: 90%;
 }
 
 </style>
