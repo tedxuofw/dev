@@ -59,11 +59,11 @@
                     <div class="row">
                         <div class="col-6 input-group">
                             <label class="label" for="first-name">First name</label>
-                            <input type="text" class="full-width" id="first-name" value="Jenny"/>
+                            <input type="text" class="full-width" id="first-name" :value="user.first"/>
                         </div>
                         <div class="col-6 input-group">
                             <label class="label" for="last-name">Last name</label>
-                            <input type="text" class="full-width" id="last-name" value="Liang"/>
+                            <input type="text" class="full-width" id="last-name" :value="user.last"/>
                         </div>
                     </div>
                     <div class="row">
@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { userStore } from '../main.js';
+import { user } from '../user.js';
 export default {
     name: "SideNavBar",
     props: {
@@ -92,11 +92,10 @@ export default {
     data () {
         return {
             user: {
-                first: userStore.first,
-                last: userStore.last,
-                email: userStore.email,
-                profile: userStore.profile,
-                jwt: userStore.jwt
+                first: user.first(),
+                last: user.last(),
+                email: user.email(),
+                profile: user.profile(),
             }
         }
     },

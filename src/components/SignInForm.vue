@@ -10,7 +10,7 @@
 <script>
 import axios from 'axios';
 import router from "../router";
-import { userStore } from '../main.js';
+import { user } from '../user.js';
     
 export default {
     name: 'SignInForm',
@@ -35,11 +35,8 @@ export default {
                 var resp = response.data;
                 if(resp.status === "success") {
                     // Store any information given
-                    userStore.first = resp.first;
-                    userStore.last = resp.last;
-                    userStore.email = resp.email;
-                    userStore.profile = resp.profile;
-                    userStore.jwt = resp.token;
+                    console.log(resp);
+                    user.login(resp.token);
                     console.log("Successfully logged in as: " + resp.email);
                     
                     // Redirect to where we wanna go on success
