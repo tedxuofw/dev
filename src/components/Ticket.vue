@@ -9,7 +9,7 @@
           </div>
           <div class="conference-title">{{ conferenceTitle }}</div>
         </div>
-        <div class="info-small ticket-number">Confirmation: {{ confirmationCode }}</div>
+        <div class="info-small ticket-number">Email: {{ email }}</div>
       </div>
       <div class="person-info">
         <div class="info-set">
@@ -52,7 +52,7 @@ export default {
     ticketType: {
       type: String
     },
-    confirmationCode: {
+    email: {
       type: String
     }
   }
