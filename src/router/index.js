@@ -5,7 +5,6 @@ import LoginPage from '@/pages/Login'
 import CheckoutPage from '@/pages/Checkout'
 import HomePage from '@/pages/Home'
 import ConfirmationPage from '@/components/Confirmation'
-import TestPage from '@/pages/Test'
 
 Vue.use(Router)
 
@@ -37,11 +36,6 @@ export default new Router({
       path: '/confirmation',
       name: 'Confirmation',
       component: ConfirmationPage
-    },
-    {
-      path: '/test',
-      name: 'TestPage',
-      component: TestPage
     }
   ]
 })

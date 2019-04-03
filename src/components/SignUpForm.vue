@@ -11,7 +11,6 @@
 <script>
 // Import axios and globalState
 import axios from 'axios';
-import { globalStore } from '../main.js';
     
 export default {
     name: 'SignInForm',
