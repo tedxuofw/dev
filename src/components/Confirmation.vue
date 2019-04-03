@@ -19,7 +19,7 @@
                     </div>
                     <div class="col-4">
                         <div class="content-container">
-                            <h2> Payment Information </h2>
+                            <h2> {{ tickets }} </h2>
                             <div class="data-container">
                                 <p class="label"> Name: </p>
                                 <p> Jenny Liang</p>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-const DEMO_MODE = true;
+const DEMO_MODE = false;
 const MOBILE_MAX_WIDTH = 1350;
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
@@ -61,17 +61,16 @@ import CheckoutForm from "@/components/CheckoutForm";
 import SideNavBar from "@/components/SideNavBar";
 
 export default {
-  name: "CheckoutPage",
+  name: "ConfirmationPage",
   components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar },
+  props: ["tickets"],
   data() {
     return {
-      ticketIdCounter: 0,
-      ticketEditIndex: -1,
-      tickets: [],
       creatingTicket: false,
       showError: false,
       mobileView: false,
-      paymentScreen: false
+      paymentScreen: false,
+      data: 0
     };
   },
   created() {
@@ -84,34 +83,6 @@ export default {
       window.addEventListener('resize', this.recalculateMobileView);
     });
     this.recalculateMobileView();
-
-    if(DEMO_MODE) {
-      this.tickets = [
-        {
-          firstName: 'Andrey',
-          lastName: 'Butenko',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -4
-        },
-        {
-          firstName: 'Andrey',
-          lastName: 'Butenko',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -4
-        },
-        {
-          firstName: 'Andrey',
-          lastName: 'Butenko',
-          meal: 'No Meal',
-          ticket: 'General Ticket',
-          id: -4
-        },
-      ];
-      return;
-    }
-
     this.addTicket();
   },
   beforeDestroy() {

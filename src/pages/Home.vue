@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SideNavBar dashboard="true"/>
+        <SideNavBar dashboard/>
         <main>
             <h1> Welcome, Christina! </h1>
             <div class="col-12">

@@ -19,7 +19,10 @@ export const globalStore = new Vue({
       return this.attrs[key];
     },
     remove(key) {
-      delete attrs[key];
+      delete this.attrs[key];
+    },
+    all() {
+        return this.attrs;
     }
   }
 })

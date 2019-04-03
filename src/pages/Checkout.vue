@@ -53,7 +53,7 @@
         </div>
 
         <div class="row" v-else>
-          <CheckoutForm/>
+          <CheckoutForm v-bind:tickets="tickets" />
         </div>
       </div>
     </main>
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-const DEMO_MODE = true;
+const DEMO_MODE = false;
 const MOBILE_MAX_WIDTH = 1350;
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";

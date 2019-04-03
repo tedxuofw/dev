@@ -1,6 +1,6 @@
 <template>
     <div id="payment-container">
-        <h2> Card Information </h2>
+        <h2> {{ tickets }} </h2>
         <div class="row">
             <div id="card-number" class="full-width col-12"></div>
         </div>
@@ -15,7 +15,7 @@
             <input type="text" placeholder="Zip Code" id="card-zip" class="full-width col-4">
         </div>
         <div class="row">
-            <a href="/#/confirmation"> <button class="full-width primary">Continue</button> </a>
+            <router-link :to="{ name: 'Confirmation', params: { tickets: tickets } }"><button class="full-width primary">Continue</button></router-link>
         </div>
     </div>
 </template>
@@ -23,6 +23,7 @@
 <script>
 export default {
     name: 'CheckoutForm',
+    props: ['tickets'],
     mounted() {
         // Create a Stripe client.
         var stripe = Stripe('pk_test_EsLnXbnCKw4JnlLnQKdTBNyh');
