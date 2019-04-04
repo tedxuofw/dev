@@ -12,7 +12,7 @@
                 <div class="nav-element"> <i class="fas fa-heart"></i> <a href="/"> Volunteer </a> </div>
             </div>
             <div v-bind:class="{ active: this.feedback }"> 
-                <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>
+                <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/#/feedback"> Feedback </a> </div>
             </div>
             <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
         </nav>
