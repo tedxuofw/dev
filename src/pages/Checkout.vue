@@ -180,7 +180,6 @@ export default {
 
     /** Switches to confirmation interface. */
     goToConfirmation() {
-      alert();
       this.screen = 2;
     }
   },

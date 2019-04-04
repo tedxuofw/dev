@@ -17,6 +17,10 @@
             <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
         </nav>
         <div id="user-nav">
+            <div class="mobile-icons">
+                <i id ="hamburger" class="fas fa-bars responsive-nav-element"></i>
+                <i id="icon" class="far fa-user responsive-nav-element"></i>
+            </div>
             <div id="user" class="dropdown">
                 <img class="dropdown" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg">
                 <p class="dropdown"> {{ user.first }} {{ user.last }} </p>
@@ -305,7 +309,7 @@ nav {
     padding-top: 20px;
     position: fixed;
     top: 0;
-    width: 200px;
+    width: 210px;
     z-index: 10;
 }
 
@@ -429,8 +433,23 @@ nav div.active i {
         text-align: left;
     }
 
-    nav {
+    nav, #user {
         visibility: hidden;
+    }
+
+    #user-nav {
+        background-color: $color-primary;
+    }
+
+    .responsive-nav-element {
+        color: $color-primary-2;
+    }
+
+    .mobile-icons {
+        display:flex;
+        justify-content: space-between;
+        margin: 1em;
+        width: 100%;
     }
 }
 </style>

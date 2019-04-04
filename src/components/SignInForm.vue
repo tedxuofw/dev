@@ -4,7 +4,7 @@
         <input v-model="form.password" type="password" placeholder="Password" class="full-width login-input" @change="addFocus($event)">
         <a href="mailto:tedxuofw@uw.edu?Subject=TEDxUofW%20Account%20Password%20Recovery" class="spacer small">Forgot your password?</a>
         <p class="error"> </p>
-        <button class="full-width primary" v-on:click="signIn">Sign in</button>
+        <button class="full-width primary" v-on:click="signIn"> Sign In </button>
     </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
                         router.push('/home');
                     } else {
                         // User Error
-                        this.displayError(response.data);
+                        this.displayError(response.data.message);
 
                         // Error message
                         var message = resp.message;
@@ -83,7 +83,11 @@ export default {
         validate: function() {
             if (this.form.email == '' || this.form.password == '') {
                 return "Please fill in all fields."
-            } else {
+            }  else {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
+                if (!re.test(this.form.email)) {
+                    return "Please enter a valid email."
+                }
                 return "";
             }
         },
