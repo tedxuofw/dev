@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SideNavBar dashboard/>
+        <DesktopNavBar dashboard/>
         <!-- <MobileNavBar dashboard/> -->
         <main>
             <h1> Welcome, {{ user.first }}! </h1>
@@ -40,7 +40,7 @@
 
 <script>
 import { user } from '../user.js';
-import SideNavBar from "@/components/SideNavBar";
+import DesktopNavBar from "@/components/DesktopNavBar";
 import MobileNavBar from "@/components/MobileNavBar";
 
 export default {
@@ -55,7 +55,7 @@ export default {
             }
         }
     },
-    components: { SideNavBar, MobileNavBar }
+    components: { DesktopNavBar, MobileNavBar }
 };
 </script>
 

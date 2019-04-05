@@ -1,124 +1,35 @@
 <template>
-    <div>
-        <nav> 
-            <p class="logo"> <span class="bold">TEDx</span>UofW </p>
-            <div v-bind:class="{ active: this.dashboard }"> 
-                <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/home"> Dashboard </a> </div>
-            </div>
-            <div v-bind:class="{ active: this.tickets }"> 
-                <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
-            </div>
-            <div> 
-                <div class="nav-element"> <i class="fas fa-heart"></i> <a href="/"> Volunteer </a> </div>
-            </div>
-            <div v-bind:class="{ active: this.feedback }"> 
-                <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>
-            </div>
-            <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
-        </nav>
-        <div id="user-nav">
-            <div id="user" class="dropdown">
-                <img class="dropdown" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg">
-                <p class="dropdown"> {{ user.first }} {{ user.last }} </p>
-                <Dropdown :user="user"/>
-            </div>
-            <Modal :user="user"/>
+    <nav> 
+        <p class="logo"> <span class="bold">TEDx</span>UofW </p>
+        <div v-bind:class="{ active: this.dashboard }"> 
+            <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/home"> Dashboard </a> </div>
         </div>
-    </div>
+        <div v-bind:class="{ active: this.tickets }"> 
+            <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
+        </div>
+        <div> 
+            <div class="nav-element"> <i class="fas fa-heart"></i> <a href="/"> Volunteer </a> </div>
+        </div>
+        <div v-bind:class="{ active: this.feedback }"> 
+            <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>
+        </div>
+        <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
+    </nav>
 </template>
 
 <script>
-import { user } from '../user.js';
-import Dropdown from "./Dropdown";
-import Modal from "./Modal";
-
 export default {
     name: "SideNavBar",
     props: {
         dashboard: Boolean,
         tickets: Boolean,
-        feedback: Boolean
+        feedback: Boolean,
     },
-    data () {
-        return {
-            user: {
-                first: user.first(),
-                last: user.last(),
-                email: user.email(),
-                profile: user.profile(),
-            }
-        }
-    },
-    components: { Dropdown, Modal },
-    methods: {
-        closeModal: function() {
-            document.querySelector('div.modal').classList.remove('show-modal');
-        },
-        openModal: function() {
-            document.querySelector('div.modal').classList.toggle('show-modal');
-        },
-        keypressCloseModal: function() {
-            console.log("HERE");
-            var code = (event.keyCode ? event.keyCode : event.which);
-            if(code == 27) {
-                event.preventDefault();
-                this.closeModal();
-            }
-        }
-    },
-    created() {
-        window.addEventListener('keyup',this.keypressCloseModal);
-    }, 
-    destroyed() {
-        window.removeEventListener('keyup', this.keypressCloseModal);
-    }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
-
-#avatars .col-6 {
-    margin: 0;
-}
-
-#avatars div.row > .col-6.input-group  {
-    margin: 0 0.3em;
-}
-
-#avatars img {
-    height: 80px;
-    width: 80px;
-    border-radius: 100%;
-    margin-right: 2%;
-}
-
-.bold {
-    font-weight: 900;
-}
-
-.buttons {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.buttons button:first-child {
-    margin-right: 1em;
-}
-
-.close-button {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
-}
-
-.close-button:hover {
-    background-color: darkgray;
-}
 
 div.bottom {
     bottom: 0;
@@ -137,110 +48,10 @@ div.nav-element {
     top: 25%;
 }
 
-p.dropdown {
-  position: relative;
-  display: inline-block;
-  padding: 20px 0;
-}
-
-.dropdown-content {
-    display: none;
-    background-color: $color-secondary-2;
-    min-width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    position: absolute;
-    left: 0;
-    margin-top: 185px;
-    padding: 1.5em;
-}
-
-.dropdown-content a {
-    color: $color-primary;
-    padding: 12px 16px;
-    text-decoration: none;
-    text-align: center;
-    display: block;
-    width: 70%;
-}
-
-.dropdown-content a:first-child {
-    border-bottom: 1px solid $color-primary;
-}
-
-.dropdown-content a:hover {
-    background-color: darken($color-secondary-2, 5%);
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.email {
-    font-size: 0.85em;
-}
-
-h2 {
-    border-bottom: 1px solid $color-primary;
-    font-weight: 300;
-    line-height: 2;
-    margin: 0;
-    margin-bottom: 1em;
-}
-
-#images {
-    margin: 0.75em 16px;
-}
-
-#images > p {
-    margin-bottom: 0.5em;
-    margin: 0;
-}
-
-#images img.selected {
-    border: 5px solid $color-primary;
-    height: 70px;
-    width: 70px;
-}
-
-#images div {
-    display: inline;
-}
-
-.label {
-    color: $color-primary;
-    font-weight: 300;
-}
-
 .logo {
     color: $color-text-light;
     font-size: 1.9em;
     text-align: center;
-}
-
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-    z-index: 1;
-}
-
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem;
-    width: 40%;
-    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
 }
 
 nav {
@@ -288,91 +99,5 @@ nav div.active a {
 nav div.active i {
     color: $color-primary;
     margin-left: 0;
-}
-
-#profile-info {
-    margin-bottom: 1em;
-}
-
-#profile-info div {
-    align-content: center;
-    display: flex;
-    justify-content: center;
-}
-
-#profile-info img {
-    height: 90px;
-    margin-bottom: 1em;
-    width: 90px;
-}
-
-#profile-info p {
-    text-align: center;
-}
-
-#profile-nav {
-    text-align: -webkit-center;
-}
-
-.row:nth-child(3) {
-    margin: 0;
-}
-
-.show-modal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}
-
-#user {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-right: 10%;
-    position: absolute;
-    right: 0;
-}
-
-#user img {
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-}
-
-#user p {
-    color: black;
-    margin: 0;
-}
-
-#user p.dropdown {
-    margin-left: 1em;
-}
-
-#user-nav {
-    align-items: center;
-    display: flex;
-    background-color: #fcfbfa;
-    height: 100px;
-    position: relative;
-}
-
-@media (max-width: 600px) {
-    .buttons {
-        margin-top: 1em;
-    }
-
-    #images {
-        text-align: center;
-    }
-
-    #images img {
-        height: 50px;
-        width: 50px;
-    }
-
-    #images p.label {
-        text-align: left;
-    }
 }
 </style>
