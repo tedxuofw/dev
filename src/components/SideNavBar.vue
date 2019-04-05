@@ -17,75 +17,21 @@
             <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
         </nav>
         <div id="user-nav">
-            <div class="mobile-icons">
-                <i id ="hamburger" class="fas fa-bars responsive-nav-element"></i>
-                <i id="icon" class="far fa-user responsive-nav-element"></i>
-            </div>
             <div id="user" class="dropdown">
                 <img class="dropdown" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg">
                 <p class="dropdown"> {{ user.first }} {{ user.last }} </p>
-
-                <div class="dropdown-content">
-                    <div id="profile-info">
-                        <div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
-                        </div>
-                        <p> {{ user.first }} {{ user.last }} </p>
-                        <p class="email"> {{ user.email }} </p>
-                    </div>
-                    <div id="profile-nav">
-                        <a @click="this.openModal">Edit Profile</a>
-                        <a>Logout</a>
-                    </div>
-                </div>
+                <Dropdown :user="user"/>
             </div>
-        </div>
-
-        <div class="modal">
-            <div class="modal-content">
-                <h2>Profile</h2>
-                <div id="avatars">
-                    <div id="images">
-                        <p class="label"> Avatar </p>
-                        <div class='img-container'>
-                            <img class="selected" src="../assets/test_4.svg"/>
-                        </div>
-                        <div>
-                            <img src="../assets/test_2.svg"/>
-                        </div>
-                        <div>
-                            <img src="../assets/test_3.svg"/>
-                        </div>
-                        <div> 
-                            <img src="../assets/test_1.svg"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 input-group">
-                            <label class="label" for="first-name">First name</label>
-                            <input type="text" class="full-width" id="first-name" :value="user.first"/>
-                        </div>
-                        <div class="col-6 input-group">
-                            <label class="label" for="last-name">Last name</label>
-                            <input type="text" class="full-width" id="last-name" :value="user.last"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <p class="col-12"> Email: {{ user.email }} </p>
-                    </div>
-                </div>
-
-                <div class="buttons">
-                    <button class="primary" @click="this.closeModal"> Save </button>
-                    <button @click="this.submit"> Cancel </button>
-                </div>
-            </div>
+            <Modal :user="user"/>
         </div>
     </div>
 </template>
 
 <script>
 import { user } from '../user.js';
+import Dropdown from "./Dropdown";
+import Modal from "./Modal";
+
 export default {
     name: "SideNavBar",
     props: {
@@ -103,16 +49,12 @@ export default {
             }
         }
     },
+    components: { Dropdown, Modal },
     methods: {
-        submit: function() {
-            // Do other stuff
-            this.closeModal();
-        },
         closeModal: function() {
             document.querySelector('div.modal').classList.remove('show-modal');
         },
         openModal: function() {
-            console.log('fa123sdf');
             document.querySelector('div.modal').classList.toggle('show-modal');
         },
         keypressCloseModal: function() {
@@ -431,25 +373,6 @@ nav div.active i {
 
     #images p.label {
         text-align: left;
-    }
-
-    nav, #user {
-        visibility: hidden;
-    }
-
-    #user-nav {
-        background-color: $color-primary;
-    }
-
-    .responsive-nav-element {
-        color: $color-primary-2;
-    }
-
-    .mobile-icons {
-        display:flex;
-        justify-content: space-between;
-        margin: 1em;
-        width: 100%;
     }
 }
 </style>
