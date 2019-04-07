@@ -226,7 +226,7 @@ $about-break: 1170px;
     justify-content: space-around;
 
     .person {
-      flex: 0 0 33%;
+      flex: 0 0 2%;
       display: flex;
       flex-direction: column;
       justify-content: center;

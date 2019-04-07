@@ -1,5 +1,6 @@
 <template>
   <ConferencePage :selectedIndex="0">
+    <Splash />
     <div class="hero" style="position: relative">
       <h1>Two Steps Forward</h1>
       <div class="info">
@@ -25,9 +26,10 @@
 <script>
 import Arrows from "@/components/Arrows";
 import ConferencePage from "@/components/ConferencePage";
+import Splash from "@/components/Splash";
 export default {
   name: "HomePage",
-  components: { Arrows, ConferencePage }
+  components: { Arrows, ConferencePage, Splash }
 };
 </script>
 
