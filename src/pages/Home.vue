@@ -1,14 +1,6 @@
 <template>
   <ConferencePage :selectedIndex="0">
     <Splash />
-    <div class="hero" style="position: relative">
-      <h1>Two Steps Forward</h1>
-      <div class="info">
-        <span><b>TEDxUofW 2019</b></span>
-        <span>Kane Hall 210. April 3rd, 2019.</span>
-      </div>
-      <Arrows style="color: red; font-size: 300px; position: absolute; bottom: 0; left: 10%;" />
-    </div>
     <div class="container section-about">
       <div class="row">
         <div class="col-6 content">
