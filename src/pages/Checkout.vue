@@ -74,6 +74,9 @@ import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 import Confirmation from "@/components/Confirmation";
 import SideNavBar from "@/components/SideNavBar";
+import axios from 'axios';
+import { user } from '../user.js';
+
 
 export default {
   name: "CheckoutPage",
@@ -82,12 +85,13 @@ export default {
     return {
       ticketIdCounter: 0,
       ticketEditIndex: -1,
+      groupId: -1,
       tickets: [],
       creatingTicket: false,
       showError: false,
       mobileView: false,
       // 0 = ticket selection, 1 = checkout, 2 = confirmation
-      screen: 0 
+      screen: 0
     };
   },
   created() {
@@ -175,12 +179,47 @@ export default {
 
     /** Switches to payment interface. */
     goToPayment() {
+      console.log("Tickets:");
+      console.log(this.tickets);
+      
+      // Generate a group (event_id, owner_id)
+      let url = "https://students.washington.edu/tedxuofw/index.php/api/group/create";
+      let generateGroupParams = { 
+        event_id: '1',
+        owner_id: user.id(),
+        token: user.getJWT()
+      };
+      axios.get(url, { params: generateGroupParams }).then((response)  =>  {
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);
+              this.groupId = resp.result.id;
+            
+            
+          } else {          
+              // Error message
+              var message = resp.message;
+              console.log(response.data);
+          }
+      }, (error)  =>  {
+          // There was an error with the way the request was made!
+          // This is really bad (either the API broke or more likely
+          // the frontend isn't properly validating the input)
+          var err = error.response;
+          console.log(err);
+
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+      
+      
+      // Add each registrant to the group(name, email, costlevel_id, group_id)
+      
       this.screen = 1;
     },
 
     /** Switches to confirmation interface. */
     goToConfirmation() {
-      alert();
       this.screen = 2;
     }
   },

@@ -13,11 +13,11 @@
                     <h2> Payment Information </h2>
                     <div class="data-container">
                         <p class="label"> Name: </p>
-                        <p> Jenny Liang</p>
+                        <p> {{ user.first }} {{ user.last }} </p>
                     </div>
                     <div class="data-container">
-                        <p class="label"> Email Address: </p>
-                        <p> jliang9@uw.edu </p>
+                        <p class="label"> Email: </p>
+                        <p>{{ user.email }}</p>
                     </div>
                     <div class="data-container">
                         <p class="label"> Payment Card: </p>
@@ -51,6 +51,7 @@ import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 import SideNavBar from "@/components/SideNavBar";
+import { user } from '../user.js';
 
 export default {
   name: "ConfirmationPage",
@@ -60,6 +61,12 @@ export default {
     return {
       tickets: [],
       mobileView: false,
+      user: {
+          first: user.first(),
+          last: user.last(),
+          email: user.email(),
+          profile: user.profile(),
+      }
     };
   },
   props: {
@@ -68,6 +75,7 @@ export default {
     },
   },
   created() {
+    // REMOVE DUPLICATE?
     var script = document.createElement('script');
     script.setAttribute('src', "https://js.stripe.com/v3/");
     document.head.appendChild(script);

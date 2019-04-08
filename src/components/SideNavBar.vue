@@ -31,7 +31,7 @@
                     </div>
                     <div id="profile-nav">
                         <a @click="this.openModal">Edit Profile</a>
-                        <a>Logout</a>
+                        <a @click="this.logout">Logout</a>
                     </div>
                 </div>
             </div>
@@ -82,6 +82,8 @@
 
 <script>
 import { user } from '../user.js';
+import router from "../router";
+
 export default {
     name: "SideNavBar",
     props: {
@@ -108,16 +110,17 @@ export default {
             document.querySelector('div.modal').classList.remove('show-modal');
         },
         openModal: function() {
-            console.log('fa123sdf');
             document.querySelector('div.modal').classList.toggle('show-modal');
         },
         keypressCloseModal: function() {
-            console.log("HERE");
             var code = (event.keyCode ? event.keyCode : event.which);
             if(code == 27) {
                 event.preventDefault();
                 this.closeModal();
             }
+        },
+        logout: function() {
+            user.logout();
         }
     },
     created() {
@@ -385,6 +388,8 @@ nav div.active i {
     margin-right: 10%;
     position: absolute;
     right: 0;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 #user img {
