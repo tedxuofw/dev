@@ -1,7 +1,7 @@
 <template>
-    <div id="nav" class="invisible">
-        <div class="nav-modal" @click="this.closeNav"> </div>
-        <nav class="mobile" @click="this.closeNav"> 
+    <div id="nav" v-bind:class="{ invisible: mobile, mobile: mobile }">
+        <div class="nav-modal" v-bind:class="{ invisible: !mobile }" @click="this.closeNav"> </div>
+        <nav v-bind:class="{ mobile: mobile }" @click="this.closeNav"> 
             <p class="logo"> <span class="bold">TEDx</span>UofW </p>
             <div v-bind:class="{ active: this.dashboard }"> 
                 <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/home"> Dashboard </a> </div>
