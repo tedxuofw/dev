@@ -1,20 +1,23 @@
 <template>
-    <nav> 
-        <p class="logo"> <span class="bold">TEDx</span>UofW </p>
-        <div v-bind:class="{ active: this.dashboard }"> 
-            <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/home"> Dashboard </a> </div>
-        </div>
-        <div v-bind:class="{ active: this.tickets }"> 
-            <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
-        </div>
-        <div> 
-            <div class="nav-element"> <i class="fas fa-heart"></i> <a href="/"> Volunteer </a> </div>
-        </div>
-        <div v-bind:class="{ active: this.feedback }"> 
-            <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>
-        </div>
-        <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
-    </nav>
+    <div id="nav" class="invisible">
+        <div class="nav-modal" @click="this.closeNav"> </div>
+        <nav class="mobile" @click="this.closeNav"> 
+            <p class="logo"> <span class="bold">TEDx</span>UofW </p>
+            <div v-bind:class="{ active: this.dashboard }"> 
+                <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/home"> Dashboard </a> </div>
+            </div>
+            <div v-bind:class="{ active: this.tickets }"> 
+                <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
+            </div>
+            <div> 
+                <div class="nav-element"> <i class="fas fa-heart"></i> <a href="/"> Volunteer </a> </div>
+            </div>
+            <div v-bind:class="{ active: this.feedback }"> 
+                <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>
+            </div>
+            <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
+        </nav>
+    </div>
 </template>
 
 <script>
@@ -24,7 +27,15 @@ export default {
         dashboard: Boolean,
         tickets: Boolean,
         feedback: Boolean,
-    },
+        mobile: Boolean
+    }, 
+    methods: {
+        closeNav: function() {
+            if (this.mobile) {
+                document.getElementById("nav").classList.add('invisible');
+            }            
+        },
+    }
 }
 </script>
 
@@ -48,6 +59,19 @@ div.nav-element {
     top: 25%;
 }
 
+div.nav-modal {
+    background-color: white;
+    height: 100vh;
+    opacity: 0.7;  
+    position: absolute;
+    width: 100vw;
+    z-index: 10;
+}
+
+nav.mobile div.active {
+    border-left: 16px solid $color-primary;
+}
+
 .logo {
     color: $color-text-light;
     font-size: 1.9em;
@@ -64,6 +88,10 @@ nav {
     top: 0;
     width: 210px;
     z-index: 10;
+}
+
+nav.mobile {
+    background-color: $color-accent;
 }
 
 nav a {
@@ -99,5 +127,9 @@ nav div.active a {
 nav div.active i {
     color: $color-primary;
     margin-left: 0;
+}
+
+.invisible {
+    visibility: hidden;
 }
 </style>

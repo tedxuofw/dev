@@ -1,7 +1,6 @@
 <template>
     <div>
-        <DesktopNavBar dashboard/>
-        <!-- <MobileNavBar dashboard/> -->
+        <NavBar dashboard :user="user"/>
         <main>
             <h1> Welcome, {{ user.first }}! </h1>
             <div class="col-12">
@@ -40,8 +39,7 @@
 
 <script>
 import { user } from '../user.js';
-import DesktopNavBar from "@/components/DesktopNavBar";
-import MobileNavBar from "@/components/MobileNavBar";
+import NavBar from "@/components/NavBar";
 
 export default {
     name: "HomePage",
@@ -55,7 +53,7 @@ export default {
             }
         }
     },
-    components: { DesktopNavBar, MobileNavBar }
+    components: { NavBar }
 };
 </script>
 

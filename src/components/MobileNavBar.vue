@@ -1,39 +1,38 @@
 <template>
     <div>
+        <SideNavBar :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" :mobile="true"/>
         <nav id="user-nav">
             <div class="mobile-icons">
                 <i id ="hamburger" class="fas fa-bars responsive-nav-element" @click="showMainNav()"></i>
-                <i id="icon" class="far fa-user responsive-nav-element" @click="showUserNav()"></i>
+                <div id="icon">
+                    <i class="far fa-user responsive-nav-element dropdown" @click="showUserNav()"></i>
+                </div>
             </div>
         </nav>
     </div>
 </template>
 
 <script>
-import { user } from '../user.js';
+import Dropdown from "./Dropdown";
+import SideNavBar from "./SideNavBar";
+
 export default {
     name: "MobileNavBar",
+    components: { Dropdown, SideNavBar },
     props: {
         dashboard: Boolean,
         tickets: Boolean,
-        feedback: Boolean
-    },
-    data () {
-        return {
-            user: {
-                first: user.first(),
-                last: user.last(),
-                email: user.email(),
-                profile: user.profile(),
-            }
-        }
+        feedback: Boolean,
+        user: Object
     },
     methods: {
         showMainNav: function() {
-        
+            console.log("HERE");
+            document.getElementById('nav').classList.remove('invisible');
         }, 
         showUserNav: function() {
-        
+            var userNav = document.querySelector('.dropdown-content');
+            userNav.classList.add("visible-test");
         }
     }
 }
@@ -42,10 +41,17 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
+div.dropdown-content {
+    
+}
 
 div > i {
-    margin-left: 16px;
-    margin-right: 1em;
+    margin: 1em;
+    font-size: 1.25em;
+}
+
+#icon {
+    position: relative;
 }
 
 .mobile-icons {
@@ -65,6 +71,10 @@ div > i {
     background-color: $color-primary;
     height: 100px;
     position: relative;
+}
+
+.visible-test {
+    display: block !important;
 }
 
 </style>

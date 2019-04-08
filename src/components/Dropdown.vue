@@ -58,9 +58,9 @@ export default {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     left: 0;
     margin-top: 200px;
-    min-width: 100%;
     padding: 1.5em;
     position: absolute;
+    width: 180px;
     z-index: 1;
 }
 

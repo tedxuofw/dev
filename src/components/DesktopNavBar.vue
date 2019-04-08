@@ -47,6 +47,10 @@ div.nav-element {
     top: 25%;
 }
 
+p.dropdown {
+    padding: 1em 0;
+}
+
 #user {
     align-items: center;
     display: flex;
