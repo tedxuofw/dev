@@ -122,7 +122,7 @@ $speakers-break: 750px;
 
   .speaker {
     flex: 1 1 calc(40% - 4px);
-    border: 2px solid $color-tertiary;
+    border: 2px solid black;
     margin-bottom: 16px;
     cursor: pointer;
 

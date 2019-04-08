@@ -39,6 +39,8 @@
               <span class="name">{{ person.name }}</span>
               <span class="title">{{ person.title }}</span>
             </div>
+            <div class="person" v-for="(person, idx) in teamSpacer" :key="idx">
+            </div>
           </div>
         </div>
       </div>
@@ -117,6 +119,14 @@ export default {
           }
         });
       return uniqueTeams;
+    },
+    teamSpacer() {
+      const num = this.filteredTeam.length % 2;
+      const res = [];
+      for (let i = 0; i < num; i++) {
+        res.push(i);
+      }
+      return res;
     }
   }
 };
@@ -223,15 +233,17 @@ $about-break: 1170px;
     flex-wrap: wrap;
     background-color: white;
     padding: 64px;
-    justify-content: space-around;
+    justify-content: space-between;
 
     .person {
-      flex: 0 0 2%;
+      flex: 0 0 33%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-bottom: 36px;
+      max-width: 100%;
+      text-align: center;
 
       img,
       span {
