@@ -1,8 +1,8 @@
 <template>
   <div class="splash">
     <div id="arrow-container">
-      <img id="arrow-right" src="/static/animation-arrow-right.svg" />
-      <img id="arrow-left" src="/static/animation-arrow-left.svg" />
+      <img id="arrow-right" src="static/animation-arrow-right.svg" />
+      <img id="arrow-left" src="static/animation-arrow-left.svg" />
     </div>
     <div id="final-splash-container">
       <div id="final-splash-logo-container">
@@ -39,7 +39,7 @@ $logo-ending-position-x: calc(50% - 275px);
 $mobile-position-break: 600px;
 
 // Config: arrow slide-in animation
-$slide-in-animation-delay: 1s;
+$slide-in-animation-delay: 250ms;
 $slide-in-animation-length: 1s;
 $slide-in-animation-timing: cubic-bezier(0.39, 0.575, 0.565, 1);
 $fade-animation-length: 50ms;
