@@ -1,6 +1,6 @@
 <template>
   <div>
-      <DesktopNavBar v-bind:tickets="true"/>
+      <NavBar v-bind:tickets="true"/>
       <main>
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">
@@ -73,11 +73,11 @@ import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 import Confirmation from "@/components/Confirmation";
-import DesktopNavBar from "@/components/DesktopNavBar";
+import NavBar from "@/components/NavBar";
 
 export default {
   name: "CheckoutPage",
-  components: { SpotlightTicketView, Ticket, CheckoutForm, DesktopNavBar, Confirmation },
+  components: { SpotlightTicketView, Ticket, CheckoutForm, NavBar, Confirmation },
   data() {
     return {
       ticketIdCounter: 0,
