@@ -3,7 +3,7 @@
     <Splash />
     <div class="container section section-about">
       <div class="row">
-        <div class="col-6 content">
+        <div class="col-6 no-margin content">
           <h2>Ideas worth sharing at the<br/>University of Washington</h2>
           <p>
             For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
@@ -21,7 +21,7 @@
     </div>
     <div class="container section section-explore">
       <div class="row">
-        <div class="col-6 content">
+        <div class="col-6 no-margin content">
           <h2>Explore TEDxUofW 2019</h2>
           <div class="explore-card-container">
             <div class="explore-card">
@@ -46,7 +46,7 @@
     <div class="container section section-community">
       <img class="community-arrow-deco" src="/static/animation-arrow-left.svg" alt="Arrow decoration" />
       <div class="row">
-        <div class="col-6 content">
+        <div class="col-6 no-margin content">
           <h2>TEDxUofW as a community</h2>
           <p>
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
@@ -59,8 +59,8 @@
     </div>
     <div class="container section section-newsletter">
       <div class="row">
-        <div class="col-6"></div>
-        <div class="col-6 content">
+        <div class="col-6 no-margin"></div>
+        <div class="col-6 no-margin content">
           <h2>Sign up for our newsletter</h2>
           <input placeholder="Email" type="email" />
           <button class="button">Sign up</button>
@@ -123,6 +123,12 @@ export default {
 
 .section-accent {
   background-color: $color-secondary-2;
+
+  .col-6 {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 24px;
+  }
   
   .accent {
     height: 16px;
@@ -141,12 +147,20 @@ export default {
     flex-direction: row;
     margin-bottom: 80px;
 
+    @media screen and (max-width: 1260px) { 
+      flex-direction: column;
+    }
+
     .explore-card {
       flex: 1 0;
       background-color: $color-secondary-2;
       border-bottom: 8px solid $color-primary;
       margin: 0 16px;
       padding: 16px;
+
+      @media screen and (max-width: 1260px) {
+        margin: 16px 0;
+      }
 
       &:first-of-type {
         margin-left: 0;
@@ -180,6 +194,12 @@ export default {
     left: -40px;
     height: 300px;
     margin-top: -(300px / 2) + 5px;
+
+    @media screen and (max-width: 760px) {
+      height: 100px;
+      margin-top: -(100px / 2) + 5px;
+      left: -10px;
+    }
   }
 
   h2 {
