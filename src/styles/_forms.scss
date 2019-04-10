@@ -65,15 +65,15 @@ input[type="email"] {
 
 button,
 .button {
-  background-color: $color-primary;
-  color: $color-text-light;
+  background-color: $color-primary-2;
+  color: $color-primary;
   border: none;
   cursor: pointer;
 
   &.secondary {
     background-color: $color-secondary-2;
     color: $color-primary;
-    border: 1px solid $color-primary;
+    border: 1px solid $color-primary-2;
 
     &:hover {
       background-color: darken($color-secondary-2, 10%);
@@ -81,6 +81,20 @@ button,
 
     &:active {
       background-color: darken($color-secondary-2, 20%);
+    }
+  }
+
+  &.primary {
+    background-color: $color-primary;
+    color: $color-primary-2;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+    }
+
+    &:active {
+      background-color: darken($color-primary, 20%);
     }
   }
 
@@ -113,10 +127,10 @@ button,
   }
 
   &:hover {
-    background-color: darken($color-primary, 10%);
+    background-color: darken($color-primary-2, 10%);
   }
 
   &:active {
-    background-color: darken($color-primary, 20%);
+    background-color: darken($color-primary-2, 20%);
   }
 }
