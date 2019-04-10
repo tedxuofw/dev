@@ -40,6 +40,7 @@
 <script>
 import { user } from '../user.js';
 import NavBar from "@/components/NavBar";
+import Loading from "@/components/Loading";
 
 export default {
     name: "HomePage",
@@ -53,7 +54,7 @@ export default {
             }
         }
     },
-    components: { NavBar }
+    components: { NavBar, Loading }
 };
 </script>
 
