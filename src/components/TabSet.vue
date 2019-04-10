@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-set" :class="{ secondary }">
+    <div class="tab-set" :class="{ secondary, 'mobile-show-nav': mobileShowNav }">
         <slot></slot>
     </div>
 </template>
@@ -9,6 +9,10 @@ export default {
   name: 'TabSet',
   props: {
     secondary: {
+      type: Boolean,
+      default: false
+    },
+    mobileShowNav: {
       type: Boolean,
       default: false
     }
@@ -30,6 +34,18 @@ export default {
 
   &.secondary {
     background-color: $color-secondary-2;
+  }
+
+  @media screen and (max-width: $tabset-break) {
+    flex-direction: column;
+    height: inherit;
+    padding: 16px 0;
+  }
+
+  &:not(.mobile-show-nav) {
+    @media screen and (max-width: $tabset-break) {
+      display: none;
+    }
   }
 }
 </style>

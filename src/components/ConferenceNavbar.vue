@@ -1,0 +1,90 @@
+<template>
+  <div class="conference-nav">
+    <div class="mobile-nav">
+      <img src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+      <button class="primary-2 cta-button no-margin" @click="onClickNav">{{ !mobileShowNav ? 'Nav' : 'Hide' }}</button>
+    </div>
+    <tab-set :secondary="secondary" :mobileShowNav="mobileShowNav">
+      <tab-option logo :click="() => navigateTo('/')"><img src="/static/navbar-logo.svg" alt="TEDxUofW Logo" /></tab-option>
+      <tab-option v-for="(page, pageIndex) in pages" :key="pageIndex"
+        :selected="selectedIndex == pageIndex" :secondary="secondary"
+        :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
+      <tab-option spacer />
+      <tab-option :secondary="secondary">
+        <button class="primary-2 cta-button no-margin">Sign In</button>
+      </tab-option>
+    </tab-set>
+  </div>
+</template>
+
+<script>
+import TabSet from "@/components/TabSet";
+import TabOption from "@/components/TabOption";
+export default {
+  name: "ConferenceNavbar",
+  props: {
+    secondary: {
+      type: Boolean,
+      default: true
+    },
+    selectedIndex: {
+      type: Number,
+      default: -1
+    }
+  },
+  components: { TabSet, TabOption },
+  data() {
+    return {
+      pages: [
+        { name: 'Home', url: '/' },
+        // { name: 'Speakers', url: '/speakers' },
+        // { name: 'Sponsors', url: '/sponsors' },
+        { name: 'About', url: '/about' },
+        { name: 'Contact', url: '/contact' }
+      ],
+      mobileShowNav: false
+    }
+  },
+  methods: {
+    navigateTo(url) {
+      this.$router.push(url);
+    },
+    onClickNav() {
+      this.mobileShowNav = !this.mobileShowNav;
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+@import "@/styles/_variables.scss";
+
+.conference-nav {
+  width: 100%;
+
+  .mobile-nav {
+    display: none;
+    align-items: center;
+    width: 100%;
+    background-color: $color-secondary-2;
+    padding: 0 32px;
+    box-sizing: border-box;
+    height: $height-tabset;
+    justify-content: space-between;
+
+    img {
+      height: 80%;
+    }
+
+    @media screen and (max-width: $tabset-break) {
+      display: flex;
+    }
+  }
+
+  .cta-button {
+    background: none !important;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+</style>

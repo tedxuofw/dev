@@ -1,23 +1,13 @@
 <template>
   <div class="container components-page">
-    <tab-set :secondary="secondary">
-      <tab-option logo :click="() => navigateTo('/')"><img src="/static/navbar-logo.svg" alt="TEDxUofW Logo" /></tab-option>
-      <tab-option v-for="(page, pageIndex) in pages" :key="pageIndex"
-        :selected="selectedIndex == pageIndex" :secondary="secondary"
-        :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
-      <tab-option spacer />
-      <tab-option :secondary="secondary">
-        <button class="primary-2 cta-button no-margin">Sign In</button>
-      </tab-option>
-    </tab-set>
+    <ConferenceNavbar :secondary="secondary" :selectedIndex="selectedIndex" />
     <slot></slot>
     <Footer :footerMargin="footerMargin" />
   </div>
 </template>
 
 <script>
-import TabSet from "@/components/TabSet";
-import TabOption from "@/components/TabOption";
+import ConferenceNavbar from '@/components/ConferenceNavbar';
 import Footer from "@/components/Footer";
 export default {
   name: "ConferencePage",
@@ -35,29 +25,28 @@ export default {
       default: true
     }
   },
-  components: { TabSet, TabOption, Footer },
-  data() {
-    return {
-      pages: [
-        { name: 'Home', url: '/' },
-        // { name: 'Speakers', url: '/speakers' },
-        // { name: 'Sponsors', url: '/sponsors' },
-        { name: 'About', url: '/about' },
-        { name: 'Contact', url: '/contact' }
-      ]
-    }
-  },
-  methods: {
-    navigateTo(url) {
-      this.$router.push(url);
-    }
-  }
+  components: { ConferenceNavbar, Footer }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $hero-break: 850px;
+
+.mobile-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: $color-secondary-2;
+  padding: 0 32px;
+  box-sizing: border-box;
+  height: $height-tabset;
+  justify-content: space-between;
+
+  img {
+    height: 80%;
+  }
+}
 
 .cta-button {
   background: none !important;

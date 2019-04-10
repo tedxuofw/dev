@@ -53,6 +53,10 @@ export default {
   box-sizing: border-box;
   white-space: nowrap;
 
+  @media screen and (max-width: $tabset-break) {
+    margin: 4px 0;
+  }
+
   &.spacer {
     width: 100%;
   }
@@ -61,6 +65,10 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: $tabset-break) {
+      display: none
+    }
 
     .tab-option-label {
       height: 60%;

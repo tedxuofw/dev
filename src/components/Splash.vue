@@ -30,8 +30,7 @@ export default {
 
 // Constants: arrow slide-in animation
 $logo-height: 80vh;
-$navbar-height: 80px;
-$logo-position-top: calc(50% - #{$navbar-height / 3} - #{$logo-height / 2});
+$logo-position-top: calc(50% - #{$height-tabset / 3} - #{$logo-height / 2});
 $logo-starting-position-x: -120px;
 $logo-starting-position-x-mobile: -500px;
 $logo-ending-position-x: calc(50% - 275px);
@@ -51,7 +50,7 @@ $final-animation-length: 750ms;
   position: relative;
   width: 100%;
   min-height: 420px;
-  height: calc(100vh - #{$navbar-height});
+  height: calc(100vh - #{$height-tabset});
   overflow-x: hidden;
   background-color: $color-secondary-2;
   overflow-y: hidden;
