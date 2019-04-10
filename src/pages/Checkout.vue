@@ -5,8 +5,8 @@
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">
           <div class="col-12 header-container">
-            <div class="back-button" v-if="this.screen > 0" @click='goBack()'> <i class="fas fa-arrow-left"> </i> Back to {{this.navName}} </div>
             <h1> {{this.title}} </h1>
+            <div class="back-button" v-if="this.screen > 0" @click='goBack()'> <i class="fas fa-arrow-left"> </i> Back to {{this.navName}} </div>
           </div>
         </div>
 
@@ -251,7 +251,7 @@ export default {
 h1 {
   font-weight: 300;
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
 }
 
 p.callout,
@@ -367,6 +367,7 @@ main {
   left: 210px;
   cursor: pointer;
   color: $color-primary;
+  margin-bottom: 1em;
 }
 
 .back-button:hover {

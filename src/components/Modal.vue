@@ -5,17 +5,17 @@
             <div id="avatars">
                 <div id="images">
                     <p class="label"> Avatar </p>
-                    <div class='img-container'>
-                        <img class="selected" src="../assets/test_4.svg"/>
+                    <div>
+                        <img class="selected" src="../assets/test_4.svg" @click="updateActive($event)"/>
                     </div>
                     <div>
-                        <img src="../assets/test_2.svg"/>
+                        <img src="../assets/test_2.svg" @click="updateActive($event)"/>
                     </div>
                     <div>
-                        <img src="../assets/test_3.svg"/>
+                        <img src="../assets/test_3.svg" @click="updateActive($event)"/>
                     </div>
                     <div> 
-                        <img src="../assets/test_1.svg"/>
+                        <img src="../assets/test_1.svg" @click="updateActive($event)"/>
                     </div>
                 </div>
                 <div class="row">
@@ -57,6 +57,15 @@ export default {
             // Do other stuff
             this.closeModal();
         },
+        updateActive(event) {
+            var images = document.querySelectorAll('#images img');
+
+            images.forEach(element => {
+                element.classList.remove('selected');
+            });
+
+            event.target.classList.add('selected');
+        }
     }
 }
 </script>

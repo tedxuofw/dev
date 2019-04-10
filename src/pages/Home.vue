@@ -15,7 +15,7 @@
                                 <p class="name card-child"> {{ user.first }} {{ user.last }} </p>
                                 <p class="card-child email"> {{ user.email }} </p>
                                 <div class="card-child">
-                                    <button class="secondary"> View Profile </button>
+                                    <button class="secondary" @click="triggerModal()"> View Profile </button>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,12 @@ export default {
             }
         }
     },
-    components: { NavBar, Loading }
+    components: { NavBar, Loading },
+    methods: {
+        triggerModal: function() {
+            document.querySelector('div.modal').classList.toggle('show-modal');
+        }
+    }
 };
 </script>
 
