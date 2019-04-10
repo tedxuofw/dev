@@ -25,7 +25,7 @@
           <h2>Explore TEDxUofW 2019</h2>
           <div class="explore-card-container">
             <div class="explore-card">
-              <img src="/static/speakers-page-header.jpg" />
+              <img src="/static/explore-tickets.png" alt="Tickets" />
               <h3>Get your tickets</h3>
               <p>
                 Grab tickets for youself or your group with your TEDxUofW account.
@@ -33,7 +33,7 @@
               <a class="button ghost">Register</a>
             </div>
             <div class="explore-card">
-              <img src="/static/speakers-page-header.jpg" />
+              <img src="/static/explore-speaker.png" alt="Photo of a speaker" />
               <h3>Interact with Speakers</h3>
               <p>
                 Ask questions or share your thoughts with speakers after hearing their talks. Inspiring ideas now go both ways.
