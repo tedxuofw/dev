@@ -24,10 +24,16 @@
 export default {
     name: 'CheckoutForm',
     props: ['tickets'],
+    data() {
+      return {
+          stripe: null,
+          element: null
+      }  
+    },
     mounted() {
         // Create a Stripe client.
         var stripe = Stripe('pk_test_EsLnXbnCKw4JnlLnQKdTBNyh');
-
+        
         // Create an instance of Elements.
         var elements = stripe.elements();
         var styles = {
@@ -68,6 +74,11 @@ export default {
         number.mount("#card-number");
         expire.mount("#card-expire");
         cvc.mount("#card-cvc");
+        
+        
+        // Store elements for updating
+        this.stripe = stripe;
+        this.element = number; // Just need one element?
     },
     methods: {
         submit: function(event) {
@@ -76,7 +87,19 @@ export default {
             event.preventDefault();
         },
         updateParent: function() {
-            this.$emit("changed");
+            
+            this.stripe.createToken(this.element).then((result) => {
+                if (result.error) {
+                    // Inform the customer that there was an error.
+                    alert(result.error);
+                } else {
+                    // Send the token to your server.
+                    console.log("Token:");
+                    console.log(result.token);
+                    this.$emit("changed", result.token.id);
+                }
+            });
+            
         }
     }
 }

@@ -11,13 +11,13 @@ export const user = new Vue({
       cached: Date.now(),
       
       meta: {
-        iat: 0,
-        nbf: 0,
-        exp: 0
+        iat: -1,
+        nbf: -1,
+        exp: -1
       },
       
       info: {
-        id: 0,
+        id: -1,
         first: '',
         last: '',
         email: '',
@@ -106,8 +106,17 @@ export const user = new Vue({
       return this.info.profile;
     },
     
+    id() {
+      this.checkLogin();
+      return this.info.id;
+    },
+    
     isLoggedIn() {
       return this.loggedIn;
+    },
+    
+    getJWT() {
+      return this.jwt;
     },
     
     
@@ -116,6 +125,7 @@ export const user = new Vue({
     /*** Manage State of User ***/
     login(jwt) {
       var decoded = this.parseJWT(jwt);
+      console.log(decoded);
       
       this.loggedIn = true;
       
@@ -145,10 +155,9 @@ export const user = new Vue({
       this.info.id = 0;
       this.info.first =  this.info.last = this.info.email = this.info.profile = '';
       
-      
       localStorage.clear();
+      router.push("/login"); 
     },
-    
     
     
     

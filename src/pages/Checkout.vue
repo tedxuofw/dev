@@ -54,7 +54,7 @@
         </div>
 
         <div class="row" v-else-if="this.screen == 1">
-          <CheckoutForm @changed="goToConfirmation()"/>
+          <CheckoutForm @changed="goToConfirmation"/>
         </div>
 
         <div class="row" v-else>
@@ -74,6 +74,10 @@ import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 import Confirmation from "@/components/Confirmation";
+import SideNavBar from "@/components/SideNavBar";
+import axios from 'axios';
+import { user } from '../user.js';
+import DesktopNavBar from "@/components/DesktopNavBar";
 import NavBar from "@/components/NavBar";
 
 export default {
@@ -83,6 +87,7 @@ export default {
     return {
       ticketIdCounter: 0,
       ticketEditIndex: -1,
+      groupId: -1,
       tickets: [],
       creatingTicket: false,
       showError: false,
@@ -187,13 +192,116 @@ export default {
 
     /** Switches to payment interface. */
     goToPayment() {
+      
+      // Generate a group (event_id, owner_id)
+      let gURL = "https://students.washington.edu/tedxuofw/index.php/api/group/create";
+      let groupParams = { 
+        event_id: '1',
+        owner_id: user.id(),
+        token: user.getJWT()
+      };
+      axios.get(gURL, { params: groupParams }).then((response)  =>  {
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);
+              this.groupId = resp.result.id;
+            
+            
+              // Initialize params for bulk insert
+              let registrantParams = {
+                token: groupParams.token,
+                registrants: []
+              };
+            
+              // Add all the registrants we want
+              for(var index in this.tickets) {
+                var ticket = this.tickets[index];                
+                registrantParams.registrants.push({
+                  email: ticket.email,
+                  name: ticket.firstName,
+                  costlevel_id: 1, // FIX LATER
+                  group_id: resp.result.id
+                });
+              }
+
+            
+              // REFACTOR LATER?
+              // Add each registrant to the group(name, email, costlevel_id, group_id)
+              let rURL = "https://students.washington.edu/tedxuofw/index.php/api/registrants/create";
+              axios.get(rURL, { params: registrantParams }).then((response)  =>  {
+                  var resp = response.data;
+                  if(resp.status === "success") {
+                      // Store any information given
+                      console.log(resp);
+                      
+                  } else {          
+                      // Error Response
+                      var message = resp.message;
+                      console.log(response.data);
+                  }
+              }, (error)  =>  {
+                  // Error with Request
+                  var err = error.response;
+                  console.log(err);
+
+                  alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+              });
+            
+            
+          } else {          
+              // Error message
+              var message = resp.message;
+              console.log(response.data);
+          }
+        
+      }, (error)  =>  {
+          // There was an error with the way the request was made!
+          // This is really bad (either the API broke or more likely
+          // the frontend isn't properly validating the input)
+          var err = error.response;
+          console.log(err);
+
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+      
+            
       this.screen = 1;
       this.navName = navNames[this.screen];
       this.title = pageNames[this.screen];
     },
 
     /** Switches to confirmation interface. */
-    goToConfirmation() {
+    goToConfirmation(token) {      
+      
+       // Add a charge (event_id, owner_id)
+      let pURL = "https://students.washington.edu/tedxuofw/index.php/api/payment/pay";
+      let paymentParams = { 
+        group_id: this.groupId,
+        stripe_id: token,
+        token: user.getJWT()
+      };
+      axios.get(pURL, { params: paymentParams }).then((response)  =>  {
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);         
+            
+          } else {          
+              // Error message
+              var message = resp.message;
+              console.log(response.data);
+          }
+        
+      }, (error)  =>  {
+          // There was an error with the way the request was made!
+          var err = error.response;
+          console.log(err);
+
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+      
+      
       this.screen = 2;
       this.navName = navNames[this.screen];
       this.title = pageNames[this.screen];

@@ -44,7 +44,7 @@ export default {
                         // Store any information given
                         console.log(resp);
                         user.login(resp.token);
-                        console.log("Successfully logged in as: " + resp.email);
+                        console.log("Successfully logged in as: " + this.form.email);
                         
                         // Redirect to where we wanna go on success
                         router.push('/home');
