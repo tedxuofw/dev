@@ -35,7 +35,11 @@
         <div class="col-12 no-margin-horizontal">
           <div class="team-container">
             <div class="person" v-for="(person, idx) in filteredTeam" :key="idx">
-              <img :src="person.imageUrl" :alt="`Photo of ${person.name}`" />
+              <img :src="!person.showAlt ? person.imageUrl : person.imageUrlAlt"
+                :class="{ 'web': person.team == 'Web' }"
+                :alt="`Photo of ${person.name}`"
+                @mouseover="person.showAlt = true"
+                @mouseleave="person.showAlt = false" />
               <span class="name">{{ person.name }}</span>
               <span class="title">{{ person.title }}</span>
             </div>
@@ -62,40 +66,58 @@ export default {
         makePerson('Julia Pettere', 'Curators', 'Curator'),
         makePerson('TJ Gascho', 'Curators', 'Curator'),
         makePerson('Maya Sullivan', 'Curators', 'Curator'),
-        makePerson('Jenny 1', 'Design', 'Design Manager'),
-        makePerson('Jenny 2', 'Design', 'Graphic Designer'),
-        makePerson('Jenny 3', 'Design', 'Graphic Designer'),
-        makePerson('Jenny 4', 'Design', 'Graphic Designer'),
-        makePerson('Jenny 5', 'Design', 'Graphic Designer'),
-        makePerson('Jenny 1', 'Speaker Selection', 'Speaker Selection Manager'),
-        makePerson('Jenny 2', 'Speaker Selection', 'Speaker Selection'),
-        makePerson('Jenny 3', 'Speaker Selection', 'Speaker Selection'),
-        makePerson('Jenny 4', 'Speaker Selection', 'Speaker Selection'),
-        makePerson('Jenny 1', 'Finance', 'Finance Manager'),
-        makePerson('Jenny 2', 'Finance', 'Financial Analyst'),
-        makePerson('Jenny 3', 'Finance', 'Financial Analyst'),
-        makePerson('Jenny 4', 'Finance', 'Sponsorship'),
-        makePerson('Jenny 1', 'Production', 'Production Manager'),
-        makePerson('Jenny 2', 'Production', 'Production Person'),
-        makePerson('Jenny 3', 'Production', 'Production Person'),
-        makePerson('Jenny 4', 'Production', 'Production Person'),
-        makePerson('Jenny 1', 'Public Relations', 'PR Manager'),
-        makePerson('Jenny 2', 'Public Relations', 'Public Relations'),
-        makePerson('Jenny 3', 'Public Relations', 'Outreach'),
-        makePerson('Jenny Liang', 'Web', 'Web Manager'),
+
+        makePerson('Sara Behbakht', 'Design', 'Design Team Manager'),
+        makePerson('Joey Pan', 'Design', 'Photographer'),
+        makePerson('Tunny Parrish', 'Design', 'Branding Designer'),
+        
+        makePerson('Sneha Mohidekar', 'Speaker Selection', 'Speaker Selection Team Manager'),
+        makePerson('Adi Gunawan', 'Speaker Selection', 'Speaker Selection'),
+        makePerson('Dhara Shah', 'Speaker Selection', 'Speaker Selection'),
+        makePerson('Kelly Phan', 'Speaker Selection', 'Speaker Selection'),
+        makePerson('Natalie Salazar', 'Speaker Selection', 'Speaker Selection'),
+        makePerson('Sara Gustafson', 'Speaker Selection', 'Speaker Selection'),
+
+        makePerson('Maya Gopalan', 'Finance', 'Finance Team Manager'),
+        makePerson('Connor Hart', 'Finance', 'Sponsorship', false),
+        makePerson('Emma Hurring', 'Finance', 'Logistics'),
+        makePerson('Jonathan Chang', 'Finance', 'Analyst', false),
+        makePerson('Stephen Lee', 'Finance', 'Analyst'),
+
+        makePerson('Miranda Reisman', 'Production', 'Production Team Manager'),
+        makePerson('Chloee Henley', 'Production', 'Guest Experience'),
+        makePerson('Karina Mendoza', 'Production', 'Videographer'),
+        makePerson('Lily Hansen', 'Production', 'Communication Coordinator'),
+        makePerson('Megan Mei', 'Production', 'Stage Designer'),
+        makePerson('Yan Ong', 'Production', 'Tech Lead'),
+
+        makePerson('Rahul Prasad', 'Public Relations', 'PR Team Manager'),
+        makePerson('Emma Hurring', 'Outreach Coordinator', 'Public Relations'),
+        makePerson('Marie Danilychev', 'Public Relations', 'External Outreach', false),
+        makePerson('Samantha Freeman', 'Public Relations', 'Internal Manager'),
+
+        makePerson('Jenny Liang', 'Web', 'Web Team Manager'),
         makePerson('Soham Pardeshi', 'Web', 'Web Developer'),
-        makePerson('Nick Zhao', 'Web', 'UX/UI Designer'),
+        makePerson('Nick Zhou', 'Web', 'UX/UI Designer'),
         makePerson('Andrey Butenko', 'Web', 'Web Developer'),
       ]
     };
   },
   methods: {
-    makePerson(name, team, title) {
+    makePerson(name, team, title, hasPhoto) {
+      hasPhoto = hasPhoto !== false;
+      const fileName = name.toLowerCase().replace(' ', '_');
       return {
         name,
         team,
         title,
-        imageUrl: `http://i.pravatar.cc/300?u=${name + team}`
+        showAlt: false,
+        imageUrl: hasPhoto ?
+          `/static/headshots/${fileName}.jpg` :
+          '/static/headshots/blank_face.png',
+        imageUrlAlt: hasPhoto ?
+          `/static/headshots/${fileName}_x.jpg` :
+          '/static/headshots/happy_face.png',
       }
     },
     selectTeam(team) {
@@ -160,6 +182,7 @@ $about-break: 1170px;
 
   h2 {
     font-size: 48px;
+    line-height: 1em;
 
     .highlight {
       color: $color-primary;
@@ -254,6 +277,7 @@ $about-break: 1170px;
 
       img {
         margin-bottom: 8px;
+        max-width: 300px;
       }
 
       .name {
@@ -264,7 +288,80 @@ $about-break: 1170px;
         font-size: 18px;
         font-weight: 700;
       }
+
+      img.web:hover {
+        animation-name: web-hover-animate;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
     }
+  }
+}
+
+// @keyframes web-hover-animate {
+//   0% {
+//     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+//   }
+
+//   25% {
+//     box-shadow: -5px 5px 10px 5px rgba($color-primary, 0.2);
+//   }
+
+//   50% {
+//     box-shadow: -5px -5px 10px 5px rgba($color-primary-2, 0.2);
+//   }
+
+//   75% {
+//     box-shadow: 5px -5px 10px 5px rgba($color-tertiary, 0.2);
+//   }
+
+//   100% {
+//     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+//   }
+// }
+// #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3
+
+$web-hover-animate-props: 0px 0px 40px 30px;
+@keyframes web-hover-animate {
+  
+  0% {
+    box-shadow: $web-hover-animate-props #ff240033;
+  }
+
+  10% {
+    box-shadow: $web-hover-animate-props #e81d1d33;
+  }
+
+  20% {
+    box-shadow: $web-hover-animate-props #e8b71d33;
+  }
+
+  30% {
+    box-shadow: $web-hover-animate-props #e3e81d33;
+  }
+
+  40% {
+    box-shadow: $web-hover-animate-props #1de84033;
+  }
+
+  50% {
+    box-shadow: $web-hover-animate-props #1ddde833;
+  }
+
+  60% {
+    box-shadow: $web-hover-animate-props #2b1de833;
+  }
+
+  70% {
+    box-shadow: $web-hover-animate-props #dd00f333;
+  }
+
+  80% {
+    box-shadow: $web-hover-animate-props #dd00f333;
+  }
+  
+  100% {
+    box-shadow: $web-hover-animate-props #ff240033;
   }
 }
 </style>
