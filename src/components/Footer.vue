@@ -6,11 +6,11 @@
     <div class="social">
       <h3>Follow Us</h3>
       <div class="social-bubbles">
-        <a href="https://facebook.com" target="_blank" class="social-bubble"><img src="/static/06-facebook.svg" alt="Facebook logo" /></a>
-        <a href="https://instagram.com" target="_blank" class="social-bubble"><img src="/static/38-instagram.svg" alt="Instagram logo" /></a>
-        <a href="https://youtube.com" target="_blank" class="social-bubble"><img src="/static/18-youtube.svg" alt="Youtube logo" /></a>
+        <a href="https://www.facebook.com/TEDxUofW/" target="_blank" class="social-bubble"><img src="/static/06-facebook.svg" alt="Facebook logo" /></a>
+        <a href="https://www.instagram.com/tedxuofw/" target="_blank" class="social-bubble"><img src="/static/38-instagram.svg" alt="Instagram logo" /></a>
+        <a href="https://www.youtube.com/channel/UCGmFbWHkkgWwA8iw9Ap11vw" target="_blank" class="social-bubble"><img src="/static/18-youtube.svg" alt="Youtube logo" /></a>
       </div>
-      <button>Get your tickets now</button>
+      <button @click="$router.push('/login')">Get your tickets now</button>
       <p>This independent TEDx event is operated under license from TED ©2019 TEDxUofW</p>
     </div>
     <div class="pages">
