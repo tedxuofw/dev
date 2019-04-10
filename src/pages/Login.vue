@@ -44,11 +44,14 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
-.example-container {
-    max-width: 500px;
-    border: 1px dashed $color-secondary;
-    padding: 16px 32px;
-    margin: 16px;
+div.container, div.row {
+    background-color: $color-secondary-2;
+    min-height: 100vh;
+}
+
+div.row {
+    display: flex;
+    align-items: center;
 }
 
 .inner-container {
@@ -71,9 +74,7 @@ export default {
 }
 
 .outer-container {
-    background-color: $color-secondary-2;
     height: 80%;
-    margin: 10vh 0;
     width: 80vw;
 }
 
@@ -87,13 +88,15 @@ export default {
     display: none;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
     div.inner-container > p {
         display: none;
     }
 
     div.button-set button {
-        font-size: 14px;
+        height: 2em;
+        font-size: 0.8em;
+        padding:0;
     }
 
     h1 {

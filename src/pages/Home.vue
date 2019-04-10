@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SideNavBar dashboard/>
+        <NavBar dashboard :user="user"/>
         <main>
             <h1> Welcome, {{ user.first }}! </h1>
             <div class="col-12">
@@ -13,7 +13,7 @@
                                     <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png"/>
                                 </div>
                                 <p class="name card-child"> {{ user.first }} {{ user.last }} </p>
-                                <p class="card-child"> {{ user.email }} </p>
+                                <p class="card-child email"> {{ user.email }} </p>
                                 <div class="card-child">
                                     <button class="secondary"> View Profile </button>
                                 </div>
@@ -39,7 +39,7 @@
 
 <script>
 import { user } from '../user.js';
-import SideNavBar from "@/components/SideNavBar";
+import NavBar from "@/components/NavBar";
 
 export default {
     name: "HomePage",
@@ -53,7 +53,7 @@ export default {
             }
         }
     },
-    components: { SideNavBar }
+    components: { NavBar }
 };
 </script>
 
@@ -67,6 +67,7 @@ main {
 
 h1 {
     font-weight: 300;
+    margin-left: 48px;
 }
 
 .card-body {
@@ -112,6 +113,10 @@ div button {
     margin-top: 1.5em;
 }
 
+.email {
+    font-size: 0.9em;
+}
+
 .header {
     border-bottom: 4px solid red;
     font-size: 1.25em;
@@ -141,6 +146,10 @@ div button {
 @media (max-width: 600px) {
     main {
         margin-left: 0;
+    }
+
+    h1 {
+        margin-left: 16px;
     }
 }
 
