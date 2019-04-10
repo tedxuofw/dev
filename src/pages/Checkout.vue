@@ -54,7 +54,7 @@
         </div>
 
         <div class="row" v-else-if="this.screen == 1">
-          <CheckoutForm @changed="goToConfirmation()"/>
+          <CheckoutForm @changed="goToConfirmation"/>
         </div>
 
         <div class="row" v-else>
@@ -227,6 +227,7 @@ export default {
 
             
               // REFACTOR LATER?
+              // Add each registrant to the group(name, email, costlevel_id, group_id)
               let rURL = "https://students.washington.edu/tedxuofw/index.php/api/registrants/create";
               axios.get(rURL, { params: registrantParams }).then((response)  =>  {
                   var resp = response.data;
@@ -253,6 +254,7 @@ export default {
               var message = resp.message;
               console.log(response.data);
           }
+        
       }, (error)  =>  {
           // There was an error with the way the request was made!
           // This is really bad (either the API broke or more likely
@@ -263,16 +265,43 @@ export default {
           alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
       });
       
-      
-      // Add each registrant to the group(name, email, costlevel_id, group_id)
-      
+            
       this.screen = 1;
       this.navName = navNames[this.screen];
       this.title = pageNames[this.screen];
     },
 
     /** Switches to confirmation interface. */
-    goToConfirmation() {
+    goToConfirmation(token) {      
+      
+       // Add a charge (event_id, owner_id)
+      let pURL = "https://students.washington.edu/tedxuofw/index.php/api/payment/pay";
+      let paymentParams = { 
+        group_id: this.groupId,
+        stripe_id: token,
+        token: user.getJWT()
+      };
+      axios.get(pURL, { params: paymentParams }).then((response)  =>  {
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);         
+            
+          } else {          
+              // Error message
+              var message = resp.message;
+              console.log(response.data);
+          }
+        
+      }, (error)  =>  {
+          // There was an error with the way the request was made!
+          var err = error.response;
+          console.log(err);
+
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+      
+      
       this.screen = 2;
       this.navName = navNames[this.screen];
       this.title = pageNames[this.screen];
