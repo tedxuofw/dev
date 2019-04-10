@@ -30,12 +30,15 @@ export default {
     },
     methods: {
         register: function () {
+            this.$emit("loading");
             var error = this.validate();
             console.log(error);
             if (error === '') {
+                this.$emit("loading");
                 this.hideError();
                 let url = "https://students.washington.edu/tedxuofw/index.php/api/register";
                 axios.get(url, { params: this.form }).then((response)  =>  {
+                    this.$emit("loading");
                     var resp = response.data;
                     if(resp.status === "success") {                
                         // Redirect to where we wanna go on success
@@ -49,6 +52,7 @@ export default {
                         console.log(response.data);
                     }
                 }, (error)  =>  {
+                    this.$emit("loading");
                     // There was an error with the way the request was made!
                     // This is really bad (either the API broke or more likely
                     // the frontend isn't properly validating the input)

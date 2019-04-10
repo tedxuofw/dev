@@ -1,14 +1,12 @@
 <template>
   <div>
-      <DesktopNavBar v-bind:tickets="true"/>
+      <NavBar v-bind:tickets="true"/>
       <main>
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">
-          <div> 
-            <i class="fas fa-arrow-left"> </i> Back to...
-          </div>
-          <div class="col-12">
-            <h1>Get new tickets</h1>
+          <div class="col-12 header-container">
+            <div class="back-button" v-if="this.screen > 0" @click='goBack()'> <i class="fas fa-arrow-left"> </i> Back to {{this.navName}} </div>
+            <h1> {{this.title}} </h1>
           </div>
         </div>
 
@@ -49,7 +47,7 @@
             <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email</p>
             <input type="text" placeholder="Email" class="full-width" v-model="currentTicket.email">
 
-            <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
+            <p v-if="showError" class="error extra-margin-top"> {{this.errorMessage}}</p>
             <button class="full-width primary" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
             <button class="full-width secondary" @click="cancelTicket()" v-if="tickets.length > 1">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
           </div>
@@ -69,6 +67,9 @@
 
 <script>
 const MOBILE_MAX_WIDTH = 1350;
+const pageNames = ['Buy new tickets', 'Ticket payment', 'Review your purchase'];
+const navNames = ['', 'tickets', 'payment']
+
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
@@ -77,10 +78,11 @@ import SideNavBar from "@/components/SideNavBar";
 import axios from 'axios';
 import { user } from '../user.js';
 import DesktopNavBar from "@/components/DesktopNavBar";
+import NavBar from "@/components/NavBar";
 
 export default {
   name: "CheckoutPage",
-  components: { SpotlightTicketView, Ticket, CheckoutForm, DesktopNavBar, Confirmation },
+  components: { SpotlightTicketView, Ticket, CheckoutForm, NavBar, Confirmation },
   data() {
     return {
       ticketIdCounter: 0,
@@ -91,7 +93,10 @@ export default {
       showError: false,
       mobileView: false,
       // 0 = ticket selection, 1 = checkout, 2 = confirmation
-      screen: 0
+      screen: 0,
+      navNames: '',
+      title: 'Buy new tickets',
+      errorMessage: ''
     };
   },
   created() {
@@ -120,8 +125,16 @@ export default {
 
     /** Saves changes to currently-editing ticket, or displays error if there's a problem */
     saveTicket() {
+      var emailInput = document.querySelector('input[placeholder="Email"]');
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
+
       if(!this.currentTicketIsValid) {
         this.showError = true;
+        this.errorMessage = "Make sure you've filled out all parts of the form before saving."
+        return;
+      } else if (!re.test(emailInput.value)) {
+        this.showError = true;
+        this.errorMessage = "Please enter a valid email."
         return;
       }
 
@@ -216,11 +229,20 @@ export default {
       // Add each registrant to the group(name, email, costlevel_id, group_id)
       
       this.screen = 1;
+      this.navName = navNames[this.screen];
+      this.title = pageNames[this.screen];
     },
 
     /** Switches to confirmation interface. */
     goToConfirmation() {
       this.screen = 2;
+      this.navName = navNames[this.screen];
+      this.title = pageNames[this.screen];
+    },
+
+    goBack() {
+      this.screen--;
+      this.title = pageNames[this.screen];
     }
   },
   computed: {
@@ -270,6 +292,7 @@ export default {
 h1 {
   font-weight: 300;
   text-align: center;
+  margin-bottom: 0;
 }
 
 p.callout,
@@ -381,9 +404,23 @@ main {
     height: 100%;
 }
 
+.back-button {
+  left: 210px;
+  cursor: pointer;
+  color: $color-primary;
+}
+
+.back-button:hover {
+  color: darken($color-primary, 10%);
+}
+
 @media (max-width: 600px) {
   main {
     margin-left: 0;
+  }
+
+  h1 {
+    font-size: 45px;
   }
 }
 </style>

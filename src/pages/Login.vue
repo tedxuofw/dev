@@ -11,31 +11,37 @@
                                 <button id="sign-in" @click="toggle(true)" v-bind:class="{secondary: !signIn}">Sign in</button>
                                 <button id="sign-up" @click="toggle(false)" v-bind:class="{secondary: signIn}">Sign up</button>
                             </div>
-                            <sign-in-form  v-if="signIn"/>
-                            <sign-up-form v-else/>
+                            <sign-in-form  v-if="signIn" @loading="toggleLoading()"/>
+                            <sign-up-form v-else @loading="toggleLoading()"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <Loading v-if="this.loading"/>
     </div>
 </template>
 
 <script>
 import SignInForm from "@/components/SignInForm";
 import SignUpForm from "@/components/SignUpForm";
+import Loading from "@/components/Loading";
 
 export default {
     name: "LoginPage",
-    components: { SignInForm, SignUpForm },
+    components: { Loading, SignInForm, SignUpForm },
     data() {
         return {
             signIn: true,
+            loading: false
         };
     },
     methods: {
         toggle: function(signIn) {
             this.signIn = signIn;
+        },
+        toggleLoading(){
+            this.loading = !this.loading;
         }
     }
 };

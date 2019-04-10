@@ -31,12 +31,14 @@ export default {
     },
     methods: {
         signIn: function () {
+            this.$emit("loading");
             this.hideError();
             var errors = this.validate();
 
             if (errors === '') {
                 let url = "https://students.washington.edu/tedxuofw/index.php/api/login";
                 axios.get(url, { params: this.form }).then((response)  =>  {
+                    this.$emit("loading");
                     var resp = response.data;
                     if(resp.status === "success") {
                         // Store any information given
@@ -55,6 +57,7 @@ export default {
                         console.log(response.data);
                     }
                 }, (error)  =>  {
+                    this.$emit("loading");
                     // There was an error with the way the request was made!
                     // This is really bad (either the API broke or more likely
                     // the frontend isn't properly validating the input)

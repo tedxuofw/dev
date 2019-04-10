@@ -1,6 +1,7 @@
 <template>
     <div>
-        <MobileNavBar :user="this.user" :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback"/>
+        <MobileNavBar :user="this.user" :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" v-if="this.mobileView"/>
+        <DesktopNavBar :user="this.user" :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" v-else/>
     </div>
 </template>
 
@@ -15,7 +16,23 @@ export default {
         dashboard: Boolean,
         tickets: Boolean,
         feedback: Boolean,
-        user: Object
+        user: Object,
     },
+    data() {
+        return {
+            mobileView: false
+        };
+    },
+    mounted: function() {
+        this.$nextTick(() => {
+            window.addEventListener('resize', this.recalculateMobileView);
+        });
+        this.recalculateMobileView();
+    },
+    methods: {
+        recalculateMobileView: function() {
+            this.mobileView = window.innerWidth < 600;
+        }
+    }
 }
 </script>
