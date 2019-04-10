@@ -47,7 +47,7 @@
             <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email</p>
             <input type="text" placeholder="Email" class="full-width" v-model="currentTicket.email">
 
-            <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
+            <p v-if="showError" class="error extra-margin-top"> {{this.errorMessage}}</p>
             <button class="full-width primary" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
             <button class="full-width secondary" @click="cancelTicket()" v-if="tickets.length > 1">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
           </div>
@@ -90,7 +90,8 @@ export default {
       // 0 = ticket selection, 1 = checkout, 2 = confirmation
       screen: 0,
       navNames: '',
-      title: 'Buy new tickets'
+      title: 'Buy new tickets',
+      errorMessage: ''
     };
   },
   created() {
@@ -119,8 +120,16 @@ export default {
 
     /** Saves changes to currently-editing ticket, or displays error if there's a problem */
     saveTicket() {
+      var emailInput = document.querySelector('input[placeholder="Email"]');
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
+
       if(!this.currentTicketIsValid) {
         this.showError = true;
+        this.errorMessage = "Make sure you've filled out all parts of the form before saving."
+        return;
+      } else if (!re.test(emailInput.value)) {
+        this.showError = true;
+        this.errorMessage = "Please enter a valid email."
         return;
       }
 
@@ -357,10 +366,11 @@ main {
 .back-button {
   left: 210px;
   cursor: pointer;
+  color: $color-primary;
 }
 
 .back-button:hover {
-  color: $color-primary;
+  color: darken($color-primary, 10%);
 }
 
 @media (max-width: 600px) {
