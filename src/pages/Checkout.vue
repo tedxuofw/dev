@@ -192,22 +192,60 @@ export default {
 
     /** Switches to payment interface. */
     goToPayment() {
-      console.log("Tickets:");
-      console.log(this.tickets);
       
       // Generate a group (event_id, owner_id)
-      let url = "https://students.washington.edu/tedxuofw/index.php/api/group/create";
-      let generateGroupParams = { 
+      let gURL = "https://students.washington.edu/tedxuofw/index.php/api/group/create";
+      let groupParams = { 
         event_id: '1',
         owner_id: user.id(),
         token: user.getJWT()
       };
-      axios.get(url, { params: generateGroupParams }).then((response)  =>  {
+      axios.get(gURL, { params: groupParams }).then((response)  =>  {
           var resp = response.data;
           if(resp.status === "success") {
               // Store any information given
               console.log(resp);
               this.groupId = resp.result.id;
+            
+            
+              // Initialize params for bulk insert
+              let registrantParams = {
+                token: groupParams.token,
+                registrants: []
+              };
+            
+              // Add all the registrants we want
+              for(var index in this.tickets) {
+                var ticket = this.tickets[index];                
+                registrantParams.registrants.push({
+                  email: ticket.email,
+                  name: ticket.firstName,
+                  costlevel_id: 1, // FIX LATER
+                  group_id: resp.result.id
+                });
+              }
+
+            
+              // REFACTOR LATER?
+              let rURL = "https://students.washington.edu/tedxuofw/index.php/api/registrants/create";
+              axios.get(rURL, { params: registrantParams }).then((response)  =>  {
+                  var resp = response.data;
+                  if(resp.status === "success") {
+                      // Store any information given
+                      console.log(resp);
+                      
+                  } else {          
+                      // Error Response
+                      var message = resp.message;
+                      console.log(response.data);
+                  }
+              }, (error)  =>  {
+                  // Error with Request
+                  var err = error.response;
+                  console.log(err);
+
+                  alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+              });
             
             
           } else {          

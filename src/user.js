@@ -125,6 +125,7 @@ export const user = new Vue({
     /*** Manage State of User ***/
     login(jwt) {
       var decoded = this.parseJWT(jwt);
+      console.log(decoded);
       
       this.loggedIn = true;
       
