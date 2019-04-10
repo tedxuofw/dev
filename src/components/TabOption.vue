@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-option" :class="{ selected, secondary, container, spacer }" @click="click">   
+    <div class="tab-option" :class="{ selected, secondary, container, spacer, logo }" @click="click">   
       <div class="tab-option-label">
         <slot></slot>
       </div>
@@ -15,6 +15,10 @@ export default {
       default: false
     },
     selected: {
+      type: Boolean,
+      default: false
+    },
+    logo: {
       type: Boolean,
       default: false
     },
@@ -51,6 +55,20 @@ export default {
 
   &.spacer {
     width: 100%;
+  }
+
+  &.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .tab-option-label {
+      height: 60%;
+
+      img {
+        height: 100%;
+      }
+    }
   }
 
   &.selected {

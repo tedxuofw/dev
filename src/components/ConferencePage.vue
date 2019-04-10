@@ -1,16 +1,17 @@
 <template>
   <div class="container components-page">
     <tab-set :secondary="secondary">
+      <tab-option logo :click="() => navigateTo('/')"><img src="/static/navbar-logo.svg" alt="TEDxUofW Logo" /></tab-option>
       <tab-option v-for="(page, pageIndex) in pages" :key="pageIndex"
         :selected="selectedIndex == pageIndex" :secondary="secondary"
         :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
       <tab-option spacer />
       <tab-option :secondary="secondary">
-        <button class="primary-2 no-margin">Attend</button>
+        <button class="primary-2 cta-button no-margin">Sign In</button>
       </tab-option>
     </tab-set>
     <slot></slot>
-    <Footer />
+    <Footer :footerMargin="footerMargin" />
   </div>
 </template>
 
@@ -28,6 +29,10 @@ export default {
     selectedIndex: {
       type: Number,
       default: -1
+    },
+    footerMargin: {
+      type: Boolean,
+      default: true
     }
   },
   components: { TabSet, TabOption, Footer },
@@ -35,8 +40,8 @@ export default {
     return {
       pages: [
         { name: 'Home', url: '/' },
-        { name: 'Speakers', url: '/speakers' },
-        { name: 'Sponsors', url: '/sponsors' },
+        // { name: 'Speakers', url: '/speakers' },
+        // { name: 'Sponsors', url: '/sponsors' },
         { name: 'About', url: '/about' },
         { name: 'Contact', url: '/contact' }
       ]
@@ -53,6 +58,12 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $hero-break: 850px;
+
+.cta-button {
+  background: none !important;
+  padding-left: 32px;
+  padding-right: 32px;
+}
 
 .standard-hero {
   width: 100%;

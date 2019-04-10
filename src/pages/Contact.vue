@@ -1,5 +1,5 @@
 <template>
-  <ConferencePage :selectedIndex="4">
+  <ConferencePage :selectedIndex="2">
     <div class="standard-hero" style="position: relative">
       <h1>Contact Us</h1>
       <div class="accent"></div>
@@ -22,9 +22,9 @@
             Follow our news and find more Information on social media
           </p>
           <div class="social-bubbles">
-            <a href="https://facebook.com" target="_blank" class="social-bubble">FB</a>
-            <a href="https://instagram.com" target="_blank" class="social-bubble">IG</a>
-            <a href="https://youtube.com" target="_blank" class="social-bubble">YT</a>
+            <a href="https://facebook.com" target="_blank" class="social-bubble"><img src="/static/06-facebook.svg" alt="Facebook logo" /></a>
+            <a href="https://instagram.com" target="_blank" class="social-bubble"><img src="/static/38-instagram.svg" alt="Instagram logo" /></a>
+            <a href="https://youtube.com" target="_blank" class="social-bubble"><img src="/static/18-youtube.svg" alt="Youtube logo" /></a>
           </div>
           <p>
             Or follow our newsletter
@@ -100,12 +100,22 @@ export default {
 
     .social-bubbles {
       .social-bubble {
-        display: inline-block;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
         width: 40px;
         height: 40px;
         border-radius: 20px;
         text-decoration: none;
         background-color: $color-primary-2;
+
+        &:hover {
+          filter: brightness(80%);
+        }
+
+        img {
+          height: 60%;
+        }
       }
     }
 

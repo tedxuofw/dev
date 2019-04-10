@@ -1,14 +1,14 @@
 <template>
-  <div class="footer">
+  <div class="footer" :class="{ 'footer-margin': footerMargin }">
     <div class="tagline">
       <p>Step<br/>Forward<br/>Now</p>
     </div>
     <div class="social">
       <h3>Follow Us</h3>
       <div class="social-bubbles">
-        <a href="https://facebook.com" target="_blank" class="social-bubble">FB</a>
-        <a href="https://instagram.com" target="_blank" class="social-bubble">IG</a>
-        <a href="https://youtube.com" target="_blank" class="social-bubble">YT</a>
+        <a href="https://facebook.com" target="_blank" class="social-bubble"><img src="/static/06-facebook.svg" alt="Facebook logo" /></a>
+        <a href="https://instagram.com" target="_blank" class="social-bubble"><img src="/static/38-instagram.svg" alt="Instagram logo" /></a>
+        <a href="https://youtube.com" target="_blank" class="social-bubble"><img src="/static/18-youtube.svg" alt="Youtube logo" /></a>
       </div>
       <button>Get your tickets now</button>
       <p>This independent TEDx event is operated under license from TED ©2019 TEDxUofW</p>
@@ -31,7 +31,13 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
+  props: {
+    footerMargin: {
+      type: Boolean,
+      default: true
+    }
+  }
 };
 </script>
 
@@ -44,9 +50,12 @@ $footer-tiny-break: 515px;
   display: flex;
   width: 100%;
   background-color: $color-secondary-2;
-  margin-top: 64px;
   padding: 48px 120px;
   box-sizing: border-box;
+
+  &.footer-margin {
+    margin-top: 64px;
+  }
 
   @media screen and (max-width: $footer-break) {
     flex-wrap: wrap;
@@ -121,12 +130,22 @@ $footer-tiny-break: 515px;
 
 .social-bubbles {
   .social-bubble {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
     border-radius: 20px;
     text-decoration: none;
     background-color: $color-primary-2;
+
+    &:hover {
+      filter: brightness(80%);
+    }
+
+    img {
+      height: 60%;
+    }
   }
 }
 </style>

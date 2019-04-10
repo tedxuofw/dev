@@ -98,6 +98,20 @@ button,
     }
   }
 
+  &.ghost {
+    background-color: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.2);
+    }
+
+    &:active {
+      background-color: rgba($color-primary, 0.4);
+    }
+  }
+
   &:hover {
     background-color: darken($color-primary, 10%);
   }

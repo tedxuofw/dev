@@ -12,7 +12,7 @@
 
       <div id="final-splash-info-container">
         <span class="title">TEDxUofW 2019</span>
-        <span class="date">Kane Hall 210, May 3rd</span>
+        <span class="date">Walker Ames Room, May 4</span>
         <div class="accent"></div>
       </div>
     </div>
@@ -29,7 +29,6 @@ export default {
 @import "@/styles/_variables.scss";
 
 // Constants: arrow slide-in animation
-// $logo-height: 548px;
 $logo-height: 80vh;
 $navbar-height: 80px;
 $logo-position-top: calc(50% - #{$navbar-height / 3} - #{$logo-height / 2});
@@ -51,6 +50,7 @@ $final-animation-length: 750ms;
 .splash {
   position: relative;
   width: 100%;
+  min-height: 420px;
   height: calc(100vh - #{$navbar-height});
   overflow-x: hidden;
   background-color: $color-secondary-2;
