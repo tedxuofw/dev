@@ -5,7 +5,7 @@
                 <SpotlightTicketView
                     :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
                     :tickets="spotlightTickets"
-                    :mobileView="mobileView / 2" 
+                    :mobileView="mobileView" 
                     :maxView="2"/>
             </div>
             <div class="col-4">
@@ -55,10 +55,8 @@ import SideNavBar from "@/components/SideNavBar";
 export default {
   name: "ConfirmationPage",
   components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar },
-  props: ["tickets"],
   data() {
     return {
-      tickets: [],
       mobileView: false,
     };
   },
@@ -145,6 +143,12 @@ p {
 
 button {
     width: 100%;
+}
+
+@media (max-width: 1350px) {
+  .col-4 {
+      width: 100%;
+  }
 }
 
 </style>

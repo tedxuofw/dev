@@ -27,7 +27,7 @@
           <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
             <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
               <h2>{{ `${ticket.firstName}` }}</h2>
-              {{ ticket.ticket }}
+              {{ ticket.ticket }} &middot; {{ticket.email}}
             </div>
             <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
             <button class="full-width primary" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
