@@ -4,11 +4,9 @@
       <main>
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">
-          <div> 
-            <i class="fas fa-arrow-left"> </i> Back to...
-          </div>
-          <div class="col-12">
-            <h1>Get new tickets</h1>
+          <div class="col-12 header-container">
+            <div class="back-button" v-if="this.screen > 0" @click='goBack()'> <i class="fas fa-arrow-left"> </i> Back to {{this.navName}} </div>
+            <h1> {{this.title}} </h1>
           </div>
         </div>
 
@@ -69,6 +67,9 @@
 
 <script>
 const MOBILE_MAX_WIDTH = 1350;
+const pageNames = ['Buy new tickets', 'Ticket payment', 'Review your purchase'];
+const navNames = ['', 'tickets', 'payment']
+
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
@@ -87,7 +88,9 @@ export default {
       showError: false,
       mobileView: false,
       // 0 = ticket selection, 1 = checkout, 2 = confirmation
-      screen: 0 
+      screen: 0,
+      navNames: '',
+      title: 'Buy new tickets'
     };
   },
   created() {
@@ -176,11 +179,20 @@ export default {
     /** Switches to payment interface. */
     goToPayment() {
       this.screen = 1;
+      this.navName = navNames[this.screen];
+      this.title = pageNames[this.screen];
     },
 
     /** Switches to confirmation interface. */
     goToConfirmation() {
       this.screen = 2;
+      this.navName = navNames[this.screen];
+      this.title = pageNames[this.screen];
+    },
+
+    goBack() {
+      this.screen--;
+      this.title = pageNames[this.screen];
     }
   },
   computed: {
@@ -230,6 +242,7 @@ export default {
 h1 {
   font-weight: 300;
   text-align: center;
+  margin-bottom: 0;
 }
 
 p.callout,
@@ -341,9 +354,22 @@ main {
     height: 100%;
 }
 
+.back-button {
+  left: 210px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: $color-primary;
+}
+
 @media (max-width: 600px) {
   main {
     margin-left: 0;
+  }
+
+  h1 {
+    font-size: 45px;
   }
 }
 </style>
