@@ -1,8 +1,8 @@
 <template>
   <div class="conference-nav">
     <div class="mobile-nav">
-      <img src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
-      <button class="primary-2 cta-button no-margin" @click="onClickNav">{{ !mobileShowNav ? 'Nav' : 'Hide' }}</button>
+      <img class="logo" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+      <button class="hamburger" :class="{ active: mobileShowNav }" @click="onClickNav"><img src="/static/hamburger.svg" alt="Menu icon" /></button>
     </div>
     <tab-set :secondary="secondary" :mobileShowNav="mobileShowNav">
       <tab-option logo :click="() => navigateTo('/')"><img src="/static/navbar-logo.svg" alt="TEDxUofW Logo" /></tab-option>
@@ -72,8 +72,16 @@ export default {
     height: $height-tabset;
     justify-content: space-between;
 
-    img {
+    img.logo {
       height: 80%;
+    }
+
+    .hamburger {
+      transition: transform 250ms;
+
+      &.active {
+        transform: rotate(90deg);
+      }
     }
 
     @media screen and (max-width: $tabset-break) {

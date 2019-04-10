@@ -1,5 +1,5 @@
 <template>
-  <ConferencePage :selectedIndex="1">
+  <ConferencePage :selectedIndex="1" :footerMargin="false">
     <div class="standard-hero" style="position: relative">
       <h1>About</h1>
       <div class="accent"></div>
@@ -297,29 +297,6 @@ $about-break: 1170px;
     }
   }
 }
-
-// @keyframes web-hover-animate {
-//   0% {
-//     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
-//   }
-
-//   25% {
-//     box-shadow: -5px 5px 10px 5px rgba($color-primary, 0.2);
-//   }
-
-//   50% {
-//     box-shadow: -5px -5px 10px 5px rgba($color-primary-2, 0.2);
-//   }
-
-//   75% {
-//     box-shadow: 5px -5px 10px 5px rgba($color-tertiary, 0.2);
-//   }
-
-//   100% {
-//     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
-//   }
-// }
-// #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3
 
 $web-hover-animate-props: 0px 0px 40px 30px;
 @keyframes web-hover-animate {

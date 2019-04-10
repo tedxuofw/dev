@@ -31,6 +31,7 @@ export default {
   overflow-x: auto;
   background-color: $color-primary;
   align-items: stretch;
+  transition: max-height 250ms, padding 250ms;
 
   &.secondary {
     background-color: $color-secondary-2;
@@ -39,12 +40,15 @@ export default {
   @media screen and (max-width: $tabset-break) {
     flex-direction: column;
     height: inherit;
+    max-height: calc(100vh - #{$height-tabset});
     padding: 16px 0;
   }
 
   &:not(.mobile-show-nav) {
     @media screen and (max-width: $tabset-break) {
-      display: none;
+      max-height: 0;
+      padding: 0;
+      overflow: hidden;
     }
   }
 }

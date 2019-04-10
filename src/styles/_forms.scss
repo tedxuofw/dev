@@ -63,6 +63,25 @@ input[type="email"] {
   }
 }
 
+button.hamburger {
+  border: 0;
+  background-color: transparent;
+  margin: 0;
+  line-height: 0;
+  outline: none;
+
+  img {
+    height: 30px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &:hover,
+  &:active {
+    background-color: transparent;
+  }
+}
+
 button,
 .button {
   background-color: $color-primary-2;
