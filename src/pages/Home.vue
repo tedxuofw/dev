@@ -22,11 +22,22 @@
                     </div>
                     <div class="col-8"> 
                         <div class="header"> Your Tickets </div>
-                        <div class="card-container">
-                            <div class="card-body"> 
+                        <div class="card-container" v-if="!hasTickets">
+                            <div class="card-body">
                                 <p class="warning card-child"> You don't have tickets for TEDx2019 yet. </p>
-                                <div class="card-child">
+                                <div class="card-child"  >
                                     <a href="/#/checkout"> <button class="secondary"> Get Tickets </button> </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else v-bind:class="{ alternative: hasTickets }"> 
+                            <div v-for="ticket in tickets" :key="ticket.id" class="tickets-container">
+                                <div class="ticket-stub">
+                                    <div class="user-info">
+                                        <p class="name"> {{ticket.firstName}} </p>
+                                        <p class="email"> {{ticket.email}} </p>
+                                    </div>
+                                    <div class="ticket-info"> {{ticket.ticket}} </div>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +62,22 @@ export default {
                 last: user.last(),
                 email: user.email(),
                 profile: user.profile(),
-            }
+            },
+            hasTickets: false,
+            tickets: [ 
+                {
+                    firstName: 'Jenny Liang',
+                    email: 'jliang9@uw.edu',
+                    ticket: 'Student Ticket',
+                    id: 0
+                }, 
+                {
+                    firstName: 'Jenny Liang',
+                    email: 'jliang9@uw.edu',
+                    ticket: 'Student Ticket',
+                    id: 1
+                },
+            ],
         }
     },
     components: { NavBar, Loading },
@@ -59,6 +85,10 @@ export default {
         triggerModal: function() {
             document.querySelector('div.modal').classList.toggle('show-modal');
         }
+    },
+    mounted() {
+        // Logic for udpating whether the perosn has tickets and stuff goes here
+        this.hasTickets = true;
     }
 };
 </script>
@@ -76,6 +106,47 @@ h1 {
     margin-left: 48px;
 }
 
+div.col-4 {
+    max-height: 700px;
+}
+
+div.white {
+    background-color: white;
+}
+
+.ticket-stub {
+    background-color: $color-secondary-2;
+    border-left: 16px solid $color-primary;
+    margin-bottom: 1em;
+    padding: 0.5em 1em;
+}
+
+.ticket-stub p {
+    margin: 10px;
+}
+
+.ticket-stub .name {
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.ticket-stub .ticket-info {
+    color: $color-accent;
+    text-align: right;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.ticket-stub .user-info {
+    border-bottom: 1px solid $color-primary-2;
+}
+
+.ticket-stub .email {
+    color: $color-primary;
+    font-style: italic;
+}
+
 .card-body {
     background-color: $color-secondary-2;
     padding: 1em;
@@ -83,6 +154,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     text-align: center;
     flex-wrap: wrap;
     width: 100%;
