@@ -46,8 +46,8 @@
             <input type="text" placeholder="First Name" class="full-width" v-model="currentTicket.firstName">
             <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email</p>
             <input type="text" placeholder="Email" class="full-width" v-model="currentTicket.email">
-            <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Coupon code</p>
-            <input type="text" placeholder="Coupon code (optional)" class="full-width" v-model="currentTicket.code">
+            <!-- <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Coupon code</p>
+            <input type="text" placeholder="Coupon code (optional)" class="full-width" v-model="currentTicket.code"> -->
 
             <p v-if="showError" class="error extra-margin-top"> {{this.errorMessage}}</p>
             <button class="full-width primary" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
