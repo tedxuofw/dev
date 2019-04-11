@@ -2,6 +2,7 @@
   <div>
       <NavBar v-bind:tickets="true"/>
       <main>
+        <h1> Tickets </h1>
         <div class="col-12">
           <div class="row card-row">
               <div class="col-12"> 
@@ -57,23 +58,22 @@ export default {
       ticketEditIndex: -1,
       tickets: [ 
         {
-        firstName: '',
-        email: '',
-        meal: '',
-        ticket: 'General Ticket',
-        id: 0
+          firstName: 'Jenny Liang',
+          email: 'jliang9@uw.edu',
+          ticket: 'Student Ticket',
+          id: 0
         }, 
         {
-          firstName: '',
-          email: '',
-          meal: '',
+          firstName: 'Jenny Liang',
+          email: 'jliang9@uw.edu',
+          ticket: 'Student Ticket',
           ticket: 'General Ticket',
           id: 1
         },
         {
-          firstName: '',
-          email: '',
-          meal: '',
+          firstName: 'Jenny Liang',
+          email: 'jliang9@uw.edu',
+          ticket: 'Student Ticket',
           ticket: 'General Ticket',
           id: 2
         },
@@ -141,7 +141,7 @@ main {
 
 h1 {
     font-weight: 300;
-    margin-left: 48px;
+    margin-left: 32px;
 }
 
 .card-body {
