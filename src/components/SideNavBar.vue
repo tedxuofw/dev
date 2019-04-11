@@ -7,7 +7,7 @@
                 <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/home"> Dashboard </a> </div>
             </div>
             <div v-bind:class="{ active: this.tickets }"> 
-                <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/checkout"> Tickets </a> </div>
+                <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/tickets"> Tickets </a> </div>
             </div>
             <div v-bind:class="{ active: this.feedback }"> 
                 <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/"> Feedback </a> </div>

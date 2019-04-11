@@ -5,8 +5,8 @@
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">
           <div class="col-12 header-container">
-            <div class="back-button" v-if="this.screen > 0" @click='goBack()'> <i class="fas fa-arrow-left"> </i> Back to {{this.navName}} </div>
             <h1> {{this.title}} </h1>
+            <div class="back-button" v-if="this.screen > 0" @click='goBack()'> <i class="fas fa-arrow-left"> </i> Back to {{this.navName}} </div>
           </div>
         </div>
 
@@ -27,7 +27,7 @@
           <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
             <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
               <h2>{{ `${ticket.firstName}` }}</h2>
-              {{ ticket.ticket }}
+              {{ ticket.ticket }} &middot; {{ticket.email}}
             </div>
             <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
             <button class="full-width primary" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
@@ -389,7 +389,7 @@ export default {
 h1 {
   font-weight: 300;
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 0.5em;
 }
 
 p.callout,
@@ -505,6 +505,7 @@ main {
   left: 210px;
   cursor: pointer;
   color: $color-primary;
+  margin-bottom: 1em;
 }
 
 .back-button:hover {
