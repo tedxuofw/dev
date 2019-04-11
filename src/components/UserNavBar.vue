@@ -13,11 +13,8 @@
 </template>
 
 <script>
-import Modal from "./Modal";
-
 export default {
     name: "UserNavBar",
-    components: { Modal },
     props: {
         dashboard: Boolean,
         tickets: Boolean,

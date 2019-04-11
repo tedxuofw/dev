@@ -9,7 +9,7 @@
                     <i class="far fa-user responsive-nav-element dropdown" @click="showUserNav()"></i>
                 </div>
             </div>
-            <Modal :user="user"/>
+            <UserModal :user="user"/>
         </nav>
     </div>
 </template>
@@ -17,11 +17,11 @@
 <script>
 import UserNavBar from "./UserNavBar";
 import SideNavBar from "./SideNavBar";
-import Modal from "./Modal";
+import UserModal from "./UserModal";
 
 export default {
     name: "MobileNavBar",
-    components: { SideNavBar, UserNavBar, Modal },
+    components: { SideNavBar, UserNavBar, UserModal },
     props: {
         dashboard: Boolean,
         tickets: Boolean,

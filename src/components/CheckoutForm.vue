@@ -1,5 +1,5 @@
 <template>
-    <div id="payment-container">
+    <form id="payment-container" @submit="submit()">
         <h2> Card Information </h2>
         <div class="row">
             <div id="card-number" class="full-width col-12"></div>
@@ -15,9 +15,9 @@
             <input type="text" placeholder="Zip Code" id="card-zip" class="full-width col-4">
         </div>
         <div class="row">
-            <button class="full-width primary" @click="updateParent()">Continue</button>
+            <button class="full-width primary" @click="updateParent($event)">Continue</button>
         </div>
-    </div>
+    </form>
 </template>
 
 <script>
@@ -46,7 +46,7 @@ export default {
                 },
 
                 '::placeholder': {
-                    // primary-color-2
+                    // primary-color-22
                     color: '#e09b8b',
                 },
 
@@ -81,12 +81,17 @@ export default {
         this.element = number; // Just need one element?
     },
     methods: {
-        submit: function(event) {
-            console.log(event);
-            alert(event);
-            event.preventDefault();
+        submit: function() {
+            /*event.preventDefault();*/
         },
-        updateParent: function() {
+
+        updateParent: function(event) {
+            /*var submit = document.createElement('input');
+            submit.type = 'submit';
+            submit.style.display = 'none';
+            document.querySelector('form').appendChild(submit);
+            submit.click();
+            submit.remove();*/
             
             this.stripe.createToken(this.element).then((result) => {
                 if (result.error) {
@@ -170,7 +175,7 @@ button.full-width {
 }
 
 #payment-container {
-    width: 40%;
+    width: 50%;
     border: 1px solid $color-primary;
     padding: 0.5em 2em;
 }
@@ -178,5 +183,12 @@ button.full-width {
 h2 {
     border-bottom: 3px solid $color-primary;
     line-height: 1.5;
+}
+
+@media (max-width: 1050px) {
+    #payment-container {
+        width: 80%;
+        padding: 1.5em;
+    }
 }
 </style>

@@ -43,7 +43,7 @@
 
             <h2 class="extra-margin-top">Ticket Holder</h2>
             <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }"> Name <span class='required'>*</span></p>
-            <input type="text" placeholder="First Name" class="full-width" v-model="currentTicket.firstName">
+            <input type="text" placeholder="Full Name" class="full-width" v-model="currentTicket.firstName">
             <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email <span class='required'>*</span></p>
             <input type="text" placeholder="Email" class="full-width" v-model="currentTicket.email">
             <p class="footnote" :class="{ 'show-label': !!currentTicket.code }">Coupon code</p>
@@ -131,9 +131,14 @@ export default {
     saveTicket() {
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
 
+      console.log(this.tickets[this.ticketEditIndex])
       if(!this.currentTicketIsValid) {
         this.showError = true;
         this.errorMessage = "Make sure you've filled out all parts of the form before saving."
+        return;
+      } else if (this.tickets[this.ticketEditIndex].firstName.trim().split(' ').length < 2) {
+        this.showError = true;
+        this.errorMessage = "Please enter a first and last name."
         return;
       } else if (!re.test(this.tickets[this.ticketEditIndex].email)) {
         this.showError = true;
@@ -180,7 +185,7 @@ export default {
       return {
         firstName: '',
         email: '',
-        meal: '',
+        code: '',
         ticket: 'General Ticket',
         id: this.ticketIdCounter
       };

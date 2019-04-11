@@ -74,7 +74,7 @@ export default {
     components: { NavBar, Loading },
     methods: {
         triggerModal: function() {
-            document.querySelector('div.modal').classList.toggle('show-modal');
+            document.querySelector('div.user-modal').classList.toggle('show-modal');
         }
     },
     mounted() {

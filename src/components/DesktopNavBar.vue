@@ -7,7 +7,7 @@
                 <p class="dropdown"> {{ user.first }} {{ user.last }} </p>
                 <Dropdown :user="user"/>
             </div>
-            <Modal :user="user"/>
+            <UserModal :user="user"/>
         </div>
     </div>
 </template>
@@ -15,7 +15,7 @@
 <script>
 import { user } from '../user.js';
 import Dropdown from "./Dropdown";
-import Modal from "./Modal";
+import UserModal from "./UserModal";
 import SideNavBar from "./SideNavBar";
 
 export default {
@@ -35,7 +35,7 @@ export default {
             }
         }
     },
-    components: { Dropdown, Modal, SideNavBar },
+    components: { Dropdown, UserModal, SideNavBar },
 }
 </script>
 

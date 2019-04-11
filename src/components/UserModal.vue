@@ -1,6 +1,6 @@
 <template>
-    <div class="modal">
-        <div class="modal-content">
+    <div class="user-modal">
+        <div class="user-modal-content">
             <h2>Profile</h2>
             <div id="avatars">
                 <div id="images">
@@ -45,13 +45,13 @@
 import Dropdown from "./Dropdown";
 
 export default {
-    name: "Modal",
+    name: "UserModal",
     props: {
         user: Object
     },
     methods: {
         closeModal: function() {
-            document.querySelector('div.modal').classList.remove('show-modal');
+            document.querySelector('div.user-modal').classList.remove('show-modal');
         },
         submit: function() {
             // Do other stuff
@@ -129,7 +129,7 @@ h2 {
     font-weight: 300;
 }
 
-.modal {
+.user-modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -143,7 +143,7 @@ h2 {
     z-index: 1;
 }
 
-.modal-content {
+.user-modal-content {
     background-color: white;
     box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
     left: 57%;
@@ -191,7 +191,7 @@ p.col-12 {
         text-align: left;
     }
 
-    .modal-content {
+    .user-modal-content {
         width: 80%;
     }
 }

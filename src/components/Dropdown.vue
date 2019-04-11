@@ -27,10 +27,10 @@ export default {
             this.closeModal();
         },
         closeModal: function() {
-            document.querySelector('div.modal').classList.remove('show-modal');
+            document.querySelector('div.user-modal').classList.remove('show-modal');
         },
         openModal: function() {
-            document.querySelector('div.modal').classList.toggle('show-modal');
+            document.querySelector('div.user-modal').classList.toggle('show-modal');
         },
         keypressCloseModal: function() {
             var code = (event.keyCode ? event.keyCode : event.which);
