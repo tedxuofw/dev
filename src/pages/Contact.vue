@@ -9,11 +9,14 @@
         <div class="col-8 no-margin message">
           <h2>Message</h2>
           <div class="accent"></div>
-          <input type="text" placeholder="Name" class="half-width" />
+          <p>
+            Email us: <a href="mailto:tedxuofw@uw.edu">tedxuofw@uw.edu</a>
+          </p>
+          <!-- <input type="text" placeholder="Name" class="half-width" />
           <input type="email" placeholder="Email" class="half-width" />
           <input type="text" placeholder="Title" class="full-width" />
           <textarea placeholder="Message" class="full-width" />
-          <button class="full-width">Send</button>
+          <button class="full-width">Send</button> -->
         </div>
         <div class="col-4 no-margin social">
           <h2>Social</h2>

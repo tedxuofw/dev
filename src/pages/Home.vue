@@ -8,7 +8,7 @@
           <p>
             For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
           </p>
-          <a class="button ghost">Register</a>
+          <router-link class="button ghost" to="login">Register</router-link>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
               <p>
                 Grab tickets for youself or your group with your TEDxUofW account.
               </p>
-              <a class="button ghost">Register</a>
+              <router-link class="button ghost" to="login">Register</router-link>
             </div>
             <div class="explore-card">
               <img src="/static/explore-speaker.png" alt="Photo of a speaker" />
@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <div class="container section section-community">
+    <!-- <div class="container section section-community">
       <img class="community-arrow-deco" src="/static/animation-arrow-left.svg" alt="Arrow decoration" />
       <div class="row">
         <div class="col-6 no-margin content">
@@ -66,7 +66,7 @@
           <button class="button">Sign up</button>
         </div>
       </div>
-    </div>
+    </div> -->
   </ConferencePage>
 </template>
 
@@ -82,6 +82,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+.ghost {
+  text-decoration: none;
+}
 
 .section {
   display: flex;

@@ -15,16 +15,17 @@
     </div>
     <div class="pages">
       <h3>Pages</h3>
-      <a href="about">About</a>
-      <a href="volunteer">Volunteer</a>
+      <router-link to="about">About</router-link>
+      <router-link to="contact">Contact</router-link>
+      <!-- <a href="volunteer">Volunteer</a> -->
       <!-- <a href="sponsors">Sponsors</a> -->
     </div>
     <div class="account">
       <h3>Account</h3>
-      <a href="/dashboard">Ticketing</a>
-      <a href="/dashboard">Speaker Interaction</a>
-      <a href="/dashboard">Feedback</a>
-      <a href="/dashboard">Dashbard</a>
+      <router-link to="login">Ticketing</router-link>
+      <router-link to="login">Feedback</router-link>
+      <router-link to="login">Dashboard</router-link>
+      <!-- <a href="/dashboard">Speaker Interaction</a> -->
     </div>
   </div>
 </template>

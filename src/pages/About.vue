@@ -6,9 +6,9 @@
     </div>
     <div class="container section-about">
       <div class="row">
-        <div class="col-4 image">
+        <!-- <div class="col-4 image">
           <div class="placeholder-image"></div>
-        </div>
+        </div> -->
         <div class="col-8 content">
           <div>
             <h2>About <span class="highlight">TEDxUofW</span></h2>
