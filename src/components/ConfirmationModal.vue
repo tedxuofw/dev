@@ -45,7 +45,7 @@
 import Dropdown from "./Dropdown";
 
 export default {
-    name: "UserModal",
+    name: "ConfirmationModal",
     props: {
         user: Object
     },

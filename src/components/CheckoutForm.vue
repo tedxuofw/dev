@@ -1,5 +1,5 @@
 <template>
-    <form id="payment-container" @submit="submit()">
+    <form id="payment-container">
         <h2> Card Information </h2>
         <div class="row">
             <div id="card-number" class="full-width col-12"></div>
@@ -82,7 +82,7 @@ export default {
     },
     methods: {
         submit: function() {
-            /*event.preventDefault();*/
+            event.preventDefault();
         },
 
         updateParent: function(event) {
