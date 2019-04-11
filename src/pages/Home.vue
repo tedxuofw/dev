@@ -22,7 +22,8 @@
                     </div>
                     <div class="col-8"> 
                         <div class="header"> Your Tickets </div>
-                        <div class="card-container" v-if="!hasTickets">
+                        <!-- <div class="card-container" v-if="!hasTickets"> -->
+                        <div class="card-container">
                             <div class="card-body">
                                 <p class="warning card-child"> You don't have tickets for TEDx2019 yet. </p>
                                 <div class="card-child"  >
@@ -30,7 +31,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div v-else v-bind:class="{ alternative: hasTickets }"> 
+                        <!-- <div v-else v-bind:class="{ alternative: hasTickets }"> 
                             <div v-for="ticket in tickets" :key="ticket.id" class="tickets-container">
                                 <div class="ticket-stub">
                                     <div class="user-info">
@@ -40,7 +41,7 @@
                                     <div class="ticket-info"> {{ticket.ticket}} </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
