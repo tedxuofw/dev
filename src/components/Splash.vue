@@ -44,7 +44,7 @@ $fade-animation-length: 50ms;
 $logo-offset-break: 720px;
 
 // Config: final splash animation
-$final-animation-length: 750ms;
+$final-animation-length: 1000ms;
 
 .splash {
   position: relative;

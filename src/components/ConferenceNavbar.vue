@@ -11,7 +11,7 @@
         :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
       <tab-option spacer />
       <tab-option :secondary="secondary">
-        <button class="primary-2 cta-button no-margin" @click="() => navigateTo('/login')">Sign In</button>
+        <button class="primary-2 cta-button no-margin" @click="() => navigateTo('/login')">Buy Tickets Now</button>
       </tab-option>
     </tab-set>
   </div>

@@ -15,9 +15,9 @@
     </div>
     <div class="pages">
       <h3>Pages</h3>
-      <a href="/about">About</a>
-      <a href="/volunteer">Volunteer</a>
-      <a href="/sponsors">Sponsors</a>
+      <a href="about">About</a>
+      <a href="volunteer">Volunteer</a>
+      <!-- <a href="sponsors">Sponsors</a> -->
     </div>
     <div class="account">
       <h3>Account</h3>
