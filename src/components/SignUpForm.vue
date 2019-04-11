@@ -14,7 +14,8 @@
 // Import axios and globalState
 import axios from 'axios';
 import router from "../router";
-
+import { user } from '../user.js';
+    
 export default {
     name: 'SignInForm',
     props: {},
@@ -24,7 +25,8 @@ export default {
                 first: '',
                 last:  '',
                 email: '',
-                password:  ''
+                password:  '',
+                profile: 'http://localhost:8080/static/img/test_2.4a98b92.svg'
             }
         }
     },
@@ -40,8 +42,12 @@ export default {
                     this.$emit("loading");
                     var resp = response.data;
                     if(resp.status === "success") {                
+                        console.log(resp);
+                        user.login(resp.token);
+                        console.log("Successfully logged in as: " + this.form.email);
+                        
                         // Redirect to where we wanna go on success
-                        router.push('/login');
+                        router.push('/home');
                     } else {
                         // User Error
                         this.displayError(response.data.message);

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <MobileNavBar :user="this.user" :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" v-if="this.mobileView"/>
+        <MobileNavBar :user="this.user" :dashboard="this.dashboard" :tickets="this.tickets"  :feedback="this.feedback" v-if="this.mobileView"/>
         <DesktopNavBar :user="this.user" :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" v-else/>
     </div>
 </template>

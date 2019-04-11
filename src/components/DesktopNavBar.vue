@@ -3,7 +3,7 @@
         <SideNavBar :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback"/>
         <div id="user-nav">
             <div id="user" class="dropdown">
-                <img class="dropdown" src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg">
+                <img class="dropdown" :src="user.profile">
                 <p class="dropdown"> {{ user.first }} {{ user.last }} </p>
                 <Dropdown :user="user"/>
             </div>

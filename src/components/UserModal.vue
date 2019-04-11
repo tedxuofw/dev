@@ -1,5 +1,5 @@
 <template>
-    <div class="user-modal show-modal">
+    <div class="user-modal">
         <div class="user-modal-content">
             <h2>Profile</h2>
             <div id="avatars">

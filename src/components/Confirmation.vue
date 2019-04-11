@@ -19,10 +19,10 @@
                         <p class="label"> Email: </p>
                         <p>{{ user.email }}</p>
                     </div>
-                    <div class="data-container">
+                    <!--<div class="data-container">
                         <p class="label"> Payment Card: </p>
                         <p> **** **** **** 1234 </p>
-                    </div>
+                    </div> -->
                 </div>                
                 <div class="content-container">
                     <h2> Summary </h2>

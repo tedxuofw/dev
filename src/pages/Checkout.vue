@@ -144,12 +144,9 @@ export default {
         this.showError = true;
         this.errorMessage = "Please enter a valid email."
         return;
-      } else if (this.tickets[this.ticketEditIndex].code && this.tickets[this.ticketEditIndex].code !== '' && this.tickets[this.ticketEditIndex].code !== 'TEDX123') {
-        // @SOHAM TODO: add in logic to verify coupon code
-        this.showError = true;
-        this.errorMessage = "The coupon code is not valid."
-        return;
-      }
+      } 
+        
+      // No frontend visibility of coupon codes
 
       this.commitChanges();
     },
@@ -225,15 +222,21 @@ export default {
                 token: groupParams.token,
                 registrants: []
               };
-            
+                          
               // Add all the registrants we want
               for(var index in this.tickets) {
-                var ticket = this.tickets[index];                
+                let ticket = this.tickets[index];
+                let cost = 1;
+                if(ticket.ticket == "General Ticket") {
+                    cost = 2;
+                }
+                  
                 registrantParams.registrants.push({
                   email: ticket.email,
                   name: ticket.firstName,
-                  costlevel_id: 1, // FIX LATER
-                  group_id: resp.result.id
+                  costlevel_id: cost,
+                  group_id: resp.result.id,
+                  coupon: ticket.code
                 });
               }
 
@@ -291,7 +294,8 @@ export default {
       let paymentParams = { 
         group_id: this.groupId,
         stripe_id: token,
-        token: user.getJWT()
+        token: user.getJWT(),
+        coupon: this.coupon
       };
       axios.get(pURL, { params: paymentParams }).then((response)  =>  {
           var resp = response.data;
@@ -332,7 +336,8 @@ export default {
           if(resp.status === "success") {
               // Store any information given
               console.log(resp);
-            
+              alert(resp.message + " Look for an email in the next 48 hours with your ticket details.");
+              router.push("/home");
           } else {          
               // Error message
               var message = resp.message;

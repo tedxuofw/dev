@@ -10,7 +10,7 @@
                         <div class="card-container">
                             <div class="card-body"> 
                                 <div class="card-child">
-                                    <img src="https://fcbk.su/_data/stickers/shiba_inu/shiba_inu_12.png"/>
+                                    <img :src="user.profile"/>
                                 </div>
                                 <p class="name card-child"> {{ user.first }} {{ user.last }} </p>
                                 <p class="card-child email"> {{ user.email }} </p>
@@ -50,7 +50,6 @@
 
 <script>
 import { user } from '../user.js';
-import { event } from '../data.js';
 import NavBar from "@/components/NavBar";
 import Loading from "@/components/Loading";
 

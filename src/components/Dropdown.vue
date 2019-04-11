@@ -2,7 +2,7 @@
     <div class="dropdown-content">
         <div id="profile-info">
             <div id="profile-image">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Love_Heart_symbol_square.svg"/>
+                <img :src="user.profile"/>
             </div>
             <p> {{ user.first }} {{ user.last }} </p>
             <p class="email"> {{ user.email }} </p>
