@@ -83,16 +83,23 @@ export default {
 
 .overlay:hover {
   background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
 }
 
 .plus {
-  font-size: 5em;
+  font-size: 6em;
   color: $color-primary;
   margin-bottom: 0.25em;
+  font-weight: 700;
+}
+
+.overlay:hover .plus, .overlay:hover .new-ticket {
+  visibility: hidden;
 }
 
 .new-ticket {
   font-size: 0.9em;
+  font-weight: 700;
 }
 
 .ticket-container {

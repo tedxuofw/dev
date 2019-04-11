@@ -31,11 +31,11 @@ export default {
     },
     methods: {
         signIn: function () {
-            this.$emit("loading");
             this.hideError();
             var errors = this.validate();
 
             if (errors === '') {
+                this.$emit("loading");
                 let url = "https://students.washington.edu/tedxuofw/index.php/api/login";
                 axios.get(url, { params: this.form }).then((response)  =>  {
                     this.$emit("loading");

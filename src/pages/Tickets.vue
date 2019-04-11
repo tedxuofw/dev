@@ -6,7 +6,7 @@
         <div class="col-12">
           <div class="row card-row">
               <div class="col-12"> 
-                  <div class="header"> Tickets </div>
+                  <div class="header"> Your Tickets </div>
                   <div class="card-container">
                       <div class="card-body"> 
                         <div @click="goToCheckout()">
@@ -56,28 +56,7 @@ export default {
     return {
       ticketIdCounter: 0,
       ticketEditIndex: -1,
-      tickets: [ 
-        {
-          firstName: 'Jenny Liang',
-          email: 'jliang9@uw.edu',
-          ticket: 'Student Ticket',
-          id: 0
-        }, 
-        {
-          firstName: 'Jenny Liang',
-          email: 'jliang9@uw.edu',
-          ticket: 'Student Ticket',
-          ticket: 'General Ticket',
-          id: 1
-        },
-        {
-          firstName: 'Jenny Liang',
-          email: 'jliang9@uw.edu',
-          ticket: 'Student Ticket',
-          ticket: 'General Ticket',
-          id: 2
-        },
-      ],
+      tickets: [],
       mobileView: false,
       // 0 = ticket selection, 1 = checkout, 2 = confirmation
       screen: 0,

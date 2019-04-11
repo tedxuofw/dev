@@ -30,7 +30,6 @@ export default {
     },
     methods: {
         register: function () {
-            this.$emit("loading");
             var error = this.validate();
             console.log(error);
             if (error === '') {

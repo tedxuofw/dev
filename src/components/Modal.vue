@@ -146,12 +146,12 @@ h2 {
 .modal-content {
     background-color: white;
     box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
-    left: 50%;
+    left: 57%;
     padding: 1rem;
-    position: absolute;
+    position: relative;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 40%;
+    width: 50%;
 }
 
 p.col-12 {
