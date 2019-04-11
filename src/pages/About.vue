@@ -34,7 +34,7 @@
       <div class="row">
         <div class="col-12 no-margin-horizontal">
           <div class="team-container">
-            <div class="person" v-for="(person, idx) in filteredTeam" :key="idx">
+            <div class="person" v-for="person in filteredTeam" :key="person.name">
               <img :src="!person.showAlt ? person.imageUrl : person.imageUrlAlt"
                 :class="{ 'web': person.team == 'Web' }"
                 :alt="`Photo of ${person.name}`"
@@ -80,7 +80,7 @@ export default {
 
         makePerson('Maya Gopalan', 'Finance', 'Finance Team Manager'),
         makePerson('Connor Hart', 'Finance', 'Sponsorship', false),
-        makePerson('Emma Hurring', 'Finance', 'Logistics'),
+        makePerson('Emma Ueda', 'Finance', 'Logistics'),
         makePerson('Jonathan Chang', 'Finance', 'Analyst', false),
         makePerson('Stephen Lee', 'Finance', 'Analyst'),
 
@@ -92,7 +92,7 @@ export default {
         makePerson('Yan Ong', 'Production', 'Tech Lead'),
 
         makePerson('Rahul Prasad', 'Public Relations', 'PR Team Manager'),
-        makePerson('Emma Hurring', 'Outreach Coordinator', 'Public Relations'),
+        makePerson('Emma Hurring', 'Public Relations', 'Outreach Coordinator'),
         makePerson('Marie Danilychev', 'Public Relations', 'External Outreach', false),
         makePerson('Samantha Freeman', 'Public Relations', 'Internal Manager'),
 
