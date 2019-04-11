@@ -42,11 +42,11 @@
             </select>
 
             <h2 class="extra-margin-top">Ticket Holder</h2>
-            <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }"> Name</p>
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }"> Name <span class='required'>*</span></p>
             <input type="text" placeholder="First Name" class="full-width" v-model="currentTicket.firstName">
-            <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email</p>
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email <span class='required'>*</span></p>
             <input type="text" placeholder="Email" class="full-width" v-model="currentTicket.email">
-            <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Coupon code</p>
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.code }">Coupon code</p>
             <input type="text" placeholder="Coupon code (optional)" class="full-width" v-model="currentTicket.code">
 
             <p v-if="showError" class="error extra-margin-top"> {{this.errorMessage}}</p>
@@ -127,16 +127,20 @@ export default {
 
     /** Saves changes to currently-editing ticket, or displays error if there's a problem */
     saveTicket() {
-      var emailInput = document.querySelector('input[placeholder="Email"]');
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
 
       if(!this.currentTicketIsValid) {
         this.showError = true;
         this.errorMessage = "Make sure you've filled out all parts of the form before saving."
         return;
-      } else if (!re.test(emailInput.value)) {
+      } else if (!re.test(this.tickets[this.ticketEditIndex].email)) {
         this.showError = true;
         this.errorMessage = "Please enter a valid email."
+        return;
+      } else if (this.tickets[this.ticketEditIndex].code && this.tickets[this.ticketEditIndex].code !== '' && this.tickets[this.ticketEditIndex].code !== 'TEDX123') {
+        // @SOHAM TODO: add in logic to verify coupon code
+        this.showError = true;
+        this.errorMessage = "The coupon code is not valid."
         return;
       }
 
@@ -194,7 +198,6 @@ export default {
 
     /** Switches to payment interface. */
     goToPayment() {
-      
       // Generate a group (event_id, owner_id)
       let gURL = "https://students.washington.edu/tedxuofw/index.php/api/group/create";
       let groupParams = { 
@@ -357,6 +360,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+.required {
+  color: $color-primary;
+  font-weight: 700;
+}
 
 h1 {
   font-weight: 300;

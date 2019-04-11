@@ -74,6 +74,7 @@ export default {
         }
     },
     mounted() {
+        // TODO : Add your logic to tell whether the usre has tickets 
         this.hasTickets = tickets == [];
     }
 };

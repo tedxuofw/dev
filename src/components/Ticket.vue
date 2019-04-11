@@ -1,6 +1,6 @@
 <template>
     <div class="ticket-container" :style="{ maxWidth: maxWidth }">
-      <div v-bind:class="{ overlay: addButton }" v-if="addButton" @click="goToCheckout()"> 
+      <div v-bind:class="{ overlay: addButton }" v-if="addButton"> 
         <div class="plus"> + </div>
         <div class="new-ticket"> NEW TICKET </div>
       </div>
