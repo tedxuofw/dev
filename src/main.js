@@ -4,25 +4,6 @@ import router from "./router";
 
 Vue.config.productionTip = false;
 
-// Create a global state (prob need to better)
-export const globalStore = new Vue({
-  data() {
-    return {
-      attrs: {}
-    }
-  },
-  methods: {
-    set(key, val) {
-      this.attrs[key] = val;
-    },
-    get(key) {
-      return this.attrs[key];
-    },
-    remove(key) {
-      delete attrs[key];
-    }
-  }
-})
 
 /* eslint-disable no-new */
 new Vue({

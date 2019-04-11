@@ -1,5 +1,9 @@
 <template>
     <div class="ticket-container" :style="{ maxWidth: maxWidth }">
+      <div v-bind:class="{ overlay: addButton }" v-if="addButton"> 
+        <div class="plus"> + </div>
+        <div class="new-ticket"> NEW TICKET </div>
+      </div>
       <div class="conference-info">
         <div class="info-small ticket-type">{{ ticketType }}</div>
         <div class="conference-main">
@@ -9,7 +13,7 @@
           </div>
           <div class="conference-title">{{ conferenceTitle }}</div>
         </div>
-        <div class="info-small ticket-number">Confirmation: {{ confirmationCode }}</div>
+        <div class="info-small ticket-number">Email: {{ email }}</div>
       </div>
       <div class="person-info">
         <div class="info-set">
@@ -17,8 +21,8 @@
           <p class="person-name">{{ personName }}&nbsp;</p>
         </div>
         <div class="info-set">
-          <p class="footnote">Meal Choice</p>
-          <p class="person-meal">{{ personMeal }}&nbsp;</p>
+          <p class="footnote">Ticket Type</p>
+          <p class="person-meal">{{ ticketType }}&nbsp;</p>
         </div>
       </div>
     </div>
@@ -49,26 +53,61 @@ export default {
     personName: {
       type: String
     },
-    personMeal: {
-      type: String
-    },
     ticketType: {
       type: String
     },
-    confirmationCode: {
+    email: {
       type: String
+    },
+    addButton: {
+      type: Boolean
     }
-  }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/styles/_variables.scss';
+
+.overlay {
+  min-width: 250px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.overlay:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+.plus {
+  font-size: 6em;
+  color: $color-primary;
+  margin-bottom: 0.25em;
+  font-weight: 700;
+}
+
+.overlay:hover .plus, .overlay:hover .new-ticket {
+  visibility: hidden;
+}
+
+.new-ticket {
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
 .ticket-container {
   min-width: 250px;
   width: 100%;
   border: 1px solid $color-secondary;
   box-shadow: 10px 10px 31px 0px rgba(194,194,194,1);
+  position: relative;
 
   .conference-info {
     background-color: $color-primary;

@@ -6,8 +6,8 @@
           class="ticket"
           :class="{ 'non-spotlight-ticket': !ticket.spotlight }"
           conferenceTitle="Two Steps Forward" conferenceYear="2019"
-          :personName="`${ticket.firstName} ${ticket.lastName}`" :personMeal="ticket.meal"
-          :ticketType="ticket.ticket" :confirmationCode="`SB11054${ticket.id}`"
+          :personName="`${ticket.firstName}`"
+          :ticketType="ticket.ticket" :email="`${ticket.email}`"
           maxWidth="300px" />
       </div>
     </transition-group>
@@ -28,6 +28,9 @@ export default {
     },
     mobileView: {
       type: Boolean
+    },
+    maxView: {
+      type: Number
     }
   },
   computed: {
@@ -45,7 +48,7 @@ export default {
 
       let result = this.tickets
         .map((ticket, ticketIndex) => ({ ...ticket, index: ticketIndex }))
-        .filter((ticket, ticketIndex) => ticketIndex < 3)
+        .filter((ticket, ticketIndex) => ticketIndex < this.maxView)
         .map((ticket, ticketIndex) => ({ ...ticket, spotlight: ticketIndex == 0 }));
 
       if(result.length == 3) {
