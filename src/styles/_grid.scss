@@ -38,11 +38,25 @@ body {
 @for $i from 1 through $grid-cols {
   .col-#{$i} {
     width: percentage($i / $grid-cols);
-    margin: $grid-margins / 2;
+    box-sizing: border-box;
 
     @media only screen and (max-width: $grid-break) {
       width: 100%;
       margin: 0;
     }
+  }
+
+  .col-#{$i}:not(.no-margin) {
+    margin: $grid-margins / 2;
+  }
+
+  .col-#{$i}:not(.no-margin).no-margin-vertical {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .col-#{$i}:not(.no-margin).no-margin-horizontal {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

@@ -16,6 +16,7 @@
   }
 }
 
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -27,6 +28,13 @@ select,
   border-radius: 4px;
   margin-bottom: 0.5em;
   padding: 12px;
+  font-family: 'nimbus-sans', sans-serif;
+  font-size: 19px;
+
+  &.half-width {
+    display: inline-block;
+    width: calc(50% - 3px);
+  }
 
   &.full-width {
     width: 100%;
@@ -41,6 +49,7 @@ label {
   display: block;
 }
 
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -54,17 +63,36 @@ input[type="email"] {
   }
 }
 
+button.hamburger {
+  border: 0;
+  background-color: transparent;
+  margin: 0;
+  line-height: 0;
+  outline: none;
+
+  img {
+    height: 30px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &:hover,
+  &:active {
+    background-color: transparent;
+  }
+}
+
 button,
 .button {
-  background-color: $color-primary;
-  color: $color-text-light;
+  background-color: $color-primary-2;
+  color: $color-primary;
   border: none;
   cursor: pointer;
 
   &.secondary {
     background-color: $color-secondary-2;
     color: $color-primary;
-    border: 1px solid $color-primary;
+    border: 1px solid $color-primary-2;
 
     &:hover {
       background-color: darken($color-secondary-2, 10%);
@@ -72,6 +100,20 @@ button,
 
     &:active {
       background-color: darken($color-secondary-2, 20%);
+    }
+  }
+
+  &.primary {
+    background-color: $color-primary;
+    color: $color-primary-2;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+    }
+
+    &:active {
+      background-color: darken($color-primary, 20%);
     }
   }
 
@@ -89,11 +131,25 @@ button,
     }
   }
 
+  &.ghost {
+    background-color: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.2);
+    }
+
+    &:active {
+      background-color: rgba($color-primary, 0.4);
+    }
+  }
+
   &:hover {
-    background-color: darken($color-primary, 10%);
+    background-color: darken($color-primary-2, 10%);
   }
 
   &:active {
-    background-color: darken($color-primary, 20%);
+    background-color: darken($color-primary-2, 20%);
   }
 }
