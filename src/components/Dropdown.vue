@@ -9,12 +9,13 @@
         </div>
         <div id="profile-nav">
             <a @click="this.openModal">Edit Profile</a>
-            <a>Logout</a>
+            <a @click="this.logout">Logout</a>
         </div>
     </div>
 </template>
 
 <script>
+import { user } from '../user.js';
 export default {
     name: "Dropdown",
     props: {
@@ -37,7 +38,10 @@ export default {
                 event.preventDefault();
                 this.closeModal();
             }
-        }
+        },
+        logout: function() {
+            user.logout();
+        },
     },
     created() {
         window.addEventListener('keyup',this.keypressCloseModal);

@@ -39,6 +39,7 @@
 
 <script>
 import { user } from '../user.js';
+import { event } from '../data.js';
 import NavBar from "@/components/NavBar";
 import Loading from "@/components/Loading";
 
@@ -53,6 +54,9 @@ export default {
                 profile: user.profile(),
             }
         }
+    },
+    mounted() {
+        // event.sync();
     },
     components: { NavBar, Loading }
 };

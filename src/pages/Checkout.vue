@@ -58,7 +58,7 @@
         </div>
 
         <div class="row" v-else>
-          <Confirmation :tickets="tickets"/>
+          <Confirmation :tickets="tickets" v-bind:purchases="confirmArr" :paymentId="paymentId" @changed="completeTransaction" />
         </div>
       </div>
     </main>
@@ -96,7 +96,9 @@ export default {
       screen: 0,
       navNames: '',
       title: 'Buy new tickets',
-      errorMessage: ''
+      errorMessage: '',
+      confirmArr: [],
+      paymentId: -1
     };
   },
   created() {
@@ -274,7 +276,7 @@ export default {
     /** Switches to confirmation interface. */
     goToConfirmation(token) {      
       
-       // Add a charge (event_id, owner_id)
+      // Add a charge (event_id, owner_id)
       let pURL = "https://students.washington.edu/tedxuofw/index.php/api/payment/pay";
       let paymentParams = { 
         group_id: this.groupId,
@@ -285,8 +287,14 @@ export default {
           var resp = response.data;
           if(resp.status === "success") {
               // Store any information given
-              console.log(resp);         
+              console.log(resp);
             
+              this.confirmArr = Object.values(resp.summary);
+            
+              this.paymentId = resp.result.id;
+              this.screen = 2;
+              this.navName = navNames[this.screen];
+              this.title = pageNames[this.screen];
           } else {          
               // Error message
               var message = resp.message;
@@ -301,12 +309,34 @@ export default {
           alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
       });
       
-      
-      this.screen = 2;
-      this.navName = navNames[this.screen];
-      this.title = pageNames[this.screen];
     },
+    completeTransaction() {
+      // Add a charge (event_id, owner_id)
+      let cURL = "https://students.washington.edu/tedxuofw/index.php/api/payment/charge";
+      let chargeParams = { 
+        id: this.paymentId,
+        token: user.getJWT()
+      };
+      axios.get(cURL, { params: chargeParams }).then((response)  =>  {
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);
+            
+          } else {          
+              // Error message
+              var message = resp.message;
+              console.log(response.data);
+          }
+        
+      }, (error)  =>  {
+          // There was an error with the way the request was made!
+          var err = error.response;
+          console.log(err);
 
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+    },
     goBack() {
       this.screen--;
       this.title = pageNames[this.screen];
