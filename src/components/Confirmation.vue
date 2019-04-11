@@ -27,17 +27,13 @@
                 <div class="content-container">
                     <h2> Summary </h2>
                     <div class="content-container">
-                        <div class="data-container">
-                            <p> UW Student Ticket <span class="data"> (x2) </span> </p>
-                            <p class="data"> $19.50 </p>
-                        </div>
-                        <div class="data-container">
-                            <p> General Admission Ticket </p>
-                            <p class="data"> $19.50 </p>
+                        <div class="data-container" v-for="purchase in purchases">
+                            <p> {{ purchase.name }} <span class="data"> (x{{ purchase.quantity }}) </span> </p>
+                            <p class="data"> ${{ purchase.cost }} </p>
                         </div>
                     </div>
                 </div>
-                <a href="/#/home"> <button class="primary">Confirm</button> </a>
+                <a @click="updateParent()"> <button class="primary">Confirm</button> </a>
             </div>
         </div>
     </div>
@@ -71,6 +67,12 @@ export default {
     tickets: {
         type: Array
     },
+    purchases: {
+        type: Array
+    },
+    paymentId: {
+        type: Number
+    }
   },
   created() {
     // REMOVE DUPLICATE?
@@ -83,6 +85,10 @@ export default {
       window.addEventListener('resize', this.recalculateMobileView);
     });
     this.recalculateMobileView();
+    console.log("Test");
+    console.log(this.tickets);
+    console.log(this.purchases);
+    console.log(this.paymentId);
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.recalculateMobileView);
@@ -92,6 +98,9 @@ export default {
     recalculateMobileView() {
       this.mobileView = window.innerWidth < MOBILE_MAX_WIDTH;
     },
+    updateParent() {
+        this.$emit("changed");
+    }
   },
   computed: {
     /**
