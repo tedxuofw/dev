@@ -16,6 +16,7 @@
   }
 }
 
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -29,6 +30,13 @@ div.row > div.StripeElement {
   border-radius: 4px;
   margin-bottom: 0.5em;
   padding: 12px;
+  font-family: 'nimbus-sans', sans-serif;
+  font-size: 19px;
+
+  &.half-width {
+    display: inline-block;
+    width: calc(50% - 3px);
+  }
 
   &.full-width {
     width: 100%;
@@ -43,6 +51,7 @@ label {
   display: block;
 }
 
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -58,6 +67,25 @@ div.StripeElement {
   }
 }
 
+button.hamburger {
+  border: 0;
+  background-color: transparent;
+  margin: 0;
+  line-height: 0;
+  outline: none;
+
+  img {
+    height: 30px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &:hover,
+  &:active {
+    background-color: transparent;
+  }
+}
+
 button,
 .button {
   background-color: $color-primary-2;
@@ -68,7 +96,7 @@ button,
   &.secondary {
     background-color: $color-secondary-2;
     color: $color-primary;
-    border: 1px solid $color-primary-2;
+    border: 1px solid $color-primary;
 
     &:hover {
       background-color: darken($color-secondary-2, 10%);
@@ -104,6 +132,20 @@ button,
 
     &:active {
       background-color: darken($color-primary-2, 20%);
+    }
+  }
+
+  &.ghost {
+    background-color: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.2);
+    }
+
+    &:active {
+      background-color: rgba($color-primary, 0.4);
     }
   }
 

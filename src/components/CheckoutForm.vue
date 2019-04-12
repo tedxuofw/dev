@@ -15,7 +15,10 @@
             <input type="text" placeholder="Zip Code" id="card-zip" class="full-width col-4">
         </div>
         <div class="row">
-            <button class="full-width primary" @click="updateParent()">Continue</button>
+            <p class="error"> {{this.error}} </p>
+        </div>
+        <div class="row">
+            <button class="full-width primary" @click="updateParent($event)">Continue</button>
         </div>
     </div>
 </template>
@@ -24,10 +27,17 @@
 export default {
     name: 'CheckoutForm',
     props: ['tickets'],
+    data() {
+      return {
+          stripe: null,
+          element: null,
+          error: "asdfasdf"
+      }  
+    },
     mounted() {
         // Create a Stripe client.
-        var stripe = Stripe('pk_test_EsLnXbnCKw4JnlLnQKdTBNyh');
-
+        var stripe = Stripe('pk_live_vVGA9MgSP2u4PA439eTEIiBg');
+        
         // Create an instance of Elements.
         var elements = stripe.elements();
         var styles = {
@@ -40,7 +50,7 @@ export default {
                 },
 
                 '::placeholder': {
-                    // primary-color-2
+                    // primary-color-22
                     color: '#e09b8b',
                 },
 
@@ -68,15 +78,39 @@ export default {
         number.mount("#card-number");
         expire.mount("#card-expire");
         cvc.mount("#card-cvc");
+        
+        
+        // Store elements for updating
+        this.stripe = stripe;
+        this.element = number; // Just need one element?
     },
     methods: {
-        submit: function(event) {
-            console.log(event);
-            alert(event);
+        submit: function() {
             event.preventDefault();
         },
-        updateParent: function() {
-            this.$emit("changed");
+
+        updateParent: function(event) {
+            if (this.formIsFilled()) {
+                this.stripe.createToken(this.element).then((result) => {
+                    if (result.error) {
+                        // Inform the customer that there was an error.
+                        this.error = "Your card information was not correct. Please try again."
+                        document.querySelector('p.error').classList.add('show');
+                        console.log(this.error);
+                    } else {
+                        // Send the token to your server.
+                        this.$emit("changed", result.token.id);
+                    }
+                });
+            } else {
+                this.error = "Please fill in all parts of the form."
+                document.querySelector('p.error').classList.add('show');
+            }
+        },
+        formIsFilled() {
+            var elements = document.querySelectorAll('#payment-container input.full-width');
+            console.log(elements[0].value !== "" && elements[1].value !== "");
+            return elements[0].value !== "" && elements[1].value !== "";
         }
     }
 }
@@ -147,7 +181,7 @@ button.full-width {
 }
 
 #payment-container {
-    width: 40%;
+    width: 50%;
     border: 1px solid $color-primary;
     padding: 0.5em 2em;
 }
@@ -155,5 +189,26 @@ button.full-width {
 h2 {
     border-bottom: 3px solid $color-primary;
     line-height: 1.5;
+}
+
+
+p.error {
+    color: $color-primary;
+    font-size: 0.9em;
+    line-height: 1;
+    margin: 0;
+    padding: 0 1em;
+    display: none;
+}
+
+.show {
+    display: block !important;
+}
+
+@media (max-width: 1050px) {
+    #payment-container {
+        width: 80%;
+        padding: 1.5em;
+    }
 }
 </style>

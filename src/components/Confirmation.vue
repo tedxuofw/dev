@@ -5,7 +5,7 @@
                 <SpotlightTicketView
                     :class="{ 'col-12': mobileView, 'col-8': !mobileView }"
                     :tickets="spotlightTickets"
-                    :mobileView="mobileView / 2" 
+                    :mobileView="mobileView" 
                     :maxView="2"/>
             </div>
             <div class="col-4">
@@ -13,31 +13,27 @@
                     <h2> Payment Information </h2>
                     <div class="data-container">
                         <p class="label"> Name: </p>
-                        <p> Jenny Liang</p>
+                        <p> {{ user.first }} {{ user.last }} </p>
                     </div>
                     <div class="data-container">
-                        <p class="label"> Email Address: </p>
-                        <p> jliang9@uw.edu </p>
+                        <p class="label"> Email: </p>
+                        <p>{{ user.email }}</p>
                     </div>
-                    <div class="data-container">
+                    <!--<div class="data-container">
                         <p class="label"> Payment Card: </p>
                         <p> **** **** **** 1234 </p>
-                    </div>
+                    </div> -->
                 </div>                
                 <div class="content-container">
                     <h2> Summary </h2>
                     <div class="content-container">
-                        <div class="data-container">
-                            <p> UW Student Ticket <span class="data"> (x2) </span> </p>
-                            <p class="data"> $19.50 </p>
-                        </div>
-                        <div class="data-container">
-                            <p> General Admission Ticket </p>
-                            <p class="data"> $19.50 </p>
+                        <div class="data-container" v-for="purchase in purchases">
+                            <p> {{ purchase.name }} <span class="data"> (x{{ purchase.quantity }}) </span> </p>
+                            <p class="data"> ${{ purchase.cost }} </p>
                         </div>
                     </div>
                 </div>
-                <a href="/#/home"> <button class="primary">Confirm</button> </a>
+                <a @click="updateParent()"> <button class="primary">Confirm</button> </a>
             </div>
         </div>
     </div>
@@ -51,23 +47,35 @@ import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 import SideNavBar from "@/components/SideNavBar";
+import { user } from '../user.js';
 
 export default {
   name: "ConfirmationPage",
   components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar },
-  props: ["tickets"],
   data() {
     return {
-      tickets: [],
       mobileView: false,
+      user: {
+          first: user.first(),
+          last: user.last(),
+          email: user.email(),
+          profile: user.profile(),
+      }
     };
   },
   props: {
     tickets: {
         type: Array
     },
+    purchases: {
+        type: Array
+    },
+    paymentId: {
+        type: Number
+    }
   },
   created() {
+    // REMOVE DUPLICATE?
     var script = document.createElement('script');
     script.setAttribute('src', "https://js.stripe.com/v3/");
     document.head.appendChild(script);
@@ -77,6 +85,10 @@ export default {
       window.addEventListener('resize', this.recalculateMobileView);
     });
     this.recalculateMobileView();
+    console.log("Test");
+    console.log(this.tickets);
+    console.log(this.purchases);
+    console.log(this.paymentId);
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.recalculateMobileView);
@@ -86,6 +98,9 @@ export default {
     recalculateMobileView() {
       this.mobileView = window.innerWidth < MOBILE_MAX_WIDTH;
     },
+    updateParent() {
+        this.$emit("changed");
+    }
   },
   computed: {
     /**
@@ -145,6 +160,12 @@ p {
 
 button {
     width: 100%;
+}
+
+@media (max-width: 1350px) {
+  .col-4 {
+      width: 100%;
+  }
 }
 
 </style>

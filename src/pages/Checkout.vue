@@ -1,14 +1,12 @@
 <template>
   <div>
-      <SideNavBar v-bind:tickets="true"/>
+      <NavBar v-bind:tickets="true"/>
       <main>
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
         <div class="row">
-          <div> 
-            <i class="fas fa-arrow-left"> </i> Back to...
-          </div>
-          <div class="col-12">
-            <h1>Get new tickets</h1>
+          <div class="col-12 header-container">
+            <h1> {{this.title}} </h1>
+            <div class="back-button" v-if="this.screen > 0 && this.screen != 3" @click='goBack()'> <i class="fas fa-arrow-left"> </i> Back to {{this.navName}} </div>
           </div>
         </div>
 
@@ -29,7 +27,7 @@
           <div class="sidebar-container ticket-selection" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-if="!isCurrentlyEditing">
             <div class="ticket-item" v-for="(ticket, ticketIndex) in tickets" :key="ticket.id" @click="editTicket(ticketIndex)">
               <h2>{{ `${ticket.firstName}` }}</h2>
-              {{ ticket.ticket }}
+              {{ ticket.ticket }} &middot; {{ticket.email}}
             </div>
             <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
             <button class="full-width primary" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
@@ -44,24 +42,30 @@
             </select>
 
             <h2 class="extra-margin-top">Ticket Holder</h2>
-            <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }"> Name</p>
-            <input type="text" placeholder="First Name" class="full-width" v-model="currentTicket.firstName">
-            <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email</p>
-            <input type="text" placeholder="Email" class="full-width" v-model="currentTicket.email">
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }"> Name <span class='required'>*</span></p>
+            <input type="text" placeholder="Full Name (required)" class="full-width" v-model="currentTicket.firstName">
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email <span class='required'>*</span></p>
+            <input type="text" placeholder="Email (required)" class="full-width" v-model="currentTicket.email">
+            <p class="footnote" :class="{ 'show-label': !!currentTicket.code }">Coupon code</p>
+            <input type="text" placeholder="Coupon code (optional)" class="full-width" v-model="currentTicket.code">
 
-            <p v-if="showError" class="error extra-margin-top">Make sure you've filled out all parts of the form before saving.</p>
+            <p v-if="showError" class="error extra-margin-top"> {{this.errorMessage}}</p>
             <button class="full-width primary" :class="{ 'extra-margin-top': !showError }" @click="saveTicket()">Save</button>
             <button class="full-width secondary" @click="cancelTicket()" v-if="tickets.length > 1">{{ creatingTicket ? 'Cancel' : 'Delete Ticket' }}</button>
           </div>
         </div>
 
         <div class="row" v-else-if="this.screen == 1">
-          <CheckoutForm @changed="goToConfirmation()"/>
+          <CheckoutForm @changed="goToConfirmation"/>
         </div>
 
-        <div class="row" v-else>
-          <Confirmation :tickets="tickets"/>
+        <div class="row" v-else-if="this.screen == 2">
+          <Confirmation :tickets="tickets" v-bind:purchases="confirmArr" :paymentId="paymentId" @changed="completeTransaction" />
         </div>
+
+          <div class="row" v-else>
+            <PurchaseComplete :tickets="tickets" v-bind:purchases="confirmArr" :paymentId="paymentId" />
+          </div>
       </div>
     </main>
   </div>
@@ -69,25 +73,40 @@
 
 <script>
 const MOBILE_MAX_WIDTH = 1350;
+const pageNames = ['Buy new tickets', 'Ticket payment', 'Review your purchase', 'Thank you for your purchase!'];
+const navNames = ['', 'tickets', 'payment']
+
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 import Confirmation from "@/components/Confirmation";
+import PurchaseComplete from "@/components/PurchaseComplete";
 import SideNavBar from "@/components/SideNavBar";
+import axios from 'axios';
+import { user } from '../user.js';
+import router from "../router";
+import DesktopNavBar from "@/components/DesktopNavBar";
+import NavBar from "@/components/NavBar";
 
 export default {
   name: "CheckoutPage",
-  components: { SpotlightTicketView, Ticket, CheckoutForm, SideNavBar, Confirmation },
+  components: { SpotlightTicketView, Ticket, CheckoutForm, NavBar, Confirmation, PurchaseComplete },
   data() {
     return {
       ticketIdCounter: 0,
       ticketEditIndex: -1,
+      groupId: -1,
       tickets: [],
       creatingTicket: false,
       showError: false,
       mobileView: false,
       // 0 = ticket selection, 1 = checkout, 2 = confirmation
-      screen: 0 
+      screen: 0,
+      navNames: '',
+      title: 'Buy new tickets',
+      errorMessage: '',
+      confirmArr: [],
+      paymentId: -1
     };
   },
   created() {
@@ -116,10 +135,24 @@ export default {
 
     /** Saves changes to currently-editing ticket, or displays error if there's a problem */
     saveTicket() {
+      var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
+
+      console.log(this.tickets[this.ticketEditIndex])
       if(!this.currentTicketIsValid) {
         this.showError = true;
+        this.errorMessage = "Make sure you've filled out all parts of the form before saving."
         return;
-      }
+      } else if (this.tickets[this.ticketEditIndex].firstName.trim().split(' ').length < 2) {
+        this.showError = true;
+        this.errorMessage = "Please enter a first and last name."
+        return;
+      } else if (!re.test(this.tickets[this.ticketEditIndex].email)) {
+        this.showError = true;
+        this.errorMessage = "Please enter a valid email."
+        return;
+      } 
+        
+      // No frontend visibility of coupon codes
 
       this.commitChanges();
     },
@@ -155,7 +188,7 @@ export default {
       return {
         firstName: '',
         email: '',
-        meal: '',
+        code: '',
         ticket: 'General Ticket',
         id: this.ticketIdCounter
       };
@@ -175,13 +208,164 @@ export default {
 
     /** Switches to payment interface. */
     goToPayment() {
+      // Generate a group (event_id, owner_id)
+      let gURL = "https://students.washington.edu/tedxuofw/index.php/api/group/create";
+      let groupParams = { 
+        event_id: '1',
+        owner_id: user.id(),
+        token: user.getJWT()
+      };
+      axios.get(gURL, { params: groupParams }).then((response)  =>  {
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);
+              this.groupId = resp.result.id;
+            
+            
+              // Initialize params for bulk insert
+              let registrantParams = {
+                token: groupParams.token,
+                registrants: []
+              };
+                          
+              // Add all the registrants we want
+              for(var index in this.tickets) {
+                let ticket = this.tickets[index];
+                let cost = 1;
+                if(ticket.ticket == "General Ticket") {
+                    cost = 2;
+                }
+                  
+                registrantParams.registrants.push({
+                  email: ticket.email,
+                  name: ticket.firstName,
+                  costlevel_id: cost,
+                  group_id: resp.result.id,
+                  coupon: ticket.code
+                });
+              }
+
+            
+              // REFACTOR LATER?
+              // Add each registrant to the group(name, email, costlevel_id, group_id)
+              let rURL = "https://students.washington.edu/tedxuofw/index.php/api/registrants/create";
+              axios.get(rURL, { params: registrantParams }).then((response)  =>  {
+                  var resp = response.data;
+                  if(resp.status === "success") {
+                      // Store any information given
+                      console.log(resp);
+                      
+                  } else {          
+                      // Error Response
+                      var message = resp.message;
+                      console.log(response.data);
+                  }
+              }, (error)  =>  {
+                  // Error with Request
+                  var err = error.response;
+                  console.log(err);
+
+                  alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+              });
+            
+            
+          } else {          
+              // Error message
+              var message = resp.message;
+              console.log(response.data);
+          }
+        
+      }, (error)  =>  {
+          // There was an error with the way the request was made!
+          // This is really bad (either the API broke or more likely
+          // the frontend isn't properly validating the input)
+          var err = error.response;
+          console.log(err);
+
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+      
+            
       this.screen = 1;
+      this.navName = navNames[this.screen];
+      this.title = pageNames[this.screen];
     },
 
     /** Switches to confirmation interface. */
-    goToConfirmation() {
-      alert();
-      this.screen = 2;
+    goToConfirmation(token) {      
+      
+      // Add a charge (event_id, owner_id)
+      let pURL = "https://students.washington.edu/tedxuofw/index.php/api/payment/pay";
+      let paymentParams = { 
+        group_id: this.groupId,
+        stripe_id: token,
+        token: user.getJWT(),
+        coupon: this.coupon
+      };
+      console.log(this.screen)
+      axios.get(pURL, { params: paymentParams }).then((response)  =>  {
+        console.log("success" + this.screen)
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);
+            
+              this.confirmArr = Object.values(resp.summary);
+            
+              this.paymentId = resp.result.id;
+              this.screen = 2;
+              console.log("success" + this.screen)
+              this.navName = navNames[this.screen];
+              this.title = pageNames[this.screen];
+          } else {          
+              // Error message
+              var message = resp.message;
+              console.log(response.data);
+          }
+        
+      }, (error)  =>  {
+          // There was an error with the way the request was made!
+          var err = error.response;
+          console.log(err);
+
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+      
+    },
+    completeTransaction() {
+      // Add a charge (event_id, owner_id)
+      let cURL = "https://students.washington.edu/tedxuofw/index.php/api/payment/charge";
+      let chargeParams = { 
+        id: this.paymentId,
+        token: user.getJWT()
+      };
+      axios.get(cURL, { params: chargeParams }).then((response)  =>  {
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);
+              
+              this.screen = 3;
+              this.navName = '';
+              this.title = pageNames[this.screen];
+          } else {          
+              // Error message
+              var message = resp.message;
+              console.log(response.data);
+          }
+        
+      }, (error)  =>  {
+          // There was an error with the way the request was made!
+          var err = error.response;
+          console.log(err);
+
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+    },
+    goBack() {
+      this.screen--;
+      this.title = pageNames[this.screen];
     }
   },
   computed: {
@@ -228,9 +412,15 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
+.required {
+  color: $color-primary;
+  font-weight: 700;
+}
+
 h1 {
   font-weight: 300;
   text-align: center;
+  margin-bottom: 0.5em;
 }
 
 p.callout,
@@ -342,9 +532,24 @@ main {
     height: 100%;
 }
 
+.back-button {
+  left: 210px;
+  cursor: pointer;
+  color: $color-primary;
+  margin-bottom: 1em;
+}
+
+.back-button:hover {
+  color: darken($color-primary, 10%);
+}
+
 @media (max-width: 600px) {
   main {
     margin-left: 0;
+  }
+
+  h1 {
+    font-size: 45px;
   }
 }
 </style>
