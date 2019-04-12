@@ -298,7 +298,9 @@ export default {
         token: user.getJWT(),
         coupon: this.coupon
       };
+      console.log(this.screen)
       axios.get(pURL, { params: paymentParams }).then((response)  =>  {
+        console.log("success" + this.screen)
           var resp = response.data;
           if(resp.status === "success") {
               // Store any information given
@@ -308,6 +310,7 @@ export default {
             
               this.paymentId = resp.result.id;
               this.screen = 2;
+              console.log("success" + this.screen)
               this.navName = navNames[this.screen];
               this.title = pageNames[this.screen];
           } else {          

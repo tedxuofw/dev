@@ -1,5 +1,5 @@
 <template>
-    <form id="payment-container">
+    <div id="payment-container">
         <h2> Card Information </h2>
         <div class="row">
             <div id="card-number" class="full-width col-12"></div>
@@ -17,7 +17,7 @@
         <div class="row">
             <button class="full-width primary" @click="updateParent($event)">Continue</button>
         </div>
-    </form>
+    </div>
 </template>
 
 <script>
