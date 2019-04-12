@@ -26,7 +26,7 @@ export default {
                 last:  '',
                 email: '',
                 password:  '',
-                profile: 'http://localhost:8080/static/img/test_2.4a98b92.svg'
+                profile: 'https://www.tedxuofw.com/static/img/test_2.4a98b92.svg'
             }
         }
     },

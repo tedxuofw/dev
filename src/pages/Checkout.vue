@@ -43,9 +43,9 @@
 
             <h2 class="extra-margin-top">Ticket Holder</h2>
             <p class="footnote" :class="{ 'show-label': !!currentTicket.firstName }"> Name <span class='required'>*</span></p>
-            <input type="text" placeholder="Full Name" class="full-width" v-model="currentTicket.firstName">
+            <input type="text" placeholder="Full Name (required)" class="full-width" v-model="currentTicket.firstName">
             <p class="footnote" :class="{ 'show-label': !!currentTicket.email }">Email <span class='required'>*</span></p>
-            <input type="text" placeholder="Email" class="full-width" v-model="currentTicket.email">
+            <input type="text" placeholder="Email (required)" class="full-width" v-model="currentTicket.email">
             <p class="footnote" :class="{ 'show-label': !!currentTicket.code }">Coupon code</p>
             <input type="text" placeholder="Coupon code (optional)" class="full-width" v-model="currentTicket.code">
 
