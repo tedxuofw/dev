@@ -81,15 +81,15 @@ export default {
         makePerson('Maya Gopalan', 'Finance', 'Finance Team Manager'),
         makePerson('Connor Hart', 'Finance', 'Sponsorship', false),
         makePerson('Emma Ueda', 'Finance', 'Logistics'),
-        makePerson('Jonathan Chang', 'Finance', 'Analyst', false),
-        makePerson('Stephen Lee', 'Finance', 'Analyst'),
+        makePerson('Jonathan Chang', 'Finance', 'Analyst'),
+        makePerson('Stephen Lee', 'Finance', 'Analyst', false),
 
         makePerson('Miranda Reisman', 'Production', 'Production Team Manager'),
         makePerson('Chloee Henley', 'Production', 'Guest Experience'),
         makePerson('Karina Mendoza', 'Production', 'Videographer'),
         makePerson('Lily Hansen', 'Production', 'Communication Coordinator'),
         makePerson('Megan Mei', 'Production', 'Stage Designer'),
-        makePerson('Yan Ong', 'Production', 'Tech Lead'),
+        makePerson('Yan Zhe Ong', 'Production', 'Tech Lead'),
 
         makePerson('Rahul Prasad', 'Public Relations', 'PR Team Manager'),
         makePerson('Emma Hurring', 'Public Relations', 'Outreach Coordinator'),
@@ -106,7 +106,7 @@ export default {
   methods: {
     makePerson(name, team, title, hasPhoto) {
       hasPhoto = hasPhoto !== false;
-      const fileName = name.toLowerCase().replace(' ', '_');
+      const fileName = name.toLowerCase().replace(' ', '_').replace(' ', '_');
       return {
         name,
         team,
