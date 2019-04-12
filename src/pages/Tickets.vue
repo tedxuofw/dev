@@ -175,7 +175,7 @@ main {
 
 h1 {
     font-weight: 300;
-    margin-left: 32px;
+    margin-left: 48px;
 }
 
 .card-body {
@@ -188,10 +188,6 @@ h1 {
 
 .card-child {
     width: 100%;
-}
-
-div.col-12.outer {
-    margin-left: 0;
 }
 
 .header {

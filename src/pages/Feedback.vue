@@ -1,11 +1,11 @@
 <template>
     <div>
-        <SideNavBar feedback/>
+        <NavBar feedback :user="user"/>
         <main>
             <h1> Give Feedback </h1>
-            <div class="col-12">
+            <div class="col-12 responsive">
                 <div class="row card-row">
-                    <div class="col-12"> 
+                    <div class="col-12 responsive"> 
                         <div class="header"> Tell us what you think: </div>
                         <div class="card-container">
                             <textarea class="card-body"/>
@@ -20,7 +20,7 @@
 
 <script>
 import { user } from '../user.js';
-import SideNavBar from "@/components/SideNavBar";
+import NavBar from "@/components/NavBar";
 
 export default {
     name: "HomePage",
@@ -34,7 +34,7 @@ export default {
             }
         }
     },
-    components: { SideNavBar }
+    components: { NavBar }
 };
 </script>
 
@@ -48,6 +48,7 @@ main {
 
 h1 {
     font-weight: 300;
+    margin-left: 48px;
 }
 
 .card-body {
@@ -93,6 +94,14 @@ textarea {
 @media (max-width: 750px) {
     .card-container {
         padding: 0.9em 0;
+    }
+
+    h1 {
+        margin-left: 16px;
+    }
+
+    .responsive {
+        margin-left: 0;
     }
 }
 

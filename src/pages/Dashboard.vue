@@ -125,7 +125,7 @@ export default {
             var err = error;
             console.log(err);
 
-            alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+            // alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
         });
     }
 };

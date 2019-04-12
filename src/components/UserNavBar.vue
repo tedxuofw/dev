@@ -6,13 +6,14 @@ uy<template>
                 <div class="nav-element"> Edit Profile </div>
             </div>
             <div> 
-                <div class="nav-element"> Logout </div>
+                <div class="nav-element" @click="this.logout"> Logout </div>
             </div>
         </nav>
     </div>
 </template>
 
 <script>
+import { user } from "../user.js";
 export default {
     name: "UserNavBar",
     props: {
@@ -26,6 +27,9 @@ export default {
         },
         openModal: function() {
             document.querySelector('div.user-modal').classList.add('show-modal');
+        },
+        logout: function() {
+            user.logout();
         },
     }
 }
