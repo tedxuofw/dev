@@ -99,7 +99,6 @@ export default {
       this.mobileView = window.innerWidth < MOBILE_MAX_WIDTH;
     },
     updateParent() {
-        alert();
         this.$emit("changed");
     }
   },
