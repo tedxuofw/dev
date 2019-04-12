@@ -15,6 +15,9 @@
             <input type="text" placeholder="Zip Code" id="card-zip" class="full-width col-4">
         </div>
         <div class="row">
+            <p class="error"> {{this.error}} </p>
+        </div>
+        <div class="row">
             <button class="full-width primary" @click="updateParent($event)">Continue</button>
         </div>
     </div>
@@ -27,7 +30,8 @@ export default {
     data() {
       return {
           stripe: null,
-          element: null
+          element: null,
+          error: "asdfasdf"
       }  
     },
     mounted() {
@@ -86,23 +90,27 @@ export default {
         },
 
         updateParent: function(event) {
-            /*var submit = document.createElement('input');
-            submit.type = 'submit';
-            submit.style.display = 'none';
-            document.querySelector('form').appendChild(submit);
-            submit.click();
-            submit.remove();*/
-            
-            this.stripe.createToken(this.element).then((result) => {
-                if (result.error) {
-                    // Inform the customer that there was an error.
-                    alert(result.error);
-                } else {
-                    // Send the token to your server.
-                    this.$emit("changed", result.token.id);
-                }
-            });
-            
+            if (this.formIsFilled()) {
+                this.stripe.createToken(this.element).then((result) => {
+                    if (result.error) {
+                        // Inform the customer that there was an error.
+                        this.error = "Your card information was not correct. Please try again."
+                        document.querySelector('p.error').classList.add('show');
+                        console.log(this.error);
+                    } else {
+                        // Send the token to your server.
+                        this.$emit("changed", result.token.id);
+                    }
+                });
+            } else {
+                this.error = "Please fill in all parts of the form."
+                document.querySelector('p.error').classList.add('show');
+            }
+        },
+        formIsFilled() {
+            var elements = document.querySelectorAll('#payment-container input.full-width');
+            console.log(elements[0].value !== "" && elements[1].value !== "");
+            return elements[0].value !== "" && elements[1].value !== "";
         }
     }
 }
@@ -181,6 +189,20 @@ button.full-width {
 h2 {
     border-bottom: 3px solid $color-primary;
     line-height: 1.5;
+}
+
+
+p.error {
+    color: $color-primary;
+    font-size: 0.9em;
+    line-height: 1;
+    margin: 0;
+    padding: 0 1em;
+    display: none;
+}
+
+.show {
+    display: block !important;
 }
 
 @media (max-width: 1050px) {

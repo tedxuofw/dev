@@ -1,4 +1,4 @@
-<template>
+uy<template>
     <div id="user-tasks-nav" class="invisible">
         <div class="nav-modal" @click="this.closeNav"> </div>
         <nav @click="this.closeNav"> 
@@ -25,7 +25,7 @@ export default {
             document.getElementById('user-tasks-nav').classList.add('invisible');
         },
         openModal: function() {
-            document.querySelector('div.modal').classList.add('show-modal');
+            document.querySelector('div.user-modal').classList.add('show-modal');
         },
     }
 }

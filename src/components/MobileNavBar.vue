@@ -9,12 +9,13 @@
                     <i class="far fa-user responsive-nav-element dropdown" @click="showUserNav()"></i>
                 </div>
             </div>
-            <UserModal :user="user"/>
+            <UserModal :user="this.user"/>
         </nav>
     </div>
 </template>
 
 <script>
+import { user } from '../user.js';
 import UserNavBar from "./UserNavBar";
 import SideNavBar from "./SideNavBar";
 import UserModal from "./UserModal";
@@ -26,7 +27,16 @@ export default {
         dashboard: Boolean,
         tickets: Boolean,
         feedback: Boolean,
-        user: Object
+    },
+    data () {
+        return {
+            user: {
+                first: user.first(),
+                last: user.last(),
+                email: user.email(),
+                profile: user.profile(),
+            }
+        }
     },
     methods: {
         showMainNav: function() {

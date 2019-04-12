@@ -187,12 +187,19 @@ p.col-12 {
         width: 50px;
     }
 
+    #images img.selected {
+        border: 5px solid $color-primary;
+        height: 40px;
+        width: 40px;
+    }
+
     #images p.label {
         text-align: left;
     }
 
     .user-modal-content {
         width: 80%;
+        left: 50%;
     }
 }
 </style>

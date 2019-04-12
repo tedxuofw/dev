@@ -26,7 +26,7 @@
                               :personName="`${ticket.firstName}`"
                               :ticketType="ticket.ticket" 
                               :email="`${ticket.email}`"
-                              maxWidth="200px" />
+                              maxWidth="500px" />
                         </div>
                       </div>
                   </div>
@@ -211,7 +211,7 @@ h1 {
 }
 
 @media (max-width: 600px) {
-    main {
+        main, div.col-12 {
         margin-left: 0;
     }
 
