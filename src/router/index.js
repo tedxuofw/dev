@@ -67,11 +67,11 @@ export default new Router({
       name: 'Dashboard',
       component: Dashboard
     },
-    // {
-    //   path: '/feedback',
-    //   name: 'FeedbackPage',
-    //   component: FeedbackPage
-    // },
+    {
+      path: '/feedback',
+      name: 'FeedbackPage',
+      component: FeedbackPage
+    },
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }

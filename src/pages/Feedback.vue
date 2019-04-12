@@ -3,6 +3,7 @@
         <NavBar feedback :user="user"/>
         <main>
             <h1> Give Feedback </h1>
+            <p> We'd love to hear your thoughts! You should hear back from TEDxUofW within 48 hours. </p>
             <div class="col-12 responsive">
                 <div class="row card-row">
                     <div class="col-12 responsive"> 
@@ -51,6 +52,10 @@ h1 {
     margin-left: 48px;
 }
 
+main > p {
+    margin-left: 48px;
+}
+
 .card-body {
     padding: 1em;
     height: 200px;
@@ -96,7 +101,7 @@ textarea {
         padding: 0.9em 0;
     }
 
-    h1 {
+    h1, main > p {
         margin-left: 16px;
     }
 
