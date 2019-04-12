@@ -74,7 +74,7 @@ export default {
             document.querySelector('div.user-modal').classList.toggle('show-modal');
         }
     },
-    created() {    
+    created() {
         let ticketParams = {
             token: user.getJWT(),
             event_id: 1
@@ -114,7 +114,6 @@ export default {
                 this.tickets = temp;
                 console.log(this.tickets);
                 this.hasTickets = (this.tickets.length > 0);
-                console.log(this.hasTickets);
             } else {          
                 // Error Response
                 var message = resp.message;
@@ -125,7 +124,7 @@ export default {
             var err = error;
             console.log(err);
 
-            // alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+            alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
         });
     }
 };
