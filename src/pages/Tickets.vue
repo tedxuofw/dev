@@ -3,7 +3,7 @@
       <NavBar v-bind:tickets="true"/>
       <main>
         <h1> Tickets </h1>
-        <p> Purchased tickets will arrive by email a week before the conference. Please contact TEDxUfoW for any additional questions.</p>
+        <p> Your purchased tickets will arrive by email a week before this year's conference. Please contact TEDxUofW for any additional questions.</p>
         <div class="col-12 outer">
           <div class="row card-row">
               <div class="col-12"> 
