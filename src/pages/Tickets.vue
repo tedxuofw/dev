@@ -3,6 +3,7 @@
       <NavBar v-bind:tickets="true"/>
       <main>
         <h1> Tickets </h1>
+        <p> Purchased tickets will arrive by email a week before the conference. Please contact TEDxUfoW for any additional questions.</p>
         <div class="col-12 outer">
           <div class="row card-row">
               <div class="col-12"> 
@@ -26,7 +27,7 @@
                               :personName="`${ticket.firstName}`"
                               :ticketType="ticket.ticket" 
                               :email="`${ticket.email}`"
-                              maxWidth="500px" />
+                              maxWidth="200px" />
                         </div>
                       </div>
                   </div>
@@ -175,7 +176,11 @@ main {
 
 h1 {
     font-weight: 300;
-    margin-left: 48px;
+    margin-left: 32px;
+}
+
+main > p {
+    margin-left: 32px;
 }
 
 .card-body {
@@ -215,7 +220,7 @@ h1 {
         margin-left: 0;
     }
 
-    h1 {
+    h1, main > p {
         margin-left: 16px;
     }
 }

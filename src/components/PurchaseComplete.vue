@@ -2,7 +2,7 @@
     <div class="container components-page">
         <div class="row overview-screen-row">
             <div class="col-6 thank-you">
-                Thank you for your purchase! You will receive an email shortly from Stripe confirming your tickets. <br/> <br/>
+                Thank you for your purchase! You will receive an email shortly from Stripe confirming your purchase. <span class="important"> Your tickets will arrive a week before the conference. </span> <br/> <br/>
                 Please email <a href = "mailto: tedxuofw@uw.edu"> tedxuofw@uw.edu</a> for any questions.
             </div>
             <div class="col-6">
@@ -81,6 +81,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+.important {
+    color: $color-primary;
+    font-weight: 700;
+}
 
 h1, h2 {
   font-weight: 300;
