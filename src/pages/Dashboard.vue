@@ -81,7 +81,7 @@ export default {
         };
 
         let rURL = "https://students.washington.edu/tedxuofw/index.php/api/user/tickets";
-        axios.get(rURL, { params: ticketParams }).then((response)  =>  {
+        axios.post(rURL, ticketParams).then((response)  =>  {
             var resp = response.data;
             if(resp.status === "success") {
                 // Store any information given
@@ -113,7 +113,7 @@ export default {
                 
                 this.tickets = temp;
                 console.log(this.tickets);
-                this.hasTickets = (this.tickets != []);
+                this.hasTickets = (this.tickets.length > 0);
                 console.log(this.hasTickets);
             } else {          
                 // Error Response
