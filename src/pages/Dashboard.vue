@@ -24,7 +24,7 @@
                         <div class="header"> Your Tickets </div>
                         <div class="card-container" v-if="!hasTickets">
                             <div class="card-body">
-                                <p class="warning card-child"> You don't have tickets for TEDx2019 yet. </p>
+                                <p class="warning card-child"> Tickets will take up to 48 hours after purchase. </p>
                                 <div class="card-child"  >
                                     <a href="/#/checkout"> <button class="secondary"> Get Tickets </button> </a>
                                 </div>
