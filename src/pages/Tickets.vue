@@ -3,7 +3,7 @@
       <NavBar v-bind:tickets="true"/>
       <main>
         <h1> Tickets </h1>
-        <div class="col-12">
+        <div class="col-12 outer">
           <div class="row card-row">
               <div class="col-12"> 
                   <div class="header"> Your Tickets </div>
@@ -188,6 +188,10 @@ h1 {
 
 .card-child {
     width: 100%;
+}
+
+div.col-12.outer {
+    margin-left: 0;
 }
 
 .header {
