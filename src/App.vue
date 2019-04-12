@@ -11,7 +11,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 @import "@/styles/_variables.scss";
 @import "@/styles/_grid.scss";
 @import "@/styles/_type.scss";

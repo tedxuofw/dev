@@ -11,31 +11,37 @@
                                 <button id="sign-in" @click="toggle(true)" v-bind:class="{secondary: !signIn}">Sign in</button>
                                 <button id="sign-up" @click="toggle(false)" v-bind:class="{secondary: signIn}">Sign up</button>
                             </div>
-                            <sign-in-form  v-if="signIn"/>
-                            <sign-up-form v-else/>
+                            <sign-in-form  v-if="signIn" @loading="toggleLoading()"/>
+                            <sign-up-form v-else @loading="toggleLoading()"/>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <Loading v-if="this.loading"/>
     </div>
 </template>
 
 <script>
 import SignInForm from "@/components/SignInForm";
 import SignUpForm from "@/components/SignUpForm";
+import Loading from "@/components/Loading";
 
 export default {
     name: "LoginPage",
-    components: { SignInForm, SignUpForm },
+    components: { Loading, SignInForm, SignUpForm },
     data() {
         return {
             signIn: true,
+            loading: false
         };
     },
     methods: {
         toggle: function(signIn) {
             this.signIn = signIn;
+        },
+        toggleLoading(){
+            this.loading = !this.loading;
         }
     }
 };
@@ -44,11 +50,14 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
-.example-container {
-    max-width: 500px;
-    border: 1px dashed $color-secondary;
-    padding: 16px 32px;
-    margin: 16px;
+div.container, div.row {
+    background-color: $color-secondary-2;
+    min-height: 100vh;
+}
+
+div.row {
+    display: flex;
+    align-items: center;
 }
 
 .inner-container {
@@ -71,9 +80,7 @@ export default {
 }
 
 .outer-container {
-    background-color: $color-secondary-2;
     height: 80%;
-    margin: 10vh 0;
     width: 80vw;
 }
 
@@ -87,13 +94,15 @@ export default {
     display: none;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
     div.inner-container > p {
         display: none;
     }
 
     div.button-set button {
-        font-size: 14px;
+        height: 2em;
+        font-size: 0.8em;
+        padding:0;
     }
 
     h1 {

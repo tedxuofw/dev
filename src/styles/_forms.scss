@@ -22,7 +22,9 @@ input[type="password"],
 input[type="email"],
 button,
 select,
-.button {
+.input,
+.button,
+div.row > div.StripeElement {
   display: block;
   font-size: 19px;
   border-radius: 4px;
@@ -52,7 +54,9 @@ label {
 textarea,
 input[type="text"],
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+.input, 
+div.StripeElement {
   color: $color-text;
   border: 1px solid $color-primary;
   outline: none;
@@ -92,7 +96,7 @@ button,
   &.secondary {
     background-color: $color-secondary-2;
     color: $color-primary;
-    border: 1px solid $color-primary-2;
+    border: 1px solid $color-primary;
 
     &:hover {
       background-color: darken($color-secondary-2, 10%);
@@ -105,7 +109,7 @@ button,
 
   &.primary {
     background-color: $color-primary;
-    color: $color-primary-2;
+    color: white;
     border: 1px solid $color-primary;
 
     &:hover {
