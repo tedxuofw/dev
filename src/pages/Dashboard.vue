@@ -81,7 +81,7 @@ export default {
         };
 
         let rURL = "https://students.washington.edu/tedxuofw/index.php/api/user/tickets";
-        axios.post(rURL, ticketParams).then((response)  =>  {
+        axios.get(rURL, { params: ticketParams }).then((response)  =>  {
             var resp = response.data;
             if(resp.status === "success") {
                 // Store any information given
@@ -118,11 +118,11 @@ export default {
             } else {          
                 // Error Response
                 var message = resp.message;
-                console.log(response.data);
+                console.log(response.request);
             }
         }, (error)  =>  {
             // Error with Request
-            var err = error.response;
+            var err = error;
             console.log(err);
 
             alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
