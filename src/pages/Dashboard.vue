@@ -23,15 +23,15 @@
                     <div class="col-8"> 
                         <div class="header"> Your Tickets </div>
                         <div class="card-container" v-if="!hasTickets">
-                            <div class="card-body tickets">
+                            <div class="card-body">
                                 <p class="warning card-child"> You don't have any purchased tickets yet. </p>
                                 <div class="card-child"  >
                                     <a href="/#/checkout"> <button class="secondary"> Get Tickets </button> </a>
                                 </div>
                             </div>
                         </div>
-                        <div v-else> 
-                            <div v-for="ticket in tickets" :key="ticket.id" class="tickets-container">
+                        <div v-else class="tickets-container"> 
+                            <div v-for="ticket in tickets" :key="ticket.id">
                                 <div class="ticket-stub">
                                     <div class="user-info">
                                         <p class="name"> {{ticket.firstName}} </p>
@@ -143,17 +143,17 @@ h1 {
     margin-left: 48px;
 }
 
-div.col-4 {
-    max-height: 500px;
+div.col-4, div.col-8 {
+    height: 500px;
+}
+
+div.col-8 .tickets-container {
+    height: 90%;
+    overflow-y: scroll;
 }
 
 div.white {
     background-color: white;
-}
-
-.card-body.tickets {
-    max-height: 500px;
-    overflow-y: scroll;
 }
 
 .ticket-stub {
@@ -178,10 +178,12 @@ div.white {
     font-size: 0.75em;
     text-transform: uppercase;
     font-weight: 300;
+    line-height: 1;
 }
 
 .ticket-stub .user-info {
     border-bottom: 1px solid $color-primary-2;
+    margin-bottom: 0.5em;
 }
 
 .ticket-stub .email {
