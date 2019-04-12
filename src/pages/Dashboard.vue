@@ -50,6 +50,7 @@
 
 <script>
 import { user } from '../user.js';
+import axios from 'axios';
 import NavBar from "@/components/NavBar";
 import Loading from "@/components/Loading";
 
@@ -67,18 +68,65 @@ export default {
             tickets: [],
         }
     },
-    mounted() {
-        // event.sync();
-    },
     components: { NavBar, Loading },
     methods: {
         triggerModal: function() {
             document.querySelector('div.user-modal').classList.toggle('show-modal');
         }
     },
-    mounted() {
-        // TODO : Add your logic to tell whether the usre has tickets 
-        this.hasTickets = tickets == [];
+    created() {    
+        let ticketParams = {
+            token: user.getJWT(),
+            event_id: 1
+        };
+
+        let rURL = "https://students.washington.edu/tedxuofw/index.php/api/user/tickets";
+        axios.get(rURL, { params: ticketParams }).then((response)  =>  {
+            var resp = response.data;
+            if(resp.status === "success") {
+                // Store any information given
+                console.log(resp);
+                            
+                // firstName, email, type
+                let temp = [];
+                for(var index in resp.tickets) {
+                    var t = resp.tickets[index];
+                    
+                    var c = "Ticket";
+                    if(t.costlevel_id == 1) {
+                        c = "UW Student Ticket"
+                    } else if(t.costlevel_id == 2) {
+                        c = "General Ticket"
+                    } else if(t.costlevel_id == 11) {
+                        c = "UW Student Ticket (discount)"
+                    } else if(t.costlevel_id == 12) {
+                        c = "General Ticket (discount)"
+                    }
+                                        
+                    temp.push({
+                        id: t.id, 
+                        firstName: t.name,
+                        email: t.email,
+                        ticket: c
+                    });
+                }
+                
+                this.tickets = temp;
+                console.log(this.tickets);
+                this.hasTickets = (this.tickets != []);
+                console.log(this.hasTickets);
+            } else {          
+                // Error Response
+                var message = resp.message;
+                console.log(response.data);
+            }
+        }, (error)  =>  {
+            // Error with Request
+            var err = error.response;
+            console.log(err);
+
+            alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+        });
     }
 };
 </script>

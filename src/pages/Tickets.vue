@@ -48,6 +48,8 @@ import CheckoutForm from "@/components/CheckoutForm";
 import Confirmation from "@/components/Confirmation";
 import NavBar from "@/components/NavBar";
 import router from "../router";
+import { user } from "../user.js";
+import axios from 'axios';
 
 export default {
   name: "CheckoutPage",
@@ -65,6 +67,59 @@ export default {
       errorMessage: ''
     };
   },
+  created() {
+    let ticketParams = {
+          token: user.getJWT(),
+          event_id: 1
+      };
+
+      let rURL = "https://students.washington.edu/tedxuofw/index.php/api/user/tickets";
+      axios.get(rURL, { params: ticketParams }).then((response)  =>  {
+          var resp = response.data;
+          if(resp.status === "success") {
+              // Store any information given
+              console.log(resp);
+
+              // firstName, email, type
+              let temp = [];
+              for(var index in resp.tickets) {
+                  var t = resp.tickets[index];
+
+                  var c = "Ticket";
+                  if(t.costlevel_id == 1) {
+                      c = "UW Student Ticket"
+                  } else if(t.costlevel_id == 2) {
+                      c = "General Ticket"
+                  } else if(t.costlevel_id == 11) {
+                      c = "UW Student Ticket (discount)"
+                  } else if(t.costlevel_id == 12) {
+                      c = "General Ticket (discount)"
+                  }
+
+                  temp.push({
+                      id: t.id, 
+                      firstName: t.name,
+                      email: t.email,
+                      ticket: c
+                  });
+              }
+
+              this.tickets = temp;
+              console.log(this.tickets);
+          } else {          
+              // Error Response
+              var message = resp.message;
+              console.log(response.data);
+          }
+      }, (error)  =>  {
+          // Error with Request
+          var err = error.response;
+          console.log(err);
+
+          alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
+      });
+  },
+  
   mounted() {
     this.$nextTick(() => {
       window.addEventListener('resize', this.recalculateMobileView);
