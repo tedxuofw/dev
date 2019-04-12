@@ -23,7 +23,7 @@
                     <div class="col-8"> 
                         <div class="header"> Your Tickets </div>
                         <div class="card-container" v-if="!hasTickets">
-                            <div class="card-body">
+                            <div class="card-body tickets">
                                 <p class="warning card-child"> You don't have any purchased tickets yet. </p>
                                 <div class="card-child"  >
                                     <a href="/#/checkout"> <button class="secondary"> Get Tickets </button> </a>
@@ -145,11 +145,16 @@ h1 {
 }
 
 div.col-4 {
-    max-height: 700px;
+    max-height: 500px;
 }
 
 div.white {
     background-color: white;
+}
+
+.card-body.tickets {
+    max-height: 500px;
+    overflow-y: scroll;
 }
 
 .ticket-stub {
