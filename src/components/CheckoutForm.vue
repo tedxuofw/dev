@@ -32,7 +32,7 @@ export default {
     },
     mounted() {
         // Create a Stripe client.
-        var stripe = Stripe('pk_test_EsLnXbnCKw4JnlLnQKdTBNyh');
+        var stripe = Stripe('pk_live_vVGA9MgSP2u4PA439eTEIiBg');
         
         // Create an instance of Elements.
         var elements = stripe.elements();

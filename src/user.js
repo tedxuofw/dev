@@ -33,7 +33,7 @@ export const user = new Vue({
     }
     
     // Handle case where cache expires
-    var threshold = 1000 * 60 * 1;
+    var threshold = 1000 * 60 * 60 * 1;
     var time = Date.now();
     if(time - localStorage.cached > threshold) {
       return;
