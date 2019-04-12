@@ -63,9 +63,9 @@
           <Confirmation :tickets="tickets" v-bind:purchases="confirmArr" :paymentId="paymentId" @changed="completeTransaction" />
         </div>
 
-          <div class="row" v-else>
-            <PurchaseComplete :tickets="tickets" v-bind:purchases="confirmArr" :paymentId="paymentId" />
-          </div>
+        <div class="row" v-else>
+            <PurchaseComplete :tickets="tickets" v-bind:purchases="confirmArr" :paymentId="paymentId" @changed="completeTransaction" />
+        </div>
       </div>
     </main>
   </div>
@@ -73,23 +73,23 @@
 
 <script>
 const MOBILE_MAX_WIDTH = 1350;
-const pageNames = ['Buy new tickets', 'Ticket payment', 'Review your purchase', 'Thank you for your purchase!'];
+const pageNames = ['Buy new tickets', 'Ticket payment', 'Review your purchase', 'Thank you!'];
 const navNames = ['', 'tickets', 'payment']
 
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
 import CheckoutForm from "@/components/CheckoutForm";
 import Confirmation from "@/components/Confirmation";
-import PurchaseComplete from "@/components/PurchaseComplete";
 import SideNavBar from "@/components/SideNavBar";
 import axios from 'axios';
 import { user } from '../user.js';
 import router from "../router";
 import DesktopNavBar from "@/components/DesktopNavBar";
 import NavBar from "@/components/NavBar";
+import PurchaseComplete from "@/components/PurchaseComplete";
 
 export default {
-  name: "CheckoutPage",
+  name: "Complete",
   components: { SpotlightTicketView, Ticket, CheckoutForm, NavBar, Confirmation, PurchaseComplete },
   data() {
     return {
@@ -100,10 +100,10 @@ export default {
       creatingTicket: false,
       showError: false,
       mobileView: false,
-      // 0 = ticket selection, 1 = checkout, 2 = confirmation
-      screen: 0,
+      // 0 = ticket selection, 1 = checkout, 2 = confirmation, 3 = completion
+      screen: 3,
       navNames: '',
-      title: 'Buy new tickets',
+      title: 'Thank you for your purchase!',
       errorMessage: '',
       confirmArr: [],
       paymentId: -1
@@ -345,10 +345,8 @@ export default {
           if(resp.status === "success") {
               // Store any information given
               console.log(resp);
-              
-              this.screen = 3;
-              this.navName = '';
-              this.title = pageNames[this.screen];
+              alert(resp.message + " Look for an email in the next 48 hours with your ticket details.");
+              router.push("/dashboard");
           } else {          
               // Error message
               var message = resp.message;

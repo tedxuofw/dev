@@ -10,6 +10,7 @@ import SpeakersPage from '@/pages/Speakers'
 import TicketsPage from '@/pages/Tickets'
 import ComponentsPage from '@/pages/Components'
 import Dashboard from '@/pages/Dashboard'
+import Complete from '@/pages/Complete'
 
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ export default new Router({
       name: 'Dashboard',
       component: Dashboard
     },
+    {
+      path: '/done',
+      name: 'Complete',
+      component: Complete
+    }
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }
