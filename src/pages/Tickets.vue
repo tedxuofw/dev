@@ -1,5 +1,6 @@
 <template>
   <div>
+      <Loading v-if="this.loading"/>
       <NavBar v-bind:tickets="true"/>
       <main>
         <h1> Tickets </h1>
@@ -45,6 +46,7 @@ const navNames = ['', 'tickets', 'payment']
 
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
+import Loading from "@/components/Loading";
 import CheckoutForm from "@/components/CheckoutForm";
 import Confirmation from "@/components/Confirmation";
 import NavBar from "@/components/NavBar";
@@ -54,7 +56,7 @@ import axios from 'axios';
 
 export default {
   name: "CheckoutPage",
-  components: { SpotlightTicketView, Ticket, CheckoutForm, NavBar, Confirmation },
+  components: { SpotlightTicketView, Ticket, CheckoutForm, NavBar, Confirmation, Loading },
   data() {
     return {
       ticketIdCounter: 0,
@@ -65,17 +67,21 @@ export default {
       screen: 0,
       navNames: '',
       title: 'Buy new tickets',
-      errorMessage: ''
+      errorMessage: '',
+      loading: false
     };
   },
   created() {
     let ticketParams = {
-          token: user.getJWT(),
-          event_id: 1
-      };
+        token: user.getJWT(),
+        event_id: 1
+    };
+
+    this.loading = true;
 
       let rURL = "https://students.washington.edu/tedxuofw/index.php/api/user/tickets";
       axios.get(rURL, { params: ticketParams }).then((response)  =>  {
+          this.loading = false;
           var resp = response.data;
           if(resp.status === "success") {
               // Store any information given
@@ -113,6 +119,7 @@ export default {
               console.log(response.data);
           }
       }, (error)  =>  {
+          this.loading = false;
           // Error with Request
           var err = error.response;
           console.log(err);

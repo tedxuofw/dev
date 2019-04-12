@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Loading v-if="this.loading"/>
         <NavBar dashboard :user="user"/>
         <main>
             <h1> Welcome, {{ user.first }}! </h1>
@@ -66,6 +67,7 @@ export default {
             },
             hasTickets: false,
             tickets: [],
+            loading: false
         }
     },
     components: { NavBar, Loading },
@@ -79,9 +81,10 @@ export default {
             token: user.getJWT(),
             event_id: 1
         };
-
+        this.loading = true;
         let rURL = "https://students.washington.edu/tedxuofw/index.php/api/user/tickets";
         axios.get(rURL, { params: ticketParams }).then((response)  =>  {
+            this.loading = false;
             var resp = response.data;
             if(resp.status === "success") {
                 // Store any information given
@@ -121,6 +124,7 @@ export default {
             }
         }, (error)  =>  {
             // Error with Request
+            this.loading = false;
             var err = error;
             console.log(err);
 

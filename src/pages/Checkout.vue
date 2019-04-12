@@ -1,5 +1,6 @@
 <template>
   <div>
+      <Loading v-if="this.loading"/>
       <NavBar v-bind:tickets="true"/>
       <main>
         <div class="container components-page" :class="{ 'mobile-view': mobileView }">
@@ -78,6 +79,7 @@ const navNames = ['', 'tickets', 'payment']
 
 import SpotlightTicketView from "@/components/SpotlightTicketView";
 import Ticket from "@/components/Ticket";
+import Loading from "@/components/Loading";
 import CheckoutForm from "@/components/CheckoutForm";
 import Confirmation from "@/components/Confirmation";
 import PurchaseComplete from "@/components/PurchaseComplete";
@@ -90,7 +92,7 @@ import NavBar from "@/components/NavBar";
 
 export default {
   name: "CheckoutPage",
-  components: { SpotlightTicketView, Ticket, CheckoutForm, NavBar, Confirmation, PurchaseComplete },
+  components: { SpotlightTicketView, Ticket, CheckoutForm, NavBar, Confirmation, PurchaseComplete, Loading },
   data() {
     return {
       ticketIdCounter: 0,
@@ -106,7 +108,8 @@ export default {
       title: 'Buy new tickets',
       errorMessage: '',
       confirmArr: [],
-      paymentId: -1
+      paymentId: -1,
+      loading: false
     };
   },
   created() {
@@ -208,6 +211,7 @@ export default {
 
     /** Switches to payment interface. */
     goToPayment() {
+      this.loading = true;
       // Generate a group (event_id, owner_id)
       let gURL = "https://students.washington.edu/tedxuofw/index.php/api/group/create";
       let groupParams = { 
@@ -251,6 +255,7 @@ export default {
               // Add each registrant to the group(name, email, costlevel_id, group_id)
               let rURL = "https://students.washington.edu/tedxuofw/index.php/api/registrants/create";
               axios.get(rURL, { params: registrantParams }).then((response)  =>  {
+                  this.loading = false
                   var resp = response.data;
                   if(resp.status === "success") {
                       // Store any information given
@@ -262,6 +267,7 @@ export default {
                       console.log(response.data);
                   }
               }, (error)  =>  {
+                  this.loading = false;
                   // Error with Request
                   var err = error.response;
                   console.log(err);
@@ -277,6 +283,7 @@ export default {
           }
         
       }, (error)  =>  {
+          this.loading = false;
           // There was an error with the way the request was made!
           // This is really bad (either the API broke or more likely
           // the frontend isn't properly validating the input)
@@ -294,7 +301,7 @@ export default {
 
     /** Switches to confirmation interface. */
     goToConfirmation(token) {      
-      
+      this.loading = true;
       // Add a charge (event_id, owner_id)
       let pURL = "https://students.washington.edu/tedxuofw/index.php/api/payment/pay";
       let paymentParams = { 
@@ -305,6 +312,7 @@ export default {
       };
       console.log(this.screen)
       axios.get(pURL, { params: paymentParams }).then((response)  =>  {
+        this.loading = false;
         console.log("success" + this.screen)
           var resp = response.data;
           if(resp.status === "success") {
@@ -325,6 +333,7 @@ export default {
           }
         
       }, (error)  =>  {
+          this.loading = false;
           // There was an error with the way the request was made!
           var err = error.response;
           console.log(err);
