@@ -38,8 +38,8 @@
             <h2>Ticket Information</h2>
             <p class="footnote show-label">Ticket Type</p>
             <select v-model="currentTicket.ticket" class="full-width">
-              <option>General Ticket</option>
-              <option>UW Student Ticket</option>
+              <option value="General Ticket">General Ticket - $50</option>
+              <option value="UW Student Ticket">UW Student Ticket - $35</option>
             </select>
 
             <h2 class="extra-margin-top">Ticket Holder</h2>
@@ -329,7 +329,7 @@ export default {
           } else {          
               // Error message
               var message = resp.message;
-              console.log(response.data);
+              alert(message);
           }
         
       }, (error)  =>  {

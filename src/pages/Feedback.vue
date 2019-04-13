@@ -9,7 +9,8 @@
                     <div class="col-12 responsive"> 
                         <div class="header"> Tell us what you think: </div>
                         <div class="card-container">
-                            <textarea class="card-body"/>
+                            <input type="text" placeholder="Subject" class="full-width">
+                            <textarea class="card-body" placeholder="Type your message here..."/>                        
                         </div>
                         <button class="primary full-width" @click="updateParent()">Continue</button>
                     </div>
@@ -80,12 +81,13 @@ div button {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 85%;
 }
 
 textarea {
     border-radius: 4px;
-    font-size: 0.9em;
+    font-size: 1em;
     resize: none;
 }
 

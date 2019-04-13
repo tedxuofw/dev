@@ -5,6 +5,8 @@
       <main>
         <h1> Tickets </h1>
         <p> Your purchased tickets will arrive by email a week before this year's conference. Please contact TEDxUofW for any additional questions.</p>
+        <p> <span class="bold"> General tickets: </span> $50, <span class="bold"> UW student tickets: </span> $35 </p>
+        <p>   </p>
         <div class="col-12 outer">
           <div class="row card-row">
               <div class="col-12"> 
@@ -175,6 +177,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+.bold {
+    font-weight: 700;
+}
+
 main {
     margin-left: 200px;
     padding: 1em 3em;

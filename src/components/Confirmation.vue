@@ -31,6 +31,10 @@
                             <p> {{ purchase.name }} <span class="data"> (x{{ purchase.quantity }}) </span> </p>
                             <p class="data"> ${{ purchase.cost }} </p>
                         </div>
+                        <div class="data-container total">
+                            <p> <span class="bold"> Total: </span> </p>
+                            <p class="data black"> ${{this.total}}  </p>
+                        </div>
                     </div>
                 </div>
                 <a @click="updateParent()"> <button class="primary">Confirm</button> </a>
@@ -60,7 +64,8 @@ export default {
           last: user.last(),
           email: user.email(),
           profile: user.profile(),
-      }
+      },
+      total: 0
     };
   },
   props: {
@@ -85,7 +90,10 @@ export default {
       window.addEventListener('resize', this.recalculateMobileView);
     });
     this.recalculateMobileView();
-    console.log("Test");
+    this.purchases.forEach(element => {
+        this.total += parseInt(element.cost);
+    });
+    console.log(this.purchases);
     console.log(this.tickets);
     console.log(this.purchases);
     console.log(this.paymentId);
@@ -119,6 +127,15 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
+.total {
+    border-top: 1px solid gray;
+    margin-top: 0.5em;
+}
+
+p.black {
+    color: black;
+}
+
 h1, h2 {
   font-weight: 300;
 }
@@ -133,6 +150,10 @@ main {
     margin-left: 200px;
     padding: 1em 3em;
     height: 100%;
+}
+
+.bold {
+    font-weight: 700;
 }
 
 .data-container {

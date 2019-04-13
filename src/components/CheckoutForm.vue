@@ -31,7 +31,7 @@ export default {
       return {
           stripe: null,
           element: null,
-          error: "asdfasdf"
+          error: ""
       }  
     },
     mounted() {
@@ -97,6 +97,7 @@ export default {
                         this.error = "Your card information was not correct. Please try again."
                         document.querySelector('p.error').classList.add('show');
                         console.log(this.error);
+                        return;
                     } else {
                         // Send the token to your server.
                         this.$emit("changed", result.token.id);
