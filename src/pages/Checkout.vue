@@ -31,12 +31,12 @@
               {{ ticket.ticket }} &middot; {{ticket.email}}
             </div>
             <button class="full-width extra-margin-top secondary" @click="addTicket()">Add Another Ticket</button>
-            <button class="full-width primary" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment</button>
+            <button class="full-width primary" @click="goToPayment()" v-if="tickets.length > 0">Continue to Payment (${{this.total}})</button>
           </div>
 
           <div class="col-4 sidebar-container ticket-form" :class="{ 'col-12': mobileView, 'col-4': !mobileView }" v-else>
             <h2>Ticket Information</h2>
-            <p class="footnote show-label">Ticket Type</p>
+            <p class="footnote show-label">Ticket Type (includes t-shirt/meal)</p>
             <select v-model="currentTicket.ticket" class="full-width">
               <option value="General Ticket">General Ticket - $50</option>
               <option value="UW Student Ticket">UW Student Ticket - $35</option>
@@ -109,7 +109,8 @@ export default {
       errorMessage: '',
       confirmArr: [],
       paymentId: -1,
-      loading: false
+      loading: false,
+      total: 0
     };
   },
   created() {
@@ -139,8 +140,6 @@ export default {
     /** Saves changes to currently-editing ticket, or displays error if there's a problem */
     saveTicket() {
       var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
-
-      console.log(this.tickets[this.ticketEditIndex])
       if(!this.currentTicketIsValid) {
         this.showError = true;
         this.errorMessage = "Make sure you've filled out all parts of the form before saving."
@@ -153,7 +152,7 @@ export default {
         this.showError = true;
         this.errorMessage = "Please enter a valid email."
         return;
-      } 
+      }
         
       // No frontend visibility of coupon codes
 
@@ -168,6 +167,8 @@ export default {
     
     /** Exits ticket-editing interface. */
     commitChanges() {
+      this.total  = this.
+      calculateTotal();
       this.showError = false;
       this.ticketEditIndex = -1;
       this.creatingTicket = false;
@@ -375,6 +376,19 @@ export default {
     goBack() {
       this.screen--;
       this.title = pageNames[this.screen];
+    },
+    calculateTotal() {
+      var total = 0;
+      this.tickets.forEach((ticket) => {
+        if (ticket.code === 'TED2019') {
+          total += 32;
+        } else if (ticket.ticket === 'General Ticket') {
+          total += 50;
+        } else {
+          total += 35;
+        }
+      });
+      return total;
     }
   },
   computed: {
