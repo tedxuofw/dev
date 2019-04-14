@@ -18,7 +18,9 @@
                     </div>
                 </div>
             </div>
+            <EmailModal :user="user"/>
         </main>
+
     </div> 
 </template>
 
@@ -26,6 +28,7 @@
 import { user } from '../user.js';
 import NavBar from "@/components/NavBar";
 import Loading from "@/components/Loading";
+import EmailModal from "@/components/EmailModal";
 import axios from 'axios';
 
 export default {
@@ -44,7 +47,7 @@ export default {
             error: ''
         }
     },
-    components: { NavBar, Loading }, 
+    components: { NavBar, Loading, EmailModal }, 
     methods: {
         sendEmail() {
             if (this.message != '' && this.subject != '') {
@@ -58,7 +61,7 @@ export default {
                     this.loading = false;
                     var resp = response.data;
                     if(resp.status === "success") {
-                        alert('success');
+                        document.querySelector('.email-modal').classList.add('show-modal');
                     } else {
                         // User Error
                         this.error = 'There was an error sending your feedback.'
