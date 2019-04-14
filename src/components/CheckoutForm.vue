@@ -200,6 +200,8 @@ p.error {
     margin: 0;
     padding: 0 1em;
     display: none;
+    text-align: left;
+    width: 100%;
 }
 
 .show {
