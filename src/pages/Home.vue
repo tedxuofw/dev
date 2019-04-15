@@ -43,6 +43,35 @@
         </div>
       </div>
     </div>
+    <div class="container section section-speakers">
+      <h2>Speakers</h2>
+      <div class="speakers-container">
+        <div class="speaker-col">
+          <div class="speaker-content">
+            <img src="/static/headshots/jenny_liang.jpg" alt="Photo of Jenny Liang" />
+            <h3>Jenny Liang</h3>
+            <p>Why do small things matter the most in our everyday life?</p>
+          </div>
+        </div>
+        <div class="speaker-col">
+          <div class="speaker-content">
+            <img src="/static/headshots/soham_pardeshi.jpg" alt="Photo of Soham Pardeshi" />
+            <h3>Soham Pardeshi</h3>
+            <p>Why do small things matter the most in our everyday life?</p>
+          </div>
+        </div>
+        <div class="speaker-col">
+          <div class="speaker-content">
+            <img src="/static/headshots/nick_zhou.jpg" alt="Photo of Nick Zhou" />
+            <h3>Nick Zhou</h3>
+            <p>Why do small things matter the most in our everyday life?</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-container">
+        <router-link to="speakers" class="button primary">View all speakers</router-link>
+      </div>
+    </div>
     <!-- <div class="container section section-community">
       <img class="community-arrow-deco" src="/static/animation-arrow-left.svg" alt="Arrow decoration" />
       <div class="row">
@@ -181,6 +210,105 @@ export default {
       a {
         text-align: center;
       }
+    }
+  }
+}
+
+.section-speakers {
+  background-color: $color-tertiary;
+  background-image: url('/static/arrow_transparent.png'), url('/static/arrow_transparent.png');
+  background-repeat: no-repeat;
+  background-position: bottom left, 80% 100%;
+  background-size: 365px 548px, #{1.5 * 365px} #{1.5 * 548px};
+
+  @media screen and (max-width: 1200px) {
+    background-image: url('/static/arrow_transparent.png');
+  }
+
+  h2 {
+    align-self: flex-start;
+    text-align: left;
+    font-size: 10vw;
+    padding: 16px;
+    line-height: 1em;
+    margin: 0;
+    color: $color-primary-2;
+  }
+
+  .speakers-container {
+    display: flex;
+    color: $color-secondary-2;
+    min-height: 40vw;
+    padding: 0 10%;
+
+    @media screen and (max-width: 650px) {
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: 1200px) {
+      padding: 0 32px;
+    }
+
+    .speaker-col {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+
+      @media screen and (min-width: 1200px) {
+        &:nth-of-type(1) {
+          align-self: center;
+        }
+
+        &:nth-of-type(2) {
+          align-self: flex-start;
+        }
+
+        &:nth-of-type(3) {
+          align-self: flex-end;
+        }
+      }
+
+      @media screen and (max-width: 650px) {
+        max-width: 400px;
+      }
+
+      .speaker-content {
+        max-width: 90%;
+
+        img {
+          width: 100%;
+        }
+
+        h3 {
+          font-size: 1.5vw;
+          line-height: 1.5em;
+          margin: 0;
+          
+          @media screen and (max-width: 1200px) {
+            font-size: 22px;
+          }
+        }
+
+        p {
+          margin-top: 0;
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+
+  .btn-container {
+    padding-left: 10%;
+    align-self: flex-start;
+    margin-bottom: 32px;
+
+    @media screen and (max-width: 1200px) {
+      padding-left: 0;
+      align-self: center;
+    }
+
+    a {
+      text-decoration: none;
     }
   }
 }
