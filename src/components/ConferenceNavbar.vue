@@ -11,6 +11,9 @@
         :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
       <tab-option spacer />
       <tab-option :secondary="secondary">
+        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
+        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
+        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <button class="primary-2 cta-button no-margin" @click="() => navigateTo('/login')">Buy Tickets Now</button>
       </tab-option>
     </tab-set>
@@ -89,10 +92,78 @@ export default {
     }
   }
 
+  $footstep-rotations: (20deg, 25deg, 22deg);
+  $main-animation-duration: 2300ms;
+  $footstep-animation-delay: 100ms;
+  $footstep-animation-per-delay: 500ms;
+  $num-footsteps: 3;
+  $button-flash-duration: 800ms;
+
+  .footstep {
+    width: 40px;
+    height: 15px;
+    margin-right: 10px;
+    animation-name: footstep-appear;
+    animation-delay: $main-animation-duration;
+    animation-duration: 1ms;
+    animation-fill-mode: forwards;
+    opacity: 0;
+
+    @media screen and (max-width: $tabset-break) {
+      display: none;
+    }
+
+    &:last-of-type {
+      margin-right: 16px;
+    }
+
+    @for $i from 1 through $num-footsteps {
+      &:nth-of-type(#{$i}) {
+        @if $i % 2 == 0 {
+          transform: scaleY(-1) translateY(50%) rotate(#{nth($footstep-rotations, $i)});
+        }
+        @else {
+          transform: translateY(50%) rotate(#{nth($footstep-rotations, $i)});
+        }
+
+        animation-delay: $main-animation-duration + $footstep-animation-delay + $i * $footstep-animation-per-delay;
+      }
+    }
+  }
+
   .cta-button {
-    background: none !important;
+    background-color: transparent;
     padding-left: 32px;
     padding-right: 32px;
+
+    animation-name: button-flash;
+    animation-delay: $main-animation-duration + $footstep-animation-delay + ($num-footsteps + 1) * $footstep-animation-per-delay;
+    animation-duration: $button-flash-duration;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes footstep-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes button-flash {
+  0% {
+    background-color: transparent;
+  }
+
+  50% {
+    background-color: rgba($color-primary, 0.4);
+  }
+
+  100% {
+    background-color: transparent;
   }
 }
 </style>
