@@ -79,10 +79,10 @@ export default {
         makePerson('Sara Gustafson', 'Speaker Selection', 'Speaker Selection'),
 
         makePerson('Maya Gopalan', 'Finance', 'Finance Team Manager'),
-        makePerson('Connor Hart', 'Finance', 'Sponsorship', false),
+        makePerson('Connor Hart', 'Finance', 'Sponsorship'),
         makePerson('Emma Ueda', 'Finance', 'Logistics'),
         makePerson('Jonathan Chang', 'Finance', 'Analyst'),
-        makePerson('Stephen Lee', 'Finance', 'Analyst', false),
+        makePerson('Stephen Lee', 'Finance', 'Analyst'),
 
         makePerson('Miranda Reisman', 'Production', 'Production Team Manager'),
         makePerson('Chloee Henley', 'Production', 'Guest Experience'),
@@ -93,7 +93,7 @@ export default {
 
         makePerson('Rahul Prasad', 'Public Relations', 'PR Team Manager'),
         makePerson('Emma Hurring', 'Public Relations', 'Outreach Coordinator'),
-        makePerson('Marie Danilychev', 'Public Relations', 'External Outreach', false),
+        makePerson('Marie Danilychev', 'Public Relations', 'External Outreach'),
         makePerson('Samantha Freeman', 'Public Relations', 'Internal Manager'),
 
         makePerson('Jenny Liang', 'Web', 'Web Team Manager'),
