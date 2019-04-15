@@ -79,7 +79,7 @@ export default {
 
       if(this.validationError === false) {
         this.formState = STATES.LOADING;
-        emailjs.send('yahoo', 'template_WVVEOZgr', this.formBody, 'user_5VJG0EROTt3See1F5QhlM')
+        emailjs.send('default_service', 'tedxuofw_default_template', this.formBody, 'user_zY7RrDDliqSGIWcjz5lC5')
           .then((response) => {
             this.formState = STATES.SUCCESS;
             console.log('SUCCESS!', response.status, response.text);
