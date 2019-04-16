@@ -6,16 +6,32 @@
     </div>
     <div class="container section-about">
       <div class="row">
-        <!-- <div class="col-4 image">
-          <div class="placeholder-image"></div>
-        </div> -->
-        <div class="col-8 content">
-          <div>
-            <h2>About <span class="highlight">TEDxUofW</span></h2>
-            <p>
-              TEDxUofW is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
-            </p>
-          </div>
+        <div class="col-8 about-selection">
+          <button class="org-button" v-for="(org, idx) in orgs" :key="org"
+            :class="{ selected: selectedOrg == idx }"
+            @click="selectedOrg = idx" >
+            About {{ org }}
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 content" v-if="selectedOrg == 0">
+          <h2>About <span class="highlight">TED</span></h2>
+          <p>
+            <span class="red">TED</span> is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com. TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan and Daniel Kahneman. The annual TED Conference takes place each spring in Vancouver, British Columbia.
+          </p>
+        </div>
+        <div class="col-8 content" v-if="selectedOrg == 1">
+          <h2>About <span class="highlight">TEDx</span></h2>
+          <p>
+            In the spirit of ideas worth spreading, <span class="red">TEDx</span> is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TED Talks video and live speakers combine to spark deep discussion and connection. These local, self-organized events are branded TEDx, where x = independently organized TED event. The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized. (Subject to certain rules and regulations.)
+          </p>
+        </div>
+        <div class="col-8 content" v-if="selectedOrg == 2">
+          <h2>About <span class="highlight">TEDxUofW</span></h2>
+          <p>
+            TEDxUofW is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+          </p>
         </div>
       </div>
     </div>
@@ -61,6 +77,8 @@ export default {
   data() {
     const makePerson = this.makePerson.bind(this);
     return {
+      selectedOrg: 2,
+      orgs: ['TED', 'TEDx', 'TEDxUofW'],
       teamSelection: 'All',
       team: [
         makePerson('Julia Pettere', 'Curators', 'Curator'),
@@ -79,10 +97,10 @@ export default {
         makePerson('Sara Gustafson', 'Speaker Selection', 'Speaker Selection'),
 
         makePerson('Maya Gopalan', 'Finance', 'Finance Team Manager'),
-        makePerson('Connor Hart', 'Finance', 'Sponsorship', false),
+        makePerson('Connor Hart', 'Finance', 'Sponsorship'),
         makePerson('Emma Ueda', 'Finance', 'Logistics'),
         makePerson('Jonathan Chang', 'Finance', 'Analyst'),
-        makePerson('Stephen Lee', 'Finance', 'Analyst', false),
+        makePerson('Stephen Lee', 'Finance', 'Analyst'),
 
         makePerson('Miranda Reisman', 'Production', 'Production Team Manager'),
         makePerson('Chloee Henley', 'Production', 'Guest Experience'),
@@ -93,7 +111,7 @@ export default {
 
         makePerson('Rahul Prasad', 'Public Relations', 'PR Team Manager'),
         makePerson('Emma Hurring', 'Public Relations', 'Outreach Coordinator'),
-        makePerson('Marie Danilychev', 'Public Relations', 'External Outreach', false),
+        makePerson('Marie Danilychev', 'Public Relations', 'External Outreach'),
         makePerson('Samantha Freeman', 'Public Relations', 'Internal Manager'),
 
         makePerson('Jenny Liang', 'Web', 'Web Team Manager'),
@@ -163,9 +181,35 @@ $about-break: 1170px;
   background-position: center;
 }
 
+.red {
+  color: $color-primary;
+  font-weight: 700;
+}
+
 .section-about {
-  margin-top: 64px;
   background-color: $color-secondary-2;
+
+  .about-selection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    button {
+      flex: 1 1;
+      background: none;
+      border: none;
+      color: $color-secondary;
+      white-space: nowrap;  
+      border-bottom: 2px solid $color-secondary;
+      border-radius: 0;
+      margin: 8px;
+
+      &.selected {
+        color: $color-tertiary;
+        border-bottom: 5px solid $color-secondary;
+      }
+    }
+  }
 
   .placeholder-image {
     background-color: $color-tertiary;
@@ -183,6 +227,7 @@ $about-break: 1170px;
   h2 {
     font-size: 48px;
     line-height: 1em;
+    margin: 16px 0;
 
     .highlight {
       color: $color-primary;

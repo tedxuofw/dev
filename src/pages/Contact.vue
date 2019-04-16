@@ -9,14 +9,23 @@
         <div class="col-8 no-margin message">
           <h2>Message</h2>
           <div class="accent"></div>
-          <p>
-            Email us: <a href="mailto:tedxuofw@uw.edu">tedxuofw@uw.edu</a>
-          </p>
-          <!-- <input type="text" placeholder="Name" class="half-width" />
-          <input type="email" placeholder="Email" class="half-width" />
-          <input type="text" placeholder="Title" class="full-width" />
-          <textarea placeholder="Message" class="full-width" />
-          <button class="full-width">Send</button> -->
+          <template v-if="formState == STATES.NOT_SUBMITTED">
+            <input type="text" placeholder="Name" v-model="name" class="half-width" />
+            <input type="email" placeholder="Email" v-model="email" class="half-width" />
+            <input type="text" placeholder="Subject" v-model="subject" class="full-width" />
+            <textarea placeholder="Message" v-model="body" class="full-width" />
+            <p class="error" v-if="eligibleForErrorMessages && validationError">{{ validationError }}</p>
+            <button @click="submit" class="full-width">Send</button>
+          </template>
+          <template v-if="formState == STATES.LOADING">
+            <p>Sending...</p>
+          </template>
+          <template v-if="formState == STATES.ERROR">
+            <p>There was an error in submitting this form. Instead, email us directly: <a href="mailto:tedxuofw@uw.edu">tedxuofw@uw.edu</a></p>
+          </template>
+          <template v-if="formState == STATES.SUCCESS">
+            <p>Email sent! Thank you.</p>
+          </template>
         </div>
         <div class="col-4 no-margin social">
           <h2>Social</h2>
@@ -29,11 +38,11 @@
             <a href="https://www.instagram.com/tedxuofw/" target="_blank" class="social-bubble"><img src="/static/38-instagram.svg" alt="Instagram logo" /></a>
             <a href="https://www.youtube.com/channel/UCGmFbWHkkgWwA8iw9Ap11vw" target="_blank" class="social-bubble"><img src="/static/18-youtube.svg" alt="Youtube logo" /></a>
           </div>
-          <p>
+          <!-- <p>
             Or follow our newsletter
           </p>
           <input type="email" placeholder="Email" class="full-width" />
-          <button class="full-width secondary">Sign up</button>
+          <button class="full-width secondary">Sign up</button> -->
         </div>
       </div>
     </div>
@@ -43,9 +52,66 @@
 <script>
 import Arrows from "@/components/Arrows";
 import ConferencePage from "@/components/ConferencePage";
+import * as emailjs from 'emailjs-com';
+const STATES = {
+  "NOT_SUBMITTED": 0,
+  "LOADING": 1,
+  "SUCCESS": 2,
+  "ERROR": 3
+}
 export default {
   name: "ContactPage",
-  components: { Arrows, ConferencePage }
+  components: { Arrows, ConferencePage },
+  data() {
+    return {
+      STATES,
+      eligibleForErrorMessages: false,
+      formState: STATES.NOT_SUBMITTED,
+      name: '',
+      email: '',
+      subject: '',
+      body: ''
+    }
+  },
+  methods: {
+    submit() {
+      this.eligibleForErrorMessages = true;
+
+      if(this.validationError === false) {
+        this.formState = STATES.LOADING;
+        emailjs.send('default_service', 'tedxuofw_default_template', this.formBody, 'user_zY7RrDDliqSGIWcjz5lC5')
+          .then((response) => {
+            this.formState = STATES.SUCCESS;
+            console.log('SUCCESS!', response.status, response.text);
+          }, (err) => {
+            this.formState = STATES.ERROR;
+            console.log('FAILED...', err);
+          });
+      }
+    }
+  },
+  computed: {
+    validationError() {
+      if(this.name.length == 0 || this.email.length == 0 || this.subject.length == 0 || this.body.length == 0) {
+        return 'Please fill all inputs.'
+      }
+
+      const emailRe = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
+      if(!emailRe.test(this.email)) {
+        return 'Please enter a valid email.'
+      }
+
+      return false;
+    },
+    formBody() {
+      return {
+        from_name: this.name,
+        reply_to: this.email,
+        subject: this.subject,
+        message: this.body
+      }
+    }
+  }
 };
 </script>
 
