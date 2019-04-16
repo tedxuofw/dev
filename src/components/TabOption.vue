@@ -61,6 +61,11 @@ export default {
     width: 100%;
   }
 
+  .tab-option-label {
+    display: flex;
+    align-items: center;
+  }
+
   &.logo {
     display: flex;
     justify-content: center;
