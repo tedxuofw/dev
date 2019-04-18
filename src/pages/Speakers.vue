@@ -57,12 +57,12 @@ export default {
         ),
         makeSpeaker(
           'Nat Puff',
-          'The Do\'s and Dont\'s of Breakup Songs',
+          'The Dos and Dont\'s of Breakup Songs',
           'Also known for her internet presence, Left At London (sometimes stylized and shortened as /@/), is the stage name of singer/songwriter Nat Puff (she/her), a trans woman from Seattle, Washington who is not afraid to let herself be known intimately through her music, while still remaining accessible.'
         ),
         makeSpeaker(
           'Julio Covarrubias',
-          'Mexican + Latin American Philosophers',
+          'Setting the Record Straight: The Latin American Mind in Global Context',
           'Julio Covarrubias is a doctoral candidate and teaching assistant in the department of philosophy at UW. He is the recipient of the American Philosophical Association\'s 2018 Prize Essay on Latin American Thought for “the best unpublished, English-language, philosophical essay in Latin American thought.” His research focuses on Latinx identity and racial oppression. Currently, he is writing a dissertation on the ethics and politics of inter- and intra-personal relationships in the wake of colonial violence.'
         ),
         makeSpeaker(
@@ -72,12 +72,12 @@ export default {
         ),
         makeSpeaker(
           'Debi Talukdar',
-          'Philosophy is for Everyone',
+          'Philosophy Is for Everyone',
           'Debi Talukdar is the Philosopher-in-Residence at Thurgood Marshall Elementary School. She has been facilitating philosophical discussions with K-12 students and educators in Seattle for several years and serves on the boards of the UW Center for Philosophy for Children, and the Philosophy Learning and Teaching Organization (PLATO). Debi is also the Program Coordinator and an ensemble member of Theater for Change UW at the Center for Teaching and Learning. They do anti-oppressive professional development using interactive theater. Debi is graduating with a Ph.D. in Education this summer. In her free time, she enjoys board games, yoga, and sleeping in.'
         ),
         makeSpeaker(
           'Brad Finegood',
-          'Demystifying Stigma: Unlocking the cure to substance use disorder',
+          'Unlocking the Cure to Substance Use Disorder',
           'Demystifying Stigma is based on a lifetime of experience that Brad Finegood has been through. He works as a Strategic Advisor in Public Health - Seattle & King County. Brad recently served as a co-chair of the King County Opiate Task Force and was the Alcohol and Drug Coordinator for King County. His Bachelor\'s Degree is from Michigan State and his Master\'s Degree in Counseling, Specialty in Alcohol and Drug Abuse from Western Michigan. He has worked in the behavioral health field for 20 years. He is the sibling and survivor of a younger brother that died from an overdose.'
         ),
         makeSpeaker(
@@ -92,7 +92,7 @@ export default {
         ),
         makeSpeaker(
           'Susanne Rafelski',
-          'In search of patterns inside the cell through space and time',
+          'In Search of Patterns inside the Cell through Space and Time',
           'Susanne Rafelski is a quantitative cell biologist and a Director at the Allen Institute for Cell Science in Seattle. Susanne has been imaging the structures inside living cells since she was 17. Her life-long scientific goal is to decipher the patterns and rules that transform the overwhelming complexity found inside cells into functioning units of life. The quest to unlock the secrets of the cell requires there to be no boundaries between scientific fields. Susanne is always looking for ways to incorporate interdisciplinary approaches into her research including data science analyses, image processing, mathematical modeling, computational simulations, and modern machine learning.'
         ),
         makeSpeaker(
@@ -254,6 +254,7 @@ $speakers-break: 750px;
     border: 2px solid $color-tertiary;
     margin-bottom: 48px;
     cursor: pointer;
+    flex-grow: 1;
 
     @media screen and (max-width: $speakers-break) {
       flex: 1 0 100%;

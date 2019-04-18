@@ -48,23 +48,23 @@
       <div class="speakers-container">
         <div class="speaker-col">
           <div class="speaker-content">
-            <img src="/static/headshots/jenny_liang.jpg" alt="Photo of Jenny Liang" />
-            <h3>Jenny Liang</h3>
-            <p>Why do small things matter the most in our everyday life?</p>
+            <img :src="this.getFileName(this.speakers[0].name)" :alt="speakers[0].name" />
+            <h3>{{this.speakers[0].name}}</h3>
+            <p>{{this.speakers[0].talk}}</p>
           </div>
         </div>
         <div class="speaker-col">
           <div class="speaker-content">
-            <img src="/static/headshots/soham_pardeshi.jpg" alt="Photo of Soham Pardeshi" />
-            <h3>Soham Pardeshi</h3>
-            <p>Why do small things matter the most in our everyday life?</p>
+            <img :src="this.getFileName(this.speakers[1].name)" :alt="speakers[1].name" />
+            <h3>{{this.speakers[1].name}}</h3>
+            <p>{{this.speakers[1].talk}}</p>
           </div>
         </div>
         <div class="speaker-col">
           <div class="speaker-content">
-            <img src="/static/headshots/nick_zhou.jpg" alt="Photo of Nick Zhou" />
-            <h3>Nick Zhou</h3>
-            <p>Why do small things matter the most in our everyday life?</p>
+            <img :src="this.getFileName(this.speakers[2].name)" :alt="speakers[2].name" />
+            <h3>{{this.speakers[2].name}}</h3>
+            <p>{{this.speakers[2].talk}}</p>
           </div>
         </div>
       </div>
@@ -103,9 +103,71 @@
 import Arrows from "@/components/Arrows";
 import ConferencePage from "@/components/ConferencePage";
 import Splash from "@/components/Splash";
+
+const speakers = [
+  {
+    name: "Venus Rekow",
+    talk: "Real Power Is Inclusive"
+  },
+  {
+    name: "Nathan Vass",
+    talk: "Why We Need Strangers"
+  },
+  {
+    name: "Nat Puff",
+    talk: "The Dos and Dont's of Breakup Songs"
+  },
+  {
+    name: "Julio Covarrubias",
+    talk: "Setting the Record Straight: The Latin American Mind in Global Context"
+  },
+  {
+    name: "John Vallier",
+    talk: "Ethnomusicology 2.0"
+  },
+  {
+    name: "Debi Talukdar",
+    talk: "Philosophy Is for Everyone"
+  },
+  {
+    name: "Brad Finegood",
+    talk: "Unlocking the Cure to Substance Use Disorder"
+  },
+  {
+    name: "Steven Quay",
+    talk: "How to Be Smart When You're Dense: Preventing Breast Cancer by 2030"
+  },
+  {
+    name: "Tamuka Chidyausiku",
+    talk: "Leveraging Privilege to Amplify the Voices of the Underprivileged"
+  },
+  {
+    name: "Susanne Rafelski",
+    talk: "In Search of Patterns inside the Cell through Space and Time"
+  },
+  {
+    name: "Nicole McNichols",
+    talk: "Student on Top: A Vision for 21st Century Sex Education"
+  },
+  {
+    name: "James Keblas",
+    talk: "How Kevin Bacon Saved Seattle: The Seattle Music Story You Never Heard and Why It Matters Today"
+  },
+]
+
 export default {
   name: "HomePage",
-  components: { Arrows, ConferencePage, Splash }
+  components: { Arrows, ConferencePage, Splash },
+  data() {
+    return {
+      speakers: speakers.sort(() => Math.random() - 0.5).splice(0, speakers.length - 3)
+    }
+  },
+  methods: {
+    getFileName: function(name) {
+      return "/static/speaker-headshots/" + name.toLowerCase().replace(" ", '_') + ".jpg";
+    }
+  }
 };
 </script>
 

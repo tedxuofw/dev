@@ -41,7 +41,7 @@ export default {
       pages: [
         { name: 'Home', url: '/' },
         { name: 'Speakers', url: '/speakers' },
-        // { name: 'Sponsors', url: '/sponsors' },
+        { name: 'Sponsors', url: '/sponsors' },
         { name: 'About', url: '/about' },
         { name: 'Contact', url: '/contact' }
       ],
