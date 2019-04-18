@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <!-- <div class="container section section-speakers">
+    <div class="container section section-speakers">
       <h2>Speakers</h2>
       <div class="speakers-container">
         <div class="speaker-col">
@@ -71,7 +71,7 @@
       <div class="btn-container">
         <router-link to="speakers" class="button primary">View all speakers</router-link>
       </div>
-    </div> -->
+    </div>
     <!-- <div class="container section section-community">
       <img class="community-arrow-deco" src="/static/animation-arrow-left.svg" alt="Arrow decoration" />
       <div class="row">
