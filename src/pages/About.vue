@@ -90,7 +90,7 @@ export default {
         makePerson('Tunny Parrish', 'Design', 'Branding Designer'),
         
         makePerson('Sneha Mohidekar', 'Speaker Selection', 'Speaker Selection Team Manager'),
-        makePerson('Adi Gunawan', 'Speaker Selection', 'Speaker Selection'),
+        makePerson('Aditya Gunawan', 'Speaker Selection', 'Speaker Selection'),
         makePerson('Dhara Shah', 'Speaker Selection', 'Speaker Selection'),
         makePerson('Kelly Phan', 'Speaker Selection', 'Speaker Selection'),
         makePerson('Natalie Salazar', 'Speaker Selection', 'Speaker Selection'),
@@ -118,6 +118,9 @@ export default {
         makePerson('Soham Pardeshi', 'Web', 'Web Developer'),
         makePerson('Nick Zhou', 'Web', 'UX/UI Designer'),
         makePerson('Andrey Butenko', 'Web', 'Web Developer'),
+
+        makePerson('Ro Verdeja', 'Support', 'Presentation Curator'),
+        makePerson('Barrett Vandiver', 'Support', 'Emcee'),
       ]
     };
   },
