@@ -160,7 +160,7 @@ export default {
   components: { Arrows, ConferencePage, Splash },
   data() {
     return {
-      speakers: speakers.sort(() => Math.random() - 0.5).splice(0, speakers.length - 3)
+      speakers: speakers.sort(() => Math.random() - 0.5).splice(0, 3)
     }
   },
   methods: {
