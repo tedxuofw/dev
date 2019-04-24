@@ -36,7 +36,7 @@
               <img src="/static/explore-speaker.png" alt="Photo of a speaker" />
               <h3>Interact with Speakers</h3>
               <p>
-                Ask questions or share your thoughts with speakers after hearing their talks. Inspiring ideas now go both ways.
+                During the conference, ask questions or share your thoughts with speakers after hearing their talks. Inspiring ideas now go both ways.
               </p>
             </div>
           </div>
