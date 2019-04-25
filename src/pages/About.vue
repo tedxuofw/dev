@@ -1,5 +1,5 @@
 <template>
-  <ConferencePage :selectedIndex="1" :footerMargin="false">
+  <ConferencePage :selectedIndex="3" :footerMargin="false">
     <div class="standard-hero" style="position: relative">
       <h1>About</h1>
       <div class="accent"></div>
@@ -90,7 +90,7 @@ export default {
         makePerson('Tunny Parrish', 'Design', 'Branding Designer'),
         
         makePerson('Sneha Mohidekar', 'Speaker Selection', 'Speaker Selection Team Manager'),
-        makePerson('Adi Gunawan', 'Speaker Selection', 'Speaker Selection'),
+        makePerson('Aditya Gunawan', 'Speaker Selection', 'Speaker Selection'),
         makePerson('Dhara Shah', 'Speaker Selection', 'Speaker Selection'),
         makePerson('Kelly Phan', 'Speaker Selection', 'Speaker Selection'),
         makePerson('Natalie Salazar', 'Speaker Selection', 'Speaker Selection'),
@@ -118,24 +118,38 @@ export default {
         makePerson('Soham Pardeshi', 'Web', 'Web Developer'),
         makePerson('Nick Zhou', 'Web', 'UX/UI Designer'),
         makePerson('Andrey Butenko', 'Web', 'Web Developer'),
+
+        makePerson('Ro Verdeja', 'Support', 'Presentation Curator', { hasAlt: false }),
+        makePerson('Barrett Vandiver', 'Support', 'Emcee', { hasPhoto: false }),
       ]
     };
   },
   methods: {
-    makePerson(name, team, title, hasPhoto) {
-      hasPhoto = hasPhoto !== false;
+    makePerson(name, team, title, opts) {
+      opts = opts || {};
+      const hasPhoto = opts.hasPhoto !== false;
+      const hasAlt = opts.hasAlt !== false;
       const fileName = name.toLowerCase().replace(' ', '_').replace(' ', '_');
+
+      let imageUrl = hasPhoto ?
+        `/static/headshots/${fileName}.jpg` :
+        '/static/headshots/blank_face.png';
+
+      let imageUrlAlt = hasPhoto ?
+        `/static/headshots/${fileName}_x.jpg` :
+        '/static/headshots/happy_face.png'
+
+      if(!hasAlt) {
+        imageUrlAlt = imageUrl;
+      }
+
       return {
         name,
         team,
         title,
         showAlt: false,
-        imageUrl: hasPhoto ?
-          `/static/headshots/${fileName}.jpg` :
-          '/static/headshots/blank_face.png',
-        imageUrlAlt: hasPhoto ?
-          `/static/headshots/${fileName}_x.jpg` :
-          '/static/headshots/happy_face.png',
+        imageUrl,
+        imageUrlAlt,
       }
     },
     selectTeam(team) {
@@ -161,7 +175,7 @@ export default {
       return uniqueTeams;
     },
     teamSpacer() {
-      const num = this.filteredTeam.length % 2;
+      const num = this.filteredTeam.length % 3;
       const res = [];
       for (let i = 0; i < num; i++) {
         res.push(i);

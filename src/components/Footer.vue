@@ -11,20 +11,20 @@
         <a href="https://www.youtube.com/channel/UCGmFbWHkkgWwA8iw9Ap11vw" target="_blank" class="social-bubble"><img src="/static/18-youtube.svg" alt="Youtube logo" /></a>
       </div>
       <button @click="$router.push('/login')">Get your tickets now</button>
-      <p>This independent TEDx event is operated under license from TED ©2019 TEDxUofW</p>
+      <p class="small">This independent TEDx event is operated under license from TED ©2019 TEDxUofW</p>
     </div>
     <div class="pages">
       <h3>Pages</h3>
-      <router-link to="about">About</router-link>
-      <router-link to="contact">Contact</router-link>
+      <router-link to="about" class="link">About</router-link>
+      <router-link to="contact" class="link">Contact</router-link>
       <!-- <a href="volunteer">Volunteer</a> -->
       <!-- <a href="sponsors">Sponsors</a> -->
     </div>
     <div class="account">
       <h3>Account</h3>
-      <router-link to="login">Ticketing</router-link>
-      <router-link to="login">Feedback</router-link>
-      <router-link to="login">Dashboard</router-link>
+      <router-link to="login" class="link">Ticketing</router-link>
+      <router-link to="login" class="link">Feedback</router-link>
+      <router-link to="login" class="link">Dashboard</router-link>
       <!-- <a href="/dashboard">Speaker Interaction</a> -->
     </div>
   </div>
@@ -51,7 +51,7 @@ $footer-tiny-break: 515px;
   display: flex;
   width: 100%;
   background-color: $color-secondary-2;
-  padding: 48px 120px;
+  padding: 32px 120px;
   box-sizing: border-box;
 
   &.footer-margin {
@@ -113,17 +113,19 @@ $footer-tiny-break: 515px;
     p {
       margin: 0;
       margin-top: 24px;
-      font-size: 3vw;
-      line-height: 1em;
+      font-size: 48px;
       font-weight: 700;
       text-transform: uppercase;
+      line-height: 60px;
 
       @media screen and (max-width: $footer-break) { 
-        font-size: 42px;
+        font-size: 48px;
+        line-height: 60px;
       }
 
       @media screen and (max-width: $footer-tiny-break) {
         font-size: 32px;
+        line-height: 1.5em;
       }
     }
   }
@@ -148,5 +150,14 @@ $footer-tiny-break: 515px;
       height: 60%;
     }
   }
+}
+
+.small {
+  font-size: 0.75em;
+  line-height: 21px;
+}
+
+.link {
+  font-size: 0.9em;
 }
 </style>

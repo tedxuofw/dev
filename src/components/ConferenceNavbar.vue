@@ -14,7 +14,7 @@
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
-        <button class="primary-2 cta-button no-margin" @click="() => navigateTo('/login')">Buy Tickets Now</button>
+        <button class="secondary cta-button no-margin" @click="() => navigateTo('/login')">Buy Tickets Now</button>
       </tab-option>
     </tab-set>
   </div>
@@ -40,8 +40,8 @@ export default {
     return {
       pages: [
         { name: 'Home', url: '/' },
-        // { name: 'Speakers', url: '/speakers' },
-        // { name: 'Sponsors', url: '/sponsors' },
+        { name: 'Speakers', url: '/speakers' },
+        { name: 'Sponsors', url: '/sponsors' },
         { name: 'About', url: '/about' },
         { name: 'Contact', url: '/contact' }
       ],

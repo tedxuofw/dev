@@ -12,7 +12,7 @@
 
       <div id="final-splash-info-container">
         <span class="title">TEDxUofW 2019</span>
-        <span class="date">Walker Ames Room, May 4</span>
+        <span class="date">Walker Ames Room, May 4<br/>9:30am - 3:30pm</span>
         <div class="accent"></div>
       </div>
     </div>
@@ -213,16 +213,18 @@ $final-animation-length: 1000ms;
     .title,
     .date {
       display: block;
-      line-height: 1.5em;
+      background-color: rgba($color-secondary-2, 0.7);
     }
 
     .title {
       font-weight: 700;
       font-size: 36px;
+      line-height: 1.5em;
     }
 
     .date {
       font-size: 24px;
+      line-height: 1.1em;
     }
 
     .accent {
