@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SideNavBar :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback"/>
+        <SideNavBar :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" :watch="this.watch"/>
         <div id="user-nav">
             <div id="user" class="dropdown">
                 <img class="dropdown" :src="user.profile">
@@ -23,7 +23,8 @@ export default {
     props: {
         dashboard: Boolean,
         tickets: Boolean,
-        feedback: Boolean
+        feedback: Boolean,
+        watch: Boolean
     },
     data () {
         return {

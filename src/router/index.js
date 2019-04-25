@@ -11,6 +11,7 @@ import SpeakersPage from '@/pages/Speakers'
 import TicketsPage from '@/pages/Tickets'
 import ComponentsPage from '@/pages/Components'
 import Dashboard from '@/pages/Dashboard'
+import WatchPage from '@/pages/Watch'
 
 Vue.use(Router)
 
@@ -71,6 +72,11 @@ export default new Router({
       path: '/feedback',
       name: 'FeedbackPage',
       component: FeedbackPage
+    },
+    {
+      path: '/watch',
+      name: 'WatchPage',
+      component: WatchPage
     },
   ],
   scrollBehavior (to, from, savedPosition) {
