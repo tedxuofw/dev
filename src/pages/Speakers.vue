@@ -47,7 +47,7 @@ export default {
       speakers: [
         makeSpeaker(
           'Venus Rekow',
-          'The Power of Inclusion',
+          'Power of Inclusion',
           '<a href="https://www.linkedin.com/in/venusrekow/" target="_blank">Venus Rekow</a> is the founder of <a href="https://neuralshifts.com" target="_blank">Neural Shifts</a>, a consulting firm specialized in helping leaders foster diverse, equitable and inclusive workforces. She designs & implements effective global diversity and inclusion programs, conducts organizational assessments & employs analytics to measure business results. Venus is well known for her ability to translate research insights from Neuroscience & Behavioral economics into practical management strategies that enable behavior change. Her clients include Fortune 500 companies & non-profit organizations. Venus earned an M.S. in Organizational Development from Seattle University, completed coursework for an M.S. in Neuroscience from the University of Oberta, Spain. In addition, she is a certified executive coach.'
         ),
         makeSpeaker(
@@ -97,7 +97,7 @@ export default {
         ),
         makeSpeaker(
           'Nicole McNichols',
-          'Student on Top: A Vision for 21st Century Sex Education',
+          'Students on Top: A Vision for 21st Century Sex Education',
           'Nicole McNichols is a Lecturer in the Psychology Department at the University of Washington, where she also received her PhD in Social Psychology. Over the past five years, Nicole has built her class, The Diversity of Human Sexuality, into the University’s largest and most popular undergraduate course with over two thousand enrolled students each year. She is the co-author of A Critical Introduction to Human Sexuality, an online, interactive textbook that stresses a sex-positive approach to sex education. Her research focuses on the role of interactive platforms in understanding undergraduates’ attitudes surrounding Human Sexuality topics. She is married and has three children.'
         ),
         makeSpeaker(
