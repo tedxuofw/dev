@@ -19,7 +19,20 @@
                     <button class="primary"> Interact with speaker </button>
                 </div>
                 <div class="col-4 bottom-section">
-                    Testing
+                    <div>
+                        <p> Share the TEDxUofW stream </p>
+                        <div id="social-icons"> 
+                            <div class='icon'>
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class='icon'>
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class='icon'>
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
     </main>
@@ -53,6 +66,21 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+.icon {
+    align-items: center;
+    display: flex;
+    background-color: $color-primary-2;
+    border-radius: 100%;
+    height: 1.75em;
+    justify-content: center;
+    margin: 0 0.5em;
+    width: 1.75em;
+}
+
+.icon i {
+    color: $color-primary;
+}
 
 main {
     margin-left: 200px;
@@ -98,6 +126,18 @@ main > .row:nth-child(2) .col-8 {
 
 .col-8.bottom-section button {
     font-size: 0.8em;
+}
+
+.col-4.bottom-section > div > p {
+    color: $color-accent;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-align: center;
+}
+
+#social-icons {
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 600px) {
