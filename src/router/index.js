@@ -9,7 +9,6 @@ import FeedbackPage from '@/pages/Feedback'
 import SponsorPage from '@/pages/Sponsors'
 import SpeakersPage from '@/pages/Speakers'
 import TicketsPage from '@/pages/Tickets'
-import ComponentsPage from '@/pages/Components'
 import Dashboard from '@/pages/Dashboard'
 import WatchPage from '@/pages/Watch'
 
@@ -21,11 +20,6 @@ export default new Router({
       path: '/',
       name: 'HomePage',
       component: HomePage
-    },
-    {
-      path: '/components',
-      name: 'ComponentsPage',
-      component: ComponentsPage
     },
     {
       path: '/login',

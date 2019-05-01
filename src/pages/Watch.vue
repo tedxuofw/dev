@@ -7,7 +7,23 @@
                     <iframe width="100%" height="350px" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="col-4" id="stream-info">
-                    HELLOOO
+                    <div id="stream-nav"> 
+                        <div class="stream-active"> TED Talk </div>
+                        <div> Speaker </div>
+                    </div>
+                    <div id='talk-info'>
+                        <div>
+                            <p class="accent-label"> TED TALK HAPPENING NOW </p>
+                            <p class="talk-name"> Real Power Is Inclusive </p>
+                        </div>
+                        <div>
+                            <p class="accent-label"> ON STAGE </p>
+                            Venus Rekow
+                            View full speaker list
+                        </div>
+                    </div>
+                    <div id='speaker-info'>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -138,6 +154,54 @@ main > .row:nth-child(2) .col-8 {
 #social-icons {
     display: flex;
     justify-content: center;
+}
+
+#stream-nav {
+    border-bottom: 2px solid $color-primary-2;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    padding-bottom: 0.75em;
+}
+
+#stream-nav div {
+    color: $color-tertiary;
+    display: flex;
+    justify-content: center;
+    line-height: 1em;
+    text-align: center;
+    width: 50%;
+}
+
+#stream-nav div:first-child {
+    border-right: 2px solid $color-tertiary;
+}
+
+#stream-info {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.stream-active {
+    font-weight: 700;
+}
+
+.accent-label {
+    color: $color-tertiary;
+    font-size: 0.8em;
+    font-style: italic;
+    font-weight: 700;
+    margin: 0;
+    opacity: 0.7;
+}
+
+.talk-name {
+    color: $color-tertiary;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
 }
 
 @media (max-width: 600px) {
