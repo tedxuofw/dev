@@ -107,7 +107,7 @@ import Splash from "@/components/Splash";
 const speakers = [
   {
     name: "Venus Rekow",
-    talk: "Power of Inclusion"
+    talk: "The Power of Inclusion"
   },
   {
     name: "Nathan Vass",

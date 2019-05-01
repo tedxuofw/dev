@@ -47,7 +47,7 @@ export default {
       speakers: [
         makeSpeaker(
           'Venus Rekow',
-          'Power of Inclusion',
+          'The Power of Inclusion',
           '<a href="https://www.linkedin.com/in/venusrekow/" target="_blank">Venus Rekow</a> is the founder of <a href="https://neuralshifts.com" target="_blank">Neural Shifts</a>, a consulting firm specialized in helping leaders foster diverse, equitable and inclusive workforces. She designs & implements effective global diversity and inclusion programs, conducts organizational assessments & employs analytics to measure business results. Venus is well known for her ability to translate research insights from Neuroscience & Behavioral economics into practical management strategies that enable behavior change. Her clients include Fortune 500 companies & non-profit organizations. Venus earned an M.S. in Organizational Development from Seattle University, completed coursework for an M.S. in Neuroscience from the University of Oberta, Spain. In addition, she is a certified executive coach.'
         ),
         makeSpeaker(
