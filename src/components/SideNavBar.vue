@@ -61,7 +61,7 @@ div.nav-modal {
     height: 100vh;
     opacity: 0.7;  
     position: absolute;
-    width: 100vw;
+    width: 100%;
     z-index: 10;
 }
 
