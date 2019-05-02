@@ -21,7 +21,7 @@
     </div>
     <div class="container section section-explore">
       <div class="row">
-        <div class="col-6 no-margin content">
+        <div class="col-12 no-margin content">
           <h2>Explore TEDxUofW 2019</h2>
           <div class="explore-card-container">
             <div class="explore-card">
@@ -36,8 +36,17 @@
               <img src="/static/explore-speaker.png" alt="Photo of a speaker" />
               <h3>Interact with Speakers</h3>
               <p>
-                During the conference, ask questions or share your thoughts with speakers after hearing their talks. Inspiring ideas now go both ways.
+                Ask questions or share your thoughts with speakers after hearing their talks. Inspiring ideas now go both ways.
               </p>
+              <router-link class="button ghost" to="speakers">Ask</router-link>
+            </div>
+            <div class="explore-card">
+              <img src="/static/explore-stream.png" alt="Photo of our stream page" />
+              <h3>Conference Stream</h3>
+              <p>
+                Can't make it to the conference? Watch the conference live through our site.
+              </p>
+              <router-link class="button ghost" to="stream">Watch</router-link>
             </div>
           </div>
         </div>
@@ -299,9 +308,10 @@ export default {
 
   .speakers-container {
     display: flex;
-    color: $color-secondary-2;
-    min-height: 40vw;
     padding: 0 10%;
+    align-items: stretch;
+    justify-content: space-between;
+    margin-bottom: 16px;
 
     @media screen and (max-width: 650px) {
       flex-direction: column;
@@ -312,39 +322,35 @@ export default {
     }
 
     .speaker-col {
-      flex: 1;
+      flex: 0 0 calc(33% - 24px);
       display: flex;
       justify-content: center;
-
-      @media screen and (min-width: 1200px) {
-        &:nth-of-type(1) {
-          align-self: center;
-        }
-
-        &:nth-of-type(2) {
-          align-self: flex-start;
-        }
-
-        &:nth-of-type(3) {
-          align-self: flex-end;
-        }
-      }
+      background-color: $color-secondary-2;
+      border-radius: 16px;
 
       @media screen and (max-width: 650px) {
         max-width: 400px;
       }
 
       .speaker-content {
-        max-width: 90%;
+        padding-bottom: 16px;
 
         img {
           width: 100%;
+          border-top-right-radius: 16px;
+          border-top-left-radius: 16px;
+        }
+
+        h3, p {
+          padding: 0 32px;
         }
 
         h3 {
           font-size: 1.5vw;
           line-height: 1.5em;
           margin: 0;
+          color: $color-tertiary;
+          padding-top: 16px;
           
           @media screen and (max-width: 1200px) {
             font-size: 22px;
