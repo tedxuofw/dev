@@ -107,6 +107,20 @@ button,
     }
   }
 
+  &.tertiary {
+    background-color: $color-tertiary;
+    color: white;
+    border: 1px solid $color-tertiary;
+
+    &:hover {
+      background-color: darken($color-tertiary, 10%);
+    }
+
+    &:active {
+      background-color: darken($color-tertiary, 20%);
+    }
+  }
+
   &.primary {
     background-color: $color-primary;
     color: white;

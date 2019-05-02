@@ -1,20 +1,28 @@
 <template>
   <div class="conference-nav">
     <div class="mobile-nav">
-      <img class="logo" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+      <span class="logo-container">
+        <img class="logo logo-default" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+        <img class="logo logo-alt" src="/static/navbar-logo-2.svg" alt="TEDxUofW Logo" />
+      </span>
       <button class="hamburger" :class="{ active: mobileShowNav }" @click="onClickNav"><img src="/static/hamburger.svg" alt="Menu icon" /></button>
     </div>
     <tab-set :secondary="secondary" :mobileShowNav="mobileShowNav">
-      <tab-option logo :click="() => navigateTo('/')"><img src="/static/navbar-logo.svg" alt="TEDxUofW Logo" /></tab-option>
+      <tab-option logo :click="() => navigateTo('/')">
+        <span class="logo-container">
+          <img class="logo logo-default" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+          <img class="logo logo-alt" src="/static/navbar-logo-2.svg" alt="TEDxUofW Logo" />
+        </span>
+      </tab-option>
       <tab-option v-for="(page, pageIndex) in pages" :key="pageIndex"
         :selected="selectedIndex == pageIndex" :secondary="secondary"
         :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
       <tab-option spacer />
       <tab-option :secondary="secondary">
+        <!-- <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
-        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
-        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
-        <button class="secondary cta-button no-margin" @click="() => navigateTo('/login')">Buy Tickets Now</button>
+        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" /> -->
+        <button class="tertiary cta-button no-margin" @click="() => navigateTo('/login')">Login</button>
       </tab-option>
     </tab-set>
   </div>
@@ -62,14 +70,49 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
+$to-dark-delay: 2300ms;
+$to-dark-length: 1000ms;
+
+.logo-container {
+  position: relative;
+  height: 80%;
+  width: 30px;
+
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .logo-default {
+    opacity: 1;
+    animation-name: disappear;
+    animation-delay: $to-dark-delay;
+    animation-duration: $to-dark-length;
+    animation-fill-mode: forwards;
+  }
+
+  .logo-alt {
+    opacity: 0;
+    animation-name: appear;
+    animation-delay: $to-dark-delay;
+    animation-duration: $to-dark-length;
+    animation-fill-mode: forwards;
+  }
+}
+
 .conference-nav {
   width: 100%;
+  background-color: $color-secondary-2;
+  animation-name: to-dark;
+  animation-delay: $to-dark-delay;
+  animation-duration: $to-dark-length;
+  animation-fill-mode: forwards;
 
   .mobile-nav {
     display: none;
     align-items: center;
     width: 100%;
-    background-color: $color-secondary-2;
     padding: 0 32px;
     box-sizing: border-box;
     height: $height-tabset;
@@ -135,11 +178,12 @@ export default {
     background-color: transparent;
     padding-left: 32px;
     padding-right: 32px;
+    color: $color-tertiary !important;
 
-    animation-name: button-flash;
-    animation-delay: $main-animation-duration + $footstep-animation-delay + ($num-footsteps + 1) * $footstep-animation-per-delay;
-    animation-duration: $button-flash-duration;
-    animation-fill-mode: forwards;
+    // animation-name: button-flash;
+    // animation-delay: $main-animation-duration + $footstep-animation-delay + ($num-footsteps + 1) * $footstep-animation-per-delay;
+    // animation-duration: $button-flash-duration;
+    // animation-fill-mode: forwards;
   }
 }
 
@@ -164,6 +208,36 @@ export default {
 
   100% {
     background-color: transparent;
+  }
+}
+
+@keyframes to-dark {
+  from {
+    background-color: $color-secondary-2;
+  }
+
+  to {
+    background-color: $color-cool-black;
+  }
+}
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 </style>

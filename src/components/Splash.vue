@@ -10,10 +10,14 @@
         <h1>Two Steps<span class="forward">Forward</span></h1>
       </div>
 
-      <div id="final-splash-info-container">
+      <div id="final-splash-info-container" v-if="false">
         <span class="title">TEDxUofW 2019</span>
         <span class="date">Walker Ames Room, May 4<br/>9:30am - 3:30pm</span>
         <div class="accent"></div>
+      </div>
+
+      <div id="final-splash-info-container">
+        <router-link class="button tertiary filled" to="speakers">Ask Speakers Questions</router-link>
       </div>
     </div>
   </div>
@@ -46,6 +50,9 @@ $logo-offset-break: 720px;
 // Config: final splash animation
 $final-animation-length: 1000ms;
 
+// Config: to black animation
+$to-black-animation-length: 1000ms;
+
 .splash {
   position: relative;
   width: 100%;
@@ -54,6 +61,11 @@ $final-animation-length: 1000ms;
   overflow-x: hidden;
   background-color: $color-secondary-2;
   overflow-y: hidden;
+
+  animation-name: final-splash-to-dark;
+  animation-delay: #{$slide-in-animation-delay + $slide-in-animation-length + $fade-animation-length + $final-animation-length};
+  animation-duration: $to-black-animation-length;
+  animation-fill-mode: forwards;
 }
 
 // ARROW SLIDE-IN ANIMATION =========
@@ -206,14 +218,17 @@ $final-animation-length: 1000ms;
 
   #final-splash-info-container {
     position: absolute;
-    bottom: 36px;
+    bottom: 32px;
+    // bottom: 64px;
     left: 11.5vw;
+    // left: 50%;
+    // transform: translateX(-50%);
     color: $color-tertiary;
+    width: calc(100% - 23vw);
 
     .title,
     .date {
       display: block;
-      background-color: rgba($color-secondary-2, 0.7);
     }
 
     .title {
@@ -232,6 +247,16 @@ $final-animation-length: 1000ms;
       height: 24px;
       width: 110px;
       margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      line-height: 1.2em;
+      text-decoration: none;
+      padding: 8px 16px;
+      font-size: 32px;
+      box-sizing: border-box;
+      max-width: 100%;
     }
   }
 }
@@ -253,6 +278,16 @@ $final-animation-length: 1000ms;
 
   to {
     margin-left: 0;
+  }
+}
+
+@keyframes final-splash-to-dark {
+  from {
+    background-color: $color-secondary-2;
+  }
+
+  to {
+    background-color: $color-cool-black;
   }
 }
 </style>
