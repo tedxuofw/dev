@@ -1,62 +1,51 @@
 <template>
-  <div id="qa-page">
-    <Loading v-if="this.loading"/>
-    <NavBar dashboard :user="user"/>
-    <main>
-      <div class="row">
-        <div class="col-12">
-          <div class="profile">
-            <div class="content">
-              <h1>{{ speakerFirstName }} <span class="last-name">{{ speakerLastName }}</span></h1>
-              <p>{{ speaker.title }}</p>
-              <router-link to="/qa" class="speakers-link"><i class="fas fa-arrow-left"></i> Full Speakers List</router-link>
-            </div>
-            <img :src="`static/speaker-headshots/${speaker.fileName}.jpg`"
-              :alt="`Photo of ${speaker.name}`" />
-          </div>
-        </div>
+  <ConferencePage :selectedIndex="1">
+    <div class="profile">
+      <div class="content">
+        <h1>{{ speakerFirstName }} <span class="last-name">{{ speakerLastName }}</span></h1>
+        <p>{{ speaker.title }}</p>
+        <router-link to="/qa" class="speakers-link"><i class="fas fa-arrow-left"></i> Full Speakers List</router-link>
       </div>
-      <div class="row">
-        <div class="col-8">
-          <h2>Questions</h2>
-          <div class="questions-container">
-            <div class="question" v-for="(question, i) in interviewData" :key="i">
+      <img :src="`static/speaker-headshots/${speaker.fileName}.jpg`"
+        :alt="`Photo of ${speaker.name}`" />
+    </div>
+    <div class="row">
+      <div class="col-8">
+        <h2>Questions</h2>
+        <div class="questions-container">
+          <div class="question" v-for="(question, i) in interviewData" :key="i">
+            <div class="set">
+              <img :src="getRandomProfilePicture()" :alt="`Photo of ${question.asker}`" />
+              <div class="content">
+                <p>{{ question.question }}</p>
+                <span class="info">Asked by {{ question.asker }}</span>
+              </div>
+            </div>
+            <template v-if="question.response">
+              <hr />
               <div class="set">
-                <img :src="getRandomProfilePicture()" :alt="`Photo of ${question.asker}`" />
+                <img :src="`static/speaker-headshots/${speaker.fileName}.jpg`" :alt="`Photo of ${question.asker}`" />
                 <div class="content">
-                  <p>{{ question.question }}</p>
-                  <span class="info">Asked by {{ question.asker }}</span>
+                  <p>{{ question.response }}</p>
+                  <span class="info">Answered by {{ speaker.name }}</span>
                 </div>
               </div>
-              <template v-if="question.response">
-                <hr />
-                <div class="set">
-                  <img :src="`static/speaker-headshots/${speaker.fileName}.jpg`" :alt="`Photo of ${question.asker}`" />
-                  <div class="content">
-                    <p>{{ question.response }}</p>
-                    <span class="info">Answered by {{ speaker.name }}</span>
-                  </div>
-                </div>
-              </template>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <h2>About</h2>
-          <div class="about-content">
-            <p>{{ speaker.description }}</p>
+            </template>
           </div>
         </div>
       </div>
-    </main>
-  </div>
+      <div class="col-4">
+        <h2>About</h2>
+        <div class="about-content">
+          <p>{{ speaker.description }}</p>
+        </div>
+      </div>
+    </div>
+  </ConferencePage>
 </template>
 
 <script>
-import { user } from "../user.js";
-import axios from "axios";
-import NavBar from "@/components/NavBar";
-import Loading from "@/components/Loading";
+import ConferencePage from "@/components/ConferencePage";
 
 export default {
   name: "QA",
@@ -150,18 +139,12 @@ export default {
           asker: 'Lina'
         }
       ],
-      user: {
-        first: user.first(),
-        last: user.last(),
-        email: user.email(),
-        profile: user.profile()
-      },
       hasTickets: false,
       tickets: [],
       loading: false
     };
   },
-  components: { NavBar, Loading },
+  components: { ConferencePage },
   methods: {
     makeSpeaker(name, title, description) {
       const urlName = name.toLowerCase().replace(' ', '-').replace(' ', '-');
@@ -173,9 +156,6 @@ export default {
         title,
         description
       }
-    },
-    triggerModal: function() {
-      document.querySelector("div.user-modal").classList.toggle("show-modal");
     },
     getRandomProfilePicture() {
       const num = Math.floor(Math.random() * 5) + 1;
@@ -249,7 +229,8 @@ h2 {
 .profile {
   height: $profile-section-size;
   display: flex;
-  max-width: 100%;
+  width: 100%;
+  margin-bottom: 16px;
 
   .content {
     display: flex;
