@@ -250,11 +250,13 @@ $speakers-break: 750px;
   margin-top: 64px;
 
   .speaker-filler {
-    flex: 1 1 calc(30% - 4px);
+    flex: 1 1 calc(30% - 28px);
   }
 
   .speaker {
-    flex: 1 1 calc(30% - 4px);
+    flex: 1 1 calc(30% - 28px);
+    margin-left: 24px;
+    margin-right: 24px;
     border: 2px solid $color-tertiary;
     margin-bottom: 48px;
     cursor: pointer;
@@ -279,12 +281,12 @@ $speakers-break: 750px;
 
     @media screen and (max-width: $speakers-break) {
       flex: 1 0 100%;
-    }
+      margin-left: 0;
+      margin-right: 0;
 
-    @media screen and (min-width: $speakers-break) {
-      &:nth-of-type(3n - 1) {
-        margin-right: 48px;
-        margin-left: 48px;
+      .ask-button {
+        background-color: $color-tertiary;
+        color: white !important;
       }
     }
   }
@@ -329,8 +331,7 @@ $speakers-break: 750px;
 
     .ask-button {
       display: block;
-      background-color: $color-tertiary;
-      color: white;
+      color: $color-tertiary;
       width: 100%;
       padding: 16px;
       text-decoration: none;
@@ -338,7 +339,13 @@ $speakers-break: 750px;
       margin-left: -16px;
       margin-right: -16px;
       margin-bottom: -32px;
+      transition: 250ms all;
     }
+  }
+
+  &:hover .ask-button {
+    background-color: $color-tertiary;
+    color: white;
   }
 }
 </style>
