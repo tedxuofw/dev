@@ -212,11 +212,11 @@ $final-animation-length: 1000ms;
     position: absolute;
     bottom: 32px;
     // bottom: 64px;
-    left: 11.5vw;
-    // left: 50%;
-    // transform: translateX(-50%);
+    // left: 11.5vw;
+    left: 50%;
+    transform: translateX(-50%);
     color: $color-tertiary;
-    width: calc(100% - 23vw);
+    // width: calc(100% - 23vw);
 
     .title,
     .date {
@@ -245,10 +245,16 @@ $final-animation-length: 1000ms;
       display: inline-block;
       line-height: 1.2em;
       text-decoration: none;
-      padding: 8px 16px;
+      padding: 16px 32px;
       font-size: 32px;
       box-sizing: border-box;
       max-width: 100%;
+      text-align: center;
+
+      @media screen and (max-width: 850px) {
+        font-size: 24px;
+        padding: 8px 16px;
+      }
     }
   }
 }
