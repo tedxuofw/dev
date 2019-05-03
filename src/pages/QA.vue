@@ -1,13 +1,17 @@
 <template>
   <ConferencePage :selectedIndex="1">
-    <div class="profile">
-      <div class="content">
-        <h1>{{ speakerFirstName }} <span class="last-name">{{ speakerLastName }}</span></h1>
-        <p>{{ speaker.title }}</p>
-        <router-link to="/qa" class="speakers-link"><i class="fas fa-arrow-left"></i> Full Speakers List</router-link>
+    <div class="row">
+      <div class="col-12" style="margin-top: 0">
+        <div class="profile">
+          <div class="content">
+            <h1>{{ speakerFirstName }} <span class="last-name">{{ speakerLastName }}</span></h1>
+            <p>{{ speaker.title }}</p>
+            <router-link to="/qa" class="speakers-link"><i class="fas fa-arrow-left"></i> Full Speakers List</router-link>
+          </div>
+          <img :src="`static/speaker-headshots/${speaker.fileName}.jpg`"
+            :alt="`Photo of ${speaker.name}`" />
+        </div>
       </div>
-      <img :src="`static/speaker-headshots/${speaker.fileName}.jpg`"
-        :alt="`Photo of ${speaker.name}`" />
     </div>
     <div class="row">
       <div class="col-8">
@@ -37,7 +41,7 @@
       <div class="col-4">
         <h2>About</h2>
         <div class="about-content">
-          <p>{{ speaker.description }}</p>
+          <p v-html="speaker.description"></p>
         </div>
       </div>
     </div>
