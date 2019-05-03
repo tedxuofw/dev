@@ -50,9 +50,6 @@ $logo-offset-break: 720px;
 // Config: final splash animation
 $final-animation-length: 1000ms;
 
-// Config: to black animation
-$to-black-animation-length: 1000ms;
-
 .splash {
   position: relative;
   width: 100%;
@@ -61,11 +58,6 @@ $to-black-animation-length: 1000ms;
   overflow-x: hidden;
   background-color: $color-secondary-2;
   overflow-y: hidden;
-
-  animation-name: final-splash-to-dark;
-  animation-delay: #{$slide-in-animation-delay + $slide-in-animation-length + $fade-animation-length + $final-animation-length};
-  animation-duration: $to-black-animation-length;
-  animation-fill-mode: forwards;
 }
 
 // ARROW SLIDE-IN ANIMATION =========
@@ -278,16 +270,6 @@ $to-black-animation-length: 1000ms;
 
   to {
     margin-left: 0;
-  }
-}
-
-@keyframes final-splash-to-dark {
-  from {
-    background-color: $color-secondary-2;
-  }
-
-  to {
-    background-color: $color-cool-black;
   }
 }
 </style>
