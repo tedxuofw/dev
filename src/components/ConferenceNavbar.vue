@@ -14,7 +14,7 @@
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
-        <button class="secondary cta-button no-margin" @click="() => navigateTo('/login')">Buy Tickets Now</button>
+        <button class="secondary cta-button no-margin" @click="() => navigateTo('/login')">Login</button>
       </tab-option>
     </tab-set>
   </div>

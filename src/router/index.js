@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import LoginPage from '@/pages/Login'
-import CheckoutPage from '@/pages/Checkout'
 import ContactPage from '@/pages/Contact'
 import AboutPage from '@/pages/About'
 import HomePage from '@/pages/Home'
@@ -22,21 +21,16 @@ export default new Router({
       component: HomePage
     },
     {
-      path: '/components',
-      name: 'ComponentsPage',
-      component: ComponentsPage
-    },
-    {
       path: '/login',
       name: 'LoginPage',
       component: LoginPage
     },
-    {
+    // {
       
-      path: '/checkout',
-      name: 'CheckoutPage',
-      component: CheckoutPage
-    },
+    //   path: '/checkout',
+    //   name: 'CheckoutPage',
+    //   component: CheckoutPage
+    // },
     {
       path: '/contact',
       name: 'ContactPage',
