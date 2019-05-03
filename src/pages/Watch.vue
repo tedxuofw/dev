@@ -14,7 +14,7 @@
                     <div id='talk-info'>
                         <div>
                             <p class="accent-label"> TED TALK HAPPENING NOW </p>
-                            <p class="talk-name"> Real Power Is Inclusive </p>
+                            <p class="talk-name"> How Kevin Bacon Saved Seattle: The Seattle Music Story You Never Heard and Why It Matters Today </p>
                         </div>
                         <div>
                             <p class="accent-label"> ON STAGE </p>
