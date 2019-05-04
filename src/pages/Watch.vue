@@ -50,13 +50,13 @@
                         <p> Share the TEDxUofW stream </p>
                         <div id="social-icons"> 
                             <div class='icon'>
-                                <i class="fab fa-facebook-f"></i>
+                                <a href="https://www.facebook.com/" target="blank"> <i class="fab fa-facebook-f"></i> </a>
                             </div>
                             <div class='icon'>
-                                <i class="fab fa-instagram"></i>
+                                <a href="https://www.instagram.com/" target="blank"><i class="fab fa-instagram"></i></a>
                             </div>
                             <div class='icon'>
-                                <i class="fab fa-twitter"></i>
+                                <a href="https://www.twitter.com/" target="blank"><i class="fab fa-twitter"></i></a>
                             </div>
                         </div>
                     </div>
@@ -69,29 +69,69 @@
                     <div>
                         <div class="schedule-sections">
                             <div class="scheduleActive">
-                                Section 1
+                                Session 1
                             </div>
                             <div>
-                                Section 2
+                                Session 2
                             </div>
                             <div>
-                                Section 3
+                                Session 3
                             </div>
                         </div>
-                        <div>
-                            <div>
-                                <div>
-                                    10:15 - 12:00
-                                </div>
-                                <div>
-                                    <img src='/static/speaker-headshots/venus_rekow.jpg' class="speaker-img"/>
-                                    <div>
-                                        Ethnomusicology 2.0
-                                        Venus Rekow
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        10:15 - 10:20
+                                    </td>
+                                    <td>
+                                        <div class="act">
+                                            <img src="/static/navbar-logo.svg"/>
+                                            Opening
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        10:15 - 10:20
+                                    </td>
+                                    <td>
+                                        <div class="schedule-speaker">
+                                            <img src='/static/speaker-headshots/venus_rekow.jpg' class="speaker-img"/>
+                                            <div>
+                                                Ethnomusicology 2.0 <br/>
+                                                Venus Rekow
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        <div class="schedule-speaker active-speaker">
+                                            <img src='/static/speaker-headshots/venus_rekow.jpg' class="speaker-img"/>
+                                            <div>
+                                                Ethnomusicology 2.0 <br/>
+                                                Venus Rekow
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        10:15 - 10:20
+                                    </td>
+                                    <td>
+                                        <div class="act">
+                                            <img src="/static/navbar-logo.svg"/>
+                                            Closing
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -126,6 +166,69 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
+.act img {
+    width: 25px;
+    margin-right: 1em;
+}
+
+.act {
+    background-color: $color-primary-2;
+    width: 80%;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-tertiary;
+    font-weight: 700;
+}
+
+div.schedule-entry {
+    display: flex;
+}
+
+td {
+    padding: 0.5em 0;
+}
+
+tr td:first-child {
+    width: 8.5em;
+    color: $color-tertiary;
+}
+
+tr td:nth-child(2) {
+    border-bottom: 1px solid $color-primary-2;
+}
+
+
+table {
+    width: 100%;
+}
+
+.schedule-speaker {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1em 2em;
+}
+
+.active-speaker {
+    border-left: 8px solid $color-tertiary;
+}
+
+.schedule-speaker div {
+    font-weight: 700;
+    font-size: 1.1em;
+    margin: 2% 4%;
+    color: $color-tertiary;
+}
+
+div.schedule-time {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .schedule-sections div.scheduleActive {
     opacity: 1;
     background-color: $color-primary-2;
@@ -153,7 +256,16 @@ export default {
     font-weight: 700;
     font-size: 1.1em;
     opacity: 0.5;
-    margin: 2% 5%;
+    margin: 2% 7%;
+    margin-left: 0;
+}
+
+div.schedule-entry div {
+    color: $color-tertiary;
+    padding: 0.25em 0.5em;
+    font-weight: 700;
+    font-size: 1.1em;
+    margin: 2% 4%;
     margin-left: 0;
 }
 
