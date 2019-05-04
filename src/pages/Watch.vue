@@ -43,7 +43,7 @@
                         <p class="cta-header"> Did Venus' talk inspire you? </p>
                         <p class="cta-subtitle">Share your ideas with Venus and other viewers.</p>
                     </div>
-                    <button class="primary"> Interact with speaker </button>
+                    <a href="/#/speakers" target="blank"> <button class="primary"> Interact with speaker </button> </a>
                 </div>
                 <div class="col-4 bottom-section">
                     <div>
@@ -165,6 +165,16 @@ export default {
         setSpeakerDesc(flag) {
             this.speakerDesc = flag;
         }
+    },
+
+    mounted() {
+        var body = document.querySelector('body');
+        body.style.minWidth = "700px";
+    },
+
+    destroyed() {
+        var body = document.querySelector('body');
+        body.style.minWidth = "";
     }
 }
 </script>
@@ -259,6 +269,7 @@ h2 {
     height: 100%;
     width: 100%;
     margin: 1em 3em;
+    min-width: 700px;
 }
 
 .main > .row > .col-8, .main > .row > .col-4 {

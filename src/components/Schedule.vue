@@ -3,13 +3,13 @@
         <h2> Conference Schedule </h2>
         <div>
             <div class="schedule-sections">
-                <div class="scheduleActive" @click="">
+                <div class="scheduleActive" @click="viewSession(1)">
                     Session 1
                 </div>
-                <div>
+                <div @click="viewSession(1)">
                     Session 2
                 </div>
-                <div>
+                <div @click="viewSession(1)">
                     Session 3
                 </div>
             </div>
@@ -78,8 +78,16 @@ export default {
     methods: {
 
     },
+    mounted() {
+        this.session = 2;
+        this.subset = [].filter(x => x.session == 2);
+
+        console.log(subset);
+    },
     data() {
         return {
+            session: 1,
+            subset: [],
             schedule: [
                 {
                     session: 1,
