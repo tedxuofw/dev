@@ -3,13 +3,13 @@
         <h2> Conference Schedule </h2>
         <div>
             <div class="schedule-sections">
-                <div @click="viewSession(1)" :class="{ 'active-session': this.session == 1 }">
+                <div @click="viewSession(1)" :class="{ 'scheduleActive': this.session == 1 }">
                     Session 1
                 </div>
-                <div @click="viewSession(2)" :class="{ 'active-session': this.session == 2 }">
+                <div @click="viewSession(2)" :class="{ 'scheduleActive': this.session == 2 }">
                     Session 2
                 </div>
-                <div @click="viewSession(3)" :class="{ 'active-session': this.session == 3 }">
+                <div @click="viewSession(3)" :class="{ 'scheduleActive': this.session == 3 }">
                     Session 3
                 </div>
             </div>
@@ -113,8 +113,8 @@ export default {
                     session: 2,
                     type: 'speaker',
                     name: 'Nicole McNichols',
-                    start: '12:51',
-                    end: '1:04',
+                    start: '12:54',
+                    end: '1:07',
                     desc: 'Students on Top: A Vision for 21st Century Sex Education',
                     groupEnd: '1:20'
                 },
@@ -285,8 +285,9 @@ table {
     padding: 1em 2em;
 }
 
-.active-session {
-    background-color: purple;
+div.active-session {
+    background-color: $color-primary-2;
+    opacity: 1;
 }
 
 .active-speaker {

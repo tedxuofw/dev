@@ -119,15 +119,15 @@ export default {
                     name: 'Nicole McNichols',
                     title: 'Students on Top: A Vision for 21st Century Sex Education',
                     desc: 'Nicole McNichols is a Lecturer in the Psychology Department at the University of Washington, where she also received her PhD in Social Psychology. Over the past five years, Nicole has built her class, The Diversity of Human Sexuality, into the University’s largest and most popular undergraduate course with over two thousand enrolled students each year. She is the co-author of A Critical Introduction to Human Sexuality, an online, interactive textbook that stresses a sex-positive approach to sex education. Her research focuses on the role of interactive platforms in understanding undergraduates’ attitudes surrounding Human Sexuality topics. She is married and has three children.',
-                    end: '04 May 2019 12:54',
-                    start: '04 May 2019 13:07',
+                    end: '04 May 2019 12:51',
+                    start: '04 May 2019 13:04',
                 },
                 {
                     name: 'Julio Covarrubias',
                     title: 'Setting the Record Straight: The Latin American Mind in Global Context',
                     desc: 'Julio Covarrubias is a doctoral candidate and teaching assistant in the department of philosophy at UW. He is the recipient of the American Philosophical Association\'s 2018 Prize Essay on Latin American Thought for “the best unpublished, English-language, philosophical essay in Latin American thought.” His research focuses on Latinx identity and racial oppression. Currently, he is writing a dissertation on the ethics and politics of inter- and intra-personal relationships in the wake of colonial violence.',
-                    end: '04 May 2019 13:20',
-                    start: '04 May 2019 13:07',
+                    end: '04 May 2019 13:17',
+                    start: '04 May 2019 13:04',
                 },
                 {
                     name: 'Brad Finegood',
@@ -204,7 +204,7 @@ export default {
         }
 
         window.setInterval(function(){ 
-            var temp = this.speakerInfo.filter(x => Date.parse(x.start) <= Date.now() && Date.parse(x.end) >= Date.now());
+            var temp = this.speakerInfo.filter(x => Date.parse(x.start) >= Date.now() && Date.parse(x.end) <= Date.now());
             if (temp.length == 0) {
                 this.toDisplay = this.speakerInfo[0];
             } else {

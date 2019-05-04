@@ -189,7 +189,7 @@ export default {
       return require(`../assets/test_${num}.svg`);
     },
     submitQuestion() {
-      const requests = firebase.database().ref('requests/');
+      const requests = firebase.database().ref('ask2019/');
       const requestKey = requests.push().key;
       this.writingState++;
       firebase.database().ref('ask2019/' + requestKey).set({
