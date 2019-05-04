@@ -3,7 +3,7 @@
         <div class="main">
             <div class="row">
                 <div class="col-8">
-                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/gSDCxS_R6gY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="450px" src="https://www.youtube.com/embed/gSDCxS_R6gY?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="col-4" id="stream-info">
                     <div id="stream-nav"> 
@@ -213,6 +213,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+.main > div.row {
+    margin: auto;
+}
 
 .speaker-desc {
     color: $color-tertiary;
