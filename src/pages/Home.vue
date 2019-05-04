@@ -4,7 +4,7 @@
     <div class="container section section-about">
       <div class="row">
         <div class="col-6 no-margin content">
-          <h2>Ideas worth sharing at the<br/>University of Washington</h2>
+          <h2>Ideas worth spreading at the<br/>University of Washington</h2>
           <p>
             For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
           </p>
@@ -156,7 +156,7 @@ const speakers = [
   },
   {
     name: "Nicole McNichols",
-    talk: "Student on Top: A Vision for 21st Century Sex Education"
+    talk: "Students on Top: A Vision for 21st Century Sex Education"
   },
   {
     name: "James Keblas",
