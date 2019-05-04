@@ -41,7 +41,7 @@
                 <div class="col-8 bottom-section">
                     <div>
                         <p class="cta-header"> Did the talk inspire you? </p>
-                        <p class="cta-subtitle">Share your ideas with Venus and other viewers.</p>
+                        <p class="cta-subtitle">Share your ideas with {{this.toDisplay.name}} and other viewers.</p>
                     </div>
                     <a href="/#/speakers" target="blank"> <button class="primary"> Interact with speaker </button> </a>
                 </div>
@@ -50,13 +50,13 @@
                         <p> Share the TEDxUofW stream </p>
                         <div id="social-icons"> 
                             <div class='icon'>
-                                <a href="https://www.facebook.com/" target="blank"> <i class="fab fa-facebook-f"></i> </a>
+                                <a href="https://www.facebook.com/TEDxUofW/" target="blank"> <i class="fab fa-facebook-f"></i> </a>
                             </div>
                             <div class='icon'>
-                                <a href="https://www.instagram.com/" target="blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.instagram.com/tedxuofw/" target="blank"><i class="fab fa-instagram"></i></a>
                             </div>
                             <div class='icon'>
-                                <a href="https://www.twitter.com/" target="blank"><i class="fab fa-twitter"></i></a>
+                                <a href="https://twitter.com/TEDxUofW" target="blank"><i class="fab fa-twitter"></i></a>
                             </div>
                         </div>
                     </div>
@@ -105,15 +105,15 @@ export default {
                     name: 'Debi Talukdar',
                     title: 'Philosophy Is for Everyone',
                     desc: 'Debi Talukdar is the Philosopher-in-Residence at Thurgood Marshall Elementary School. She has been facilitating philosophical discussions with K-12 students and educators in Seattle for several years and serves on the boards of the UW Center for Philosophy for Children, and the Philosophy Learning and Teaching Organization (PLATO). Debi is also the Program Coordinator and an ensemble member of Theater for Change UW at the Center for Teaching and Learning. They do anti-oppressive professional development using interactive theater. Debi is graduating with a Ph.D. in Education this summer. In her free time, she enjoys board games, yoga, and sleeping in.',
-                    end: '04 May 2019 11:11',
+                    end: '04 May 2019 11:05',
                     start: '04 May 2019 10:58',
                 },
                 {
                     name: 'Steven Quay',
                     title: 'How to Be Smart When You\'re Dense: Preventing Breast Cancer by 2030',
                     desc: 'Steven Quay is the founder of Seattle-based Atossa Genetics, dedicated to breast cancer prevention. He received his Ph.D. in Biological Chemistry, M.D. from the University of Michigan, postdoc at MIT and Harvard, and was a faculty member at Stanford Medical School. His contributions to medicine, cancer, and biochemistry have been cited over 9,300 times. Since entering biotech in 1983, he has founded six startups, invented seven FDA-approved pharmaceuticals, and holds 87 US patents. Over 80 million people have benefited from the medicines he invented. His current passion is the prevention of the two million yearly breast cancer cases worldwide.',
-                    end: '04 May 2019 11:24',
-                    start: '04 May 2019 11:11',
+                    end: '04 May 2019 11:18',
+                    start: '04 May 2019 11:05',
                 },
                 {
                     name: 'Nicole McNichols',
@@ -202,6 +202,15 @@ export default {
         } else {
             this.toDisplay = temp[0];
         }
+
+        window.setInterval(function(){ 
+            var temp = this.speakerInfo.filter(x => Date.parse(x.start) <= Date.now() && Date.parse(x.end) >= Date.now());
+            if (temp.length == 0) {
+                this.toDisplay = this.speakerInfo[0];
+            } else {
+                this.toDisplay = temp[0];
+            }
+        }, 3000);
     },
 
     destroyed() {
