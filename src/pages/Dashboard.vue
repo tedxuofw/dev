@@ -26,9 +26,9 @@
                         <div class="card-container" v-if="!hasTickets">
                             <div class="card-body">
                                 <p class="warning card-child"> You don't have any purchased tickets yet. </p>
-                                <div class="card-child"  >
+                                <!-- <div class="card-child"  >
                                     <a href="/#/checkout"> <button class="secondary"> Get Tickets </button> </a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div v-else class="tickets-container"> 

@@ -68,7 +68,7 @@ export default new Router({
       component: FeedbackPage
     },
     {
-      path: '/watch',
+      path: '/conference',
       name: 'WatchPage',
       component: WatchPage
     },
