@@ -74,6 +74,10 @@ export default new Router({
       component: FeedbackPage
     },
     {
+      path: '/qa',
+      redirect: '/speakers'
+    },
+    {
       path: '/qa/:speaker',
       name: 'QAPage',
       component: QAPage

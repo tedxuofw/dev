@@ -1,6 +1,6 @@
 <template>
   <ConferencePage :selectedIndex="1">
-    <div class="row">
+    <div class="row" @click="loadQuestions()">
       <div class="col-12" style="margin-top: 0">
         <div class="profile">
           <div class="content">
@@ -17,7 +17,25 @@
       <div class="col-8">
         <h2>Questions</h2>
         <div class="questions-container">
-          <div class="question" v-for="(question, i) in interviewData" :key="i">
+          <button v-if="writingState == 0" @click="writingState++">Ask a Question</button>
+          <template v-if="writingState == 1">
+            <input type="text" placeholder="Your name" v-model="questionAuthor" />
+            <textarea placeholder="Write your question" v-model="questionText" />
+          <button id="question-submit" @click="submitQuestion" :disabled="!questionAuthor || !questionText">Submit</button>
+          </template>
+          <div class="notice" v-if="writingState == 2">
+            <p>Submitting...</p>
+          </div>
+          <div class="notice" v-if="writingState == 3">
+            <b>Thank you!</b>
+            <p>Your question will appear once it has been moderated.</p>
+          </div>
+          <div class="notice" v-if="questionsData.length == 0">
+            <p>
+              No questions to show yet.
+            </p>
+          </div>
+          <div class="question" v-for="(question, i) in questionsData" :key="i">
             <div class="set">
               <img :src="getRandomProfilePicture()" :alt="`Photo of ${question.asker}`" />
               <div class="content">
@@ -50,11 +68,16 @@
 
 <script>
 import ConferencePage from "@/components/ConferencePage";
+import firebase from '@/firebase';
 
 export default {
   name: "QA",
   data() {
     return {
+      writingState: 0,
+      data: false,
+      questionText: '',
+      questionAuthor: '',
       speakers: [
         this.makeSpeaker(
           'Venus Rekow',
@@ -164,7 +187,31 @@ export default {
     getRandomProfilePicture() {
       const num = Math.floor(Math.random() * 5) + 1;
       return require(`../assets/test_${num}.svg`);
+    },
+    submitQuestion() {
+      const requests = firebase.database().ref('requests/');
+      const requestKey = requests.push().key;
+      this.writingState++;
+      firebase.database().ref('ask2019/' + requestKey).set({
+          speaker: this.speaker.name,
+          asker: this.questionAuthor,
+          question: this.questionText,
+          response: '',
+          visible: false
+      }, this.doneSubmitting);
+    },
+    doneSubmitting() {
+      this.writingState++;
+    },
+    loadQuestions() {
+      const ref = firebase.database().ref('/ask2019');
+      ref.on('value', snapshot => {
+        this.data = snapshot.val() || {};
+      });
     }
+  },
+  mounted() {
+    this.loadQuestions();
   },
   computed: {
     speaker() {
@@ -175,6 +222,14 @@ export default {
     },
     speakerLastName() {
       return this.speaker.name.substring(this.speaker.name.lastIndexOf(" ") + 1, this.speaker.name.length);
+    },
+    questionsData() {
+      if(this.data !== false) {
+        return Object.keys(this.data)
+          .map(key => this.data[key])
+          .filter(entry => entry.speaker == this.speaker.name && entry.visible);
+      }
+      return [];
     }
   }
 };
@@ -294,6 +349,23 @@ h2 {
   background-color: $color-secondary-2;
   padding: 16px;
 
+  input[type="text"], textarea {
+    width: 100%;
+  }
+
+  button {
+    margin-left: auto;
+  }
+
+  .notice {
+    padding: 16px;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .notice,
   .question {
     background-color: white;
     margin-bottom: 16px;
