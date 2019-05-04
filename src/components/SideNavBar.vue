@@ -9,6 +9,9 @@
             <div v-bind:class="{ active: this.tickets }"> 
                 <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/tickets"> Tickets </a> </div>
             </div>
+            <div v-bind:class="{ active: this.watch }"> 
+                <div class="nav-element"> <i class="fas fa-video"></i> <a href="/#/watch"> Watch Stream </a> </div>
+            </div>
             <div v-bind:class="{ active: this.feedback }"> 
                 <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/#/feedback"> Feedback </a> </div>
             </div>
@@ -24,7 +27,8 @@ export default {
         dashboard: Boolean,
         tickets: Boolean,
         feedback: Boolean,
-        mobile: Boolean
+        mobile: Boolean,
+        watch: Boolean
     }, 
     methods: {
         closeNav: function() {

@@ -1,5 +1,5 @@
 <template>
-  <ConferencePage :selectedIndex="1">
+  <ConferencePage :selectedIndex="2">
     <div class="modal-container" v-if="isSpeakerSelected" @click="selectSpeaker(-1)">
       <div class="modal" @click.stop="() => {}">
         <div class="image" :style="{ backgroundImage: `url('${selectedSpeaker.imageUrl}'` }"></div>

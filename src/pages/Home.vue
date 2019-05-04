@@ -26,11 +26,12 @@
           <div class="explore-card-container">
             <div class="explore-card">
               <img src="/static/explore-tickets.png" alt="Tickets" />
-              <h3>Get your tickets (SOLD OUT)</h3>
+              <h3>Get your tickets <br/>(SOLD OUT)</h3>
               <p>
                 Grab tickets for youself or your group with your TEDxUofW account.
               </p>
-              <router-link class="button ghost" to="login">Register</router-link>
+              <!-- <router-link class="button ghost" to="login">Register</router-link> -->
+              <router-link class="button ghost" to="login">Login</router-link>
             </div>
             <div class="explore-card">
               <img src="/static/explore-speaker.png" alt="Photo of a speaker" />

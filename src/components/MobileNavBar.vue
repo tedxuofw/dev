@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SideNavBar :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" :mobile="true"/>
+        <SideNavBar :watch="this.watch" :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" :mobile="true"/>
         <UserNavBar/>
         <nav id="user-nav">
             <div class="mobile-icons">
@@ -27,6 +27,7 @@ export default {
         dashboard: Boolean,
         tickets: Boolean,
         feedback: Boolean,
+        watch: Boolean,
     },
     data () {
         return {

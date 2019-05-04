@@ -12,7 +12,7 @@
 
       <div id="final-splash-info-container" v-if="false">
         <span class="title">TEDxUofW 2019</span>
-        <span class="date">Walker Ames Room, May 4<br/>9:30am - 3:30pm</span>
+        <span class="date">Walker Ames Room, May 4<br/>9:30am - 3:30pm </span>
         <div class="accent"></div>
       </div>
 

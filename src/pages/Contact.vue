@@ -1,5 +1,5 @@
 <template>
-  <ConferencePage :selectedIndex="4">
+  <ConferencePage :selectedIndex="5">
     <div class="standard-hero" style="position: relative">
       <h1>Contact Us</h1>
       <div class="accent"></div>

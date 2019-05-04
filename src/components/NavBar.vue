@@ -1,7 +1,7 @@
 <template>
     <div>
-        <MobileNavBar :user="this.user" :dashboard="this.dashboard" :tickets="this.tickets"  :feedback="this.feedback" v-if="this.mobileView"/>
-        <DesktopNavBar :user="this.user" :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" v-else/>
+        <MobileNavBar :user="this.user" :watch="this.watch" :dashboard="this.dashboard" :tickets="this.tickets"  :feedback="this.feedback" v-if="this.mobileView"/>
+        <DesktopNavBar :user="this.user" :watch="this.watch" :dashboard="this.dashboard" :tickets="this.tickets" :feedback="this.feedback" v-else/>
     </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
         dashboard: Boolean,
         tickets: Boolean,
         feedback: Boolean,
+        watch: Boolean,
         user: Object,
     },
     data() {

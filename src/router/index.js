@@ -8,9 +8,9 @@ import FeedbackPage from '@/pages/Feedback'
 import SponsorPage from '@/pages/Sponsors'
 import SpeakersPage from '@/pages/Speakers'
 import TicketsPage from '@/pages/Tickets'
-import ComponentsPage from '@/pages/Components'
 import Dashboard from '@/pages/Dashboard'
 import QAPage from '@/pages/QA'
+import WatchPage from '@/pages/Watch'
 
 Vue.use(Router)
 
@@ -75,7 +75,12 @@ export default new Router({
       path: '/qa/:speaker',
       name: 'QAPage',
       component: QAPage
-    }
+    },
+    {
+      path: '/conference',
+      name: 'WatchPage',
+      component: WatchPage
+    },
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }

@@ -42,10 +42,11 @@ export default {
     return {
       pages: [
         { name: 'Home', url: '/' },
+        { name: 'Conference', url: '/conference' },
         { name: 'Speakers', url: '/speakers' },
         { name: 'Sponsors', url: '/sponsors' },
         { name: 'About', url: '/about' },
-        { name: 'Contact', url: '/contact' }
+        { name: 'Contact', url: '/contact' },
       ],
       mobileShowNav: false
     }

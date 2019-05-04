@@ -362,7 +362,7 @@ export default {
           } else {          
               // Error message
               var message = resp.message;
-              console.log(response.data);
+              alert(message);
           }
         
       }, (error)  =>  {
