@@ -46,7 +46,9 @@
               <p>
                 Can't make it to the conference? Watch the conference live through our site.
               </p>
-              <router-link class="button ghost" to="stream">Watch</router-link>
+              <p style="margin-top: 1em; text-align: center">
+                (we'll go live soon!)
+              </p>
             </div>
           </div>
         </div>
