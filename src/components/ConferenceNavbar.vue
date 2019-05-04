@@ -1,20 +1,22 @@
 <template>
   <div class="conference-nav">
     <div class="mobile-nav">
-      <img class="logo" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+      <img class="logo logo-default" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
       <button class="hamburger" :class="{ active: mobileShowNav }" @click="onClickNav"><img src="/static/hamburger.svg" alt="Menu icon" /></button>
     </div>
     <tab-set :secondary="secondary" :mobileShowNav="mobileShowNav">
-      <tab-option logo :click="() => navigateTo('/')"><img src="/static/navbar-logo.svg" alt="TEDxUofW Logo" /></tab-option>
+      <tab-option logo :click="() => navigateTo('/')">
+        <img class="logo logo-default" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+      </tab-option>
       <tab-option v-for="(page, pageIndex) in pages" :key="pageIndex"
         :selected="selectedIndex == pageIndex" :secondary="secondary"
         :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
       <tab-option spacer />
       <tab-option :secondary="secondary">
+        <!-- <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
-        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
-        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
-        <button class="secondary cta-button no-margin" @click="() => navigateTo('/login')">Login</button>
+        <img class="footstep" src="/static/footstep.png" alt="Footstep icon" /> -->
+        <button class="tertiary cta-button no-margin" @click="() => navigateTo('/login')">Login</button>
       </tab-option>
     </tab-set>
   </div>
@@ -64,12 +66,12 @@ export default {
 
 .conference-nav {
   width: 100%;
+  background-color: $color-secondary-2;
 
   .mobile-nav {
     display: none;
     align-items: center;
     width: 100%;
-    background-color: $color-secondary-2;
     padding: 0 32px;
     box-sizing: border-box;
     height: $height-tabset;
@@ -135,11 +137,12 @@ export default {
     background-color: transparent;
     padding-left: 32px;
     padding-right: 32px;
+    color: $color-tertiary !important;
 
-    animation-name: button-flash;
-    animation-delay: $main-animation-duration + $footstep-animation-delay + ($num-footsteps + 1) * $footstep-animation-per-delay;
-    animation-duration: $button-flash-duration;
-    animation-fill-mode: forwards;
+    // animation-name: button-flash;
+    // animation-delay: $main-animation-duration + $footstep-animation-delay + ($num-footsteps + 1) * $footstep-animation-per-delay;
+    // animation-duration: $button-flash-duration;
+    // animation-fill-mode: forwards;
   }
 }
 

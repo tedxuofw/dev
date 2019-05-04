@@ -93,6 +93,12 @@ button,
   border: none;
   cursor: pointer;
 
+  &[disabled] {
+    background-color: $color-text !important;
+    color: white;
+    cursor: not-allowed;
+  }
+
   &.secondary {
     background-color: $color-secondary-2;
     color: $color-primary;
@@ -104,6 +110,20 @@ button,
 
     &:active {
       background-color: darken($color-secondary-2, 20%);
+    }
+  }
+
+  &.tertiary {
+    background-color: $color-tertiary;
+    color: white;
+    border: 1px solid $color-tertiary;
+
+    &:hover {
+      background-color: darken($color-tertiary, 10%);
+    }
+
+    &:active {
+      background-color: darken($color-tertiary, 20%);
     }
   }
 

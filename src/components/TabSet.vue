@@ -29,13 +29,9 @@ export default {
   width: 100%;
   max-width: 100vw;
   overflow-x: auto;
-  background-color: $color-primary;
   align-items: stretch;
   transition: max-height 250ms, padding 250ms;
-
-  &.secondary {
-    background-color: $color-secondary-2;
-  }
+  background-color: transparent;
 
   @media screen and (max-width: $tabset-break) {
     flex-direction: column;

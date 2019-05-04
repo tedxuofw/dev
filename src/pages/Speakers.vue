@@ -20,13 +20,14 @@
     <div class="container section-sponsors">
       <div class="row">
         <div class="speakers-container">
-          <div class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" @click="selectSpeaker(i)">
+          <router-link class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl">
             <img :src="speaker.imageUrl" />
             <div class="content">
               <span class="name">{{ speaker.name }}</span>
               <span class="title">{{ speaker.title }}</span>
+              <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
             </div>
-          </div>
+          </router-link>
           <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
         </div>
       </div>
@@ -111,11 +112,13 @@ export default {
   methods: {
     makeSpeaker(name, title, description) {
       const fileName = name.toLowerCase().replace(' ', '_').replace(' ', '_');
+      const askUrl = name.toLowerCase().replace(' ', '-').replace(' ', '-');
       return {
         name,
         title,
         description,
-        imageUrl: `/static/speaker-headshots/${fileName}.jpg`
+        imageUrl: `/static/speaker-headshots/${fileName}.jpg`,
+        askUrl: `/qa/${askUrl}`
       }
     },
     selectSpeaker(index) {
@@ -182,6 +185,7 @@ $speakers-break: 750px;
       max-height: inherit !important;
     }
 
+    a,
     button {
       display: block;
       width: calc(100% - 32px);
@@ -242,27 +246,47 @@ $speakers-break: 750px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   margin-top: 64px;
 
   .speaker-filler {
-    flex: 1 1 calc(30% - 4px);
+    flex: 1 1 calc(30% - 28px);
   }
 
   .speaker {
-    flex: 1 1 calc(30% - 4px);
+    flex: 1 1 calc(30% - 28px);
+    margin-left: 24px;
+    margin-right: 24px;
     border: 2px solid $color-tertiary;
     margin-bottom: 48px;
     cursor: pointer;
     flex-grow: 1;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+    .content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      span {
+        display: block;
+      }
+
+      .title {
+        flex: 1;
+      }
+    }
 
     @media screen and (max-width: $speakers-break) {
       flex: 1 0 100%;
-    }
+      margin-left: 0;
+      margin-right: 0;
 
-    @media screen and (min-width: $speakers-break) {
-      &:nth-of-type(3n - 1) {
-        margin: 0 48px;
+      .ask-button {
+        background-color: $color-tertiary;
+        color: white !important;
       }
     }
   }
@@ -304,6 +328,24 @@ $speakers-break: 750px;
     .title {
       display: block;
     }
+
+    .ask-button {
+      display: block;
+      color: $color-tertiary;
+      width: 100%;
+      padding: 16px;
+      text-decoration: none;
+      margin-top: 16px;
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-bottom: -32px;
+      transition: 250ms all;
+    }
+  }
+
+  &:hover .ask-button {
+    background-color: $color-tertiary;
+    color: white;
   }
 }
 </style>

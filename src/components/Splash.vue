@@ -10,10 +10,14 @@
         <h1>Two Steps<span class="forward">Forward</span></h1>
       </div>
 
-      <div id="final-splash-info-container">
+      <div id="final-splash-info-container" v-if="false">
         <span class="title">TEDxUofW 2019</span>
         <span class="date">Walker Ames Room, May 4<br/>9:30am - 3:30pm</span>
         <div class="accent"></div>
+      </div>
+
+      <div id="final-splash-info-container">
+        <router-link class="button tertiary filled" to="speakers">Ask Speakers Questions</router-link>
       </div>
     </div>
   </div>
@@ -206,14 +210,17 @@ $final-animation-length: 1000ms;
 
   #final-splash-info-container {
     position: absolute;
-    bottom: 36px;
-    left: 11.5vw;
+    bottom: 32px;
+    // bottom: 64px;
+    // left: 11.5vw;
+    left: 50%;
+    transform: translateX(-50%);
     color: $color-tertiary;
+    // width: calc(100% - 23vw);
 
     .title,
     .date {
       display: block;
-      background-color: rgba($color-secondary-2, 0.7);
     }
 
     .title {
@@ -232,6 +239,22 @@ $final-animation-length: 1000ms;
       height: 24px;
       width: 110px;
       margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      line-height: 1.2em;
+      text-decoration: none;
+      padding: 16px 32px;
+      font-size: 32px;
+      box-sizing: border-box;
+      max-width: 100%;
+      text-align: center;
+
+      @media screen and (max-width: 850px) {
+        font-size: 24px;
+        padding: 8px 16px;
+      }
     }
   }
 }
