@@ -64,76 +64,7 @@
             </div>
 
             <div class="row">
-                <div class="col-12" id="schedule">
-                    <h2> Conference Schedule </h2>
-                    <div>
-                        <div class="schedule-sections">
-                            <div class="scheduleActive">
-                                Session 1
-                            </div>
-                            <div>
-                                Session 2
-                            </div>
-                            <div>
-                                Session 3
-                            </div>
-                        </div>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        10:15 - 10:20
-                                    </td>
-                                    <td>
-                                        <div class="act">
-                                            <img src="/static/navbar-logo.svg"/>
-                                            Opening
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        10:15 - 10:20
-                                    </td>
-                                    <td>
-                                        <div class="schedule-speaker">
-                                            <img src='/static/speaker-headshots/venus_rekow.jpg' class="speaker-img"/>
-                                            <div>
-                                                Ethnomusicology 2.0 <br/>
-                                                Venus Rekow
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        <div class="schedule-speaker active-speaker">
-                                            <img src='/static/speaker-headshots/venus_rekow.jpg' class="speaker-img"/>
-                                            <div>
-                                                Ethnomusicology 2.0 <br/>
-                                                Venus Rekow
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        10:15 - 10:20
-                                    </td>
-                                    <td>
-                                        <div class="act">
-                                            <img src="/static/navbar-logo.svg"/>
-                                            Closing
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <Schedule/>
             </div>
         </div>
 
@@ -142,17 +73,92 @@
 
 <script>
 import ConferencePage from "@/components/ConferencePage";
+import Schedule from "@/components/Schedule";
 import axios from 'axios';
 
 export default {
-    name: "HomePage",
-    components: { ConferencePage }, 
+    name: "WatchPage",
+    components: { ConferencePage, Schedule }, 
     methods: {
 
     },
     data() {
         return {
-            speakerDesc: false
+            speakerDesc: false,
+            speakerInfo: [
+                {
+                    name: 'James Keblas',
+                    title: 'How Kevin Bacon Saved Seattle: The Seattle Music Story You Never Heard and Why It Matters Today',
+                    desc: 'James Keblas is a celebrated economic development leader in the areas of arts and entertainment. He got his start in the music business in 1991 working in hip hop at NastyMix Records, pushing artists like Sir Mix-a-Lot. He was Director of Seattle’s Office of Film, Music and Special Events for 9 years, where he earned the title “Punk Rocker in a Suit.” His favorite professional achievement will always be Co-Founding The Vera Project, a music and arts center in Seattle run by and for youth.',
+                    start: '10:22',
+                },
+                {
+                    name: 'Jon Vallier',
+                    title: "Ethnomusicology 2.0",
+                    desc: 'John Vallier is head of media and ethnomusicology curator at the University of Washington Libraries. In these roles he oversees the Libraries\' Ethnomusicology Archives and audio/video makerspace: Media Arcade. As an affiliate professor of ethnomusicology John teaches on topics such as music of Seattle, remix studies, and sound of cinema for UW Honors, Cinema and Media Studies, and Ethnomusicology. Before coming to UW, John was ethnomusicology archivist at UCLA, a composer for Activision, and drummer for bands such as Swell and Santa Cruise Control.',
+                    start: '10:35',
+                },
+                {
+                    name: 'Debi Talukdar',
+                    title: 'Philosophy Is for Everyone',
+                    desc: 'Debi Talukdar is the Philosopher-in-Residence at Thurgood Marshall Elementary School. She has been facilitating philosophical discussions with K-12 students and educators in Seattle for several years and serves on the boards of the UW Center for Philosophy for Children, and the Philosophy Learning and Teaching Organization (PLATO). Debi is also the Program Coordinator and an ensemble member of Theater for Change UW at the Center for Teaching and Learning. They do anti-oppressive professional development using interactive theater. Debi is graduating with a Ph.D. in Education this summer. In her free time, she enjoys board games, yoga, and sleeping in.',
+                    start: '10:58',
+                },
+                {
+                    name: 'Steven Quay',
+                    title: 'How to Be Smart When You\'re Dense: Preventing Breast Cancer by 2030',
+                    desc: 'Steven Quay is the founder of Seattle-based Atossa Genetics, dedicated to breast cancer prevention. He received his Ph.D. in Biological Chemistry, M.D. from the University of Michigan, postdoc at MIT and Harvard, and was a faculty member at Stanford Medical School. His contributions to medicine, cancer, and biochemistry have been cited over 9,300 times. Since entering biotech in 1983, he has founded six startups, invented seven FDA-approved pharmaceuticals, and holds 87 US patents. Over 80 million people have benefited from the medicines he invented. His current passion is the prevention of the two million yearly breast cancer cases worldwide.',
+                    start: '11:11',
+                },
+                {
+                    name: 'Nicole McNichols',
+                    title: 'Students on Top: A Vision for 21st Century Sex Education',
+                    desc: 'Nicole McNichols is a Lecturer in the Psychology Department at the University of Washington, where she also received her PhD in Social Psychology. Over the past five years, Nicole has built her class, The Diversity of Human Sexuality, into the University’s largest and most popular undergraduate course with over two thousand enrolled students each year. She is the co-author of A Critical Introduction to Human Sexuality, an online, interactive textbook that stresses a sex-positive approach to sex education. Her research focuses on the role of interactive platforms in understanding undergraduates’ attitudes surrounding Human Sexuality topics. She is married and has three children.',
+                    start: '12:54',
+                },
+                {
+                    name: 'Julio Covarrubias',
+                    title: 'Setting the Record Straight: The Latin American Mind in Global Context',
+                    desc: 'Julio Covarrubias is a doctoral candidate and teaching assistant in the department of philosophy at UW. He is the recipient of the American Philosophical Association\'s 2018 Prize Essay on Latin American Thought for “the best unpublished, English-language, philosophical essay in Latin American thought.” His research focuses on Latinx identity and racial oppression. Currently, he is writing a dissertation on the ethics and politics of inter- and intra-personal relationships in the wake of colonial violence.',
+                    start: '13:07',
+                },
+                {
+                    name: 'Brad Finegood',
+                    title: 'Unlocking the Cure to Substance Use Disorder',
+                    desc: 'Demystifying Stigma is based on a lifetime of experience that Brad Finegood has been through. He works as a Strategic Advisor in Public Health - Seattle & King County. Brad recently served as a co-chair of the King County Opiate Task Force and was the Alcohol and Drug Coordinator for King County. His Bachelor\'s Degree is from Michigan State and his Master\'s Degree in Counseling, Specialty in Alcohol and Drug Abuse from Western Michigan. He has worked in the behavioral health field for 20 years. He is the sibling and survivor of a younger brother that died from an overdose.',
+                    start: '13:35',
+                },
+                {
+                    name: 'Tamuka Chidyausika',
+                    title: 'Leveraging Privilege to Amplify the Voices of the Underprivileged',
+                    desc: 'Tamuka Martin Chidyausiku is the 1st black PhD candidate in his Biological Physics Structure and Design program, Biochemistry lab and at the Institute for Protein Design where he is studying computational biology with applications in agriculture. Tamuka, (aka Muk) is graduating Spring 2019 from the UW Biochemistry department where he is launching his social media class on “Hip Hop Biochemistry @TamukaInvestments”. As an openly gay student from Zimbabwe, Tamuka believes that representation matters and visibility is the key to STEM-ulating the future generation. He is also the founder Chibage Chip; an Agri-tech startup aimed at helping farmers combat climate change.',
+                    start: '13:58',
+                },
+                {
+                    name: 'Nat Puff',
+                    title: 'The Dos and Dont\'s of Breakup Songs',
+                    desc: 'Also known for her internet presence, Left At London (sometimes stylized and shortened as /@/), is the stage name of singer/songwriter Nat Puff (she/her), a trans woman from Seattle, Washington who is not afraid to let herself be known intimately through her music, while still remaining accessible.',
+                    start: '14:31',
+                },
+                {
+                    name: 'Susanne Rafelski',
+                    title: 'In Search of Patterns inside the Cell through Space and Time',
+                    desc: 'Susanne Rafelski is a quantitative cell biologist and a Director at the Allen Institute for Cell Science in Seattle. Susanne has been imaging the structures inside living cells since she was 17. Her life-long scientific goal is to decipher the patterns and rules that transform the overwhelming complexity found inside cells into functioning units of life. The quest to unlock the secrets of the cell requires there to be no boundaries between scientific fields. Susanne is always looking for ways to incorporate interdisciplinary approaches into her research including data science analyses, image processing, mathematical modeling, computational simulations, and modern machine learning.',
+                    start: '14:44',
+                },
+                {
+                    name: 'Venus Rekow',
+                    title: 'Power of Inclusion',
+                    desc: 'Venus Rekow is the founder of Neural Shifts, a consulting firm specialized in helping leaders foster diverse, equitable and inclusive workforces. She designs & implements effective global diversity and inclusion programs, conducts organizational assessments & employs analytics to measure business results. Venus is well known for her ability to translate research insights from Neuroscience & Behavioral economics into practical management strategies that enable behavior change. Her clients include Fortune 500 companies & non-profit organizations. Venus earned an M.S. in Organizational Development from Seattle University, completed coursework for an M.S. in Neuroscience from the University of Oberta, Spain. In addition, she is a certified executive coach.',
+                    start: '15:07',
+                },
+                {
+                    name: 'Nathan Vass',
+                    title: 'Why We Need Strangers',
+                    desc: 'Nathan Vass has had work displayed in over thirty photography shows and is the director of nine films, six of which have shown at festivals and one of which premiered at Henry Art Gallery. Born in South Central LA, he holds a Bachelor of Fine Arts from the University of Washington. His blog, The View From Nathan\'s Bus, details his adventures as a public bus driver and has been featured in more than fifteen news outlets including NPR and The Seattle Times. His new book, The Lines That Make Us, is a Seattle bestseller.',
+                    start: '15:20',
+                },
+            ],
         }
     },
     methods: {
@@ -166,107 +172,15 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
-.act img {
-    width: 25px;
-    margin-right: 1em;
-}
-
-.act {
-    background-color: $color-primary-2;
-    width: 80%;
-    padding: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $color-tertiary;
-    font-weight: 700;
-}
-
-div.schedule-entry {
-    display: flex;
-}
-
-td {
-    padding: 0.5em 0;
-}
-
-tr td:first-child {
-    width: 8.5em;
-    color: $color-tertiary;
-}
-
-tr td:nth-child(2) {
-    border-bottom: 1px solid $color-primary-2;
-}
-
-
-table {
-    width: 100%;
-}
-
-.schedule-speaker {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 1em 2em;
-}
-
-.active-speaker {
-    border-left: 8px solid $color-tertiary;
-}
-
-.schedule-speaker div {
-    font-weight: 700;
-    font-size: 1.1em;
-    margin: 2% 4%;
-    color: $color-tertiary;
-}
-
-div.schedule-time {
-    width: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.schedule-sections div.scheduleActive {
-    opacity: 1;
-    background-color: $color-primary-2;
-    border-radius: 6px;
-}
-
 .speaker-desc {
     color: $color-tertiary;
     font-size: 0.95em;
+    height: 11.75em;
+    overflow-y: scroll;
 }
 
 #speaker-info .info-footer {
     margin-bottom: 1em;
-}
-
-.schedule-sections {
-    display: flex;
-    border-bottom: 2px solid $color-primary-2;
-    margin-bottom: 0.75em;
-}
-
-.schedule-sections div {
-    color: $color-tertiary;
-    padding: 0.25em 0.5em;
-    font-weight: 700;
-    font-size: 1.1em;
-    opacity: 0.5;
-    margin: 2% 7%;
-    margin-left: 0;
-}
-
-div.schedule-entry div {
-    color: $color-tertiary;
-    padding: 0.25em 0.5em;
-    font-weight: 700;
-    font-size: 1.1em;
-    margin: 2% 4%;
-    margin-left: 0;
 }
 
 a {
@@ -449,7 +363,7 @@ h2 {
     margin: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
     .main {
         margin-left: 0;
     }
