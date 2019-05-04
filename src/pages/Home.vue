@@ -26,7 +26,7 @@
           <div class="explore-card-container">
             <div class="explore-card">
               <img src="/static/explore-tickets.png" alt="Tickets" />
-              <h3>Get your tickets</h3>
+              <h3>Get your tickets (SOLD OUT)</h3>
               <p>
                 Grab tickets for youself or your group with your TEDxUofW account.
               </p>
