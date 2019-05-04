@@ -37,7 +37,7 @@
           </div>
           <div class="question" v-for="(question, i) in questionsData" :key="i">
             <div class="set">
-              <img :src="getRandomProfilePicture()" :alt="`Photo of ${question.asker}`" />
+              <img :src="getProfilePicture(i)" :alt="`Photo of ${question.asker}`" />
               <div class="content">
                 <p>{{ question.question }}</p>
                 <span class="info">Asked by {{ question.asker }}</span>
@@ -184,8 +184,8 @@ export default {
         description
       }
     },
-    getRandomProfilePicture() {
-      const num = Math.floor(Math.random() * 5) + 1;
+    getProfilePicture(i) {
+      const num = i % 5 + 1;
       return require(`../assets/test_${num}.svg`);
     },
     submitQuestion() {
