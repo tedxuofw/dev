@@ -7,17 +7,17 @@
     <div id="final-splash-container">
       <div id="final-splash-logo-container">
         <img id="final-logo" src="static/animation-logo.svg" />
-        <h1>Two Steps<span class="forward">Forward</span></h1>
+        <h1>Nominate<span class="forward">Speakers</span></h1>
       </div>
 
       <div id="final-splash-info-container" v-if="false">
-        <span class="title">TEDxUofW 2019</span>
+        <span class="title">TEDxUofW 2010</span>
         <span class="date">Walker Ames Room, May 4<br/>9:30am - 3:30pm </span>
         <div class="accent"></div>
       </div>
 
       <div id="final-splash-info-container">
-        <router-link class="button tertiary filled" to="speakers">Ask Speakers Questions</router-link>
+        <a href="https://forms.gle/4ESCg8BnGZR4xMNo6" class="button tertiary filled">Submit Nominations</a>
       </div>
     </div>
   </div>
