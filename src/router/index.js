@@ -11,6 +11,7 @@ import TicketsPage from '@/pages/Tickets'
 import Dashboard from '@/pages/Dashboard'
 import QAPage from '@/pages/QA'
 import WatchPage from '@/pages/Watch'
+import VerificationPage from '@/pages/Verification'
 
 Vue.use(Router)
 
@@ -81,6 +82,11 @@ export default new Router({
       name: 'WatchPage',
       component: WatchPage
     },
+    {
+      path: '/verification',
+      name: 'VerificationPage',
+      component: VerificationPage
+    }
   ],
   scrollBehavior (to, from, savedPosition) {
     return { x: 0, y: 0 }

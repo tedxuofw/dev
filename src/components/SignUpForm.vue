@@ -38,16 +38,17 @@ export default {
                 this.$emit("loading");
                 this.hideError();
                 let url = "https://students.washington.edu/tedxuofw/index.php/api/register";
+                console.log(url)
                 axios.get(url, { params: this.form }).then((response)  =>  {
                     this.$emit("loading");
                     var resp = response.data;
                     if(resp.status === "success") {                
                         console.log(resp);
-                        user.login(resp.token);
-                        console.log("Successfully logged in as: " + this.form.email);
-                        
-                        // Redirect to where we wanna go on success
-                        router.push('/dashboard');
+                        console.log("Successfully registered new account: " + this.form.email);
+                      
+                        // Redirect to where we wanna go on registration
+                        // TODO: This should be a new page where they can resend an email link
+                        router.push('/');
                     } else {
                         // User Error
                         this.displayError(response.data.message);
