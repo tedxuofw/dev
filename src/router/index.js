@@ -12,6 +12,7 @@ import Dashboard from '@/pages/Dashboard'
 import QAPage from '@/pages/QA'
 import WatchPage from '@/pages/Watch'
 import VerificationPage from '@/pages/Verification'
+import CheckoutPage from '@/pages/Checkout'
 
 Vue.use(Router)
 
@@ -27,12 +28,12 @@ export default new Router({
       name: 'LoginPage',
       component: LoginPage
     },
-    // {
+    {
       
-    //   path: '/checkout',
-    //   name: 'CheckoutPage',
-    //   component: CheckoutPage
-    // },
+      path: '/checkout',
+      name: 'CheckoutPage',
+      component: CheckoutPage
+    },
     {
       path: '/contact',
       name: 'ContactPage',
