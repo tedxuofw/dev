@@ -68,6 +68,7 @@ export default {
 .conference-nav {
   width: 100%;
   background-color: $color-secondary-2;
+  box-shadow: 0 1px 5px #888888;
 
   .mobile-nav {
     display: none;

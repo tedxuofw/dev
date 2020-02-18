@@ -2,9 +2,9 @@
   <ConferencePage :selectedIndex="0" :footerMargin="false">
 
     <div class="container section section-landing">
-      <h6 style="background-color: purple">TEDxUofW 2020 PRESENTS</h6>
-      <h1>IN OUR<br/>BACKYARD</h1>
-      <p> April 20, 2020</p>
+      <h6>TEDxUofW 2020 PRESENTS</h6>
+      <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
+      <p> April 20, 2020 KANE HALL</p>
       <router-link class="button ghost" to="login">Attend</router-link>
     </div>
 
@@ -141,9 +141,81 @@ export default {
 }
 
 .section-landing {
-  background-color: green;
+  // background-color: green;
   text-align: center;
-  min-height: 80vh;
+  min-height: 90vh;
+  
+  h6 {
+    color: #999997;
+    font-weight: 700;
+    font-size: 4vw;
+    // background-color: purple;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: 4vw;
+    padding: 15px;
+  }
+
+  .button {
+    padding: 5px 65px;
+    font-weight: 500;
+    font-size: 18px;
+    border-width: 2px;
+  }
+
+  h1 {
+    font-size: 15vw;
+    padding: 20px;
+  }
+
+  h1 > a {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+  }
+
+  h1 > a:hover {
+    color: $color-primary;
+  }
+
+  h1 > a:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  h1 > a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+
+  .highlighted-red {
+    color: $color-primary;
+  }
+
+  @media screen and (min-width: 800px) {
+    h6, p {
+      background-color: yellow;
+      font-size: 20px;
+    }
+
+    h1 {
+      background-color: yellow;
+      font-size: 90px;
+    }
+  }
 }
 
 .section-about {
