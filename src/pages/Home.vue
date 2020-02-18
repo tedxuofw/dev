@@ -5,35 +5,27 @@
       <h6>TEDxUofW 2020 PRESENTS</h6>
       <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
       <p> April 20, 2020 KANE HALL</p>
-      <router-link class="button ghost" to="login">Attend</router-link>
+      <router-link class="button ghost" to="login">ATTEND</router-link>
     </div>
 
     <div class="container section section-about">
+      <div class="row">
       <div class="col-6 no-margin content">
         <h2>Ideas worth spreading at the<br/>University of Washington</h2>
         <p>
           For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
         </p>
-        <router-link class="button ghost" to="login">Register</router-link>
+        <router-link class="button ghost" to="login">REGISTER</router-link>
+      </div>
       </div>
     </div>
     
     <div class="container section section-speakers">
-      <!-- <h2>Featuring</h2> -->
+      <h2>Featuring</h2>
       <SpeakerCarousel />
-      <!-- <Carousel>
-        <div v-for="(values, index) in speakers">
-          <Slide>{{values.name}}</Slide>
-        </div>
-      </Carousel> -->
-      <!-- <Carousel>
-        <Slide> hi </Slide>
-        <Slide> hi </Slide>
-        <Slide> hi </Slide>
-        <Slide> hi </Slide>
-      </Carousel> -->
+
       <div class="btn-container">
-        <router-link to="speakers" class="button primary">View all speakers</router-link>
+        <router-link class="button" to="speakers">View all speakers</router-link>
       </div>
     </div>
     
@@ -140,10 +132,18 @@ export default {
   }
 }
 
+.button {
+  padding: 5px 65px;
+  font-weight: 600;
+  font-size: 16px;
+  border-width: 2px;
+  width: 60px;
+}
+
 .section-landing {
   // background-color: green;
   text-align: center;
-  min-height: 90vh;
+  min-height: 80vh;
   
   h6 {
     color: #999997;
@@ -158,12 +158,12 @@ export default {
     padding: 15px;
   }
 
-  .button {
-    padding: 5px 65px;
-    font-weight: 500;
-    font-size: 18px;
-    border-width: 2px;
-  }
+  // .button {
+  //   padding: 5px 65px;
+  //   font-weight: 600;
+  //   font-size: 16px;
+  //   border-width: 2px;
+  // }
 
   h1 {
     font-size: 15vw;
@@ -219,11 +219,12 @@ export default {
 }
 
 .section-about {
-  background-color: yellow;
+  background-color: white;
   min-height: 80vh;
 
   h2 {
     color: $color-tertiary;
+    margin-bottom: 30px;
   }
 
   p {
@@ -260,7 +261,7 @@ export default {
 }
 
 .section-speakers {
-  background-color: turquoise;
+  background-color: $color-primary;
 
   h2 {
     text-align: center;
@@ -268,7 +269,7 @@ export default {
     padding: 16px;
     line-height: 1em;
     margin: 0;
-    color: $color-primary-2;
+    color: white;
   }
 
   .speakers-container {
@@ -332,6 +333,7 @@ export default {
     padding-left: 10%;
     align-self: flex-start;
     margin-bottom: 32px;
+    background-color: yellow;
 
     @media screen and (max-width: 1200px) {
       padding-left: 0;

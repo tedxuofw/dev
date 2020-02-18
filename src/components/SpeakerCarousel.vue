@@ -1,12 +1,13 @@
 <template>
-  <carousel class="test" :perPageCustom="[[480, 2], [768, 3]]">
-    <slide><img :src="this.getFileName(this.speakers[0].name)" :alt="speakers[0].name" style="width: 300px; max-width: 100vw;"/>
+  <carousel :paginationEnabled=false class="test" :perPageCustom="[[480, 2], [768, 3]]">
+    <!-- <slide><div style="width: 300px; max-width: 100vw; height: 400px; max-height: 30vh;"><img :src="this.getFileName(this.speakers[0].name)" :alt="speakers[0].name" style="object-fit: contain;"/> </div> -->
+    <slide><img :src="this.getFileName(this.speakers[0].name)" :alt="speakers[0].name" style="object-fit: cover; width: 300px; max-width: 100vw;"/>
     </slide>
-    <slide>{{speakers[1]}}
+    <slide><img :src="this.getFileName(this.speakers[1].name)" :alt="speakers[0].name" style="width: 300px; max-width: 100vw;"/>
     </slide>
-    <slide>{{speakers[0]}}
+    <slide><img :src="this.getFileName(this.speakers[2].name)" :alt="speakers[0].name" style="width: 300px; max-width: 100vw;"/>
     </slide>
-    <slide>{{speakers[1]}}
+    <slide><img :src="this.getFileName(this.speakers[3].name)" :alt="speakers[0].name" style="width: 300px; max-width: 100vw;"/>
     </slide>
     <slide>{{speakers[0]}}
     </slide>
@@ -127,7 +128,11 @@ export default {
   text-align: center;
   min-height: 100px;
   border: red;
-  border-style: dashed;
+  width: 300px;
+  max-width: 100vw;
+  height: 400px;
+  max-height: 50vh;
+  // border-style: dashed;
 }
 
 .test {
