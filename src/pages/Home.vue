@@ -22,10 +22,12 @@
     
     <div class="container section section-speakers">
       <h2>Featuring</h2>
+      <div class="carousel-container">
       <SpeakerCarousel />
+      </div>
 
       <div class="btn-container">
-        <router-link class="button" to="speakers">View all speakers</router-link>
+        <router-link class="button ghost" to="speakers">View all speakers</router-link>
       </div>
     </div>
     
@@ -272,6 +274,21 @@ export default {
     color: white;
   }
 
+  .button-container {
+    background-color: yellow;
+  }
+  .button-container .ghost {
+    border: 1px solid white;
+    color: white;
+    background-color: purple;
+  }
+
+
+  .carousel-container {
+    width: 100%;
+    // background-color: green;
+  }
+
   .speakers-container {
     display: flex;
     padding: 0 10%;
@@ -286,6 +303,7 @@ export default {
     @media screen and (max-width: 1200px) {
       padding: 0 32px;
     }
+    
 
     .speaker-col {
       flex: 0 0 calc(33% - 24px);
@@ -330,15 +348,15 @@ export default {
   }
 
   .btn-container {
-    padding-left: 10%;
-    align-self: flex-start;
-    margin-bottom: 32px;
-    background-color: yellow;
+    // padding-left: 10%;
+    align-self: center;
+    // margin-bottom: 32px;
+    // background-color: yellow;
 
-    @media screen and (max-width: 1200px) {
-      padding-left: 0;
-      align-self: center;
-    }
+    // @media screen and (max-width: 1200px) {
+    //   padding-left: 0;
+    //   align-self: center;
+    // }
 
     a {
       text-decoration: none;
