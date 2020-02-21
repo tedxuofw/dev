@@ -1,42 +1,23 @@
 <template>
   <ConferencePage :selectedIndex="4" :footerMargin="false">
-    <div class="standard-hero" style="position: relative">
-      <h1>About</h1>
-      <div class="accent"></div>
-    </div>
     <div class="container section-about">
       <div class="row">
-        <div class="col-8 about-selection">
-          <button class="org-button" v-for="(org, idx) in orgs" :key="org"
-            :class="{ selected: selectedOrg == idx }"
-            @click="selectedOrg = idx" >
-            About {{ org }}
-          </button>
-        </div>
+        <h2>ABOUT <span class="highlight">TEDx</span><span class="highlight2">UofW</span></h2>
       </div>
       <div class="row">
-        <div class="col-8 content" v-if="selectedOrg == 0">
-          <h2>About <span class="highlight">TED</span></h2>
-          <p>
-            <span class="red">TED</span> is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com. TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan and Daniel Kahneman. The annual TED Conference takes place each spring in Vancouver, British Columbia.
-          </p>
-        </div>
-        <div class="col-8 content" v-if="selectedOrg == 1">
-          <h2>About <span class="highlight">TEDx</span></h2>
-          <p>
-            In the spirit of ideas worth spreading, <span class="red">TEDx</span> is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TED Talks video and live speakers combine to spark deep discussion and connection. These local, self-organized events are branded TEDx, where x = independently organized TED event. The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized. (Subject to certain rules and regulations.)
-          </p>
-        </div>
-        <div class="col-8 content" v-if="selectedOrg == 2">
-          <h2>About <span class="highlight">TEDxUofW</span></h2>
-          <p>
-            TEDxUofW is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
-          </p>
-        </div>
+          <div class="content col-7">
+            <p>
+              <span class="red">TED</span> is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com. TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan and Daniel Kahneman. The annual TED Conference takes place each spring in Vancouver, British Columbia.
+            </p>
+          </div>
+          <div class="content col-7">
+            <p>
+              <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+            </p>
+          </div>
       </div>
     </div>
     <div class="container section-team">
-      <span class="floating">2019</span>
       <div class="row team-title">
         <div class="col-12 no-margin-horizontal">
           <h2>Meet the team</h2>
@@ -192,7 +173,7 @@ $about-break: 1170px;
 
 .standard-hero {
   background-image: url('/static/about-page-header.jpg');
-  background-position: center;
+  background-position: top;
 }
 
 .red {
@@ -201,6 +182,7 @@ $about-break: 1170px;
 }
 
 .section-about {
+  padding: 200px 100px 100px;
   background-color: $color-secondary-2;
 
   .about-selection {
@@ -235,7 +217,7 @@ $about-break: 1170px;
   .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-content: flex-start;
   }
 
   h2 {
@@ -246,11 +228,16 @@ $about-break: 1170px;
     .highlight {
       color: $color-primary;
     }
+
+    .highlight2 {
+      color: $color-secondary;
+    }
   }
 }
 
 .section-team {
-  background-color: $color-primary;
+  padding: 10px 100px 100px;
+  background-color: $color-secondary-2;
   position: relative;
 
   span.floating {
@@ -279,10 +266,10 @@ $about-break: 1170px;
     h2 {
       width: 100%;
       display: block;
-      color: white;
+      color: black;
       text-transform: uppercase;
-      text-align: center;
-      font-size: 5vw;
+      text-align: left;
+      font-size: 3.2rem;
       line-height: 1.5em;
       margin: 0;
     }
@@ -294,17 +281,17 @@ $about-break: 1170px;
     flex-wrap: wrap;
 
     button {
-      flex: 1 1;
       background: none;
       border: none;
-      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: rgb(94, 94, 94);
       white-space: nowrap;  
-      border-bottom: 10px solid $color-tertiary;
       border-radius: 0;
       margin: 8px;
 
       &.selected {
-        border-bottom-color: $color-secondary;
+        color: $color-primary;
       }
     }
   }
