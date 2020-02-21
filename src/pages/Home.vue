@@ -5,7 +5,7 @@
       <h6>TEDxUofW 2020 PRESENTS</h6>
       <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
       <p> April 20, 2020 KANE HALL</p>
-      <router-link class="button ghost" to="login">ATTEND</router-link>
+      <router-link class="home-page-button" to="login">ATTEND</router-link>
     </div>
 
     <div class="container section section-about">
@@ -15,9 +15,9 @@
         <p>
           For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
         </p>
-        <router-link class="button ghost" to="login">REGISTER</router-link>
       </div>
       </div>
+      <router-link class="home-page-button" to="login">REGISTER</router-link>
     </div>
     
     <div class="container section section-speakers">
@@ -25,10 +25,8 @@
       <div class="carousel-container">
       <SpeakerCarousel />
       </div>
-
-      <div class="btn-container">
-        <router-link class="button ghost" to="speakers">View all speakers</router-link>
-      </div>
+  
+      <router-link class="view-speakers-button" to="speakers">View all speakers</router-link>
     </div>
     
   </ConferencePage>
@@ -118,8 +116,49 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
-.ghost {
+.home-page-button {
   text-decoration: none;
+  // background-color: pink;
+  border: 1.5px solid $color-primary;
+  padding: 5px 0px;  // for inner within the box height
+  width: 200px;
+  text-align: center;
+
+  // Font settings
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+
+  transition: 0.3s ease;
+}
+
+.home-page-button:hover {
+  background-color: $color-primary;
+  color: white;
+}
+
+.view-speakers-button {
+  text-decoration: none;
+  // background-color: pink;
+  border: 1.5px solid white;
+  padding: 5px 0px;  // for inner within the box height
+  width: 200px;
+  text-align: center;
+
+  // Font settings
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+
+  transition: 0.3s ease;
+
+  margin: 20px;
+}
+
+.view-speakers-button:hover {
+  background-color: $color-primary;
+  color: black;
+  border: 1.5px solid $color-primary;
 }
 
 .section {
@@ -134,13 +173,13 @@ export default {
   }
 }
 
-.button {
-  padding: 5px 65px;
-  font-weight: 600;
-  font-size: 16px;
-  border-width: 2px;
-  width: 60px;
-}
+// .button {
+//   padding: 5px 65px;
+//   font-weight: 600;
+//   font-size: 16px;
+//   border-width: 2px;
+//   width: 60px;
+// }
 
 .section-landing {
   // background-color: green;
@@ -168,7 +207,7 @@ export default {
   // }
 
   h1 {
-    font-size: 15vw;
+    font-size: 13vw;
     padding: 20px;
   }
 
@@ -209,12 +248,10 @@ export default {
 
   @media screen and (min-width: 800px) {
     h6, p {
-      background-color: yellow;
       font-size: 20px;
     }
 
     h1 {
-      background-color: yellow;
       font-size: 90px;
     }
   }
@@ -237,11 +274,6 @@ export default {
     text-align: center;
   }
 
-  a.button {
-    width: 140px;
-    max-width: 100%;
-    margin: 0 auto;
-  }
 }
 
 .section-accent {
@@ -277,6 +309,7 @@ export default {
   .button-container {
     background-color: yellow;
   }
+  
   .button-container .ghost {
     border: 1px solid white;
     color: white;
@@ -387,25 +420,6 @@ export default {
 
   h2 {
     color: $color-tertiary;
-  }
-}
-
-.section-newsletter {
-  background-image: url('/static/speakers-page-header.jpg');
-  height: 450px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 85%;
-
-  h2 {
-    text-align: left;
-    color: #ffffff;
-  }
-
-  input,
-  button {
-    width: 400px;
-    max-width: 100%;
   }
 }
 </style>
