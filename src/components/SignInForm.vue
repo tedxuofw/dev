@@ -126,6 +126,7 @@ a.small {
 
 button.primary {
     width: 90%;
+    margin: 15px;
     margin-left: auto;
     margin-right: auto;
 }
