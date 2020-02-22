@@ -1,33 +1,61 @@
+
 <template>
   <ConferencePage :selectedIndex="2">
-    <div class="modal-container" v-if="isSpeakerSelected" @click="selectSpeaker(-1)">
+    <!-- <div class="modal-container" v-if="isSpeakerSelected" @click="selectSpeaker(-1)">
       <div class="modal" @click.stop="() => {}">
         <div class="image" :style="{ backgroundImage: `url('${selectedSpeaker.imageUrl}'` }"></div>
         <div class="content-container">
           <div class="content overflow-content">
-            <span class="name">{{ selectedSpeaker.name }}</span>
+            <span class="name">{{ selectedSpeaker.name }} YOOOO WTF WTF</span>
             <span class="title">{{ selectedSpeaker.title }}</span>
             <p v-html="selectedSpeaker.description"></p>
           </div>
           <button @click="selectSpeaker(-1)" class="full-width">Back</button>
         </div>
       </div>
+    </div> -->
+
+    <modal
+      v-show="isModalVisible"
+      @close="closeModal"
+    >
+    <div slot="header">
+      <div style="display: flex; flex-direction: row;">
+      <img style="object-fit: cover; max-width: 50vw; max-height: 35vh;" :src="this.speakers[this.modalSelectedSpeaker].imageUrl" />
+      <div style="background-color: #e62b1e; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+      <h3 style="color:white; padding: 40px 25px 25px; font-size: 30px; font-weight: 700; text-transform: uppercase;">
+      {{ this.speakers[this.modalSelectedSpeaker].name }}
+      </h3>
+      <h3 style="color:white; padding: 25px 25px 35px; font-size: 20px; font-weight: 500; text-transform: uppercase;">
+      {{ this.speakers[this.modalSelectedSpeaker].title }}
+      </h3>
+      </div>
+      </div>
     </div>
-    <div class="standard-hero">
+    <div slot="body">
+      <p v-html="this.speakers[this.modalSelectedSpeaker].description"></p>
+    </div>
+    <div slot="footer">
+      <p style="font-size: 15px; color:grey">click anywhere to close...</p>
+    </div>
+    </modal>
+    
+    <!-- <div class="standard-hero">
       <h1>Speakers</h1>
       <div class="accent"></div>
-    </div>
+    </div> -->
+    <h1 class="speakers-title">SPEAKERS</h1>
     <div class="container section-sponsors">
       <div class="row">
         <div class="speakers-container">
-          <router-link class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl">
+          <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl">
             <img :src="speaker.imageUrl" />
-            <div class="content">
+            <!-- <div class="content">
               <span class="name">{{ speaker.name }}</span>
               <span class="title">{{ speaker.title }}</span>
               <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
-            </div>
-          </router-link>
+            </div> -->
+          </button>
           <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
         </div>
       </div>
@@ -38,12 +66,15 @@
 <script>
 import Arrows from "@/components/Arrows";
 import ConferencePage from "@/components/ConferencePage";
+import Modal from '@/components/Modal.vue';
 export default {
   name: "SpeakersPage",
-  components: { Arrows, ConferencePage },
+  components: { Arrows, ConferencePage, Modal },
   data() {
     const makeSpeaker = this.makeSpeaker.bind(this);
     return {
+      isModalVisible: false,
+      modalSelectedSpeaker: 1,
       selectedSpeakerIndex: -1,
       speakers: [
         makeSpeaker(
@@ -110,6 +141,13 @@ export default {
     };
   },
   methods: {
+    showModal(speakerNum) {
+      this.isModalVisible = true;
+      this.modalSelectedSpeaker = speakerNum;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    },
     makeSpeaker(name, title, description) {
       const fileName = name.toLowerCase().replace(' ', '_').replace(' ', '_');
       const askUrl = name.toLowerCase().replace(' ', '-').replace(' ', '-');
@@ -149,9 +187,20 @@ export default {
 
 </script>
 
+
+
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $speakers-break: 750px;
+
+button {
+  padding: 0;
+}
+
+.speakers-title {
+  padding: 70px 0 0 10vw;
+  align-self: flex-start;
+}
 
 .standard-hero {
   background-image: url('/static/speakers-page-header.jpg');
@@ -197,49 +246,49 @@ $speakers-break: 750px;
 }
 
 
-.modal-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  cursor: pointer;
+// .modal-container {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-color: rgba(0, 0, 0, 0.4);
+//   cursor: pointer;
 
-  .modal {
-    width: 800px;
-    max-width: 90%;
-    height: 600px;
-    max-height: 80vh;
-    background-color: #ffffff;
-    display: flex;
-    cursor: auto;
+//   .modal {
+//     width: 800px;
+//     max-width: 90%;
+//     height: 600px;
+//     max-height: 80vh;
+//     background-color: #ffffff;
+//     display: flex;
+//     cursor: auto;
 
-    .image,
-    .content-container {
-      height: 100%;
-      flex: 1;
-    }
+//     .image,
+//     .content-container {
+//       height: 100%;
+//       flex: 1;
+//     }
 
-    .content-container {
-      display: flex;
-      flex-direction: column;
-    }
+//     .content-container {
+//       display: flex;
+//       flex-direction: column;
+//     }
 
-    .content.overflow-content {
-      box-sizing: border-box;
-      max-height: 100%;
-      overflow-y: scroll;
-    }
+//     .content.overflow-content {
+//       box-sizing: border-box;
+//       max-height: 100%;
+//       overflow-y: scroll;
+//     }
 
-    button {
-      margin-bottom: 0;
-    }
-  }
-}
+//     button {
+//       margin-bottom: 0;
+//     }
+//   }
+// }
 
 .speakers-container {
   display: flex;
@@ -248,6 +297,7 @@ $speakers-break: 750px;
   justify-content: space-between;
   align-items: stretch;
   margin-top: 64px;
+  padding: 0px;
 
   .speaker-filler {
     flex: 1 1 calc(30% - 28px);
@@ -257,7 +307,7 @@ $speakers-break: 750px;
     flex: 1 1 calc(30% - 28px);
     margin-left: 24px;
     margin-right: 24px;
-    border: 2px solid $color-tertiary;
+    // border: 0.3px solid grey;
     margin-bottom: 48px;
     cursor: pointer;
     flex-grow: 1;
@@ -296,8 +346,7 @@ $speakers-break: 750px;
   margin-top: -8px;
 }
 
-.speaker,
-.modal {
+.speaker {
   img {
     width: 100%;
     height: auto;
