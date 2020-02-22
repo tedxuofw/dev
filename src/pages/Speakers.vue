@@ -27,7 +27,7 @@
         <div class="speakers-container">
           <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl">
             <img :src="speaker.imageUrl" />
-            <div class="overlay">
+            <div class="overlay show-overlay-if-mobile">
               <div class="overlay-text">
                 <h3 style="text-transform:uppercase; font-weight: 600">{{ speaker.name }}</h3>
                 <h3>{{ speaker.title }}</h3>
@@ -369,6 +369,17 @@ button {
 
   .smaller-if-mobile {
     font-size: 17px !important;
+  }
+
+  .show-overlay-if-mobile {
+    opacity: 1 !important;
+    .overlay-text {
+      padding: 10px !important;
+    }
+    h3 {
+      background-color: rgba(0,0,0,0.7);
+      padding: 5px 15px;
+    }
   }
 }
 
