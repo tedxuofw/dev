@@ -113,7 +113,7 @@
   }
 
   .modal-body::-webkit-scrollbar {
-    width: 11px;
+    width: 5px;
   }
   .modal-body {
     scrollbar-color: var(--thumbBG) var(--scrollbarBG);

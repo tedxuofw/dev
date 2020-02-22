@@ -39,7 +39,7 @@
               <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
             </div> -->
           </button>
-          <!-- <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div> -->
+          <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
         </div>
       </div>
     </div>
@@ -50,12 +50,12 @@
     >
     <div slot="header">
       <div style="display: flex; flex-direction: row; flex-wrap; wrap">
-      <img style="min-width: 400px; object-fit: cover; max-width: 50vw; max-height: 35vh;" :src="this.speakers[this.modalSelectedSpeaker].imageUrl" />
+      <img class="hide-if-mobile" style="object-fit: cover; max-width: 50vw; max-height: 35vh;" :src="this.speakers[this.modalSelectedSpeaker].imageUrl" />
       <div style="background-color: #e62b1e; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
       <h3 style="color:white; padding: 40px 25px 25px; font-size: 30px; font-weight: 700; text-transform: uppercase;">
       {{ this.speakers[this.modalSelectedSpeaker].name }}
       </h3>
-      <h3 style="color:white; padding: 25px 25px 35px; font-size: 20px; font-weight: 500; text-transform: uppercase;">
+      <h3 class="smaller-if-mobile" style="color:white; padding: 0px 25px 35px; font-size: 20px; font-weight: 500; text-transform: uppercase;">
       {{ this.speakers[this.modalSelectedSpeaker].title }}
       </h3>
       </div>
@@ -152,7 +152,6 @@ export default {
     showModal(speakerNum) {
       this.isModalVisible = true;
       this.modalSelectedSpeaker = speakerNum;
-      console.log(speakerNum);
     },
     closeModal() {
       this.isModalVisible = false;
@@ -201,6 +200,11 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $speakers-break: 750px;
+
+$speakers-break-1: 600px;
+$speakers-break-2: 900px;
+
+
 
 button {
   padding: 0;
@@ -339,16 +343,32 @@ button {
       }
     }
 
-    @media screen and (max-width: $speakers-break) {
+    @media screen and (max-width: $speakers-break-2) {
+      flex: 1 0 40%;
+    }
+
+    @media screen and (max-width: $speakers-break-1) {
       flex: 1 0 100%;
       margin-left: 0;
       margin-right: 0;
 
-      .ask-button {
-        background-color: $color-tertiary;
-        color: white !important;
-      }
+      // .ask-button {
+      //   background-color: $color-tertiary;
+      //   color: white !important;
+      // }
     }
+
+
+  }
+}
+
+@media screen and (max-width: $speakers-break-1) {
+  .hide-if-mobile {
+    display: none !important;
+  }
+
+  .smaller-if-mobile {
+    font-size: 17px !important;
   }
 }
 
