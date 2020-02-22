@@ -9,24 +9,24 @@
     </div>
 
     <div class="container section section-about">
-      <div class="row">
-      <div class="col-6 no-margin content">
+      <!-- <div class="section-about-row"> -->
+      <div class="section-about-text">
         <h2>Ideas worth spreading at the<br/>University of Washington</h2>
         <p>
           For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
         </p>
       </div>
-      </div>
+      <!-- </div> -->
       <router-link class="home-page-button" to="login">REGISTER</router-link>
     </div>
     
     <div class="container section section-speakers">
-      <h2>Featuring</h2>
+      <h2>FEATURING</h2>
       <div class="carousel-container">
       <SpeakerCarousel />
       </div>
   
-      <router-link class="view-speakers-button" to="speakers">View all speakers</router-link>
+      <router-link class="view-speakers-button" to="speakers">VIEW ALL SPEAKERS</router-link>
     </div>
     
   </ConferencePage>
@@ -124,6 +124,9 @@ export default {
   width: 200px;
   text-align: center;
 
+  // Space beneath
+  margin: 30px 0px 100px 0px;
+
   // Font settings
   color: black;
   font-weight: 600;
@@ -152,7 +155,7 @@ export default {
 
   transition: 0.3s ease;
 
-  margin: 20px;
+  margin: 40px 15px 50px;
 }
 
 .view-speakers-button:hover {
@@ -184,7 +187,7 @@ export default {
 .section-landing {
   // background-color: green;
   text-align: center;
-  min-height: 80vh;
+  min-height: 90vh;
   
   h6 {
     color: #999997;
@@ -274,6 +277,15 @@ export default {
     text-align: center;
   }
 
+  .section-about-text {
+    padding: 10px 30px;
+    max-width: 600px;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
 }
 
 .section-accent {
@@ -299,8 +311,9 @@ export default {
 
   h2 {
     text-align: center;
-    font-size: 5vh;
-    padding: 16px;
+    font-size: 4.3vh;
+    padding: 65px 65px;
+    letter-spacing: 4px;
     line-height: 1em;
     margin: 0;
     color: white;
