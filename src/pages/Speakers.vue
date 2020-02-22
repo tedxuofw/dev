@@ -15,13 +15,42 @@
       </div>
     </div> -->
 
+    
+    
+    <!-- <div class="standard-hero">
+      <h1>Speakers</h1>
+      <div class="accent"></div>
+    </div> -->
+    <h1 class="speakers-title">SPEAKERS</h1>
+    <div class="container section-sponsors">
+      <div class="row">
+        <div class="speakers-container">
+          <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl">
+            <img :src="speaker.imageUrl" />
+            <div class="overlay">
+              <div class="overlay-text">
+                <h3 style="text-transform:uppercase; font-weight: 600">{{ speaker.name }}</h3>
+                <h3>{{ speaker.title }}</h3>
+              </div>
+            </div>
+            <!-- <div class="content">
+              <span class="name">{{ speaker.name }}</span>
+              <span class="title">{{ speaker.title }}</span>
+              <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
+            </div> -->
+          </button>
+          <!-- <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div> -->
+        </div>
+      </div>
+    </div>
+
     <modal
       v-show="isModalVisible"
       @close="closeModal"
     >
     <div slot="header">
-      <div style="display: flex; flex-direction: row;">
-      <img style="object-fit: cover; max-width: 50vw; max-height: 35vh;" :src="this.speakers[this.modalSelectedSpeaker].imageUrl" />
+      <div style="display: flex; flex-direction: row; flex-wrap; wrap">
+      <img style="min-width: 400px; object-fit: cover; max-width: 50vw; max-height: 35vh;" :src="this.speakers[this.modalSelectedSpeaker].imageUrl" />
       <div style="background-color: #e62b1e; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
       <h3 style="color:white; padding: 40px 25px 25px; font-size: 30px; font-weight: 700; text-transform: uppercase;">
       {{ this.speakers[this.modalSelectedSpeaker].name }}
@@ -39,27 +68,6 @@
       <p style="font-size: 15px; color:grey">click anywhere to close...</p>
     </div>
     </modal>
-    
-    <!-- <div class="standard-hero">
-      <h1>Speakers</h1>
-      <div class="accent"></div>
-    </div> -->
-    <h1 class="speakers-title">SPEAKERS</h1>
-    <div class="container section-sponsors">
-      <div class="row">
-        <div class="speakers-container">
-          <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl">
-            <img :src="speaker.imageUrl" />
-            <!-- <div class="content">
-              <span class="name">{{ speaker.name }}</span>
-              <span class="title">{{ speaker.title }}</span>
-              <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
-            </div> -->
-          </button>
-          <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
-        </div>
-      </div>
-    </div>
   </ConferencePage>
 </template>
 
@@ -144,6 +152,7 @@ export default {
     showModal(speakerNum) {
       this.isModalVisible = true;
       this.modalSelectedSpeaker = speakerNum;
+      console.log(speakerNum);
     },
     closeModal() {
       this.isModalVisible = false;
@@ -207,43 +216,43 @@ button {
   background-position: bottom;
 }
 
-@media screen and (max-width: 600px) {
-  .modal {
-    flex-direction: column;
-    overflow-y: scroll;
-    align-items: center;
+// @media screen and (max-width: 600px) {
+//   .modal {
+//     flex-direction: column;
+//     overflow-y: scroll;
+//     align-items: center;
 
 
-// TODO get rid of important
-    .image {
-      flex: 0 0 300px !important;
-      height: 300px !important;
-      width: 300px !important;
-      margin-top: 20px;
-    }
+// // TODO get rid of important
+//     .image {
+//       flex: 0 0 300px !important;
+//       height: 300px !important;
+//       width: 300px !important;
+//       margin-top: 20px;
+//     }
 
-    .content-container {
-      display: block !important;
-    }
+//     .content-container {
+//       display: block !important;
+//     }
 
-    .overflow-content {
-      overflow-y: inherit !important;
-    }
+//     .overflow-content {
+//       overflow-y: inherit !important;
+//     }
 
-    .content.overflow-content {
-      max-height: inherit !important;
-    }
+//     .content.overflow-content {
+//       max-height: inherit !important;
+//     }
 
-    a,
-    button {
-      display: block;
-      width: calc(100% - 32px);
-      margin-bottom: 16px !important;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-}
+//     a,
+//     button {
+//       display: block;
+//       width: calc(100% - 32px);
+//       margin-bottom: 16px !important;
+//       margin-left: auto;
+//       margin-right: auto;
+//     }
+//   }
+// }
 
 
 // .modal-container {
@@ -304,6 +313,7 @@ button {
   }
 
   .speaker {
+    position: relative;
     flex: 1 1 calc(30% - 28px);
     margin-left: 24px;
     margin-right: 24px;
@@ -391,6 +401,36 @@ button {
       transition: 250ms all;
     }
   }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .1s ease;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0);
+    
+
+    .overlay-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: white;
+      padding: 25px;
+      text-align: left;
+    }
+  }
+
+  .overlay:hover {
+    background: rgba(0,0,0,0.5);
+    opacity: 1;
+  }
+
 
   &:hover .ask-button {
     background-color: $color-tertiary;
