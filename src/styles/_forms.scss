@@ -6,13 +6,13 @@
   .button {
     flex-grow: 1;
 
-    // &:first-child {
-    //   border-radius: 4px 0 0 4px;
-    // }
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+    }
 
-    // &:last-child {
-    //   border-radius: 0 4px 4px 0;
-    // }
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+    }
   }
 }
 
@@ -28,7 +28,7 @@ div.row > div.StripeElement {
   display: block;
   font-size: 19px;
   margin-bottom: 0.5em;
-  padding: 5px 5px;
+  padding: 12px;
   font-family: 'nimbus-sans', sans-serif;
   font-size: 19px;
 
