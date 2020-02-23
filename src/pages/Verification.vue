@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import Arrows from "@/components/Arrows";
 import ConferencePage from "@/components/ConferencePage";
 import * as emailjs from 'emailjs-com';
 import axios from 'axios';
@@ -15,7 +14,7 @@ const STATES = {
 }
 export default {
   name: "ContactPage",
-  components: { Arrows, ConferencePage },
+  components: { ConferencePage },
   data() {
     return {
       STATES,

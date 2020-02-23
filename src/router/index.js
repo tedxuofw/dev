@@ -11,8 +11,10 @@ import TicketsPage from '@/pages/Tickets'
 import Dashboard from '@/pages/Dashboard'
 import QAPage from '@/pages/QA'
 import WatchPage from '@/pages/Watch'
+
 import VerificationPage from '@/pages/Verification'
 import CheckoutPage from '@/pages/Checkout'
+import ResetPasswordPage from '@/pages/ResetPassword'
 
 Vue.use(Router)
 
@@ -87,6 +89,11 @@ export default new Router({
       path: '/verification',
       name: 'VerificationPage',
       component: VerificationPage
+    },
+    {
+      path: '/resetpassword',
+      name: 'ResetPasswordPge',
+      component: ResetPasswordPage
     }
   ],
   scrollBehavior (to, from, savedPosition) {
