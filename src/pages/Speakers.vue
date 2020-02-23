@@ -199,6 +199,20 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
+
+// I added in this as a style-reset that never got implemented
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1em;
+}
+
 $speakers-break: 750px;
 
 $speakers-break-1: 600px;
