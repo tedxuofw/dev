@@ -10,7 +10,7 @@
       <tab-option logo :click="() => navigateTo('/')">
         <img class="logo logo-default" src="/static/newlogo.png" alt="TEDxUofW Logo" />
       </tab-option>
-      <tab-option v-for="(page, pageIndex) in pages" :key="pageIndex"
+      <tab-option class="hover-red" v-for="(page, pageIndex) in pages" :key="pageIndex"
         :selected="selectedIndex == pageIndex" :secondary="secondary"
         :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
       <tab-option spacer />
@@ -18,7 +18,7 @@
         <!-- <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" /> -->
-        <button class="tertiary cta-button no-margin" @click="() => navigateTo('/login')">Login</button>
+        <button class="tertiary cta-button no-margin" @click="() => navigateTo('/login')">LOGIN</button>
       </tab-option>
     </tab-set>
   </div>
@@ -152,11 +152,24 @@ export default {
     padding: 4px 32px;
     color: black !important;
     border: 2px solid #e62b1e;
+    font-size: 15px;
+    font-weight: 700;
 
     // animation-name: button-flash;
     // animation-delay: $main-animation-duration + $footstep-animation-delay + ($num-footsteps + 1) * $footstep-animation-per-delay;
     // animation-duration: $button-flash-duration;
     // animation-fill-mode: forwards;
+  }
+
+  .cta-button:hover {
+    color: white !important;
+    background-color: #e62b1e;
+    transition: ease .3s; 
+  }
+
+  .hover-red:hover {
+    color: #e62b1e;
+    transition: ease .2s;
   }
 }
 
