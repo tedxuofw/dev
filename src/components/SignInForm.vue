@@ -3,6 +3,7 @@
         <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input" @change="addFocus($event)">
         <input v-model="form.password" type="password" placeholder="Password" class="full-width login-input" @change="addFocus($event)">
         <a href="mailto:tedxuofw@uw.edu?Subject=TEDxUofW%20Account%20Password%20Recovery" class="spacer small">Forgot your password?</a>
+        <router-link to="/verification" class="spacer small">Verify Account</router-link>
         <p class="error"> </p>
         <button class="full-width primary" v-on:click="signIn"> Sign In </button>
     </div>

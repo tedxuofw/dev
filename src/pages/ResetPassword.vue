@@ -37,7 +37,8 @@ export default {
         return {
             form: {
                 email: ''
-            }
+            },
+            loading: false
         }
     },
     methods: {
@@ -95,7 +96,7 @@ export default {
             event.target.classList.add('focus');
         },
         validate: function() {
-            if (this.form.email == '' || this.form.password == '') {
+            if (this.form.email == '') {
                 return "Please fill in all fields."
             }  else {
                 var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;

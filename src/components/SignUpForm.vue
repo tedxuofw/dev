@@ -48,7 +48,8 @@ export default {
                       
                         // Redirect to where we wanna go on registration
                         // TODO: This should be a new page where they can resend an email link
-                        router.push('/');
+                        this.displayError("Account registered! Check email to verify account in order to sign in");
+                        // router.push('/');
                     } else {
                         // User Error
                         this.displayError(response.data.message);
