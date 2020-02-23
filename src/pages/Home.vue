@@ -116,6 +116,11 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+}
+
 .home-page-button {
   text-decoration: none;
   // background-color: pink;

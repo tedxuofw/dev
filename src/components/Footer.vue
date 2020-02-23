@@ -4,9 +4,9 @@
     <h2 class="our-name">TEDxUofW 2020</h2>
     <h3 class="our-event-date">APRIL 20, 2020<br>KANE HALL</h3>
 
-    <router-link class="home-page-button" to="/">
+    <a class="home-page-button" href="#">
       <img class="our-logo" src="/static/newlogo.png" alt="TEDxUofW logo"/>
-    </router-link>
+    </a>
     <div class="social">
       <div class="social-bubbles">
         <a href="https://www.facebook.com/TEDxUofW/" target="_blank" class="social-bubble"><img src="/static/06-facebook.svg" alt="Facebook logo" /></a>
@@ -16,7 +16,6 @@
       <!-- <button @click="$router.push('/login')">Get your tickets now</button> -->
     </div>
     </div>
-
     <p class="small-license">This independent TEDx event is operated under license from TED ©2020 TEDxUofW</p>
   </div>
 </template>
@@ -84,6 +83,7 @@ $footer-tiny-break: 515px;
   line-height: 21px;
   margin: 0px;
   padding: 0px;
+  text-align: center;
 }
 
 .our-logo {
