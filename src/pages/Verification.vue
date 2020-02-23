@@ -65,8 +65,9 @@ export default {
       }
       let url = "https://students.washington.edu/tedxuofw/index.php/api/verify?" + window.location.href.split('?')[1]
       console.log(url);
+      this.loading = true;
       axios.get(url, { params: this.form }).then((response) => {
-        this.$emit("loading");
+        this.loading = false;
         var resp = response.data;
         if (resp.status === "success") {
           console.log(resp);
@@ -81,7 +82,6 @@ export default {
           console.log(response.data);
         }
       }, (error)  =>  {
-        this.$emit("loading");
         // There was an error with the way the request was made!
         // This is really bad (either the API broke or more likely
         // the frontend isn't properly validating the input)
@@ -99,10 +99,10 @@ export default {
             var errors = this.validate();
 
             if (errors === '') {
-                this.$emit("loading");
+                this.loading = true;
                 let url = "https://students.washington.edu/tedxuofw/index.php/api/verify/request";
                 axios.get(url, { params: this.form }).then((response)  =>  {
-                    this.$emit("loading");
+                    this.loading = false;
                     var resp = response.data;
                     if(resp.status === "success") {
                         // Store any information given
@@ -119,7 +119,7 @@ export default {
                         console.log(response.data);
                     }
                 }, (error)  =>  {
-                    this.$emit("loading");
+                    this.loading = false;
                     // There was an error with the way the request was made!
                     // This is really bad (either the API broke or more likely
                     // the frontend isn't properly validating the input)
