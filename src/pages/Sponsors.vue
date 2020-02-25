@@ -1,9 +1,10 @@
 <template>
   <ConferencePage :selectedIndex="3">
-    <div class="standard-hero" style="position: relative">
-      <h1>Sponsors</h1>
-      <div class="accent"></div>
-    </div>
+    <div class="row page-title">
+        <div class="col-12 no-margin-horizontal">
+          <h2>Sponsors</h2>
+        </div>
+      </div>
     <div class="container section-sponsors">
       <div class="row" v-for="sponsor in sponsors" :key="sponsor.title">
         <div class="col-4 img-container">
@@ -75,10 +76,20 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
-.standard-hero {
-  background-image: url('/static/sponsors-page-header.jpg');
-  background-position: center;
-}
+  .page-title {
+    margin-top: 16px;
+
+    h2 {
+      width: 100%;
+      display: block;
+      color: black;
+      text-transform: uppercase;
+      text-align: left;
+      font-size: 3.2rem;
+      line-height: 1.5em;
+      margin: 0;
+    }
+  }
 
 .section-sponsors {
   margin-top: 64px;

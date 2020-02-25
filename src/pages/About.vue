@@ -171,10 +171,6 @@ export default {
 @import "@/styles/_variables.scss";
 $about-break: 1170px;
 
-.standard-hero {
-  background-image: url('/static/about-page-header.jpg');
-  background-position: top;
-}
 
 .red {
   color: $color-primary;
