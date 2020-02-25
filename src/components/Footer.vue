@@ -42,6 +42,7 @@ $footer-tiny-break: 515px;
   flex-direction: column;
   width: 100%;
   box-shadow: 0 1px 5px #0f0f0f;
+  z-index: 100;
 
   background-color: white;
   padding: 32px 32px 5px;
