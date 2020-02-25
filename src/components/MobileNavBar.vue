@@ -5,10 +5,12 @@
         <nav id="user-nav">
             <div class="mobile-icons">
                 <i id ="hamburger" class="fas fa-bars responsive-nav-element" @click="showMainNav()"></i>
+                <!-- This is the icon for the person -->
                 <div id="icon">
                     <i class="far fa-user responsive-nav-element dropdown" @click="showUserNav()"></i>
                 </div>
             </div>
+            <!-- This is the UserModal that we don't want anymore -->
             <UserModal :user="this.user"/>
         </nav>
     </div>

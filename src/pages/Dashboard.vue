@@ -16,7 +16,7 @@
                                 <p class="name card-child"> {{ user.first }} {{ user.last }} </p>
                                 <p class="card-child email"> {{ user.email }} </p>
                                 <div class="card-child">
-                                    <button class="secondary" @click="triggerModal()"> View Profile </button>
+                                    <button class="secondary" @click="triggerModal()"> Edit Account </button>
                                 </div>
                             </div>
                         </div>
