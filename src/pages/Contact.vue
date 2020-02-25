@@ -1,9 +1,9 @@
 <template>
   <ConferencePage :selectedIndex="5">
-    <div class="standard-hero" style="position: relative">
+    <!-- <div class="standard-hero" style="position: relative">
       <h1>Contact Us</h1>
       <div class="accent"></div>
-    </div>
+    </div> -->
     <div class="container section-contact">
       <div class="row">
         <div class="col-8 no-margin message">
