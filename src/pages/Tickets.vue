@@ -3,8 +3,8 @@
       <Loading v-if="this.loading"/>
       <NavBar v-bind:tickets="true"/>
       <main>
-        <h1> Tickets (Sold Out) </h1>
-        <p> Your purchased tickets will arrive by email a week before this year's conference. Please contact TEDxUofW for any additional questions.</p>
+        <h1> Tickets (Not Open Yet!) </h1>
+        <p> Ticket purchases will open soon! </p>
         <p> <span class="bold"> General tickets: </span> $50, <span class="bold"> UW student tickets: </span> $35 </p>
         <p>   </p>
         <div class="col-12 outer">
@@ -13,6 +13,7 @@
                   <div class="header"> Your Tickets </div>
                   <div class="card-container">
                       <div class="card-body"> 
+                        <!-- TODO: Uncomment these (and the method below) and get it working with this years conference -->
                         <!-- <div @click="goToCheckout()">
                           <Ticket 
                             class="ticket"

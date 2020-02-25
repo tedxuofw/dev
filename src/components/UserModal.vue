@@ -3,7 +3,7 @@
         <div class="user-modal-content">
             <h2>Profile</h2>
             <div id="avatars">
-                <div id="images">
+                <!-- <div id="images">
                     <p class="label"> Avatar </p>
                     <div>
                         <img class="selected" src="../assets/test_4.svg" @click="updateActive($event)"/>
@@ -17,7 +17,7 @@
                     <div> 
                         <img src="../assets/test_1.svg" @click="updateActive($event)"/>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-6 input-group">
                         <label class="label" for="first-name">First name</label>

@@ -1,42 +1,29 @@
 <template>
-  <ConferencePage :selectedIndex="4" :footerMargin="false">
-    <div class="standard-hero" style="position: relative">
-      <h1>About</h1>
-      <div class="accent"></div>
-    </div>
+  <ConferencePage :selectedIndex="4">
     <div class="container section-about">
-      <div class="row">
-        <div class="col-8 about-selection">
-          <button class="org-button" v-for="(org, idx) in orgs" :key="org"
-            :class="{ selected: selectedOrg == idx }"
-            @click="selectedOrg = idx" >
-            About {{ org }}
-          </button>
+      <div class="row team-title">
+        <div class="col-12 no-margin-horizontal">
+          <h2>
+            ABOUT
+            <span class="highlightred">TEDx</span>
+            <span class="highlight2">UofW</span>
+          </h2>
         </div>
       </div>
       <div class="row">
-        <div class="col-8 content" v-if="selectedOrg == 0">
-          <h2>About <span class="highlight">TED</span></h2>
+        <div class="content col-7">
           <p>
             <span class="red">TED</span> is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com. TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan and Daniel Kahneman. The annual TED Conference takes place each spring in Vancouver, British Columbia.
           </p>
         </div>
-        <div class="col-8 content" v-if="selectedOrg == 1">
-          <h2>About <span class="highlight">TEDx</span></h2>
+        <div class="content col-7">
           <p>
-            In the spirit of ideas worth spreading, <span class="red">TEDx</span> is a program of local, self-organized events that bring people together to share a TED-like experience. At a TEDx event, TED Talks video and live speakers combine to spark deep discussion and connection. These local, self-organized events are branded TEDx, where x = independently organized TED event. The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized. (Subject to certain rules and regulations.)
-          </p>
-        </div>
-        <div class="col-8 content" v-if="selectedOrg == 2">
-          <h2>About <span class="highlight">TEDxUofW</span></h2>
-          <p>
-            TEDxUofW is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+            <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
           </p>
         </div>
       </div>
     </div>
     <div class="container section-team">
-      <span class="floating">2019</span>
       <div class="row team-title">
         <div class="col-12 no-margin-horizontal">
           <h2>Meet the team</h2>
@@ -44,23 +31,30 @@
       </div>
       <div class="row">
         <div class="col-12 no-margin-horizontal team-selection">
-          <button class="team-button" v-for="team in teamNames" :key="team" :class="{ selected: team == teamSelection }" @click="selectTeam(team)">{{ team }}</button>
+          <button
+            class="team-button"
+            v-for="team in teamNames"
+            :key="team"
+            :class="{ selected: team == teamSelection }"
+            @click="selectTeam(team)"
+          >{{ team }}</button>
         </div>
       </div>
       <div class="row">
         <div class="col-12 no-margin-horizontal">
           <div class="team-container">
             <div class="person" v-for="person in filteredTeam" :key="person.name">
-              <img :src="!person.showAlt ? person.imageUrl : person.imageUrlAlt"
+              <img
+                :src="!person.showAlt ? person.imageUrl : person.imageUrlAlt"
                 :class="{ 'web': person.team == 'Web' }"
                 :alt="`Photo of ${person.name}`"
                 @mouseover="person.showAlt = true"
-                @mouseleave="person.showAlt = false" />
+                @mouseleave="person.showAlt = false"
+              />
               <span class="name">{{ person.name }}</span>
               <span class="title">{{ person.title }}</span>
             </div>
-            <div class="person" v-for="(person, idx) in teamSpacer" :key="idx">
-            </div>
+            <div class="person" v-for="(person, idx) in teamSpacer" :key="idx"></div>
           </div>
         </div>
       </div>
@@ -78,49 +72,55 @@ export default {
     const makePerson = this.makePerson.bind(this);
     return {
       selectedOrg: 2,
-      orgs: ['TED', 'TEDx', 'TEDxUofW'],
-      teamSelection: 'All',
+      orgs: ["TED", "TEDx", "TEDxUofW"],
+      teamSelection: "All",
       team: [
-        makePerson('Julia Pettere', 'Curators', 'Curator'),
-        makePerson('TJ Gascho', 'Curators', 'Curator'),
-        makePerson('Maya Sullivan', 'Curators', 'Curator'),
+        makePerson("Julia Pettere", "Curators", "Curator"),
+        makePerson("TJ Gascho", "Curators", "Curator"),
+        makePerson("Maya Sullivan", "Curators", "Curator"),
 
-        makePerson('Sara Behbakht', 'Design', 'Design Team Manager'),
-        makePerson('Joey Pan', 'Design', 'Photographer'),
-        makePerson('Tunny Parrish', 'Design', 'Branding Designer'),
-        
-        makePerson('Sneha Mohidekar', 'Speaker Selection', 'Speaker Selection Team Manager'),
-        makePerson('Aditya Gunawan', 'Speaker Selection', 'Speaker Selection'),
-        makePerson('Dhara Shah', 'Speaker Selection', 'Speaker Selection'),
-        makePerson('Kelly Phan', 'Speaker Selection', 'Speaker Selection'),
-        makePerson('Natalie Salazar', 'Speaker Selection', 'Speaker Selection'),
-        makePerson('Sara Gustafson', 'Speaker Selection', 'Speaker Selection'),
+        makePerson("Sara Behbakht", "Design", "Design Team Manager"),
+        makePerson("Joey Pan", "Design", "Photographer"),
+        makePerson("Tunny Parrish", "Design", "Branding Designer"),
 
-        makePerson('Maya Gopalan', 'Finance', 'Finance Team Manager'),
-        makePerson('Connor Hart', 'Finance', 'Sponsorship'),
-        makePerson('Emma Ueda', 'Finance', 'Logistics'),
-        makePerson('Jonathan Chang', 'Finance', 'Analyst'),
-        makePerson('Stephen Lee', 'Finance', 'Analyst'),
+        makePerson(
+          "Sneha Mohidekar",
+          "Speaker Selection",
+          "Speaker Selection Team Manager"
+        ),
+        makePerson("Aditya Gunawan", "Speaker Selection", "Speaker Selection"),
+        makePerson("Dhara Shah", "Speaker Selection", "Speaker Selection"),
+        makePerson("Kelly Phan", "Speaker Selection", "Speaker Selection"),
+        makePerson("Natalie Salazar", "Speaker Selection", "Speaker Selection"),
+        makePerson("Sara Gustafson", "Speaker Selection", "Speaker Selection"),
 
-        makePerson('Miranda Reisman', 'Production', 'Production Team Manager'),
-        makePerson('Chloee Henley', 'Production', 'Guest Experience'),
-        makePerson('Karina Mendoza', 'Production', 'Videographer'),
-        makePerson('Lily Hansen', 'Production', 'Communication Coordinator'),
-        makePerson('Megan Mei', 'Production', 'Stage Designer'),
-        makePerson('Yan Zhe Ong', 'Production', 'Tech Lead'),
+        makePerson("Maya Gopalan", "Finance", "Finance Team Manager"),
+        makePerson("Connor Hart", "Finance", "Sponsorship"),
+        makePerson("Emma Ueda", "Finance", "Logistics"),
+        makePerson("Jonathan Chang", "Finance", "Analyst"),
+        makePerson("Stephen Lee", "Finance", "Analyst"),
 
-        makePerson('Rahul Prasad', 'Public Relations', 'PR Team Manager'),
-        makePerson('Emma Hurring', 'Public Relations', 'Outreach Coordinator'),
-        makePerson('Marie Danilychev', 'Public Relations', 'External Outreach'),
-        makePerson('Samantha Freeman', 'Public Relations', 'Internal Manager'),
+        makePerson("Miranda Reisman", "Production", "Production Team Manager"),
+        makePerson("Chloee Henley", "Production", "Guest Experience"),
+        makePerson("Karina Mendoza", "Production", "Videographer"),
+        makePerson("Lily Hansen", "Production", "Communication Coordinator"),
+        makePerson("Megan Mei", "Production", "Stage Designer"),
+        makePerson("Yan Zhe Ong", "Production", "Tech Lead"),
 
-        makePerson('Jenny Liang', 'Web', 'Web Team Manager'),
-        makePerson('Soham Pardeshi', 'Web', 'Web Developer'),
-        makePerson('Nick Zhou', 'Web', 'UX/UI Designer'),
-        makePerson('Andrey Butenko', 'Web', 'Web Developer'),
+        makePerson("Rahul Prasad", "Public Relations", "PR Team Manager"),
+        makePerson("Emma Hurring", "Public Relations", "Outreach Coordinator"),
+        makePerson("Marie Danilychev", "Public Relations", "External Outreach"),
+        makePerson("Samantha Freeman", "Public Relations", "Internal Manager"),
 
-        makePerson('Ro Verdeja', 'Support', 'Presentation Curator', { hasAlt: false }),
-        makePerson('Barrett Vandiver', 'Support', 'Emcee', { hasPhoto: false }),
+        makePerson("Jenny Liang", "Web", "Web Team Manager"),
+        makePerson("Soham Pardeshi", "Web", "Web Developer"),
+        makePerson("Nick Zhou", "Web", "UX/UI Designer"),
+        makePerson("Andrey Butenko", "Web", "Web Developer"),
+
+        makePerson("Ro Verdeja", "Support", "Presentation Curator", {
+          hasAlt: false
+        }),
+        makePerson("Barrett Vandiver", "Support", "Emcee", { hasPhoto: false })
       ]
     };
   },
@@ -129,17 +129,20 @@ export default {
       opts = opts || {};
       const hasPhoto = opts.hasPhoto !== false;
       const hasAlt = opts.hasAlt !== false;
-      const fileName = name.toLowerCase().replace(' ', '_').replace(' ', '_');
+      const fileName = name
+        .toLowerCase()
+        .replace(" ", "_")
+        .replace(" ", "_");
 
-      let imageUrl = hasPhoto ?
-        `/static/headshots/${fileName}.jpg` :
-        '/static/headshots/blank_face.png';
+      let imageUrl = hasPhoto
+        ? `/static/headshots/${fileName}.jpg`
+        : "/static/headshots/blank_face.png";
 
-      let imageUrlAlt = hasPhoto ?
-        `/static/headshots/${fileName}_x.jpg` :
-        '/static/headshots/happy_face.png'
+      let imageUrlAlt = hasPhoto
+        ? `/static/headshots/${fileName}_x.jpg`
+        : "/static/headshots/happy_face.png";
 
-      if(!hasAlt) {
+      if (!hasAlt) {
         imageUrlAlt = imageUrl;
       }
 
@@ -149,8 +152,8 @@ export default {
         title,
         showAlt: false,
         imageUrl,
-        imageUrlAlt,
-      }
+        imageUrlAlt
+      };
     },
     selectTeam(team) {
       this.teamSelection = team;
@@ -158,20 +161,19 @@ export default {
   },
   computed: {
     filteredTeam() {
-      if(this.teamSelection == 'All') {
+      if (this.teamSelection == "All") {
         return this.team;
       }
 
       return this.team.filter(person => person.team == this.teamSelection);
     },
     teamNames() {
-      const uniqueTeams = ['All'];
-      this.team
-        .forEach(person => {
-          if(!uniqueTeams.includes(person.team)) {
-            uniqueTeams.push(person.team);
-          }
-        });
+      const uniqueTeams = ["All"];
+      this.team.forEach(person => {
+        if (!uniqueTeams.includes(person.team)) {
+          uniqueTeams.push(person.team);
+        }
+      });
       return uniqueTeams;
     },
     teamSpacer() {
@@ -190,17 +192,13 @@ export default {
 @import "@/styles/_variables.scss";
 $about-break: 1170px;
 
-.standard-hero {
-  background-image: url('/static/about-page-header.jpg');
-  background-position: center;
-}
-
 .red {
   color: $color-primary;
   font-weight: 700;
 }
 
 .section-about {
+  padding-top: 10vh;
   background-color: $color-secondary-2;
 
   .about-selection {
@@ -213,7 +211,7 @@ $about-break: 1170px;
       background: none;
       border: none;
       color: $color-secondary;
-      white-space: nowrap;  
+      white-space: nowrap;
       border-bottom: 2px solid $color-secondary;
       border-radius: 0;
       margin: 8px;
@@ -235,22 +233,26 @@ $about-break: 1170px;
   .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-content: flex-start;
   }
 
   h2 {
     font-size: 48px;
     line-height: 1em;
     margin: 16px 0;
+    text-align: left;
+    s .highlightred {
+      color: $color-primary;
+    }
 
-    .highlight {
+    .highlight2 {
       color: $color-primary;
     }
   }
 }
 
 .section-team {
-  background-color: $color-primary;
+  background-color: $color-secondary-2;
   position: relative;
 
   span.floating {
@@ -279,10 +281,10 @@ $about-break: 1170px;
     h2 {
       width: 100%;
       display: block;
-      color: white;
+      color: black;
       text-transform: uppercase;
-      text-align: center;
-      font-size: 5vw;
+      text-align: left;
+      font-size: 3.2rem;
       line-height: 1.5em;
       margin: 0;
     }
@@ -294,17 +296,17 @@ $about-break: 1170px;
     flex-wrap: wrap;
 
     button {
-      flex: 1 1;
       background: none;
       border: none;
-      color: white;
-      white-space: nowrap;  
-      border-bottom: 10px solid $color-tertiary;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: rgb(94, 94, 94);
+      white-space: nowrap;
       border-radius: 0;
       margin: 8px;
 
       &.selected {
-        border-bottom-color: $color-secondary;
+        color: $color-primary;
       }
     }
   }
@@ -314,7 +316,7 @@ $about-break: 1170px;
     flex-direction: row;
     flex-wrap: wrap;
     background-color: white;
-    padding: 64px;
+
     justify-content: space-between;
 
     .person {
@@ -359,7 +361,6 @@ $about-break: 1170px;
 
 $web-hover-animate-props: 0px 0px 40px 30px;
 @keyframes web-hover-animate {
-  
   0% {
     box-shadow: $web-hover-animate-props #ff240033;
   }
@@ -395,7 +396,7 @@ $web-hover-animate-props: 0px 0px 40px 30px;
   80% {
     box-shadow: $web-hover-animate-props #dd00f333;
   }
-  
+
   100% {
     box-shadow: $web-hover-animate-props #ff240033;
   }

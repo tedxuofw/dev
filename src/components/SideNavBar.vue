@@ -2,20 +2,23 @@
     <div id="nav" v-bind:class="{ invisible: mobile, mobile: mobile }">
         <div class="nav-modal" v-bind:class="{ invisible: !mobile }" @click="this.closeNav"> </div>
         <nav v-bind:class="{ mobile: mobile }" @click="this.closeNav"> 
-            <p class="logo"> <span class="light"> TWO STEPS </span> <span class="heavy"> FORWARD </span> </p>
+            <p class="logo"> <a href="/#/" style="color: white;"><span class="light"> IN OUR </span> <span class="heavy"> BACKYARD </span></a> </p>
+            <div v-bind:class="{ active: false }"> 
+                <div class="nav-element"> <i class="fas fa-home"></i> <a href="/#/"> Home </a> </div>
+            </div>
             <div v-bind:class="{ active: this.dashboard }"> 
                 <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/dashboard"> Dashboard </a> </div>
             </div>
             <div v-bind:class="{ active: this.tickets }"> 
                 <div class="nav-element"> <i class="fas fa-ticket-alt"></i> <a href="/#/tickets"> Tickets </a> </div>
             </div>
-            <div v-bind:class="{ active: this.watch }"> 
+            <!-- <div v-bind:class="{ active: this.watch }"> 
                 <div class="nav-element"> <i class="fas fa-video"></i> <a href="/#/watch"> Watch Stream </a> </div>
-            </div>
+            </div> -->
             <div v-bind:class="{ active: this.feedback }"> 
                 <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/#/feedback"> Feedback </a> </div>
             </div>
-            <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div>
+            <!-- <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div> -->
         </nav>
     </div>
 </template>
@@ -70,12 +73,12 @@ div.nav-modal {
 }
 
 nav.mobile div.active {
-    border-left: 16px solid $color-primary;
+    border-left: 16px solid #ff6549;
 }
 
 .heavy {
-    font-weight: 500;
-    letter-spacing: 4px;
+    font-weight: 700;
+    letter-spacing: 0.07rem;
 }
 
 .light {
@@ -102,7 +105,7 @@ nav {
 }
 
 nav.mobile {
-    background-color: $color-accent;
+    background-color: #e62b1e;
 }
 
 nav a {

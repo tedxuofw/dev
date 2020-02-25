@@ -3,23 +3,19 @@
         <div class="row">
             <div class="col-12 outer-container">
                 <div class="inner-container">
-                    <h1>Verify Account</h1>
-                    <p>Send an email to your account to complete your account registration!</p>
+                    <h1>Reset Password</h1>
+                    <p>Email password reset link</p>
                     <div class="outer-login-container"> 
                         <div class="container inner-login-container">
     <div>
-        <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input">
+        <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input" @change="addFocus($event)">
         <p class="error"> </p>
-
-        <button class="full-width primary" v-on:click="sendEmail">Send Verification</button>
-                                <h5 class="success"> </h5>
-
+        <button class="full-width primary" v-on:click="signIn"> Sign In </button>
     </div>
                         </div>
                     </div>
                     <router-link to="/login">Back to Login</router-link>
                 </div>
-
             </div>
         </div>
         <Loading v-if="this.loading"/>
@@ -27,89 +23,43 @@
 </template>
 
 <script>
-import ConferencePage from "@/components/ConferencePage";
-import * as emailjs from 'emailjs-com';
 import axios from 'axios';
-import Loading from "@/components/Loading";
-import { user } from '../user.js';
 import router from "../router";
+import { user } from '../user.js';
+import Loading from "@/components/Loading";
 
-
-const STATES = {
-  "NOT_SUBMITTED": 0,
-  "LOADING": 1,
-  "SUCCESS": 2,
-  "ERROR": 3
-}
+    
 export default {
-  name: "VerificationPage",
-  components: { ConferencePage, Loading },
-  data() {
-    return {
-      form: {
-        email: '',
-        // TODO: 
-        link: 'http://localhost:8080/#/verification'
-      },
-      loading: false,
-      STATES,
-      eligibleForErrorMessages: false,
-      formState: STATES.NOT_SUBMITTED,
-    }
-  },
-  methods: {
-    verify() {
-      if (window.location.href.split('?').length != 2) {
-        console.log("Nothing to verify");
-        return;
-      }
-      let url = "https://students.washington.edu/tedxuofw/index.php/api/verify?" + window.location.href.split('?')[1]
-      console.log(url);
-      this.loading = true;
-      axios.get(url, { params: this.form }).then((response) => {
-        this.loading = false;
-        var resp = response.data;
-        if (resp.status === "success") {
-          console.log(resp);
-          console.log("Successfully verified account");
-          // alert("Successfully verified account!");
-          this.displaySuccess("Successfully verified account!");
-          user.login(resp.token);
-          router.push('/dashboard');
-        } else {
-          var message = resp.message;
-          this.displayError(message);
-          console.log(response.data);
+    name: 'ForgotPassword',
+    components: { Loading },
+
+    data() {
+        return {
+            form: {
+                email: ''
+            },
+            loading: false
         }
-      }, (error)  =>  {
-        // There was an error with the way the request was made!
-        // This is really bad (either the API broke or more likely
-        // the frontend isn't properly validating the input)
-        var err = error.response;
-        console.log(err);
-        if(err.status == 422) {
-            // Did not properly validate the input before sending (e.g. missing field)
-        }
-        // TODO: Make it fail silently since this is a common page
-        alert("Error " + error.response.status + ": There was an error processing your request. Please contact tedxuofw@uw.edu.");
-      });
     },
-    sendEmail: function () {
+    methods: {
+        signIn: function () {
             this.hideError();
             var errors = this.validate();
 
             if (errors === '') {
-                this.loading = true;
-                let url = "https://students.washington.edu/tedxuofw/index.php/api/verify/request";
+                this.$emit("loading");
+                let url = "https://students.washington.edu/tedxuofw/index.php/api/login";
                 axios.get(url, { params: this.form }).then((response)  =>  {
-                    this.loading = false;
+                    this.$emit("loading");
                     var resp = response.data;
                     if(resp.status === "success") {
                         // Store any information given
                         console.log(resp);
-                        // alert("Email verification sent!");
-                        this.displaySuccess(resp.result);
-
+                        user.login(resp.token);
+                        console.log("Successfully logged in as: " + this.form.email);
+                        
+                        // Redirect to where we wanna go on success
+                        router.push('/dashboard');
                     } else {
                         // User Error
                         this.displayError(response.data.message);
@@ -119,7 +69,7 @@ export default {
                         console.log(response.data);
                     }
                 }, (error)  =>  {
-                    this.loading = false;
+                    this.$emit("loading");
                     // There was an error with the way the request was made!
                     // This is really bad (either the API broke or more likely
                     // the frontend isn't properly validating the input)
@@ -164,29 +114,16 @@ export default {
         hideError: function() {
             var errorElement = document.querySelector('p.error');
             errorElement.classList.remove("visible");
-            errorElement.classList.remove("success");
-            errorElement.textContent = '';
-        },
-        displaySuccess: function(error) {
-            var errorElement = document.querySelector('h5.success');
-            errorElement.classList.add("visible");
-            errorElement.textContent = error;
-        },
-        hideSuccess: function() {
-            var errorElement = document.querySelector('h5.success');
-            errorElement.classList.remove("visible");
-            errorElement.classList.remove("success");
             errorElement.textContent = '';
         }
-
-  },
-  beforeMount(){
-    console.log("beforeMount");
-    this.verify()
-    console.log("beforeMount ended");
-  },
-        
-};
+    },
+    created() {
+        window.addEventListener('keypress',this.enterSignIn);
+    }, 
+    destroyed() {
+        window.removeEventListener('keypress', this.enterSignIn);
+    }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -251,18 +188,6 @@ p.error {
   margin-right: auto;
   margin-top: -5px; 
   text-align: left;
-  visibility: hidden;
-  width: 90%;
-}
-
-h5.success {
-  color: green;
-  font-size: 0.9em;
-  line-height: 1;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -5px; 
-  text-align: center;
   visibility: hidden;
   width: 90%;
 }

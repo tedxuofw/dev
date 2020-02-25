@@ -1,113 +1,34 @@
 <template>
   <ConferencePage :selectedIndex="0" :footerMargin="false">
-    <Splash />
+
+    <div class="container section section-landing">
+      <h6>TEDxUofW 2020 PRESENTS</h6>
+      <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
+      <p> April 20, 2020 KANE HALL</p>
+      <router-link class="home-page-button" to="login">ATTEND</router-link>
+    </div>
+
     <div class="container section section-about">
-      <div class="row">
-        <div class="col-6 no-margin content">
-          <h2>Ideas worth spreading at the<br/>University of Washington</h2>
-          <p>
-            For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
-          </p>
-          <router-link class="button ghost" to="login">Register</router-link>
-        </div>
+      <!-- <div class="section-about-row"> -->
+      <div class="section-about-text">
+        <h2>Ideas worth spreading at the<br/>University of Washington</h2>
+        <p>
+          For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
+        </p>
       </div>
+      <!-- </div> -->
+      <router-link class="home-page-button" to="login">REGISTER</router-link>
     </div>
-    <div class="container section-accent">
-      <div class="row">
-        <div class="col-6 content">
-          <div class="accent"></div>
-        </div>
-      </div>
-    </div>
-    <div class="container section section-explore">
-      <div class="row">
-        <div class="col-12 no-margin content">
-          <h2>Explore TEDxUofW 2019</h2>
-          <div class="explore-card-container">
-            <div class="explore-card">
-              <img src="/static/explore-tickets.png" alt="Tickets" />
-              <h3>Get your tickets <br/>(SOLD OUT)</h3>
-              <p>
-                Grab tickets for youself or your group with your TEDxUofW account.
-              </p>
-              <!-- <router-link class="button ghost" to="login">Register</router-link> -->
-              <router-link class="button ghost" to="login">Login</router-link>
-            </div>
-            <div class="explore-card">
-              <img src="/static/explore-speaker.png" alt="Photo of a speaker" />
-              <h3>Interact with Speakers</h3>
-              <p>
-                Ask questions or share your thoughts with speakers after hearing their talks. Inspiring ideas now go both ways.
-              </p>
-              <router-link class="button ghost" to="speakers">Ask</router-link>
-            </div>
-            <div class="explore-card">
-              <img src="/static/explore-stream.png" alt="Photo of our stream page" />
-              <h3>Conference Stream</h3>
-              <p>
-                Can't make it to the conference? Watch the conference live through our site.
-              </p>
-              <p style="margin-top: 1em; text-align: center">
-                <router-link class="button ghost" to="conference">Watch</router-link>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <div class="container section section-speakers">
-      <h2>Speakers</h2>
-      <div class="speakers-container">
-        <div class="speaker-col">
-          <div class="speaker-content">
-            <img :src="this.getFileName(this.speakers[0].name)" :alt="speakers[0].name" />
-            <h3>{{this.speakers[0].name}}</h3>
-            <p>{{this.speakers[0].talk}}</p>
-          </div>
-        </div>
-        <div class="speaker-col">
-          <div class="speaker-content">
-            <img :src="this.getFileName(this.speakers[1].name)" :alt="speakers[1].name" />
-            <h3>{{this.speakers[1].name}}</h3>
-            <p>{{this.speakers[1].talk}}</p>
-          </div>
-        </div>
-        <div class="speaker-col">
-          <div class="speaker-content">
-            <img :src="this.getFileName(this.speakers[2].name)" :alt="speakers[2].name" />
-            <h3>{{this.speakers[2].name}}</h3>
-            <p>{{this.speakers[2].talk}}</p>
-          </div>
-        </div>
+      <h2>FEATURING</h2>
+      <div class="carousel-container">
+      <SpeakerCarousel />
       </div>
-      <div class="btn-container">
-        <router-link to="speakers" class="button primary">View all speakers</router-link>
-      </div>
+  
+      <router-link class="view-speakers-button" to="speakers">VIEW ALL SPEAKERS</router-link>
     </div>
-    <!-- <div class="container section section-community">
-      <img class="community-arrow-deco" src="/static/animation-arrow-left.svg" alt="Arrow decoration" />
-      <div class="row">
-        <div class="col-6 no-margin content">
-          <h2>TEDxUofW as a community</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna Lorem ipsum
-            dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-            tempor invidunt ut labore et dolore magna
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="container section section-newsletter">
-      <div class="row">
-        <div class="col-6 no-margin"></div>
-        <div class="col-6 no-margin content">
-          <h2>Sign up for our newsletter</h2>
-          <input placeholder="Email" type="email" />
-          <button class="button">Sign up</button>
-        </div>
-      </div>
-    </div> -->
+    
   </ConferencePage>
 </template>
 
@@ -115,6 +36,7 @@
 import Arrows from "@/components/Arrows";
 import ConferencePage from "@/components/ConferencePage";
 import Splash from "@/components/Splash";
+import SpeakerCarousel from "@/components/SpeakerCarousel";
 
 const speakers = [
   {
@@ -169,16 +91,24 @@ const speakers = [
 
 export default {
   name: "HomePage",
-  components: { Arrows, ConferencePage, Splash },
+  components: { Arrows, ConferencePage, Splash, SpeakerCarousel },
   data() {
     return {
-      speakers: speakers.sort(() => Math.random() - 0.5).splice(0, 3)
+      // speakers: speakers.sort(() => Math.random() - 0.5).splice(0, 3)
+      speakers: speakers.sort(() => Math.random() - 0.5)
     }
   },
   methods: {
     getFileName: function(name) {
       return "/static/speaker-headshots/" + name.toLowerCase().replace(" ", '_') + ".jpg";
+    },
+    getSpeakerCarouselSlide: function(name) {
+      return name + " " + speakers.name;
     }
+  },
+  beforeMount(){
+    console.log("beforeMount");
+    console.log("beforeMount ended");
   }
 };
 </script>
@@ -186,8 +116,57 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
-.ghost {
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+}
+
+.home-page-button {
   text-decoration: none;
+  // background-color: pink;
+  border: 1.5px solid $color-primary;
+  padding: 5px 0px;  // for inner within the box height
+  width: 200px;
+  text-align: center;
+
+  // Space beneath
+  margin: 30px 0px 100px 0px;
+
+  // Font settings
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+
+  transition: 0.3s ease;
+}
+
+.home-page-button:hover {
+  background-color: $color-primary;
+  color: white;
+}
+
+.view-speakers-button {
+  text-decoration: none;
+  // background-color: pink;
+  border: 1.5px solid white;
+  padding: 5px 0px;  // for inner within the box height
+  width: 200px;
+  text-align: center;
+
+  // Font settings
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+
+  transition: 0.3s ease;
+
+  margin: 40px 15px 50px;
+}
+
+.view-speakers-button:hover {
+  background-color: $color-primary;
+  color: black;
+  border: 1.5px solid $color-primary;
 }
 
 .section {
@@ -202,15 +181,97 @@ export default {
   }
 }
 
+// .button {
+//   padding: 5px 65px;
+//   font-weight: 600;
+//   font-size: 16px;
+//   border-width: 2px;
+//   width: 60px;
+// }
+
+.section-landing {
+  // background-color: green;
+  text-align: center;
+  min-height: 90vh;
+  
+  h6 {
+    color: #999997;
+    font-weight: 700;
+    font-size: 4vw;
+    // background-color: purple;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: 4vw;
+    padding: 15px;
+  }
+
+  // .button {
+  //   padding: 5px 65px;
+  //   font-weight: 600;
+  //   font-size: 16px;
+  //   border-width: 2px;
+  // }
+
+  h1 {
+    font-size: 13vw;
+    padding: 20px;
+  }
+
+  h1 > a {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+  }
+
+  h1 > a:hover {
+    color: $color-primary;
+  }
+
+  h1 > a:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  h1 > a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+
+  .highlighted-red {
+    color: $color-primary;
+  }
+
+  @media screen and (min-width: 800px) {
+    h6, p {
+      font-size: 20px;
+    }
+
+    h1 {
+      font-size: 90px;
+    }
+  }
+}
+
 .section-about {
-  background-image: url('/static/decoration_left_transparent.png');
-  background-repeat: no-repeat;
-  background-position: calc(100% + 40px) calc(100% + 40px);
-  background-color: $color-secondary-2;
+  background-color: white;
   min-height: 80vh;
 
   h2 {
     color: $color-tertiary;
+    margin-bottom: 30px;
   }
 
   p {
@@ -221,11 +282,15 @@ export default {
     text-align: center;
   }
 
-  a.button {
-    width: 140px;
-    max-width: 100%;
-    margin: 0 auto;
+  .section-about-text {
+    padding: 10px 30px;
+    max-width: 600px;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
+
 }
 
 .section-accent {
@@ -246,74 +311,40 @@ export default {
   }
 }
 
-.section-explore {
-  background: linear-gradient(to bottom, $color-secondary-2 0%,#ffffff 100%);
-
-  .explore-card-container {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 80px;
-
-    @media screen and (max-width: 1260px) { 
-      flex-direction: column;
-    }
-
-    .explore-card {
-      flex: 1 0;
-      background-color: $color-secondary-2;
-      border-bottom: 8px solid $color-primary;
-      margin: 0 16px;
-      padding: 16px;
-
-      @media screen and (max-width: 1260px) {
-        margin: 16px 0;
-      }
-
-      &:first-of-type {
-        margin-left: 0;
-      }
-
-      &:last-of-type {
-        margin-right: 0;
-      }
-
-      img {
-        width: 100%;
-      }
-
-      a {
-        text-align: center;
-      }
-    }
-  }
-}
-
 .section-speakers {
-  background-color: $color-tertiary;
-  background-image: url('/static/arrow_transparent.png'), url('/static/arrow_transparent.png');
-  background-repeat: no-repeat;
-  background-position: bottom left, 80% 100%;
-  background-size: 365px 548px, #{1.5 * 365px} #{1.5 * 548px};
-
-  @media screen and (max-width: 1200px) {
-    background-image: url('/static/arrow_transparent.png');
-  }
+  background-color: $color-primary;
 
   h2 {
-    align-self: flex-start;
-    text-align: left;
-    font-size: 10vw;
-    padding: 16px;
+    text-align: center;
+    font-size: 4.3vh;
+    padding: 65px 65px;
+    letter-spacing: 4px;
     line-height: 1em;
     margin: 0;
-    color: $color-primary-2;
+    color: white;
+  }
+
+  .button-container {
+    background-color: yellow;
+  }
+  
+  .button-container .ghost {
+    border: 1px solid white;
+    color: white;
+    background-color: purple;
+  }
+
+
+  .carousel-container {
+    width: 100%;
+    // background-color: green;
   }
 
   .speakers-container {
     display: flex;
     padding: 0 10%;
     align-items: stretch;
-    justify-content: space-between;
+    justify-content: center;
     margin-bottom: 16px;
 
     @media screen and (max-width: 650px) {
@@ -323,13 +354,14 @@ export default {
     @media screen and (max-width: 1200px) {
       padding: 0 32px;
     }
+    
 
     .speaker-col {
       flex: 0 0 calc(33% - 24px);
       display: flex;
       justify-content: center;
       background-color: $color-secondary-2;
-      border-radius: 16px;
+      border-radius: 0;
 
       @media screen and (max-width: 650px) {
         max-width: 400px;
@@ -340,8 +372,6 @@ export default {
 
         img {
           width: 100%;
-          border-top-right-radius: 16px;
-          border-top-left-radius: 16px;
         }
 
         h3, p {
@@ -369,14 +399,15 @@ export default {
   }
 
   .btn-container {
-    padding-left: 10%;
-    align-self: flex-start;
-    margin-bottom: 32px;
+    // padding-left: 10%;
+    align-self: center;
+    // margin-bottom: 32px;
+    // background-color: yellow;
 
-    @media screen and (max-width: 1200px) {
-      padding-left: 0;
-      align-self: center;
-    }
+    // @media screen and (max-width: 1200px) {
+    //   padding-left: 0;
+    //   align-self: center;
+    // }
 
     a {
       text-decoration: none;
@@ -407,25 +438,6 @@ export default {
 
   h2 {
     color: $color-tertiary;
-  }
-}
-
-.section-newsletter {
-  background-image: url('/static/speakers-page-header.jpg');
-  height: 450px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 85%;
-
-  h2 {
-    text-align: left;
-    color: #ffffff;
-  }
-
-  input,
-  button {
-    width: 400px;
-    max-width: 100%;
   }
 }
 </style>

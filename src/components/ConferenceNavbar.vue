@@ -1,14 +1,16 @@
 <template>
   <div class="conference-nav">
     <div class="mobile-nav">
-      <img class="logo logo-default" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+      <router-link class="logo-holder-link" to="/">
+        <img class="logo logo-default" src="/static/newlogo.png" alt="TEDxUofW Logo" />
+      </router-link>
       <button class="hamburger" :class="{ active: mobileShowNav }" @click="onClickNav"><img src="/static/hamburger.svg" alt="Menu icon" /></button>
     </div>
     <tab-set :secondary="secondary" :mobileShowNav="mobileShowNav">
       <tab-option logo :click="() => navigateTo('/')">
-        <img class="logo logo-default" src="/static/navbar-logo.svg" alt="TEDxUofW Logo" />
+        <img class="logo logo-default" src="/static/newlogo.png" alt="TEDxUofW Logo" />
       </tab-option>
-      <tab-option v-for="(page, pageIndex) in pages" :key="pageIndex"
+      <tab-option class="hover-red" v-for="(page, pageIndex) in pages" :key="pageIndex"
         :selected="selectedIndex == pageIndex" :secondary="secondary"
         :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
       <tab-option spacer />
@@ -16,7 +18,7 @@
         <!-- <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" /> -->
-        <button class="tertiary cta-button no-margin" @click="() => navigateTo('/login')">Login</button>
+        <button class="tertiary cta-button no-margin" @click="() => navigateTo('/login')">LOGIN</button>
       </tab-option>
     </tab-set>
   </div>
@@ -68,6 +70,15 @@ export default {
 .conference-nav {
   width: 100%;
   background-color: $color-secondary-2;
+  box-shadow: 0 1px 5px #888888;
+  z-index: 100;
+
+  .logo-holder-link {
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+  }
 
   .mobile-nav {
     display: none;
@@ -75,11 +86,12 @@ export default {
     width: 100%;
     padding: 0 32px;
     box-sizing: border-box;
+    // height: 65px;
     height: $height-tabset;
     justify-content: space-between;
 
     img.logo {
-      height: 80%;
+      height: 50%;
     }
 
     .hamburger {
@@ -138,12 +150,27 @@ export default {
     background-color: transparent;
     padding-left: 32px;
     padding-right: 32px;
-    color: $color-tertiary !important;
+    padding: 4px 32px;
+    color: black !important;
+    border: 2px solid #e62b1e;
+    font-size: 15px;
+    font-weight: 700;
 
     // animation-name: button-flash;
     // animation-delay: $main-animation-duration + $footstep-animation-delay + ($num-footsteps + 1) * $footstep-animation-per-delay;
     // animation-duration: $button-flash-duration;
     // animation-fill-mode: forwards;
+  }
+
+  .cta-button:hover {
+    color: white !important;
+    background-color: #e62b1e;
+    transition: ease .3s; 
+  }
+
+  .hover-red:hover {
+    color: #e62b1e;
+    transition: ease .2s;
   }
 }
 

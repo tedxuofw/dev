@@ -27,7 +27,6 @@ select,
 div.row > div.StripeElement {
   display: block;
   font-size: 19px;
-  border-radius: 4px;
   margin-bottom: 0.5em;
   padding: 12px;
   font-family: 'nimbus-sans', sans-serif;
@@ -157,7 +156,7 @@ button,
 
   &.ghost {
     background-color: transparent;
-    color: $color-primary;
+    color: $color-text;
     border: 1px solid $color-primary;
 
     &:hover {

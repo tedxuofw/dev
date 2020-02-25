@@ -4,7 +4,7 @@
             <div class="col-12 outer-container">
                 <div class="inner-container">
                     <h1> Welcome to TEDxUofW </h1>
-                    <p> Be a part of our community. <br/> Sign into your account to purchase tickets, talk to speakers, and view our curated content. </p>
+                    <p> Be a part of our community. <br/> Sign into your account to purchase tickets, view events, and more. </p>
                     <div class="outer-login-container"> 
                         <div class="container inner-login-container">
                             <div class="button-set sign-in-set">
@@ -15,6 +15,7 @@
                             <sign-up-form v-else @loading="toggleLoading()"/>
                         </div>
                     </div>
+                    <router-link to="/">Back to Home</router-link>
                 </div>
             </div>
         </div>
@@ -61,7 +62,7 @@ div.row {
 }
 
 .inner-container {
-    padding: 5% 20%;
+    padding: 5% 5%;
     text-align: center;
 }
 
@@ -77,6 +78,7 @@ div.row {
 .outer-login-container {
     width: 80%;
     margin: auto;
+    margin-bottom: 50px;
 }
 
 .outer-container {

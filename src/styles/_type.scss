@@ -1,9 +1,18 @@
 #app {
-  font-family: 'nimbus-sans', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   color: $color-text;
   font-size: 19px;
   line-height: 1.5em;
 }
+
+// Commenting this out since the payment page requires it not be added.
+// Add to the pages you work on
+// I added in this as a style-reset that never got implemented
+// body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+//   margin: 0;
+//   padding: 0;
+//   font-weight: normal;
+// }
 
 h1 {
   font-size: 44px;
