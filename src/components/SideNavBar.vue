@@ -2,10 +2,10 @@
     <div id="nav" v-bind:class="{ invisible: mobile, mobile: mobile }">
         <div class="nav-modal" v-bind:class="{ invisible: !mobile }" @click="this.closeNav"> </div>
         <nav v-bind:class="{ mobile: mobile }" @click="this.closeNav"> 
-            <p class="logo"> <a href="/#/" style="color: white;"><span class="light"> IN OUR </span> <span class="heavy"> BACKYARD </span></a> </p>
-            <div v-bind:class="{ active: false }"> 
+            <p class="logo"> <!-- <a href="/#/" style="color: white;">--> <span class="light"> IN OUR </span> <span class="heavy"> BACKYARD </span><!--</a>--> </p>
+            <!-- <div v-bind:class="{ active: false }"> 
                 <div class="nav-element"> <i class="fas fa-home"></i> <a href="/#/"> Home </a> </div>
-            </div>
+            </div> -->
             <div v-bind:class="{ active: this.dashboard }"> 
                 <div class="nav-element"> <i class="fas fa-columns"></i> <a href="/#/dashboard"> Dashboard </a> </div>
             </div>
@@ -18,7 +18,10 @@
             <div v-bind:class="{ active: this.feedback }"> 
                 <div class="nav-element"> <i class="fas fa-pencil-alt"></i> <a href="/#/feedback"> Feedback </a> </div>
             </div>
-            <!-- <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Back to TEDxUofW </a> </div> -->
+            <!-- <div v-bind:class="{ active: false }"> 
+                <div class="nav-element"> <i class="fas fa-home"></i> <a href="/#/"> Logout </a> </div>
+            </div> -->
+            <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Logout to Home </a> </div>
         </nav>
     </div>
 </template>

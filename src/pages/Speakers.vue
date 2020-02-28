@@ -47,6 +47,7 @@
     <modal
       v-show="isModalVisible"
       @close="closeModal"
+      style="z-index: 9999;"
     >
     <div slot="header">
       <div style="display: flex; flex-direction: row; flex-wrap; wrap">

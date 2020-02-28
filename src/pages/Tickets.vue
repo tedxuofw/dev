@@ -14,7 +14,7 @@
                   <div class="card-container">
                       <div class="card-body"> 
                         <!-- TODO: Uncomment these (and the method below) and get it working with this years conference -->
-                        <!-- <div @click="goToCheckout()">
+                        <div @click="goToCheckout()">
                           <Ticket 
                             class="ticket"
                             conferenceTitle="Two Steps Forward" conferenceYear="2019"
@@ -23,7 +23,7 @@
                             ticketType='General Ticket'
                             addButton
                           />
-                        </div> -->
+                        </div>
                           <div class="ticket-container" v-for="ticket in tickets" :key="ticket.id" @click="onClickTicket(ticket)">
                             <Ticket
                               class="ticket"
@@ -159,9 +159,9 @@ export default {
       this.mobileView = window.innerWidth < Number.MAX_SAFE_INTEGER;
     },
 
-    // goToCheckout() {
-    //   router.push('/checkout');
-    // }
+    goToCheckout() {
+      router.push('/checkout');
+    }
   },
   computed: {
     /**
