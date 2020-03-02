@@ -21,7 +21,7 @@
             <!-- <div v-bind:class="{ active: false }"> 
                 <div class="nav-element"> <i class="fas fa-home"></i> <a href="/#/"> Logout </a> </div>
             </div> -->
-            <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="https://www.tedxuofw.com"> Logout to Home </a> </div>
+            <div class="bottom"> <i class="fas fa-chevron-left"></i> <a href="/#/"> Back to Home </a> </div>
         </nav>
     </div>
 </template>

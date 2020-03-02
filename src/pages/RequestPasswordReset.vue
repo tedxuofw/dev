@@ -4,16 +4,15 @@
             <div class="col-12 outer-container">
                 <div class="inner-container">
                     <h1>Reset Password</h1>
-                    <p>Fill out form to set your new password</p>
+                    <p>Email password reset link</p>
                     <div class="outer-login-container"> 
                         <div class="container inner-login-container">
     <div>
         <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input" @change="addFocus($event)">
-        <input v-model="form.password" type="password" placeholder="New Password" class="full-width login-input" @change="addFocus($event)">
-        <input id="pw-confirmation" type="password" placeholder="Confirm password" class="full-width login-input" @change="addFocus($event)">
         <p class="error"> </p>
-        <button class="full-width primary" v-on:click="resetPassword">Change password</button>
+        <button class="full-width primary" v-on:click="sendPasswordReset"> Reset Password </button>
     </div>
+    <h5 class="success"> </h5>
                         </div>
                     </div>
                     <router-link to="/login">Back to Login</router-link>
@@ -32,48 +31,38 @@ import Loading from "@/components/Loading";
 
     
 export default {
-    name: 'PasswordResetPage',
+    name: 'RequestPasswordResetPage',
     components: { Loading },
 
     data() {
         return {
             form: {
-                email: '',
-                password: '',
-                token: window.location.href.split('?')[1],
+                email: ''
             },
             loading: false
         }
     },
     methods: {
-        resetPassword: function () {
+        sendPasswordReset: function () {
             this.hideError();
             var errors = this.validate();
-            console.log(errors);
-            console.log(this.form);
-
-            if (typeof this.form.token === 'undefined') {
-                console.log("Did not find token");
-                this.displayError("Invalid link. You might need to request another password reset link");
-
-                return;
-            }
 
             if (errors === '') {
                 this.loading = true;
-                let url = "https://students.washington.edu/tedxuofw/index.php/api/resetpassword/";
+                let url = "https://students.washington.edu/tedxuofw/index.php/api/resetpassword/request/";
                 axios.get(url, { params: this.form }).then((response)  =>  {
                     this.loading = false;
                     var resp = response.data;
                     if(resp.status === "success") {
                         // Store any information given
                         console.log(resp);
-                        console.log("Successfully reset password for: " + this.form.email);
+                        // user.login(resp.token);
+                        console.log("Successfully sent password reset for: " + this.form.email);
+                        this.displaySuccess("Successfully sent password reset link to email!");
 
-                        user.login(resp.token);
-
+                        
                         // Redirect to where we wanna go on success
-                        router.push('/dashboard');
+                        // router.push('/dashboard');
                     } else {
                         // User Error
                         this.displayError(response.data.message);
@@ -99,36 +88,24 @@ export default {
                 this.displayError(errors);
             }
         },
-        enterPasswordReset: function(event) {
+        enterSendPasswordReset: function(event) {
             var code = (event.keyCode ? event.keyCode : event.which);
             if(code == 13) {
                 event.preventDefault();
-                this.resetPassword();
+                this.sendPasswordReset();
             }
         },
         addFocus: function(event) {
             event.target.classList.add('focus');
         },
         validate: function() {
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
-            if (this.form.first == '' || this.form.last == '' || this.form.email == '' || this.form.password == '' || document.querySelector('#pw-confirmation').value == '') {
+            if (this.form.email == '') {
                 return "Please fill in all fields."
-            } else if (!(re.test(this.form.email))) {
-                return "Please enter a valid email.";
-            } else {
-                return this.validPassword();
-            }
-        },
-        validPassword: function() {
-            if (this.form.password.length < 8) {
-                return "Please enter a password with at least 8 characters.";
-            } else if (!(/^[\x00-\x7F]*$/.test(this.form.password))) {
-                return "Please enter a password with only keyboard characters.";
-            } else if (!(/[A-Z]/.test(this.form.password))) {
-                return "Please include at least one capital letter.";
-            } else if (document.getElementById('pw-confirmation').value !== this.form.password) {
-                return "Your passwords do not match."
-            } else {
+            }  else {
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
+                if (!re.test(this.form.email)) {
+                    return "Please enter a valid email."
+                }
                 return "";
             }
         },
@@ -141,13 +118,24 @@ export default {
             var errorElement = document.querySelector('p.error');
             errorElement.classList.remove("visible");
             errorElement.textContent = '';
+        },
+        displaySuccess: function(error) {
+            var errorElement = document.querySelector('h5.success');
+            errorElement.classList.add("visible");
+            errorElement.textContent = error;
+        },
+        hideSuccess: function() {
+            var errorElement = document.querySelector('h5.success');
+            errorElement.classList.remove("visible");
+            errorElement.classList.remove("success");
+            errorElement.textContent = '';
         }
     },
     created() {
-        window.addEventListener('keypress',this.enterPasswordReset);
+        window.addEventListener('keypress',this.enterSendPasswordReset);
     }, 
     destroyed() {
-        window.removeEventListener('keypress', this.enterPasswordReset);
+        window.removeEventListener('keypress', this.enterSendPasswordReset);
     }
 }
 </script>
@@ -280,6 +268,17 @@ div.row {
     display: none;
 }
 
+h5.success {
+  color: green;
+  font-size: 0.9em;
+  line-height: 1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -5px; 
+  text-align: center;
+  visibility: hidden;
+  width: 90%;
+}
 
 @media (max-width: 600px) {
     div.inner-container > p {

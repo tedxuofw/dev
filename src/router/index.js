@@ -14,7 +14,9 @@ import WatchPage from '@/pages/Watch'
 
 import VerificationPage from '@/pages/Verification'
 import CheckoutPage from '@/pages/Checkout'
-import ResetPasswordPage from '@/pages/ResetPassword'
+import RequestPasswordResetPage from '@/pages/RequestPasswordReset'
+import PasswordResetPage from '@/pages/ResetPassword'
+import ChangePasswordPage from '@/pages/ChangePassword'
 
 Vue.use(Router)
 
@@ -91,9 +93,19 @@ export default new Router({
       component: VerificationPage
     },
     {
-      path: '/resetpassword',
-      name: 'ResetPasswordPge',
-      component: ResetPasswordPage
+      path: '/rpasswordreset',
+      name: 'RequestPasswordResetPage',
+      component: RequestPasswordResetPage
+    },
+    {
+      path: '/passwordreset',
+      name: 'PasswordResetPage',
+      component: PasswordResetPage
+    },
+    {
+      path: '/changepassword',
+      name: 'ChangePasswordPage',
+      component: ChangePasswordPage
     }
   ],
   scrollBehavior (to, from, savedPosition) {

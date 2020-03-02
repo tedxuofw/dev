@@ -63,7 +63,7 @@ export default {
         console.log("Nothing to verify");
         return;
       }
-      let url = "https://students.washington.edu/tedxuofw/index.php/api/verify?" + window.location.href.split('?')[1]
+      let url = "https://students.washington.edu/tedxuofw/index.php/api/verify?" + window.location.href.split('?')[1];
       console.log(url);
       this.loading = true;
       axios.get(url, { params: this.form }).then((response) => {
@@ -85,6 +85,7 @@ export default {
         // There was an error with the way the request was made!
         // This is really bad (either the API broke or more likely
         // the frontend isn't properly validating the input)
+        this.loading = false;
         var err = error.response;
         console.log(err);
         if(err.status == 422) {

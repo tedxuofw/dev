@@ -6,6 +6,9 @@ uy<template>
                 <div class="nav-element"> Edit Account </div>
             </div>
             <div> 
+                <div class="nav-element"> <a href="/#/"> Change Password </a></div>
+            </div>
+            <div> 
                 <div class="nav-element" @click="this.logout"> Logout </div>
             </div>
         </nav>
