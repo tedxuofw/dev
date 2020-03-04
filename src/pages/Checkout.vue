@@ -38,8 +38,8 @@
             <h2>Ticket Information</h2>
             <p class="footnote show-label">Ticket Type (includes t-shirt/meal)</p>
             <select v-model="currentTicket.ticket" class="full-width">
-              <option value="General Ticket">General Ticket - $50</option>
-              <option value="UW Student Ticket">UW Student Ticket - $35</option>
+              <option value="General Ticket">General Ticket - $20</option>
+              <option value="UW Student Ticket">UW Student Ticket - $15</option>
             </select>
 
             <h2 class="extra-margin-top">Ticket Holder</h2>
@@ -215,7 +215,7 @@ export default {
       // Generate a group (event_id, owner_id)
       let gURL = "https://students.washington.edu/tedxuofw/index.php/api/group/create";
       let groupParams = { 
-        event_id: '1',
+        event_id: '2',
         owner_id: user.id(),
         token: user.getJWT()
       };
@@ -233,12 +233,21 @@ export default {
                 registrants: []
               };
                           
+
               // Add all the registrants we want
               for(var index in this.tickets) {
                 let ticket = this.tickets[index];
                 let cost = 1;
                 if(ticket.ticket == "General Ticket") {
                     cost = 2;
+                }
+
+                // TODO: 3.3.2020 We can add the bundle package here by checking
+                // the number of tickets.
+                // 3.3.2020
+                if (this.tickets.length > 4) {
+                  cost += 20;  // This shifts it up to next cost tier
+                  // (let 21 and 22 be the cheaper costs)
                 }
                   
                 registrantParams.registrants.push({
@@ -378,13 +387,21 @@ export default {
     },
     calculateTotal() {
       var total = 0;
+      var generalTicketCost = 20;
+      var studentTicketCost = 15;
+      if (this.tickets.length > 4) {
+        generalTicketCost = 18;
+        studentTicketCost = 13;
+      }
       this.tickets.forEach((ticket) => {
-        if (ticket.code === 'TED2019') {
-          total += 32;
-        } else if (ticket.ticket === 'General Ticket') {
-          total += 50;
+        // 3.3.2020 got rid of coupon code
+        // if (ticket.code === 'TED2019') {
+        //   total += 32;
+        // } else 
+        if (ticket.ticket === 'General Ticket') {
+          total += generalTicketCost;
         } else {
-          total += 35;
+          total += studentTicketCost;
         }
       });
       return total;

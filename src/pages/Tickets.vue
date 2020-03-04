@@ -5,7 +5,7 @@
       <main>
         <h1> Tickets (Not Open Yet!) </h1>
         <p> Ticket purchases will open soon! </p>
-        <p> <span class="bold"> General tickets: </span> $50, <span class="bold"> UW student tickets: </span> $35 </p>
+        <p> <span class="bold"> General tickets: </span> $20, <span class="bold"> UW student tickets: </span> $15 </p>
         <p>   </p>
         <div class="col-12 outer">
           <div class="row card-row">
