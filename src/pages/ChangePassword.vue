@@ -17,7 +17,7 @@
     </div>
                         </div>
                     </div>
-                    <router-link to="/login">Back to Login</router-link>
+                    <router-link to="/dashboard">Back to Dashboard</router-link>
                 </div>
             </div>
         </div>

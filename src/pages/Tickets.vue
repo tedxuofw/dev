@@ -5,7 +5,7 @@
       <main>
         <h1> Tickets (Not Open Yet!) </h1>
         <p> Ticket purchases will open soon! </p>
-        <p> <span class="bold"> General tickets: </span> $50, <span class="bold"> UW student tickets: </span> $35 </p>
+        <p> <span class="bold"> General tickets: </span> $20, <span class="bold"> UW student tickets: </span> $15 </p>
         <p>   </p>
         <div class="col-12 outer">
           <div class="row card-row">
@@ -14,7 +14,7 @@
                   <div class="card-container">
                       <div class="card-body"> 
                         <!-- TODO: Uncomment these (and the method below) and get it working with this years conference -->
-                        <div @click="goToCheckout()">
+                        <!-- <div @click="goToCheckout()">
                           <Ticket 
                             class="ticket"
                             conferenceTitle="Two Steps Forward" conferenceYear="2019"
@@ -32,7 +32,7 @@
                               :ticketType="ticket.ticket" 
                               :email="`${ticket.email}`"
                               maxWidth="200px" />
-                        </div>
+                        </div> -->
                       </div>
                   </div>
               </div>

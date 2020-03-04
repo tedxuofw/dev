@@ -9,6 +9,7 @@
         </div>
         <div id="profile-nav">
             <a @click="this.openModal">Edit Acount</a>
+            <a href="/#/changepassword">Change Password</a>
             <a @click="this.logout">Logout</a>
         </div>
     </div>
@@ -60,7 +61,7 @@ export default {
     background-color: $color-secondary-2;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     left: 0;
-    margin-top: 200px;
+    margin-top: 240px;
     padding: 1.5em;
     position: absolute;
     width: 180px;
