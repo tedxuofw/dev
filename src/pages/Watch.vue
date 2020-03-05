@@ -1,12 +1,15 @@
 <template>
     <ConferencePage :selectedIndex="1">
-        <div class="main">
+        <div class="main" style="max-width: 100vw; display: flex; align-items: center; justify-content: center; flex-direction: column;">
             <div class="row">
-                <iframe width="100%" height="450px" src="https://www.youtube.com/embed/A9sOb_r6Hy0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- <div style="max-width: 100vw; width: 90%; background-color: purple"> -->
+                <iframe style="max-width: 100vw" width="100%" height="450px" src="https://www.youtube.com/embed/A9sOb_r6Hy0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <!-- </div> -->
             </div>
 
             <div class="row">
-                <Schedule/>
+                <h3 style="margin: 15px 15px;"> Conference Schedule Coming Soon </h3>
+                <!-- <Schedule/> -->
             </div>
         </div>
 
@@ -47,9 +50,9 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
-.main > div.row {
-    margin: auto;
-}
+// .main > div.row {
+//     margin: auto;
+// }
 
 .speaker-desc {
     color: $color-tertiary;
@@ -138,7 +141,7 @@ h2 {
     height: 100%;
     width: 100%;
     margin: 1em 3em;
-    min-width: 700px;
+    // min-width: 700px;
 }
 
 .main > .row > .col-8, .main > .row > .col-4 {
@@ -246,9 +249,9 @@ h2 {
 }
 
 @media (max-width: 760px) {
-    .main {
-        margin-left: 0;
-    }
+    // .main {
+    //     margin-left: 0;
+    // }
 
     .main > .row:nth-child(2) {
         display: none;
