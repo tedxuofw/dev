@@ -9,7 +9,7 @@
                         <div class="container inner-login-container">
     <div>
         <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input" @change="addFocus($event)">
-        <input v-model="form.password" type="password" placeholder="New Password" class="full-width login-input" @change="addFocus($event)">
+        <input v-model="form.password" type="password" placeholder="Old Password" class="full-width login-input" @change="addFocus($event)">
         <input v-model="form.newpassword" type="password" placeholder="New Password" class="full-width login-input" @change="addFocus($event)">
         <input id="pw-confirmation" type="password" placeholder="Confirm password" class="full-width login-input" @change="addFocus($event)">
         <p class="error"> </p>
