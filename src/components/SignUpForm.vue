@@ -39,6 +39,7 @@ export default {
                 this.hideError();
                 let url = "https://students.washington.edu/tedxuofw/index.php/api/register";
                 console.log(url)
+                this.form['link'] = "https://www.tedxuofw.com/#/verification"
                 axios.get(url, { params: this.form }).then((response)  =>  {
                     this.$emit("loading");
                     var resp = response.data;

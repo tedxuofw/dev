@@ -50,6 +50,7 @@ export default {
             if (errors === '') {
                 this.loading = true;
                 let url = "https://students.washington.edu/tedxuofw/index.php/api/resetpassword/request/";
+                this.form['link'] = "https://www.tedxuofw.com/#/passwordreset";
                 axios.get(url, { params: this.form }).then((response)  =>  {
                     this.loading = false;
                     var resp = response.data;

@@ -49,7 +49,7 @@ export default {
       form: {
         email: '',
         // TODO: 
-        link: 'http://localhost:8080/#/verification'
+        link: 'https://www.tedxuofw.com/#/verification'
       },
       loading: false,
       STATES,
