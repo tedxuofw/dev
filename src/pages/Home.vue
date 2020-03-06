@@ -2,11 +2,13 @@
   <ConferencePage :selectedIndex="0" :footerMargin="false">
 
     <div class="container section section-landing">
-      <h6>TEDxUofW 2020 PRESENTS</h6>
-      <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
-      <p style="padding-bottom: 0;"> APRIL 20, 2020 KANE HALL</p>
-      <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> <span style="color: #e62b1e">$15</span> for UW Students & <span style="color: #e62b1e">$20</span> for General Public </p>
-      <router-link class="home-page-button" to="login">ATTEND</router-link>
+      <div class="section-landing-child">
+        <h6>TEDxUofW 2020 PRESENTS</h6>
+        <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
+        <p style="padding-bottom: 0;"> APRIL 20, 2020 KANE HALL</p>
+        <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> <span style="color: #e62b1e">$15</span> for UW Students & <span style="color: #e62b1e">$20</span> for General Public </p>
+        <router-link class="home-page-button" to="login">ATTEND</router-link>
+      </div>
     </div>
 
     <div class="container section section-about">
