@@ -5,7 +5,7 @@
       <main>
         <h1> Tickets (Not Open Yet!) </h1>
         <p> Ticket purchases will open soon! </p>
-        <p> <span class="bold"> General tickets: </span> $50, <span class="bold"> UW student tickets: </span> $35 </p>
+        <p> <span class="bold"> General tickets: </span> $20, <span class="bold"> UW student tickets: </span> $15 </p>
         <p>   </p>
         <div class="col-12 outer">
           <div class="row card-row">
@@ -23,7 +23,7 @@
                             ticketType='General Ticket'
                             addButton
                           />
-                        </div> -->
+                        </div>
                           <div class="ticket-container" v-for="ticket in tickets" :key="ticket.id" @click="onClickTicket(ticket)">
                             <Ticket
                               class="ticket"
@@ -32,7 +32,7 @@
                               :ticketType="ticket.ticket" 
                               :email="`${ticket.email}`"
                               maxWidth="200px" />
-                        </div>
+                        </div> -->
                       </div>
                   </div>
               </div>
@@ -159,9 +159,9 @@ export default {
       this.mobileView = window.innerWidth < Number.MAX_SAFE_INTEGER;
     },
 
-    // goToCheckout() {
-    //   router.push('/checkout');
-    // }
+    goToCheckout() {
+      router.push('/checkout');
+    }
   },
   computed: {
     /**

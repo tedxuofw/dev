@@ -4,13 +4,15 @@
             <div class="col-12 outer-container">
                 <div class="inner-container">
                     <h1>Reset Password</h1>
-                    <p>Email password reset link</p>
+                    <p>Fill out form to set your new password</p>
                     <div class="outer-login-container"> 
                         <div class="container inner-login-container">
     <div>
         <input v-model="form.email" type="email" placeholder="Email" class="full-width login-input" @change="addFocus($event)">
+        <input v-model="form.password" type="password" placeholder="New Password" class="full-width login-input" @change="addFocus($event)">
+        <input id="pw-confirmation" type="password" placeholder="Confirm password" class="full-width login-input" @change="addFocus($event)">
         <p class="error"> </p>
-        <button class="full-width primary" v-on:click="signIn"> Sign In </button>
+        <button class="full-width primary" v-on:click="resetPassword">Change password</button>
     </div>
                         </div>
                     </div>
@@ -30,34 +32,46 @@ import Loading from "@/components/Loading";
 
     
 export default {
-    name: 'ForgotPassword',
+    name: 'PasswordResetPage',
     components: { Loading },
 
     data() {
         return {
             form: {
-                email: ''
+                email: '',
+                password: '',
+                token: window.location.href.split('?')[1],
             },
             loading: false
         }
     },
     methods: {
-        signIn: function () {
+        resetPassword: function () {
             this.hideError();
             var errors = this.validate();
+            console.log(errors);
+            console.log(this.form);
+
+            if (typeof this.form.token === 'undefined') {
+                console.log("Did not find token");
+                this.displayError("Invalid link. You might need to request another password reset link");
+
+                return;
+            }
 
             if (errors === '') {
-                this.$emit("loading");
-                let url = "https://students.washington.edu/tedxuofw/index.php/api/login";
+                this.loading = true;
+                let url = "https://students.washington.edu/tedxuofw/index.php/api/resetpassword/";
                 axios.get(url, { params: this.form }).then((response)  =>  {
-                    this.$emit("loading");
+                    this.loading = false;
                     var resp = response.data;
                     if(resp.status === "success") {
                         // Store any information given
                         console.log(resp);
+                        console.log("Successfully reset password for: " + this.form.email);
+
                         user.login(resp.token);
-                        console.log("Successfully logged in as: " + this.form.email);
-                        
+
                         // Redirect to where we wanna go on success
                         router.push('/dashboard');
                     } else {
@@ -69,7 +83,7 @@ export default {
                         console.log(response.data);
                     }
                 }, (error)  =>  {
-                    this.$emit("loading");
+                    this.loading = false;
                     // There was an error with the way the request was made!
                     // This is really bad (either the API broke or more likely
                     // the frontend isn't properly validating the input)
@@ -85,24 +99,36 @@ export default {
                 this.displayError(errors);
             }
         },
-        enterSignIn: function(event) {
+        enterPasswordReset: function(event) {
             var code = (event.keyCode ? event.keyCode : event.which);
             if(code == 13) {
                 event.preventDefault();
-                this.signIn();
+                this.resetPassword();
             }
         },
         addFocus: function(event) {
             event.target.classList.add('focus');
         },
         validate: function() {
-            if (this.form.email == '') {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
+            if (this.form.first == '' || this.form.last == '' || this.form.email == '' || this.form.password == '' || document.querySelector('#pw-confirmation').value == '') {
                 return "Please fill in all fields."
-            }  else {
-                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
-                if (!re.test(this.form.email)) {
-                    return "Please enter a valid email."
-                }
+            } else if (!(re.test(this.form.email))) {
+                return "Please enter a valid email.";
+            } else {
+                return this.validPassword();
+            }
+        },
+        validPassword: function() {
+            if (this.form.password.length < 8) {
+                return "Please enter a password with at least 8 characters.";
+            } else if (!(/^[\x00-\x7F]*$/.test(this.form.password))) {
+                return "Please enter a password with only keyboard characters.";
+            } else if (!(/[A-Z]/.test(this.form.password))) {
+                return "Please include at least one capital letter.";
+            } else if (document.getElementById('pw-confirmation').value !== this.form.password) {
+                return "Your passwords do not match."
+            } else {
                 return "";
             }
         },
@@ -118,10 +144,10 @@ export default {
         }
     },
     created() {
-        window.addEventListener('keypress',this.enterSignIn);
+        window.addEventListener('keypress',this.enterPasswordReset);
     }, 
     destroyed() {
-        window.removeEventListener('keypress', this.enterSignIn);
+        window.removeEventListener('keypress', this.enterPasswordReset);
     }
 }
 </script>
@@ -253,6 +279,7 @@ div.row {
 .hidden {
     display: none;
 }
+
 
 @media (max-width: 600px) {
     div.inner-container > p {

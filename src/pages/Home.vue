@@ -2,10 +2,13 @@
   <ConferencePage :selectedIndex="0" :footerMargin="false">
 
     <div class="container section section-landing">
-      <h6>TEDxUofW 2020 PRESENTS</h6>
-      <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
-      <p> April 20, 2020 KANE HALL</p>
-      <router-link class="home-page-button" to="login">ATTEND</router-link>
+      <div class="section-landing-child">
+        <h6>TEDxUofW 2020 PRESENTS</h6>
+        <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
+        <p style="padding-bottom: 0;"> APRIL 20, 2020 KANE HALL</p>
+        <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> <span style="color: #e62b1e">$15</span> for UW Students & <span style="color: #e62b1e">$20</span> for General Public </p>
+        <router-link class="home-page-button" to="login">ATTEND</router-link>
+      </div>
     </div>
 
     <div class="container section section-about">
@@ -37,6 +40,8 @@ import Arrows from "@/components/Arrows";
 import ConferencePage from "@/components/ConferencePage";
 import Splash from "@/components/Splash";
 import SpeakerCarousel from "@/components/SpeakerCarousel";
+
+let backgroundgif = '/static/HomeGif.gif'
 
 const speakers = [
   {
@@ -189,8 +194,20 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 //   width: 60px;
 // }
 
+.section-landing-child {
+  background-image: url('/static/HomeGif.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .section-landing {
-  // background-color: green;
   text-align: center;
   min-height: 90vh;
   
@@ -266,8 +283,12 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 }
 
 .section-about {
-  background-color: white;
+  background-image: url('/static/background-frame-gray.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   min-height: 80vh;
+  padding: 30px 0px;
 
   h2 {
     color: $color-tertiary;
@@ -283,12 +304,12 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   }
 
   .section-about-text {
-    padding: 10px 30px;
+    padding: 0px 30px;
     max-width: 600px;
     min-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
   }
 
 }

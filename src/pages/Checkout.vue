@@ -167,8 +167,7 @@ export default {
     
     /** Exits ticket-editing interface. */
     commitChanges() {
-      this.total  = this.
-      calculateTotal();
+      this.total  = this.calculateTotal();
       this.showError = false;
       this.ticketEditIndex = -1;
       this.creatingTicket = false;
