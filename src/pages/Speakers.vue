@@ -21,7 +21,10 @@
       <h1>Speakers</h1>
       <div class="accent"></div>
     </div> -->
-    <h1 class="speakers-title">SPEAKERS</h1>
+    <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start" >
+      <h1 class="speakers-title">SPEAKERS</h1>
+      <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" />
+    </div>
     <div class="container section-sponsors">
       <div class="row">
         <div class="speakers-container">
@@ -218,7 +221,12 @@ $speakers-break: 750px;
 $speakers-break-1: 600px;
 $speakers-break-2: 900px;
 
-
+.section-sponsors {
+  background-image: url('/static/background-frame-white.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
 
 button {
   padding: 0;

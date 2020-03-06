@@ -1,12 +1,13 @@
 <template>
   <ConferencePage :selectedIndex="4">
     <div class="container section-about">
-      <div class="row team-title">
-        <div class="col-12 no-margin-horizontal">
+      <div style="justify-content: flex-start" class="row team-title">
+        <div class="col-8 no-margin-horizontal">
           <h2>
             ABOUT
             <span class="highlightred">TEDx</span>
             <span class="highlight2">UofW</span>
+            <img src="/static/wave.png" style="height: 48px" />
           </h2>
         </div>
       </div>
@@ -26,7 +27,10 @@
     <div class="container section-team">
       <div class="row team-title">
         <div class="col-12 no-margin-horizontal">
-          <h2>Meet the team</h2>
+          <h2>Meet the team
+            <img src="/static/boop.png" style="height: 48px" />
+          </h2>
+          
         </div>
       </div>
       <div class="row">
@@ -75,52 +79,52 @@ export default {
       orgs: ["TED", "TEDx", "TEDxUofW"],
       teamSelection: "All",
       team: [
-        makePerson("Julia Pettere", "Curators", "Curator"),
-        makePerson("TJ Gascho", "Curators", "Curator"),
-        makePerson("Maya Sullivan", "Curators", "Curator"),
+        makePerson("Miranda Reisman", "Curators", "Curator", { hasAlt: false }),
+        makePerson("Rahul Prasad", "Curators", "Curator", { hasAlt: false }),
 
-        makePerson("Sara Behbakht", "Design", "Design Team Manager"),
-        makePerson("Joey Pan", "Design", "Photographer"),
-        makePerson("Tunny Parrish", "Design", "Branding Designer"),
+        makePerson("TJ Gascho", "Design", "Design Manager", { hasAlt: false }),
+        makePerson("Mary Sciscente Bonilla", "Design", "Photographer", { hasAlt: false }),
+        makePerson("Julia (I-Ting) Chao", "Design", "Branding Designer", { hasAlt: false }),
+        makePerson("Sarah Schmitz", "Design", "Graphic Designer", { hasAlt: false }),
+        makePerson("Emma Switzer", "Design", "Product Designer", { hasAlt: false }),
 
         makePerson(
-          "Sneha Mohidekar",
+          "Lily Hansen",
           "Speaker Selection",
-          "Speaker Selection Team Manager"
+          "Speaker Selection Manager", { hasAlt: false }
         ),
-        makePerson("Aditya Gunawan", "Speaker Selection", "Speaker Selection"),
-        makePerson("Dhara Shah", "Speaker Selection", "Speaker Selection"),
-        makePerson("Kelly Phan", "Speaker Selection", "Speaker Selection"),
-        makePerson("Natalie Salazar", "Speaker Selection", "Speaker Selection"),
-        makePerson("Sara Gustafson", "Speaker Selection", "Speaker Selection"),
+        makePerson("Claire Komori", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
+        makePerson("Jacqueline Hunter", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
+        makePerson("Karina Mendoza", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
+        makePerson("Kavya Ganesan", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
+        makePerson("Peyton Pedrozo", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
+        makePerson("Suhani Dalal", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
 
-        makePerson("Maya Gopalan", "Finance", "Finance Team Manager"),
-        makePerson("Connor Hart", "Finance", "Sponsorship"),
-        makePerson("Emma Ueda", "Finance", "Logistics"),
-        makePerson("Jonathan Chang", "Finance", "Analyst"),
-        makePerson("Stephen Lee", "Finance", "Analyst"),
+        makePerson("Emma Ueda", "Finance", "Finance Manager", { hasAlt: false }),
+        makePerson("Mini Kang", "Finance", "Sponsorship Coordinator", { hasAlt: false }),
+        makePerson("Tamar Pekker", "Finance", "Sponsorship Coordinator", { hasAlt: false }),
+        makePerson("Hyesu Lee", "Finance", "Financial Logistics", { hasAlt: false }),
+        makePerson("Katherine Parks", "Finance", "Financial Analyst", { hasAlt: false }),
 
-        makePerson("Miranda Reisman", "Production", "Production Team Manager"),
-        makePerson("Chloee Henley", "Production", "Guest Experience"),
-        makePerson("Karina Mendoza", "Production", "Videographer"),
-        makePerson("Lily Hansen", "Production", "Communication Coordinator"),
-        makePerson("Megan Mei", "Production", "Stage Designer"),
-        makePerson("Yan Zhe Ong", "Production", "Tech Lead"),
+        makePerson("Yan Zhe Ong", "Tech", "Technical Team Manager", { hasAlt: false }),
+        makePerson("Marcus King", "Tech", "Technical Coordinator", { hasAlt: false }),
+        makePerson("Ryan Horn", "Tech", "Stage Designer", { hasAlt: false }),
+        makePerson("Jacob Renn", "Tech", "Videographer", { hasAlt: false }),
+        makePerson("Arthur Liu", "Tech", "Web Lead", { hasAlt: false }),
+        makePerson("Shawn Lee", "Tech", "Web Developer", { hasAlt: false }),
+        makePerson("Mina Kang", "Tech", "UI/UX Designer", { hasAlt: false }),
 
-        makePerson("Rahul Prasad", "Public Relations", "PR Team Manager"),
-        makePerson("Emma Hurring", "Public Relations", "Outreach Coordinator"),
-        makePerson("Marie Danilychev", "Public Relations", "External Outreach"),
-        makePerson("Samantha Freeman", "Public Relations", "Internal Manager"),
+        makePerson("Sam Freeman", "Public Relations", "Public Relations Manager", { hasAlt: false }),
+        makePerson("Pavithra Prabhu", "Public Relations", "Outreach Coordinator", { hasAlt: false }),
+        makePerson("Angel Cheung", "Public Relations", "Communications Coordinator", { hasAlt: false }),
+        makePerson("Audrey Tjokro", "Public Relations", "Social Media Content Creator", { hasAlt: false }),
 
-        makePerson("Jenny Liang", "Web", "Web Team Manager"),
-        makePerson("Soham Pardeshi", "Web", "Web Developer"),
-        makePerson("Nick Zhou", "Web", "UX/UI Designer"),
-        makePerson("Andrey Butenko", "Web", "Web Developer"),
-
-        makePerson("Ro Verdeja", "Support", "Presentation Curator", {
-          hasAlt: false
-        }),
-        makePerson("Barrett Vandiver", "Support", "Emcee", { hasPhoto: false })
+        makePerson("Chloee Henley", "Guest Experience", "Guest Experience Manager", { hasAlt: false }),
+        makePerson("Ieva Karvelyte", "Guest Experience", "Campus Coordinator", { hasAlt: false }),
+        makePerson("Shania John", "Guest Experience", "Experience Parlor Developer", { hasAlt: false }),
+        makePerson("Yoshimi Hata", "Guest Experience", "Experience Parlor Developer", { hasAlt: false }),
+        makePerson("Hong Ge", "Guest Experience", "External Coordinator", { hasAlt: false }),
+        makePerson("Liuis Jiang", "Guest Experience", "Guest Experience Facilitator", { hasAlt: false }),
       ]
     };
   },
@@ -129,13 +133,10 @@ export default {
       opts = opts || {};
       const hasPhoto = opts.hasPhoto !== false;
       const hasAlt = opts.hasAlt !== false;
-      const fileName = name
-        .toLowerCase()
-        .replace(" ", "_")
-        .replace(" ", "_");
+      const fileName = title.replace("/", "_") + " - " + name;
 
       let imageUrl = hasPhoto
-        ? `/static/headshots/${fileName}.jpg`
+        ? `/static/headshots/${fileName}.png`
         : "/static/headshots/blank_face.png";
 
       let imageUrlAlt = hasPhoto
@@ -191,6 +192,11 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $about-break: 1170px;
+
+.team-button:focus {
+  outline: none;
+  outline-offset: none;
+}
 
 .red {
   color: $color-primary;
@@ -252,6 +258,10 @@ $about-break: 1170px;
 }
 
 .section-team {
+  background-image: url('/static/background-frame-white.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top center;
   background-color: $color-secondary-2;
   position: relative;
 
@@ -315,7 +325,6 @@ $about-break: 1170px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: white;
 
     justify-content: space-between;
 
