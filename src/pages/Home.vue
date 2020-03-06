@@ -39,6 +39,8 @@ import ConferencePage from "@/components/ConferencePage";
 import Splash from "@/components/Splash";
 import SpeakerCarousel from "@/components/SpeakerCarousel";
 
+let backgroundgif = '/static/HomeGif.gif'
+
 const speakers = [
   {
     name: "Venus Rekow",
@@ -190,8 +192,20 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 //   width: 60px;
 // }
 
+.section-landing-child {
+  background-image: url('/static/HomeGif.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .section-landing {
-  // background-color: green;
   text-align: center;
   min-height: 90vh;
   
@@ -267,8 +281,12 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 }
 
 .section-about {
-  background-color: white;
+  background-image: url('/static/background-frame-gray.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   min-height: 80vh;
+  padding: 30px 0px;
 
   h2 {
     color: $color-tertiary;
@@ -284,12 +302,12 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   }
 
   .section-about-text {
-    padding: 10px 30px;
+    padding: 0px 30px;
     max-width: 600px;
     min-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
   }
 
 }
