@@ -44,7 +44,8 @@ export default {
     return {
       pages: [
         { name: 'Home', url: '/' },
-        { name: 'Stream', url: '/conference' },
+        // TODO: This is redirecting stream to home
+        { name: 'Stream', url: '/' },
         { name: 'Speakers', url: '/speakers' },
         { name: 'Sponsors', url: '/sponsors' },
         { name: 'About', url: '/about' },
