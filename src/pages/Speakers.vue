@@ -23,7 +23,7 @@
     </div> -->
     <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start" >
       <h1 class="speakers-title">SPEAKERS</h1>
-      <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" />
+      <!-- <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" /> -->
     </div>
     <div class="container section-sponsors">
       <div class="row">
@@ -235,6 +235,7 @@ button {
 
 .speakers-title {
   padding: 70px 0 0 10vw;
+  font-size: 3rem;
   align-self: flex-start;
 }
 
@@ -345,6 +346,7 @@ button {
     margin-left: 24px;
     margin-right: 24px;
     // border: 0.3px solid grey;
+    border: none;
     margin-bottom: 48px;
     cursor: pointer;
     flex-grow: 1;

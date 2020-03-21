@@ -5,7 +5,8 @@
       <div class="section-landing-child">
         <h6>TEDxUofW 2020 PRESENTS</h6>
         <h1>IN <a class="highlighted-red" href=''>OUR</a><br/>BACKYARD</h1>
-        <p style="padding-bottom: 0;"> APRIL 11, 2020 KANE HALL</p>
+        <p style="padding: 0; color: #e62b1e;"> Due to coronavirus, this event has been cancelled </p>
+        <p style="padding-bottom: 0; text-decoration: line-through;"> APRIL 11, 2020 KANE HALL</p>
         <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> <span style="color: #e62b1e">$15</span> for UW Students & <span style="color: #e62b1e">$20</span> for General Public </p>
         <router-link class="home-page-button" to="login">ATTEND</router-link>
       </div>
@@ -23,7 +24,7 @@
       <router-link class="home-page-button" to="login">REGISTER</router-link>
     </div>
     
-    <div class="container section section-speakers" style="display: none">
+    <div class="container section section-speakers">
       <h2>FEATURING</h2>
       <div class="carousel-container">
       <SpeakerCarousel />

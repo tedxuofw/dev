@@ -5,8 +5,8 @@
         <div class="col-8 no-margin-horizontal">
           <h2>
             ABOUT
-            <span class="highlightred">TEDx</span>
-            <span class="highlight2">UofW</span>
+            <!-- <span class="highlightred">TEDx</span> -->
+            <span class="highlight2">TEDxUofW</span>
             <img src="/static/wave.png" style="height: 48px" />
           </h2>
         </div>

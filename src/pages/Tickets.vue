@@ -3,8 +3,8 @@
       <Loading v-if="this.loading"/>
       <NavBar v-bind:tickets="true"/>
       <main>
-        <h1> Tickets (Not Open Yet!) </h1>
-        <p> Ticket purchases will open soon! </p>
+        <h1> Tickets (Closed) </h1>
+        <p> Ticket purchases not available due to event closure in light of coronavirus </p>
         <p> <span class="bold"> General tickets: </span> $20, <span class="bold"> UW student tickets: </span> $15 </p>
         <p>   </p>
         <div class="col-12 outer">

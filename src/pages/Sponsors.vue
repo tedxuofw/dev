@@ -1,10 +1,13 @@
 <template>
   <ConferencePage :selectedIndex="3">
-    <div class="row page-title">
-        <div class="col-12 no-margin-horizontal">
-          <h2>Sponsors</h2>
-        </div>
+    <!-- <div class="row page-title">
+      <div class="col-12 no-margin-horizontal">
+        <h2>Sponsors</h2>
       </div>
+    </div> -->
+    <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start" >
+      <h1 class="sponsors-title">SPONSORS</h1>
+    </div>
     <div class="container section-sponsors">
       <div class="row" v-for="sponsor in sponsors" :key="sponsor.title">
         <div class="col-4 img-container">
@@ -76,6 +79,13 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 
+  .sponsors-title {
+    padding: 70px 0 0 10vw;
+    margin-top: 0px;
+    font-size: 3rem;
+    align-self: flex-start;
+  }
+
   .page-title {
     margin-top: 16px;
 
@@ -85,14 +95,14 @@ export default {
       color: black;
       text-transform: uppercase;
       text-align: left;
-      font-size: 3.2rem;
+      font-size: 3rem;
       line-height: 1.5em;
       margin: 0;
     }
   }
 
 .section-sponsors {
-  margin-top: 64px;
+  margin-top: 0px;
 
   .img-container {
     display: flex;

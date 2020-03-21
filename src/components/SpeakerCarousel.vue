@@ -2,22 +2,40 @@
   <carousel :paginationEnabled=false class="test" :perPageCustom="[[480, 2], [768, 3], [300, 1], [1100, 4]]">
     <!-- <slide><div style="width: 300px; max-width: 100vw; height: 400px; max-height: 30vh;"><img :src="this.getFileName(this.speakers[0].name)" :alt="speakers[0].name" style="object-fit: contain;"/> </div> -->
     <slide><img class="label" :src="this.getFileName(this.speakers[0].name)" :alt="speakers[0].name"/>
-    <div class="overlay">Hey there</div>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[0].name }}</p> <p class="talk">{{ this.speakers[0].talk }}</p> </div></div>
     </slide>
-    <slide><img :src="this.getFileName(this.speakers[1].name)" :alt="speakers[0].name" style="width: 100%;"/>
-    <div class="overlay">Hey there</div>
+    <slide><img class="label" :src="this.getFileName(this.speakers[1].name)" :alt="speakers[1].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[1].name }}</p> <p class="talk">{{ this.speakers[1].talk }}</p> </div></div>
     </slide>
-    <slide><img :src="this.getFileName(this.speakers[2].name)" :alt="speakers[0].name" style="width: 100%;"/>
-    <div class="overlay">Hey there</div>
+    <slide><img class="label" :src="this.getFileName(this.speakers[2].name)" :alt="speakers[2].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[2].name }}</p> <p class="talk">{{ this.speakers[2].talk }}</p> </div></div>
     </slide>
-    <slide><img :src="this.getFileName(this.speakers[3].name)" :alt="speakers[0].name" style="width: 100%;"/>
-    <div class="overlay">Hey there</div>
+    <slide><img class="label" :src="this.getFileName(this.speakers[3].name)" :alt="speakers[3].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[3].name }}</p> <p class="talk">{{ this.speakers[3].talk }}</p> </div></div>
     </slide>
-    <slide><span class="label">asdflkadfjlkdfj</span><a href="" class="overlay">Hey there</a>
+    <slide><img class="label" :src="this.getFileName(this.speakers[4].name)" :alt="speakers[4].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[4].name }}</p> <p class="talk">{{ this.speakers[4].talk }}</p> </div></div>
     </slide>
-    <slide><span class="label">asdfdfdfa</span>
+    <slide><img class="label" :src="this.getFileName(this.speakers[5].name)" :alt="speakers[5].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[5].name }}</p> <p class="talk">{{ this.speakers[5].talk }}</p> </div></div>
     </slide>
-    <slide><span class="label">aasdfadfd</span>
+    <slide><img class="label" :src="this.getFileName(this.speakers[6].name)" :alt="speakers[6].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[6].name }}</p> <p class="talk">{{ this.speakers[6].talk }}</p> </div></div>
+    </slide>
+    <slide><img class="label" :src="this.getFileName(this.speakers[7].name)" :alt="speakers[7].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[7].name }}</p> <p class="talk">{{ this.speakers[7].talk }}</p> </div></div>
+    </slide>
+    <slide><img class="label" :src="this.getFileName(this.speakers[8].name)" :alt="speakers[8].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[8].name }}</p> <p class="talk">{{ this.speakers[8].talk }}</p> </div></div>
+    </slide>
+    <slide><img class="label" :src="this.getFileName(this.speakers[9].name)" :alt="speakers[9].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[9].name }}</p> <p class="talk">{{ this.speakers[9].talk }}</p> </div></div>
+    </slide>
+    <slide><img class="label" :src="this.getFileName(this.speakers[10].name)" :alt="speakers[10].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[10].name }}</p> <p class="talk">{{ this.speakers[10].talk }}</p> </div></div>
+    </slide>
+    <slide><img class="label" :src="this.getFileName(this.speakers[11].name)" :alt="speakers[11].name"/>
+    <div class="overlay"><div class="inner-div"> <p>{{ this.speakers[11].name }}</p> <p class="talk">{{ this.speakers[11].talk }}</p> </div></div>
     </slide>
   </carousel>
 </template>
@@ -165,6 +183,26 @@ export default {
 .test {
   // background-color: orange;
   max-width: 100%;  // Don't use 100vw bc that includes the scroll bar
+}
+
+.inner-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.inner-div p {
+  margin: 0.3em 2em;
+}
+
+.inner-div .talk {
+  font-size: 0.8em;
+  font-weight: 500;
 }
 
 .label {

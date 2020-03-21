@@ -15,7 +15,7 @@
             <input type="text" placeholder="Subject" v-model="subject" class="full-width" />
             <textarea placeholder="Message" v-model="body" class="full-width" />
             <p class="error" v-if="eligibleForErrorMessages && validationError">{{ validationError }}</p>
-            <button @click="submit" class="full-width">Send</button>
+            <button style="background-color: none;" @click="submit" class="full-width">Send</button>
           </template>
           <template v-if="formState == STATES.LOADING">
             <p>Sending...</p>
@@ -145,6 +145,7 @@ export default {
 
   .message {
     background-color: $color-secondary-2;
+    margin-bottom: 50px;
 
     .accent {
       background-color: $color-tertiary;
@@ -155,16 +156,29 @@ export default {
     }
   }
 
-  .social {
-    background-color: $color-tertiary;
+  button:hover {
     color: white;
+    background-color: $color-primary;
+    transition: ease 0.3s;
+  }
+
+  .social {
+    // background-color: $color-tertiary;
+    background-color: transparent;
+    margin-bottom: 100px;
 
     h2 {
-      color: $color-tertiary-2;
+      color: black;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1rem;
     }
 
     .accent {
       background-color: $color-tertiary-2;
+      display: none;
     }
 
     .social-bubbles {
@@ -176,7 +190,7 @@ export default {
         height: 40px;
         border-radius: 20px;
         text-decoration: none;
-        background-color: $color-primary-2;
+        background-color: black;
 
         &:hover {
           filter: brightness(80%);

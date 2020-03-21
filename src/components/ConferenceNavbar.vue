@@ -6,14 +6,14 @@
       </router-link>
       <button class="hamburger" :class="{ active: mobileShowNav }" @click="onClickNav"><img src="/static/hamburger.svg" alt="Menu icon" /></button>
     </div>
-    <tab-set :secondary="secondary" :mobileShowNav="mobileShowNav">
+    <tab-set style="justify-content: center;" :secondary="secondary" :mobileShowNav="mobileShowNav">
       <tab-option logo :click="() => navigateTo('/')">
         <img class="logo logo-default" src="/static/newlogo.png" alt="TEDxUofW Logo" />
       </tab-option>
-      <tab-option class="hover-red" v-for="(page, pageIndex) in pages" :key="pageIndex"
+      <tab-option style="text-transform: uppercase; letter-spacing: 0.005em;" class="hover-red" v-for="(page, pageIndex) in pages" :key="pageIndex"
         :selected="selectedIndex == pageIndex" :secondary="secondary"
         :click="() => navigateTo(page.url)">{{ page.name }}</tab-option>
-      <tab-option spacer />
+      <!-- <tab-option spacer /> -->
       <tab-option :secondary="secondary">
         <!-- <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
