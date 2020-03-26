@@ -73,6 +73,7 @@ export default {
   background-color: $color-secondary-2;
   box-shadow: 0 1px 5px #888888;
   z-index: 100;
+  font-size: 1rem;
 
   .logo-holder-link {
     height: 100%;
