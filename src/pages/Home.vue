@@ -136,7 +136,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   text-align: center;
 
   // Space beneath
-  margin: 30px 0px 50px 0px;
+  margin: 30px 0px 10px 0px;
 
   // Font settings
   color: black;
