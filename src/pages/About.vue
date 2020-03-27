@@ -136,7 +136,7 @@ export default {
       const fileName = title.replace("/", "_") + " - " + name;
 
       let imageUrl = hasPhoto
-        ? `/static/headshots/${fileName}.jpg`
+        ? `/static/headshots/${fileName}.png`
         : "/static/headshots/blank_face.png";
 
       let imageUrlAlt = hasPhoto

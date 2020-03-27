@@ -7,8 +7,8 @@
     <div class="container section-contact">
       <div class="row">
         <div class="col-8 no-margin message">
-          <h2>Message</h2>
-          <div class="accent"></div>
+          <h2 style="margin-bottom: 40px;">Message</h2>
+          <!-- <div class="accent"></div> -->
           <template v-if="formState == STATES.NOT_SUBMITTED">
             <input type="text" placeholder="Name" v-model="name" class="half-width" />
             <input type="email" placeholder="Email" v-model="email" class="half-width" />
