@@ -1,7 +1,15 @@
 <template>
   <ConferencePage :selectedIndex="0" :footerMargin="false">
-
+    
     <div class="container section section-landing">
+      <div class="animation">
+          <div id="Ted">
+            <h7></h7>
+          </div>
+          <div id="X">
+            <h8></h8>
+          </div>
+    </div>
       <div class="section-landing-child">
         <h1><a class="highlighted-red" href=''>2021</a></h1>
         <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> TEDxUofW Team Applications Now Open </p>
@@ -34,6 +42,7 @@
 </template>
 
 <script>
+
 import Arrows from "@/components/Arrows";
 import ConferencePage from "@/components/ConferencePage";
 import Splash from "@/components/Splash";
@@ -41,6 +50,8 @@ import SpeakerCarousel from "@/components/SpeakerCarousel";
 
 let backgroundgif = '/static/HomeGif.gif'
 
+let intervalId = null; 
+let counter = 0;
 const speakers = [
   {
     name: "Venus Rekow",
@@ -91,7 +102,6 @@ const speakers = [
     talk: "How Kevin Bacon Saved Seattle: The Seattle Music Story You Never Heard and Why It Matters Today"
   },
 ]
-
 export default {
   name: "HomePage",
   components: { Arrows, ConferencePage, Splash, SpeakerCarousel },
@@ -101,12 +111,32 @@ export default {
       speakers: speakers.sort(() => Math.random() - 0.5)
     }
   },
+  mounted:function(){
+    this.animateText();
+  },
   methods: {
     getFileName: function(name) {
       return "/static/speaker-headshots/" + name.toLowerCase().replace(" ", '_') + ".jpg";
     },
     getSpeakerCarouselSlide: function(name) {
       return name + " " + speakers.name;
+    },
+    myMethod:function(){
+      console.log("My method")
+      document.getElementById("Ted").textContent += "TEDx "   
+      counter++  
+      if (counter === 10){
+        clearInterval(intervalId)
+        document.getElementById("Ted").textContent += "TED"
+        document.getElementById("X").textContent = "X"
+      }
+    },
+    animateText:function() { 
+      if (intervalId === null) {
+        console.log(intervalId)
+        intervalId = setInterval(this.myMethod, 450);
+        console.log("if statement")
+      }
     }
   },
   beforeMount(){
@@ -114,6 +144,7 @@ export default {
     console.log("beforeMount ended");
   }
 };
+
 </script>
 
 <style lang="scss" scoped>
@@ -192,13 +223,39 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 //   width: 60px;
 // }
 
+.animation{
+  width: 100%;
+  display: flex;
+  //align-items: left;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+#X, #Ted{
+  
+  font-weight: bold;
+  color: #e62b1e;
+  text-shadow: 2px 2px black;
+
+}
+
+#Ted {
+  font-size: 1.55vw;
+}
+
+#X {
+  font-size: 100px;
+}
+
+
 .section-landing-child {
-  background-image: url('/static/HomeGif.gif');
+  //background-image: url('/static/HomeGif.gif');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
   width: 100%;
-  min-height: 90vh;
+  //min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -208,6 +265,8 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 .section-landing {
   text-align: center;
   min-height: 90vh;
+  
+
   
   h6 {
     color: #999997;
@@ -232,6 +291,8 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   h1 {
     font-size: 13vw;
     padding: 20px;
+    color: #e62b1e;
+    text-shadow: 5px 5px black;
   }
 
   h1 > a {
@@ -309,6 +370,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     flex-direction: column;
     justify-content: center;
   }
+
 
 }
 
@@ -416,6 +478,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
       }
     }
   }
+
 
   .btn-container {
     // padding-left: 10%;
