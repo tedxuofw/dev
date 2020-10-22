@@ -1,5 +1,5 @@
 <template>
-  <ConferencePage :selectedIndex="3">
+  <ConferencePage :selectedIndex="2">
     <!-- <div class="row page-title">
       <div class="col-12 no-margin-horizontal">
         <h2>Sponsors</h2>

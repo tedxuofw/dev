@@ -1,5 +1,5 @@
 <template>
-  <ConferencePage :selectedIndex="4">
+  <ConferencePage :selectedIndex="3">
     <div class="container section-about">
       <div style="justify-content: flex-start" class="row team-title">
         <div class="col-8 no-margin-horizontal">
