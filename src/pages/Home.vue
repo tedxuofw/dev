@@ -11,7 +11,7 @@
           </div>
     </div>
       <div class="section-landing-child">
-        <h1><a class="highlighted-red" href=''>2021</a></h1>
+        <h1><a class="highlighted-red">2021</a></h1>
         <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> TEDxUofW 2021 Speaker Nomination Form Now Open </p>
         <a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a>
       </div>
