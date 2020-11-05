@@ -8,7 +8,7 @@
             <p class="email"> {{ user.email }} </p>
         </div>
         <div id="profile-nav">
-            <a @click="this.openModal">Edit Acount</a>
+            <a @click="this.openModal">Edit Account</a>
             <a href="/#/changepassword">Change Password</a>
             <a @click="this.logout">Logout</a>
         </div>
