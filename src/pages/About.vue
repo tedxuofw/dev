@@ -3,23 +3,19 @@
     <div class="container section-about">
       <div style="justify-content: flex-start" class="row team-title">
         <div class="col-8 no-margin-horizontal">
-          <h2>
+          <!-- <h2>
             ABOUT
-            <!-- <span class="highlightred">TEDx</span> -->
+            <span class="highlightred">TEDx</span>
             <span class="highlight2">TEDxUofW</span>
             <img src="/static/wave.png" style="height: 48px" />
-          </h2>
+          </h2> -->
         </div>
       </div>
       <div class="row">
-        <div class="content col-7">
+        <div class="content col-10">
+          <h2>What is TEDxUofW?</h2>
           <p>
             <span class="red">TED</span> is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com. TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan and Daniel Kahneman. The annual TED Conference takes place each spring in Vancouver, British Columbia.
-          </p>
-        </div>
-        <div class="content col-7">
-          <p>
-            <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
           </p>
         </div>
       </div>

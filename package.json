@@ -12,7 +12,7 @@
   "dependencies": {
     "axios": "^0.18.1",
     "emailjs-com": "^2.3.2",
-    "firebase": "^5.11.1",
+    "firebase": "^8.2.1",
     "vue": "^2.5.2",
     "vue-carousel": "^0.18.0",
     "vue-router": "^3.0.1"
