@@ -11,14 +11,27 @@
           </h2> -->
         </div>
       </div>
-      <div class="row">
-        <div class="content col-10">
+      <!-- <div class="row">
+        <div class="content col-9">
           <h2>What is TEDxUofW?</h2>
           <p>
             <span class="red">TED</span> is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com. TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan and Daniel Kahneman. The annual TED Conference takes place each spring in Vancouver, British Columbia.
+            <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
           </p>
+          
         </div>
-      </div>
+      </div> -->
+    </div>
+    <div class="img-container">
+      <div class="content col-10">
+        <img src="../assets/mizu.png" style="width:100%;">
+          <div class="centered">
+            <h2>What is TEDxUofW?</h2>
+              <p>
+                <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+              </p>
+          </div>
+      </div>  
     </div>
     <div class="container section-team">
       <div class="row team-title">
@@ -188,6 +201,23 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $about-break: 1170px;
+
+
+
+/* Container holding the image and the text */
+.img-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .team-button:focus {
   outline: none;
