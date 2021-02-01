@@ -1,42 +1,65 @@
 <template>
-  <ConferencePage :selectedIndex="0" :footerMargin="false">
+  <ConferencePage :selectedIndex="0" :footerMargin="false"> 
     
     <div class="container section section-landing">
-      <div class="animation">
+      <!--<div class="animation">
           <div id="Ted">
             <h7></h7>
           </div>
           <div id="X">
             <h8></h8>
           </div>
-    </div>
+    </div> -->
       <div class="section-landing-child">
-        <h1><a class="highlighted-red">2021</a></h1>
-        <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> TEDxUofW 2021 Speaker Nomination Form Now Open </p>
-        <a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a>
+        <h1><a href="Home.vue"> Main Logo</a></h1> 
+        <!-- <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p> -->
+        <!--<a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a> -->
       </div>
     </div>
 
-    <div class="container section section-about">
-      <!-- <div class="section-about-row"> -->
-      <div class="section-about-text">
-        <h2>Ideas worth spreading at the<br/>University of Washington</h2>
+    <div class="container section section-details">
+      <!--
+      <div class="section-about-row">
+      <div class="section-about-text"> -->
+          <h2>Event Details </br> What is TEDxUofW</h2>
+        <!--
         <p>
           For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
         </p>
       </div>
-      <!-- </div> -->
-      <router-link class="home-page-button" to="login">REGISTER</router-link>
+      </div>
+      -->
+      <!-- <router-link class="home-page-button" to="login">REGISTER</router-link> -->
     </div>
-    
-    <div class="container section section-speakers">
-      <h2>FEATURING</h2>
+
+  <div class="container section section-speakers">
+      
+      <h2><a href="http://localhost:8080/#/speakers">Speakers</a></h2>
       <div class="carousel-container">
       <SpeakerCarousel />
       </div>
-  
-      <router-link class="view-speakers-button" to="speakers">VIEW ALL SPEAKERS</router-link>
+    
+      <!-- <router-link class="view-speakers-button" to="speakers">VIEW ALL SPEAKERS</router-link> -->
     </div>
+
+
+    <div class="container section section-landing">
+      <div class="section-landing-child">
+        <h1><a class="highlighted-red"> <a href="http://localhost:8080/#/sponsors">Sponsors</a></a></h1> 
+        <!-- <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p> -->
+        <!--<a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a> -->
+      </div>
+    </div>
+
+    <div class="container section section-about">
+      <!--
+      <div class="section-about-row">
+      <div class="section-about-text"> -->
+        <h2><a class="highlighted-red"> <a href="http://localhost:8080/#/about">About</a></a></h2>
+    </div>
+
+    
+    
     
   </ConferencePage>
 </template>
@@ -342,7 +365,8 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 }
 
 .section-about {
-  background-image: url('/static/background-frame-gray.png');
+  background-color: #fefbd8;
+  //background-image: url('/static/background-frame-gray.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -369,6 +393,37 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+
+}
+
+.section-details {
+  background-color: #fefbd8;
+  //background-image: url('/static/background-frame-gray.png');
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  //padding: 30px 0px;
+
+  h2 {
+    color: $color-tertiary;
+    margin-bottom: 30px;
+  }
+
+  .left{
+      width: 100vw;
+      background-color: #aabbcc;
+  }
+  .right{
+      width: 100vw;
+      background-color: #fefbd8;
   }
 
 

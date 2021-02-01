@@ -1,4 +1,3 @@
-
 <template>
   <ConferencePage :selectedIndex="1">
     <!-- <div class="modal-container" v-if="isSpeakerSelected" @click="selectSpeaker(-1)">
@@ -23,16 +22,17 @@
     </div> -->
     <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start" >
       <h1 class="speakers-title">SPEAKERS</h1>
+      <h2 class="speakers-subtitle">Meet the TEDxUofW 2021 speakers!</h2>
       <!-- <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" /> -->
     </div>
     <div class="container section-sponsors">
       <div class="row">
         <div class="speakers-container">
-          <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl">
+          <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl" :style="{visibility: i == currentSpeaker ? 'visible' : 'hidden', opacity: i == currentSpeaker ? 1 : 0}">
             <img :src="speaker.imageUrl" />
             <div class="overlay show-overlay-if-mobile">
               <div class="overlay-text">
-                <h3 style="text-transform:uppercase; font-weight: 600">{{ speaker.name }}</h3>
+                <h3 style="text-transform:uppercase; font-weight: 600;">{{ speaker.name }}</h3>
                 <h3>{{ speaker.title }}</h3>
               </div>
             </div>
@@ -42,7 +42,7 @@
               <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
             </div> -->
           </button>
-          <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
+          <!-- div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div> -->
         </div>
       </div>
     </div>
@@ -85,6 +85,7 @@ export default {
   data() {
     const makeSpeaker = this.makeSpeaker.bind(this);
     return {
+      currentSpeaker: 0,
       isModalVisible: false,
       modalSelectedSpeaker: 1,
       selectedSpeakerIndex: -1,
@@ -153,6 +154,14 @@ export default {
     };
   },
   methods: {
+    changeSpeaker() {
+      if (this.currentSpeaker == this.speakers.length - 1) {
+        this.currentSpeaker = 0;
+      } else {
+        this.currentSpeaker = this.currentSpeaker + 1;
+      }
+      setTimeout(this.changeSpeaker, 5000);
+    },
     showModal(speakerNum) {
       this.isModalVisible = true;
       this.modalSelectedSpeaker = speakerNum;
@@ -183,7 +192,6 @@ export default {
       if(!this.isSpeakerSelected) {
         return {};
       }
-
       return this.speakers[this.selectedSpeakerIndex];
     },
     speakerSpacer() {
@@ -194,63 +202,60 @@ export default {
       }
       return res;
     }
+  },
+  created: function() {
+    this.changeSpeaker();
+    console.log("Created");
   }
 };
-
 </script>
 
 
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
-
 // I added in this as a style-reset that never got implemented
 body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
 }
-
 h1 {
   font-size: 44px;
   font-weight: 700;
   line-height: 1em;
 }
-
 $speakers-break: 750px;
-
 $speakers-break-1: 600px;
 $speakers-break-2: 900px;
-
 .section-sponsors {
   background-image: url('/static/background-frame-white.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
 }
-
 button {
   padding: 0;
 }
-
 .speakers-title {
   padding: 70px 0 0 10vw;
   font-size: 3rem;
   align-self: flex-start;
 }
-
+.speakers-subtitle {
+  padding: 10px 0 0 10vw;
+  font-size: 2rem;
+  align-self: flex-start;
+}
 .standard-hero {
   background-image: url('/static/speakers-page-header.jpg');
   background-position: bottom;
 }
-
 // @media screen and (max-width: 600px) {
 //   .modal {
 //     flex-direction: column;
 //     overflow-y: scroll;
 //     align-items: center;
-
-
 // // TODO get rid of important
 //     .image {
 //       flex: 0 0 300px !important;
@@ -258,19 +263,15 @@ button {
 //       width: 300px !important;
 //       margin-top: 20px;
 //     }
-
 //     .content-container {
 //       display: block !important;
 //     }
-
 //     .overflow-content {
 //       overflow-y: inherit !important;
 //     }
-
 //     .content.overflow-content {
 //       max-height: inherit !important;
 //     }
-
 //     a,
 //     button {
 //       display: block;
@@ -281,8 +282,6 @@ button {
 //     }
 //   }
 // }
-
-
 // .modal-container {
 //   display: flex;
 //   justify-content: center;
@@ -294,7 +293,6 @@ button {
 //   bottom: 0;
 //   background-color: rgba(0, 0, 0, 0.4);
 //   cursor: pointer;
-
 //   .modal {
 //     width: 800px;
 //     max-width: 90%;
@@ -303,46 +301,47 @@ button {
 //     background-color: #ffffff;
 //     display: flex;
 //     cursor: auto;
-
 //     .image,
 //     .content-container {
 //       height: 100%;
 //       flex: 1;
 //     }
-
 //     .content-container {
 //       display: flex;
 //       flex-direction: column;
 //     }
-
 //     .content.overflow-content {
 //       box-sizing: border-box;
 //       max-height: 100%;
 //       overflow-y: scroll;
 //     }
-
 //     button {
 //       margin-bottom: 0;
 //     }
 //   }
 // }
-
 .speakers-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
   justify-content: space-between;
   align-items: stretch;
   margin-top: 64px;
   padding: 0px;
-
-  .speaker-filler {
-    flex: 1 1 calc(30% - 28px);
+  //.speaker-filler {
+  //  flex: 1 1 calc(30% - 28px);
+  //}
+  .fade-enter-active, .fade-leave-active {
+    transition: all 1.5s ease;
   }
-
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-leave, .fade-enter-to {
+    opacity: 1;
+  }
   .speaker {
     position: relative;
-    flex: 1 1 calc(30% - 28px);
     margin-left: 24px;
     margin-right: 24px;
     // border: 0.3px solid grey;
@@ -351,84 +350,58 @@ button {
     cursor: pointer;
     flex-grow: 1;
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-
+    transition: opacity 1s ease-in-out;
     .content {
       display: flex;
       flex: 1;
       flex-direction: column;
-
       span {
         display: block;
       }
-
       .title {
         flex: 1;
       }
     }
-
     @media screen and (max-width: $speakers-break-2) {
       flex: 1 0 40%;
     }
-
     @media screen and (max-width: $speakers-break-1) {
       flex: 1 0 100%;
       margin-left: 0;
       margin-right: 0;
-
       // .ask-button {
       //   background-color: $color-tertiary;
       //   color: white !important;
       // }
     }
-
-
   }
 }
-
 @media screen and (max-width: $speakers-break-1) {
   .hide-if-mobile {
     display: none !important;
   }
-
   .smaller-if-mobile {
     font-size: 17px !important;
   }
-
-  .show-overlay-if-mobile {
-    opacity: 1 !important;
-    .overlay-text {
-      padding: 10px !important;
-    }
-    h3 {
-      background-color: rgba(0,0,0,0.7);
-      padding: 5px 15px;
-    }
-  }
 }
-
 .speaker .content {
   margin-top: -8px;
 }
-
 .speaker {
+  position: relative;
   img {
     width: 100%;
     height: auto;
   }
-
   .image {
     width: 100%;
     height: 300px;
     background-position: top;
     background-size: cover;
   }
-
   .content {
     padding: 32px 16px;
     color: $color-tertiary;
-
     .name {
       font-size: 24px;
       font-weight: 700;
@@ -438,12 +411,10 @@ button {
     .title {
       font-size: 20px;
     }
-
     .name,
     .title {
       display: block;
     }
-
     .ask-button {
       display: block;
       color: $color-tertiary;
@@ -457,8 +428,8 @@ button {
       transition: 250ms all;
     }
   }
-
   .overlay {
+    display: flex;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -471,23 +442,24 @@ button {
     background: rgb(0,0,0);
     background: rgba(0,0,0,0);
     
-
     .overlay-text {
-      position: absolute;
+      position: relative;
+      font-size: 1vw;
+      height: 100%;
+      width: 100%;
+      top: 0;
       bottom: 0;
       left: 0;
+      right: 0;
       color: white;
-      padding: 25px;
+      padding: 15px;
       text-align: left;
     }
   }
-
   .overlay:hover {
     background: rgba(0,0,0,0.5);
     opacity: 1;
   }
-
-
   &:hover .ask-button {
     background-color: $color-tertiary;
     color: white;
