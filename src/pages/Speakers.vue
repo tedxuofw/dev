@@ -210,10 +210,7 @@ export default {
     console.log("Created");
   }
 };
-
 </script>
-
-
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
@@ -239,7 +236,7 @@ $speakers-break-2: 900px;
 .section-sponsors {
   background-image: url('/static/background-frame-white.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
 }
 
@@ -348,9 +345,10 @@ button {
 // }
 
 .speakers-container {
+  position: relative;
   display: grid;
+  grid-template-rows: auto auto auto auto;
   grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto auto;
   justify-content: space-between;
   align-items: stretch;
   margin-top: 64px;
@@ -374,15 +372,17 @@ button {
 
   .speaker {
     position: relative;
+    height: 200px;
+    width: 200px;
     margin-left: 24px;
     margin-right: 24px;
     // border: 0.3px solid grey;
     border: none;
     margin-bottom: 48px;
     cursor: pointer;
-    flex-grow: 1;
     text-decoration: none;
     transition: opacity 1s ease-in-out;
+    z-index: 1;
 
     .content {
       display: flex;
