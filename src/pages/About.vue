@@ -11,20 +11,32 @@
           </h2> -->
         </div>
       </div>
-      <!-- <div class="row">
-        <div class="content col-9">
-          <h2>What is TEDxUofW?</h2>
-          <p>
-            <span class="red">TED</span> is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com. TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan and Daniel Kahneman. The annual TED Conference takes place each spring in Vancouver, British Columbia.
-            <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
-          </p>
+      <div class="row">
+        <div style="justify-content: flex-start" class="img-container">
+          <img src="../../static/Group 45.svg" style="width:100%;">
+
+          <div class="centered">
+            <h2>What is TEDxUofW?</h2>
+              <p>
+                <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+              </p>
+              <div class="container section-team row col-12 no-margin-horizontal ">
+                <button
+                  class="team-button"
+                  v-for="team in teamNames"
+                  :key="team"
+                  :class="{ selected: team == teamSelection }"
+                  @click="selectTeam(team)"
+                >{{ team }}</button>
+              </div>
+          </div>
           
         </div>
-      </div> -->
+      </div>
     </div>
-    <div class="img-container">
+    <!-- <div style="justify-content: flex-start" class="img-container"> 
       <div class="content col-10">
-        <img src="../assets/mizu.png" style="width:100%;">
+        <img src="../../static/Group 45.svg" style="width:100%;">
           <div class="centered">
             <h2>What is TEDxUofW?</h2>
               <p>
@@ -32,17 +44,17 @@
               </p>
           </div>
       </div>  
-    </div>
+    </div> -->
     <div class="container section-team">
       <div class="row team-title">
         <div class="col-12 no-margin-horizontal">
           <h2>Meet the team
-            <img src="/static/boop.png" style="height: 48px" />
+            <!-- <img src="/static/boop.png" style="height: 48px" /> -->
           </h2>
           
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-12 no-margin-horizontal team-selection">
           <button
             class="team-button"
@@ -52,7 +64,7 @@
             @click="selectTeam(team)"
           >{{ team }}</button>
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-12 no-margin-horizontal">
           <div class="team-container">
@@ -88,52 +100,20 @@ export default {
       orgs: ["TED", "TEDx", "TEDxUofW"],
       teamSelection: "All",
       team: [
-        makePerson("Miranda Reisman", "Curators", "Curator", { hasAlt: false }),
-        makePerson("Rahul Prasad", "Curators", "Curator", { hasAlt: false }),
-
-        makePerson("TJ Gascho", "Design", "Design Manager", { hasAlt: false }),
-        makePerson("Mary Sciscente Bonilla", "Design", "Photographer", { hasAlt: false }),
-        makePerson("Julia (I-Ting) Chao", "Design", "Branding Designer", { hasAlt: false }),
-        makePerson("Sarah Schmitz", "Design", "Graphic Designer", { hasAlt: false }),
-        makePerson("Emma Switzer", "Design", "Product Designer", { hasAlt: false }),
-
-        makePerson(
-          "Lily Hansen",
-          "Speaker Selection",
-          "Speaker Selection Manager", { hasAlt: false }
-        ),
-        makePerson("Claire Komori", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Jacqueline Hunter", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Karina Mendoza", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Kavya Ganesan", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Peyton Pedrozo", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Suhani Dalal", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-
-        makePerson("Emma Ueda", "Finance", "Finance Manager", { hasAlt: false }),
-        makePerson("Mini Kang", "Finance", "Sponsorship Coordinator", { hasAlt: false }),
-        makePerson("Tamar Pekker", "Finance", "Sponsorship Coordinator", { hasAlt: false }),
-        makePerson("Hyesu Lee", "Finance", "Financial Logistics", { hasAlt: false }),
-        makePerson("Katherine Parks", "Finance", "Financial Analyst", { hasAlt: false }),
-
-        makePerson("Yan Zhe Ong", "Tech", "Technical Team Manager", { hasAlt: false }),
-        makePerson("Marcus King", "Tech", "Technical Coordinator", { hasAlt: false }),
-        makePerson("Ryan Horn", "Tech", "Stage Designer", { hasAlt: false }),
-        makePerson("Jacob Renn", "Tech", "Videographer", { hasAlt: false }),
-        makePerson("Arthur Liu", "Tech", "Web Lead", { hasAlt: false }),
-        makePerson("Shawn Lee", "Tech", "Web Developer", { hasAlt: false }),
-        makePerson("Mina Kang", "Tech", "UI/UX Designer", { hasAlt: false }),
-
-        makePerson("Sam Freeman", "Public Relations", "Public Relations Manager", { hasAlt: false }),
-        makePerson("Pavithra Prabhu", "Public Relations", "Outreach Coordinator", { hasAlt: false }),
-        makePerson("Angel Cheung", "Public Relations", "Communications Coordinator", { hasAlt: false }),
-        makePerson("Audrey Tjokro", "Public Relations", "Social Media Content Creator", { hasAlt: false }),
-
-        makePerson("Chloee Henley", "Guest Experience", "Guest Experience Manager", { hasAlt: false }),
-        makePerson("Ieva Karvelyte", "Guest Experience", "Campus Coordinator", { hasAlt: false }),
-        makePerson("Shania John", "Guest Experience", "Experience Parlor Developer", { hasAlt: false }),
-        makePerson("Yoshimi Hata", "Guest Experience", "Experience Parlor Developer", { hasAlt: false }),
-        makePerson("Hong Ge", "Guest Experience", "External Coordinator", { hasAlt: false }),
-        makePerson("Liuis Jiang", "Guest Experience", "Guest Experience Facilitator", { hasAlt: false }),
+        makePerson("Lily Hansen", "Curators", "Curator", { hasAlt: false }),
+        makePerson("Arthur Liu", "Curators", "Curator", { hasAlt: false }),
+        makePerson("Karina Mendoza", "Curators", "Curator", { hasAlt: false }),
+        makePerson("Andrew Tang", "Design", "Design Manager", { hasAlt: false }),
+        makePerson("Mary Bonilla", "Design", "Graphic Designer", { hasAlt: false }),
+        makePerson("Youjean Cho", "Design", "Graphic Designer", { hasAlt: false }),
+        makePerson("Emilia Hughes", "Design", "UX Designer", { hasAlt: false }),
+        makePerson("Jessica Prasetyo", "Design", "UX Designer", { hasAlt: false }),
+        makePerson("Sarah Schmitz", "Public Relations", "Public Relations Manager", { hasAlt: false }),
+        makePerson("Cayla Surovsky", "Public Relations", "Social Media Content Producer", { hasAlt: false }),
+        makePerson("Alejandro Gonzalez", "Public Relations", "Outreach Coordinator", { hasAlt: false }),
+        makePerson("Gaurav Gowda", "Web", "Web Team Manager", { hasAlt: false }),
+        makePerson("Jessica Burroughs", "Web", "Web Developer", { hasAlt: false }),
+        makePerson("Jake Jung", "Web", "Web Developer", { hasAlt: false }),
       ]
     };
   },
@@ -145,21 +125,19 @@ export default {
       const fileName = title.replace("/", "_") + " - " + name;
 
       let imageUrl = hasPhoto
-        ? `/static/headshots/${fileName}.png`
-        : "/static/headshots/blank_face.png";
+        ? `/static/locker-headshots/${fileName}.svg`
+        : "/static/locker-headshots/blank_face.png";
 
       let imageUrlAlt = hasPhoto
-        ? `/static/headshots/${fileName}_x.jpg`
-        : "/static/headshots/happy_face.png";
+        ? `/static/locker-headshots/${fileName}_x.jpg`
+        : "/static/locker-headshots/happy_face.png";
 
       if (!hasAlt) {
         imageUrlAlt = imageUrl;
       }
 
       return {
-        name,
         team,
-        title,
         showAlt: false,
         imageUrl,
         imageUrlAlt
