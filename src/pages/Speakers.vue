@@ -29,7 +29,7 @@
     <div class="container section-sponsors">
       <div class="row">
         <div class="speakers-container">
-          <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl" :style="{visibility: i == currentSpeaker ? 'visible' : 'hidden', opacity: i == currentSpeaker ? 1 : 0}">
+          <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl" :style="{visibility: shownSpeakers.includes(i) ? 'visible' : 'hidden', opacity: shownSpeakers.includes(i) ? 1 : 0}">
             <img :src="speaker.imageUrl" />
             <div class="overlay show-overlay-if-mobile">
               <div class="overlay-text">
@@ -86,7 +86,7 @@ export default {
   data() {
     const makeSpeaker = this.makeSpeaker.bind(this);
     return {
-      currentSpeaker: 0,
+      shownSpeakers: [],
       isModalVisible: false,
       modalSelectedSpeaker: 1,
       selectedSpeakerIndex: -1,
@@ -155,13 +155,19 @@ export default {
     };
   },
   methods: {
-    changeSpeaker() {
-      if (this.currentSpeaker == this.speakers.length - 1) {
-        this.currentSpeaker = 0;
-      } else {
-        this.currentSpeaker = this.currentSpeaker + 1;
+    addSpeaker() {
+      let currSize = this.shownSpeakers.length;
+      while (currSize == this.shownSpeakers.length) {
+        let randSpeaker = parseInt(Math.floor(Math.random() * Math.floor(this.speakers.length)));
+
+        if (!this.shownSpeakers.includes(randSpeaker)) {
+          this.shownSpeakers.push(randSpeaker);
+        }
       }
-      setTimeout(this.changeSpeaker, 5000);
+
+      if (this.shownSpeakers.length != this.speakers.length) {
+        setTimeout(this.addSpeaker, 1000);
+      }
     },
     showModal(speakerNum) {
       this.isModalVisible = true;
@@ -206,7 +212,7 @@ export default {
     }
   },
   created: function() {
-    this.changeSpeaker();
+    setTimeout(this.addSpeaker(), 1000);
     console.log("Created");
   }
 };
