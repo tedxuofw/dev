@@ -81,13 +81,11 @@ export default {
       team: [
         makePerson("Miranda Reisman", "Curators", "Curator", { hasAlt: false }),
         makePerson("Rahul Prasad", "Curators", "Curator", { hasAlt: false }),
-
         makePerson("TJ Gascho", "Design", "Design Manager", { hasAlt: false }),
         makePerson("Mary Sciscente Bonilla", "Design", "Photographer", { hasAlt: false }),
         makePerson("Julia (I-Ting) Chao", "Design", "Branding Designer", { hasAlt: false }),
         makePerson("Sarah Schmitz", "Design", "Graphic Designer", { hasAlt: false }),
         makePerson("Emma Switzer", "Design", "Product Designer", { hasAlt: false }),
-
         makePerson(
           "Lily Hansen",
           "Speaker Selection",
@@ -99,13 +97,11 @@ export default {
         makePerson("Kavya Ganesan", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
         makePerson("Peyton Pedrozo", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
         makePerson("Suhani Dalal", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-
         makePerson("Emma Ueda", "Finance", "Finance Manager", { hasAlt: false }),
         makePerson("Mini Kang", "Finance", "Sponsorship Coordinator", { hasAlt: false }),
         makePerson("Tamar Pekker", "Finance", "Sponsorship Coordinator", { hasAlt: false }),
         makePerson("Hyesu Lee", "Finance", "Financial Logistics", { hasAlt: false }),
         makePerson("Katherine Parks", "Finance", "Financial Analyst", { hasAlt: false }),
-
         makePerson("Yan Zhe Ong", "Tech", "Technical Team Manager", { hasAlt: false }),
         makePerson("Marcus King", "Tech", "Technical Coordinator", { hasAlt: false }),
         makePerson("Ryan Horn", "Tech", "Stage Designer", { hasAlt: false }),
@@ -113,12 +109,10 @@ export default {
         makePerson("Arthur Liu", "Tech", "Web Lead", { hasAlt: false }),
         makePerson("Shawn Lee", "Tech", "Web Developer", { hasAlt: false }),
         makePerson("Mina Kang", "Tech", "UI/UX Designer", { hasAlt: false }),
-
         makePerson("Sam Freeman", "Public Relations", "Public Relations Manager", { hasAlt: false }),
         makePerson("Pavithra Prabhu", "Public Relations", "Outreach Coordinator", { hasAlt: false }),
         makePerson("Angel Cheung", "Public Relations", "Communications Coordinator", { hasAlt: false }),
         makePerson("Audrey Tjokro", "Public Relations", "Social Media Content Creator", { hasAlt: false }),
-
         makePerson("Chloee Henley", "Guest Experience", "Guest Experience Manager", { hasAlt: false }),
         makePerson("Ieva Karvelyte", "Guest Experience", "Campus Coordinator", { hasAlt: false }),
         makePerson("Shania John", "Guest Experience", "Experience Parlor Developer", { hasAlt: false }),
@@ -134,19 +128,15 @@ export default {
       const hasPhoto = opts.hasPhoto !== false;
       const hasAlt = opts.hasAlt !== false;
       const fileName = title.replace("/", "_") + " - " + name;
-
       let imageUrl = hasPhoto
         ? `/static/headshots/${fileName}.png`
         : "/static/headshots/blank_face.png";
-
       let imageUrlAlt = hasPhoto
         ? `/static/headshots/${fileName}_x.jpg`
         : "/static/headshots/happy_face.png";
-
       if (!hasAlt) {
         imageUrlAlt = imageUrl;
       }
-
       return {
         name,
         team,
@@ -165,7 +155,6 @@ export default {
       if (this.teamSelection == "All") {
         return this.team;
       }
-
       return this.team.filter(person => person.team == this.teamSelection);
     },
     teamNames() {
@@ -192,26 +181,21 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $about-break: 1170px;
-
 .team-button:focus {
   outline: none;
   outline-offset: none;
 }
-
 .red {
   color: $color-primary;
   font-weight: 700;
 }
-
 .section-about {
   padding-top: 10vh;
   background-color: $color-secondary-2;
-
   .about-selection {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
     button {
       flex: 1 1;
       background: none;
@@ -221,27 +205,23 @@ $about-break: 1170px;
       border-bottom: 2px solid $color-secondary;
       border-radius: 0;
       margin: 8px;
-
       &.selected {
         color: $color-tertiary;
         border-bottom: 5px solid $color-secondary;
       }
     }
   }
-
   .placeholder-image {
     background-color: $color-tertiary;
     margin-top: -64px;
     width: 80%;
     height: 400px;
   }
-
   .content {
     display: flex;
     flex-direction: column;
     align-content: flex-start;
   }
-
   h2 {
     font-size: 48px;
     line-height: 1em;
@@ -250,13 +230,11 @@ $about-break: 1170px;
     s .highlightred {
       color: $color-primary;
     }
-
     .highlight2 {
       color: $color-primary;
     }
   }
 }
-
 .section-team {
   background-image: url('/static/background-frame-white.png');
   background-repeat: no-repeat;
@@ -264,7 +242,6 @@ $about-break: 1170px;
   background-position: top center;
   background-color: $color-secondary-2;
   position: relative;
-
   span.floating {
     position: absolute;
     color: $color-primary-2;
@@ -274,20 +251,16 @@ $about-break: 1170px;
     line-height: 1em;
     z-index: 0;
     opacity: 0.6;
-
     @media screen and (max-width: $about-break) {
       top: 0;
     }
   }
-
   .row,
   .col-12 {
     z-index: 1;
   }
-
   .team-title {
     margin-top: 16px;
-
     h2 {
       width: 100%;
       display: block;
@@ -299,12 +272,10 @@ $about-break: 1170px;
       margin: 0;
     }
   }
-
   .team-selection {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
     button {
       background: none;
       border: none;
@@ -314,20 +285,16 @@ $about-break: 1170px;
       white-space: nowrap;
       border-radius: 0;
       margin: 8px;
-
       &.selected {
         color: $color-primary;
       }
     }
   }
-
   .team-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
     justify-content: space-between;
-
     .person {
       flex: 0 0 33%;
       display: flex;
@@ -337,28 +304,23 @@ $about-break: 1170px;
       margin-bottom: 36px;
       max-width: 100%;
       text-align: center;
-
       img,
       span {
         display: block;
         margin: 0;
         line-height: 1.2em;
       }
-
       img {
         margin-bottom: 8px;
         max-width: 300px;
       }
-
       .name {
         font-size: 24px;
       }
-
       .title {
         font-size: 18px;
         font-weight: 700;
       }
-
       img.web:hover {
         animation-name: web-hover-animate;
         animation-duration: 2s;
@@ -367,45 +329,35 @@ $about-break: 1170px;
     }
   }
 }
-
 $web-hover-animate-props: 0px 0px 40px 30px;
 @keyframes web-hover-animate {
   0% {
     box-shadow: $web-hover-animate-props #ff240033;
   }
-
   10% {
     box-shadow: $web-hover-animate-props #e81d1d33;
   }
-
   20% {
     box-shadow: $web-hover-animate-props #e8b71d33;
   }
-
   30% {
     box-shadow: $web-hover-animate-props #e3e81d33;
   }
-
   40% {
     box-shadow: $web-hover-animate-props #1de84033;
   }
-
   50% {
     box-shadow: $web-hover-animate-props #1ddde833;
   }
-
   60% {
     box-shadow: $web-hover-animate-props #2b1de833;
   }
-
   70% {
     box-shadow: $web-hover-animate-props #dd00f333;
   }
-
   80% {
     box-shadow: $web-hover-animate-props #dd00f333;
   }
-
   100% {
     box-shadow: $web-hover-animate-props #ff240033;
   }
