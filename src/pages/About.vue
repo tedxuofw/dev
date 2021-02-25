@@ -1,26 +1,17 @@
 <template>
   <ConferencePage :selectedIndex="3">
-    <div class="container section-about">
-      <div style="justify-content: flex-start" class="row team-title">
-        <div class="col-8 no-margin-horizontal">
-          <!-- <h2>
-            ABOUT
-            <span class="highlightred">TEDx</span>
-            <span class="highlight2">TEDxUofW</span>
-            <img src="/static/wave.png" style="height: 48px" />
-          </h2> -->
-        </div>
-      </div>
+    <div class="container section-about" style="background-color:#F5C26A">
       <div class="row">
         <div style="justify-content: flex-start" class="img-container">
           <img src="../../static/Group 45.svg" style="width:100%;">
 
-          <div class="centered">
+          <div class="centered col-8">
             <h2>What is TEDxUofW?</h2>
-              <p>
-                <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
-              </p>
-              <div class="container section-team row col-12 no-margin-horizontal ">
+            <p>
+              <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+            </p>
+     
+              <div class="about-selection">
                 <button
                   class="team-button"
                   v-for="team in teamNames"
@@ -29,57 +20,27 @@
                   @click="selectTeam(team)"
                 >{{ team }}</button>
               </div>
+         
           </div>
-          
         </div>
       </div>
     </div>
-    <!-- <div style="justify-content: flex-start" class="img-container"> 
-      <div class="content col-10">
-        <img src="../../static/Group 45.svg" style="width:100%;">
-          <div class="centered">
-            <h2>What is TEDxUofW?</h2>
-              <p>
-                <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
-              </p>
-          </div>
-      </div>  
-    </div> -->
-    <div class="container section-team">
-      <div class="row team-title">
-        <div class="col-12 no-margin-horizontal">
-          <h2>Meet the team
-            <!-- <img src="/static/boop.png" style="height: 48px" /> -->
-          </h2>
-          
-        </div>
-      </div>
-      <!-- <div class="row">
-        <div class="col-12 no-margin-horizontal team-selection">
-          <button
-            class="team-button"
-            v-for="team in teamNames"
-            :key="team"
-            :class="{ selected: team == teamSelection }"
-            @click="selectTeam(team)"
-          >{{ team }}</button>
-        </div>
-      </div> -->
+    <div class="container section-team" style="background-color:#F5C26A">
+      
       <div class="row">
         <div class="col-12 no-margin-horizontal">
           <div class="team-container">
-            <div class="person" v-for="person in filteredTeam" :key="person.name">
+            <div class="team" v-for="t in filteredTeam" :key="t.team">
               <img
-                :src="!person.showAlt ? person.imageUrl : person.imageUrlAlt"
-                :class="{ 'web': person.team == 'Web' }"
-                :alt="`Photo of ${person.name}`"
-                @mouseover="person.showAlt = true"
-                @mouseleave="person.showAlt = false"
+                :src="!t.showAlt ? t.imageUrl : person.imageUrlAlt"
+                :class="{ 'web': t.team == 'Web' }"
+                :alt="`Photo of a Member of ${t.team}`"
+                @mouseover="t.showAlt = true"
+                @mouseleave="t.showAlt = false"
               />
-              <span class="name">{{ person.name }}</span>
-              <span class="title">{{ person.title }}</span>
+           
             </div>
-            <div class="person" v-for="(person, idx) in teamSpacer" :key="idx"></div>
+            
           </div>
         </div>
       </div>
@@ -94,35 +55,28 @@ export default {
   name: "AboutPage",
   components: { Arrows, ConferencePage },
   data() {
-    const makePerson = this.makePerson.bind(this);
+    const makeTeam = this.makeTeam.bind(this);
     return {
       selectedOrg: 2,
       orgs: ["TED", "TEDx", "TEDxUofW"],
       teamSelection: "All",
       team: [
-        makePerson("Lily Hansen", "Curators", "Curator", { hasAlt: false }),
-        makePerson("Arthur Liu", "Curators", "Curator", { hasAlt: false }),
-        makePerson("Karina Mendoza", "Curators", "Curator", { hasAlt: false }),
-        makePerson("Andrew Tang", "Design", "Design Manager", { hasAlt: false }),
-        makePerson("Mary Bonilla", "Design", "Graphic Designer", { hasAlt: false }),
-        makePerson("Youjean Cho", "Design", "Graphic Designer", { hasAlt: false }),
-        makePerson("Emilia Hughes", "Design", "UX Designer", { hasAlt: false }),
-        makePerson("Jessica Prasetyo", "Design", "UX Designer", { hasAlt: false }),
-        makePerson("Sarah Schmitz", "Public Relations", "Public Relations Manager", { hasAlt: false }),
-        makePerson("Cayla Surovsky", "Public Relations", "Social Media Content Producer", { hasAlt: false }),
-        makePerson("Alejandro Gonzalez", "Public Relations", "Outreach Coordinator", { hasAlt: false }),
-        makePerson("Gaurav Gowda", "Web", "Web Team Manager", { hasAlt: false }),
-        makePerson("Jessica Burroughs", "Web", "Web Developer", { hasAlt: false }),
-        makePerson("Jake Jung", "Web", "Web Developer", { hasAlt: false }),
+        makeTeam("Curators", { hasAlt: false }),
+        makeTeam("Design", { hasAlt: false }),
+        makeTeam("Speaker Selection", { hasAlt: false }),
+        makeTeam("Finance", { hasAlt: false }),
+        makeTeam("Web", { hasAlt: false }),
+        makeTeam("Public Relations", { hasAlt: false }),
+        makeTeam("Guest Experience", { hasAlt: false })
       ]
     };
   },
   methods: {
-    makePerson(name, team, title, opts) {
+    makeTeam(team, opts) {
       opts = opts || {};
       const hasPhoto = opts.hasPhoto !== false;
       const hasAlt = opts.hasAlt !== false;
-      const fileName = title.replace("/", "_") + " - " + name;
+      const fileName = team;
 
       let imageUrl = hasPhoto
         ? `/static/locker-headshots/${fileName}.svg`
@@ -163,15 +117,8 @@ export default {
         }
       });
       return uniqueTeams;
-    },
-    teamSpacer() {
-      const num = this.filteredTeam.length % 3;
-      const res = [];
-      for (let i = 0; i < num; i++) {
-        res.push(i);
-      }
-      return res;
     }
+   
   }
 };
 </script>
@@ -179,7 +126,6 @@ export default {
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $about-break: 1170px;
-
 
 
 /* Container holding the image and the text */
@@ -217,20 +163,23 @@ $about-break: 1170px;
     flex-wrap: wrap;
 
     button {
-      flex: 1 1;
       background: none;
       border: none;
-      color: $color-secondary;
+      text-transform: uppercase;
+      justify-content: center;
+      font-weight: bold;
+      color: rgb(102, 102, 102);
       white-space: nowrap;
-      border-bottom: 2px solid $color-secondary;
       border-radius: 0;
-      margin: 8px;
+
 
       &.selected {
-        color: $color-tertiary;
-        border-bottom: 5px solid $color-secondary;
+        color: $color-primary;
+        font-weight: 900;
       }
     }
+
+
   }
 
   .placeholder-image {
@@ -262,7 +211,6 @@ $about-break: 1170px;
 }
 
 .section-team {
-  background-image: url('/static/background-frame-white.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top center;
@@ -313,26 +261,29 @@ $about-break: 1170px;
       background: none;
       border: none;
       text-transform: uppercase;
+      justify-content: center;
       font-weight: bold;
-      color: rgb(94, 94, 94);
+      color: rgb(179, 89, 0);
       white-space: nowrap;
       border-radius: 0;
       margin: 8px;
 
       &.selected {
         color: $color-primary;
+        font-weight: 900;
       }
     }
   }
 
   .team-container {
+    justify-content: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
     justify-content: space-between;
 
-    .person {
+    .team {
       flex: 0 0 33%;
       display: flex;
       flex-direction: column;
@@ -351,23 +302,14 @@ $about-break: 1170px;
 
       img {
         margin-bottom: 8px;
-        max-width: 300px;
+        max-width: 700px
       }
 
-      .name {
-        font-size: 24px;
-      }
-
-      .title {
-        font-size: 18px;
-        font-weight: 700;
-      }
-
-      img.web:hover {
-        animation-name: web-hover-animate;
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-      }
+      // img.web:hover {
+      //   animation-name: web-hover-animate;
+      //   animation-duration: 2s;
+      //   animation-iteration-count: infinite;
+      // }
     }
   }
 }
