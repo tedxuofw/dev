@@ -1,8 +1,8 @@
 <template>
   <ConferencePage :selectedIndex="0" :footerMargin="false"> 
     
-    <div class="container section section-landing">
-      <!--<div class="animation">
+  <div class="container section section-landing">
+    <!--<div class="animation">
           <div id="Ted">
             <h7></h7>
           </div>
@@ -10,58 +10,81 @@
             <h8></h8>
           </div>
     </div> -->
-      <div class="section-landing-child">
-        <h1><a href="Home.vue"> Main Logo</a></h1> 
-        <!-- <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p> -->
-        <!--<a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a> -->
+    <div class="section-landing-child">
+      <video class="logo-video" autoplay="autoplay" muted loop preload="metadata">
+        <source src="/static/homepage_logo_2021.mp4">
+      </video>
+      <!-- <h1><a href="#">Main Logo</a></h1> -->
+      <!-- <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p> -->
+      <!--<a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a> -->
+    </div>
+  </div>
+
+  <div class="container section section-details">
+    <div class="section-details-child">
+      <img class="event-details" src="/static/event_details_2021.svg">
+      <img class="what-is-tedx" src="/static/what_is_tedx_2021.svg">
+    </div>
+    <!-- <router-link class="home-page-button" to="login">REGISTER</router-link> -->
+  </div>
+
+  <div class="container section section-building">
+    <div class="section-building-container">
+      <div class="homepage-banner">
+        <a href="#/speakers">
+          <img class="banner-image" src="/static/speakers_homepage_banner_2021.png">
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Speakers</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="homepage-banner">
+        <a href="#/sponsors">
+          <img class="banner-image" src="/static/sponsors_homepage_banner_2021.png">
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Sponsors</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="homepage-banner">
+        <a href="#/about">
+          <img class="banner-image" src="/static/about_homepage_banner_2021.png">
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>About</h3>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
+  </div>
 
-    <div class="container section section-details">
-      <!--
-      <div class="section-about-row">
-      <div class="section-about-text"> -->
-          <h2>Event Details </br> What is TEDxUofW</h2>
-        <!--
-        <p>
-          For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
-        </p>
-      </div>
-      </div>
-      -->
-      <!-- <router-link class="home-page-button" to="login">REGISTER</router-link> -->
-    </div>
-
-  <div class="container section section-speakers">
-      
-      <h2><a href="http://localhost:8080/#/speakers">Speakers</a></h2>
-      <div class="carousel-container">
+  <!-- <div class="container section section-speakers">
+    
+    <div class="carousel-container">
       <SpeakerCarousel />
-      </div>
-    
-      <!-- <router-link class="view-speakers-button" to="speakers">VIEW ALL SPEAKERS</router-link> -->
     </div>
+    <router-link class="view-speakers-button" to="speakers">VIEW ALL SPEAKERS</router-link>
+  </div> -->
 
-
-
-    <div class="container section section-landing">
-      <div class="section-landing-child">
-        <h1><a class="highlighted-red"> <a href="http://localhost:8080/#/sponsors">Sponsors</a></a></h1> 
-        <!-- <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p> -->
-        <!--<a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a> -->
-      </div>
+  <!-- <div class="container section section-landing">
+    <div class="section-landing-child">
+      
+      <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p>
+      <a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a>
     </div>
+  </div> -->
 
-    <div class="container section section-about">
-      <!--
-      <div class="section-about-row">
-      <div class="section-about-text"> -->
-        <h2><a class="highlighted-red"> <a href="http://localhost:8080/#/about">About</a></a></h2>
-    </div>
+  <!-- <div class="container section section-about">
+    <div class="section-about-row">
+    <div class="section-about-text">
+    <h2><a class="highlighted-red"> <a href="http://localhost:8080/#/about">About</a></a></h2>
+  </div> -->
 
-    
-    
-    
   </ConferencePage>
 </template>
 
@@ -284,6 +307,11 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .logo-video {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .section-landing {
@@ -365,6 +393,75 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   }
 }
 
+.section-building {
+  background-color: #fefbd8;
+  width: 100vw;
+
+  .section-building-container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto;
+    width: 80vw;
+    height: auto;
+    margin-bottom: 5vh;
+  }
+
+  .section-building-container .homepage-banner {
+    position: relative;
+    width: 80vw;
+    height: auto;
+  }
+
+  .section-building-container .homepage-banner a {
+    width: 80vw;
+    height: auto;
+    margin: 0;
+  }
+
+  .section-building-container .homepage-banner a .banner-image {
+    display: flex;
+    width: 80vw;
+    height: auto;
+  }
+
+  .section-building-container .homepage-banner a .overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .1s ease;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0);
+
+    .overlay-text {
+      display: flex;
+      position: relative;
+      font-size: 10vw;
+      height: 100%;
+      width: 100%;
+      color: white;
+      align-items: center;
+      justify-content: center;
+
+      h3 {
+        text-transform:uppercase; 
+        font-weight: 600;
+      }
+    }
+  }
+
+  .section-building-container .homepage-banner:hover a .overlay {
+    background: rgba(0,0,0,0.5);
+    opacity: 1;
+  }
+}
+
 .section-about {
   background-color: #fefbd8;
   //background-image: url('/static/background-frame-gray.png');
@@ -409,7 +506,6 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  min-height: 100vh;
   display: flex;
   //padding: 30px 0px;
 
@@ -427,7 +523,25 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
       background-color: #fefbd8;
   }
 
+  .section-details-child {
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 80%;
+    width: auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    column-gap: 5vw;
 
+    .event-details {
+      width: auto;
+      height: 40vh;
+    }
+
+    .what-is-tedx {
+      width: auto;
+      height: 40vh;
+    }
+  }
 }
 
 .section-accent {
@@ -461,6 +575,10 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     color: white;
   }
 
+  a {
+    margin: 0;
+  }
+
   .button-container {
     background-color: yellow;
   }
@@ -470,7 +588,6 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     color: white;
     background-color: purple;
   }
-
 
   .carousel-container {
     width: 100%;
