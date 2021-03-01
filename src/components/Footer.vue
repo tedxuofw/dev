@@ -115,7 +115,6 @@ $footer-tiny-break: 515px;
   margin: 0px;
   padding: 0px;
   line-height: 1.1em;
-  text-decoration: line-through;
 }
 
 </style>
