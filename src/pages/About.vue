@@ -1,36 +1,41 @@
 <template>
   <ConferencePage :selectedIndex="3">
+    <img src="../../static/Group 45.png" width="690px" height="400px">
     <div class="container section-about" style="background-color:#F5C26A">
       <div class="row">
-        <div style="justify-content: flex-start" class="img-container">
-          <img src="../../static/Group 45.svg" style="width:100%;">
+        <div class="img-container">
+          <img src="../../static/Group 45.png" width="100%">
+          <div class="top-left"><h2 class = "red">Meet the Team!</h2></div>
 
-          <div class="centered col-8">
-            <h2>What is TEDxUofW?</h2>
+          <div class="centered col-10">
             <p>
-              <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+              TED is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to Vancouver, British Columbia to speak for 18 minutes or less. 
             </p>
-     
-              <div class="about-selection">
-                <button
-                  class="team-button"
-                  v-for="team in teamNames"
-                  :key="team"
-                  :class="{ selected: team == teamSelection }"
-                  @click="selectTeam(team)"
-                >{{ team }}</button>
-              </div>
-         
+            <p>
+              TEDxUofW is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+            </p>
+          </div>
+
+          <div class="bottom-left">
+            <div class="about-selection">
+              <button
+                class="team-button"
+                v-for="team in teamNames"
+                :key="team"
+                :class="{ selected: team == teamSelection }"
+                @click="selectTeam(team)"
+              >{{ team }}</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="container section-team" style="background-color:#F5C26A">
-      
       <div class="row">
         <div class="col-12 no-margin-horizontal">
           <div class="team-container">
             <div class="team" v-for="t in filteredTeam" :key="t.team">
+              <!-- <span class="title">{{ t.team }}</span> -->
               <img
                 :src="!t.showAlt ? t.imageUrl : person.imageUrlAlt"
                 :class="{ 'web': t.team == 'Web' }"
@@ -38,9 +43,8 @@
                 @mouseover="t.showAlt = true"
                 @mouseleave="t.showAlt = false"
               />
-           
             </div>
-            
+            <div style="padding-bottom: 25px;color:#F5C26A">bottom padding</div>
           </div>
         </div>
       </div>
@@ -128,19 +132,110 @@ export default {
 $about-break: 1170px;
 
 
+
 /* Container holding the image and the text */
 .img-container {
   position: relative;
   display: flex;
   justify-content: center;
   color: black;
+
+  img {
+    height: 500px;
+  }
+
+  @media only screen and (max-width: 970px) {
+    img {
+        height: 540px;
+    }
+  }
+  @media only screen and (max-width: 910px) {
+    img {
+        height: 590px;
+    }
+  }
+  @media only screen and (max-width: 760px) {
+    img {
+        height: 630px;
+    }
+    p {
+
+      width: 95%;
+      margin: 2vw;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+    img {
+        height: 640px;
+    }
+    p {
+
+      width: 87%;
+      margin: 4vw;
+    }
+  }
+  @media only screen and (max-width: 690px) {
+    img {
+        height: 690px;
+    }
+    p {
+   
+      width: 87%;
+      margin: 5vw;
+    }
+  }
+  
+  @media only screen and (max-width: 640px) {
+    img {
+        height: 730px;
+    }
+    p {
+
+      width: 87%;
+      margin: 5vw;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    img {
+        height: 750px;
+    }
+    p {
+
+      width: 87%;
+      margin: 5vw;
+    }
+  }
+  @media only screen and (max-width: 550px) {
+    img {
+        height: 780px;
+    }
+    p {
+      width: 87%;
+      margin: 5vw;
+    }
+  }
 }
 /* Centered text */
 .centered {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 5vh;
+  left: 45px;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 7vh;
+  left: 35px;
 }
 
 .team-button:focus {
@@ -171,22 +266,13 @@ $about-break: 1170px;
       color: rgb(102, 102, 102);
       white-space: nowrap;
       border-radius: 0;
-
+      line-height: 0px;
 
       &.selected {
         color: $color-primary;
         font-weight: 900;
       }
     }
-
-
-  }
-
-  .placeholder-image {
-    background-color: $color-tertiary;
-    margin-top: -64px;
-    width: 80%;
-    height: 400px;
   }
 
   .content {
@@ -252,46 +338,22 @@ $about-break: 1170px;
     }
   }
 
-  .team-selection {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    button {
-      background: none;
-      border: none;
-      text-transform: uppercase;
-      justify-content: center;
-      font-weight: bold;
-      color: rgb(179, 89, 0);
-      white-space: nowrap;
-      border-radius: 0;
-      margin: 8px;
-
-      &.selected {
-        color: $color-primary;
-        font-weight: 900;
-      }
-    }
-  }
-
   .team-container {
     justify-content: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
     justify-content: space-between;
 
     .team {
-      flex: 0 0 33%;
+      flex: 0 0 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-bottom: 36px;
+      margin-top: 36px;
       max-width: 100%;
-      text-align: center;
+      text-align: left;
 
       img,
       span {
@@ -302,7 +364,12 @@ $about-break: 1170px;
 
       img {
         margin-bottom: 8px;
-        max-width: 700px
+        max-width: 95%
+      }
+
+      .title {
+        font-size: 2em;
+        font-weight: 24;
       }
 
       // img.web:hover {
@@ -314,7 +381,7 @@ $about-break: 1170px;
   }
 }
 
-$web-hover-animate-props: 0px 0px 40px 30px;
+$web-hover-animate-props: 0px 0px 40px 29px;
 @keyframes web-hover-animate {
   0% {
     box-shadow: $web-hover-animate-props #ff240033;
