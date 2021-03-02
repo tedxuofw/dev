@@ -298,11 +298,12 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 
 .section-landing-child {
   //background-image: url('/static/HomeGif.gif');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
+  // background-repeat: no-repeat;
+  // background-size: contain;
+  // background-position: center center;
   width: 100%;
-  //min-height: 90vh;
+  height: auto;
+  // min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -315,10 +316,9 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 }
 
 .section-landing {
+  width: 100%;
   text-align: center;
-  min-height: 90vh;
-  
-
+  // min-height: 90vh;
   
   h6 {
     color: #999997;
@@ -395,32 +395,33 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 
 .section-building {
   background-color: #fefbd8;
-  width: 100vw;
+  width: 100%;
 
   .section-building-container {
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: auto;
-    width: 80vw;
+    justify-items: center;
+    width: 100%;
     height: auto;
     margin-bottom: 5vh;
   }
 
   .section-building-container .homepage-banner {
     position: relative;
-    width: 80vw;
+    width: 80%;
     height: auto;
   }
 
   .section-building-container .homepage-banner a {
-    width: 80vw;
+    width: 100%;
     height: auto;
     margin: 0;
   }
 
   .section-building-container .homepage-banner a .banner-image {
     display: flex;
-    width: 80vw;
+    width: 100%;
     height: auto;
   }
 
@@ -498,6 +499,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 
 .section-details {
   background-color: #fefbd8;
+  width: 100%;
   //background-image: url('/static/background-frame-gray.png');
   // background-size: cover;
   // background-repeat: no-repeat;
