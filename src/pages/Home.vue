@@ -158,33 +158,33 @@ export default {
       speakers: speakers.sort(() => Math.random() - 0.5)
     }
   },
-  mounted:function(){
-    this.animateText();
-  },
+  // mounted:function(){
+  //   this.animateText();
+  // },
   methods: {
     getFileName: function(name) {
       return "/static/speaker-headshots/" + name.toLowerCase().replace(" ", '_') + ".jpg";
     },
     getSpeakerCarouselSlide: function(name) {
       return name + " " + speakers.name;
-    },
-    myMethod:function(){
-      console.log("My method")
-      document.getElementById("Ted").textContent += "TEDx "   
-      counter++  
-      if (counter === 10){
-        clearInterval(intervalId)
-        document.getElementById("Ted").textContent += "TED"
-        document.getElementById("X").textContent = "X"
-      }
-    },
-    animateText:function() { 
-      if (intervalId === null) {
-        console.log(intervalId)
-        intervalId = setInterval(this.myMethod, 450);
-        console.log("if statement")
-      }
     }
+    // myMethod:function(){
+    //   console.log("My method")
+    //   document.getElementById("Ted").textContent += "TEDx "   
+    //   counter++  
+    //   if (counter === 10){
+    //     clearInterval(intervalId)
+    //     document.getElementById("Ted").textContent += "TED"
+    //     document.getElementById("X").textContent = "X"
+    //   }
+    // },
+    // animateText:function() { 
+    //   if (intervalId === null) {
+    //     console.log(intervalId)
+    //     intervalId = setInterval(this.myMethod, 450);
+    //     console.log("if statement")
+    //   }
+    // }
   },
   beforeMount(){
     console.log("beforeMount");
@@ -509,7 +509,13 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   border: 0;
   box-sizing: border-box;
   display: flex;
+  align-items: center;
+  justify-items: center;
   //padding: 30px 0px;
+
+  @media screen and (orientation: portrait) {
+    max-height: 20vh;
+  }
 
   h2 {
     color: $color-tertiary;
@@ -528,20 +534,33 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   .section-details-child {
     display: grid;
     grid-template-columns: auto auto;
-    height: 80%;
-    width: auto;
+    height: auto;
+    width: 80%;
+    justify-items: center;
     margin-top: 5vh;
     margin-bottom: 5vh;
     column-gap: 5vw;
 
+    @media screen and (orientation: portrait) {
+      column-gap: 2vw;
+    }
+
     .event-details {
       width: auto;
       height: 40vh;
+
+      @media screen and (orientation: portrait) {
+        max-width: 25vw;
+      }
     }
 
     .what-is-tedx {
       width: auto;
       height: 40vh;
+
+      @media screen and (orientation: portrait) {
+        max-width: 50vw;
+      }
     }
   }
 }
