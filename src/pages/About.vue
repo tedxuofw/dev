@@ -1,6 +1,6 @@
 <template>
   <ConferencePage :selectedIndex="3">
-    <img src="../../static/Group 45.png" width="690px" height="400px">
+    
     <div class="container section-about" style="background-color:#F5C26A">
       <div class="row">
         <div class="img-container">
