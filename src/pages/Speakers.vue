@@ -210,7 +210,7 @@ export default {
     }
   },
   created: function() {
-    setTimeout(this.addSpeaker(), 1000);
+    setTimeout(this.addSpeaker(), 500);
     console.log("Created");
   }
 };
