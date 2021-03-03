@@ -20,16 +20,19 @@
     </div>
   </div>
 
-  <div class="container section section-details">
+  <!-- <div class="container section section-details">
     <div class="section-details-child">
       <img class="event-details" src="/static/event_details_2021.svg">
       <img class="what-is-tedx" src="/static/what_is_tedx_2021.svg">
     </div>
-    <!-- <router-link class="home-page-button" to="login">REGISTER</router-link> -->
-  </div>
+    <router-link class="home-page-button" to="login">REGISTER</router-link>
+  </div> -->
 
   <div class="container section section-building">
     <div class="section-building-container">
+      <div class="homepage-banner">
+        <img class="banner-image" src="/static/details_and_description_2021.svg">
+      </div>
       <div class="homepage-banner">
         <a href="#/speakers">
           <img class="banner-image" src="/static/speakers_homepage_banner_2021.png">
@@ -394,22 +397,24 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 }
 
 .section-building {
-  background-color: #fefbd8;
+  background-color: white;
   width: 100%;
 
   .section-building-container {
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     grid-template-columns: auto;
+    row-gap: 2.5vh;
     justify-items: center;
     width: 100%;
     height: auto;
+    margin-top: 5vh;
     margin-bottom: 5vh;
   }
 
   .section-building-container .homepage-banner {
     position: relative;
-    width: 80%;
+    width: 75%;
     height: auto;
   }
 
@@ -417,6 +422,12 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     width: 100%;
     height: auto;
     margin: 0;
+  }
+
+  .section-building-container .homepage-banner .banner-image {
+    display: flex;
+    width: 100%;
+    height: auto;
   }
 
   .section-building-container .homepage-banner a .banner-image {
@@ -433,6 +444,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     left: 0;
     right: 0;
     margin: 0;
+    border-radius: 2.5%;
     height: 100%;
     width: 100%;
     opacity: 0;
