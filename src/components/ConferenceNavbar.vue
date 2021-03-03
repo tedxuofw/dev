@@ -2,13 +2,13 @@
   <div class="conference-nav">
     <div class="mobile-nav">
       <router-link class="logo-holder-link" to="/">
-        <img class="logo logo-default" src="/static/newlogo.png" alt="TEDxUofW Logo" />
+        <img class="logo logo-default" src="/static/logo_2021.svg" alt="TEDxUofW Logo" />
       </router-link>
       <button class="hamburger" :class="{ active: mobileShowNav }" @click="onClickNav"><img src="/static/hamburger.svg" alt="Menu icon" /></button>
     </div>
     <tab-set style="justify-content: center;" :secondary="secondary" :mobileShowNav="mobileShowNav">
       <tab-option logo :click="() => navigateTo('/')">
-        <img class="logo logo-default" src="/static/newlogo.png" alt="TEDxUofW Logo" />
+        <img class="logo logo-default" src="/static/logo_2021.svg" alt="TEDxUofW Logo" />
       </tab-option>
       <tab-option style="text-transform: uppercase; letter-spacing: 0.005em;" class="hover-red" v-for="(page, pageIndex) in pages" :key="pageIndex"
         :selected="selectedIndex == pageIndex" :secondary="secondary"

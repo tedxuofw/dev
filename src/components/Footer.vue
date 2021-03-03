@@ -5,7 +5,7 @@
     <h3 class="our-event-date">APRIL 17th, 2021 <br>10:00 AM to 12:00 PM</h3>
 
     <a class="home-page-button" href="#">
-      <img class="our-logo" src="/static/newlogo.png" alt="TEDxUofW logo"/>
+      <img class="our-logo" src="/static/logo_2021.svg" alt="TEDxUofW logo"/>
     </a>
     <div class="social">
       <div class="social-bubbles">
