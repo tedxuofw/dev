@@ -169,7 +169,6 @@ $about-break: 1170px;
         height: 640px;
     }
     p {
-
       width: 87%;
       margin: 4vw;
     }
@@ -215,12 +214,22 @@ $about-break: 1170px;
       margin: 5vw;
     }
   }
+  @media only screen and (max-width: 520px) {
+    img {
+        height: 870px;
+    }
+    p {
+      font-size: 4vw;
+      width: 87%;
+      margin: 5vw;
+    }
+  }
 }
 /* Centered text */
 .centered {
   position: absolute;
   top: 45%;
-  left: 50%;
+  left: 49%;
   transform: translate(-50%, -50%);
 }
 
@@ -228,14 +237,14 @@ $about-break: 1170px;
 .top-left {
   position: absolute;
   top: 5vh;
-  left: 45px;
+  left: 3vw;
 }
 
 /* Bottom left text */
 .bottom-left {
   position: absolute;
-  bottom: 7vh;
-  left: 35px;
+  bottom: 8vh;
+  left: 3vw;
 }
 
 .team-button:focus {
@@ -261,6 +270,7 @@ $about-break: 1170px;
       background: none;
       border: none;
       text-transform: uppercase;
+      font-size: 1rem;
       justify-content: center;
       font-weight: bold;
       color: rgb(102, 102, 102);
@@ -272,6 +282,11 @@ $about-break: 1170px;
         color: $color-primary;
         font-weight: 900;
       }
+
+      @media only screen and (max-width: 520px) {
+        font-size: 12px;
+        padding-bottom: 2.5vh;
+      }
     }
   }
 
@@ -282,7 +297,7 @@ $about-break: 1170px;
   }
 
   h2 {
-    font-size: 48px;
+    font-size: 3rem;
     line-height: 1em;
     margin: 16px 0;
     text-align: left;
