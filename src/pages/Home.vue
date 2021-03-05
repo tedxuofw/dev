@@ -30,7 +30,7 @@
 
   <div class="container section section-building">
     <div class="section-building-container">
-      <div class="homepage-banner">
+      <div class="top-banner">
         <img class="banner-image" src="/static/details_and_description_2021.svg">
       </div>
       <div class="homepage-banner">
@@ -399,23 +399,39 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 .section-building {
   background-color: white;
   width: 100%;
+  display: flex;
+  justify-items: center;
 
   .section-building-container {
+    background-color: #e62b1e;
+    border-radius: 1%;
     display: grid;
     grid-template-rows: auto auto auto auto;
     grid-template-columns: auto;
-    row-gap: 2.5vh;
     justify-items: center;
-    width: 100%;
+    width: 82.5%;
     height: auto;
-    margin-top: 5vh;
     margin-bottom: 5vh;
   }
 
   .section-building-container .homepage-banner {
+    margin-top: 1.25vh;
+    margin-bottom: 1.25vh;
     position: relative;
-    width: 75%;
+    width: 95%;
     height: auto;
+  }
+
+  .section-building-container .top-banner {
+    margin-top: 10vh;
+    margin-bottom: 1.25vh;
+    position: relative;
+    width: 95%;
+    height: auto;
+
+    @media screen and (orientation: portrait) {
+      margin-top: 2.5vh;
+    }
   }
 
   .section-building-container .homepage-banner a {
@@ -425,6 +441,12 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   }
 
   .section-building-container .homepage-banner .banner-image {
+    display: flex;
+    width: 100%;
+    height: auto;
+  }
+
+  .section-building-container .top-banner .banner-image {
     display: flex;
     width: 100%;
     height: auto;
@@ -455,7 +477,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     .overlay-text {
       display: flex;
       position: relative;
-      font-size: 10vw;
+      font-size: 7.5vw;
       height: 100%;
       width: 100%;
       color: white;
