@@ -404,6 +404,9 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 
   .section-building-container {
     background-color: #e62b1e;
+    border-color: black;
+    border-style: solid;
+    border-width: 5%;
     border-radius: 1%;
     display: grid;
     grid-template-rows: auto auto auto auto;
