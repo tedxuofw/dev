@@ -102,7 +102,7 @@ export default {
      position: absolute;
      //max-width: 100%;
      height: auto;
-     padding-top: 55vw;
+     padding-top: 60%;
      left: 27vw;
    }
  
@@ -113,7 +113,7 @@ export default {
      position: absolute;
      //max-width: 100%;
      height: auto;
-     padding-top: 100vw;
+     padding-top: 100%;
      left: 27vw;
    }
  }
