@@ -1,13 +1,15 @@
 <template>
   <ConferencePage :selectedIndex="3">
-    
     <div class="container section-about" style="background-color:#F5C26A">
       <div class="row">
         <div class="img-container">
-          <img src="../../static/Group 45.png" width="100%">
-          <div class="top-left"><h2 class = "red">Meet the Team!</h2></div>
+          
+          <img id="myImg" src="../../static/Group 45.png">
+          <div class="top-left">
+            <h2 class="red">Meet the Team!</h2>
+          </div>
 
-          <div class="centered col-10">
+          <div class="centered">
             <p>
               TED is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to Vancouver, British Columbia to speak for 18 minutes or less. 
             </p>
@@ -87,8 +89,7 @@ export default {
         : "/static/locker-headshots/blank_face.png";
 
       let imageUrlAlt = hasPhoto
-        ? `/static/locker-headshots/${fileName}_x.jpg`
-        : "/static/locker-headshots/happy_face.png";
+        "/static/locker-headshots/blank_face.png";
 
       if (!hasAlt) {
         imageUrlAlt = imageUrl;
@@ -125,6 +126,17 @@ export default {
    
   }
 };
+
+let imgArea = 3000 * 400;
+window.onload = function() {
+  document.getElementById("myImg").width = "100%";
+  document.getElementById("myImg").height = imgArea / (document.getElementById("myImg").width * 2);
+}
+
+window.onresize = function() {
+  document.getElementById("myImg").width = "100%";
+  document.getElementById("myImg").height = imgArea / (document.getElementById("myImg").width * 2);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -141,110 +153,40 @@ $about-break: 1170px;
   color: black;
 
   img {
-    height: 500px;
-  }
-
-  @media only screen and (max-width: 970px) {
-    img {
-        height: 540px;
-    }
-  }
-  @media only screen and (max-width: 910px) {
-    img {
-        height: 590px;
-    }
-  }
-  @media only screen and (max-width: 760px) {
-    img {
-        height: 630px;
-    }
-    p {
-
-      width: 95%;
-      margin: 2vw;
-    }
-  }
-  @media only screen and (max-width: 750px) {
-    img {
-        height: 640px;
-    }
-    p {
-      width: 87%;
-      margin: 4vw;
-    }
-  }
-  @media only screen and (max-width: 690px) {
-    img {
-        height: 690px;
-    }
-    p {
-   
-      width: 87%;
-      margin: 5vw;
-    }
-  }
-  
-  @media only screen and (max-width: 640px) {
-    img {
-        height: 730px;
-    }
-    p {
-
-      width: 87%;
-      margin: 5vw;
-    }
-  }
-
-  @media only screen and (max-width: 600px) {
-    img {
-        height: 750px;
-    }
-    p {
-
-      width: 87%;
-      margin: 5vw;
-    }
-  }
-  @media only screen and (max-width: 550px) {
-    img {
-        height: 780px;
-    }
-    p {
-      width: 87%;
-      margin: 5vw;
-    }
-  }
-  @media only screen and (max-width: 520px) {
-    img {
-        height: 870px;
-    }
-    p {
-      font-size: 4vw;
-      width: 87%;
-      margin: 5vw;
-    }
+    width: 100%;
   }
 }
+
 /* Centered text */
 .centered {
   position: absolute;
-  top: 45%;
-  left: 49%;
+  top: 50%;
+  left: 50%;
+  width: 85%;
   transform: translate(-50%, -50%);
+  text-align: left;
 }
 
 /* Top left text */
 .top-left {
   position: absolute;
-  top: 5vh;
+  top: 13%;
   left: 3vw;
+
+  @media only screen and (max-width: 1000px) {
+    top: 20%
+  }
 }
 
 /* Bottom left text */
 .bottom-left {
   position: absolute;
-  bottom: 8vh;
+  bottom: 13%;
   left: 3vw;
+
+  @media only screen and (max-width: 1000px) {
+    bottom: 20%
+  }
 }
 
 .team-button:focus {
@@ -283,10 +225,7 @@ $about-break: 1170px;
         font-weight: 900;
       }
 
-      @media only screen and (max-width: 520px) {
-        font-size: 12px;
-        padding-bottom: 2.5vh;
-      }
+ 
     }
   }
 
@@ -297,7 +236,7 @@ $about-break: 1170px;
   }
 
   h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 1em;
     margin: 16px 0;
     text-align: left;
