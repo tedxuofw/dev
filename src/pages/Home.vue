@@ -14,7 +14,7 @@
       <!--
       <video class="logo-video" autoplay="autoplay" muted loop preload="metadata">
       -->
-        <img src="/static/homepage_logo_2021.gif">
+      <img class="logo-video" src="/static/homepage_logo_2021.gif">
       <!--
       </video>
       -->
