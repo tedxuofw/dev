@@ -11,9 +11,13 @@
           </div>
     </div> -->
     <div class="section-landing-child">
+      <!--
       <video class="logo-video" autoplay="autoplay" muted loop preload="metadata">
-        <source src="/static/homepage_logo_2021.mp4">
+      -->
+        <img src="/static/homepage_logo_2021.gif">
+      <!--
       </video>
+      -->
       <!-- <h1><a href="#">Main Logo</a></h1> -->
       <!-- <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p> -->
       <!--<a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a> -->
