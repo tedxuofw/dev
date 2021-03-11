@@ -10,7 +10,8 @@
    </div>
    -->
     <div class="fridge">
-     <img class="background-image" src="/static/sponsors-background-2021.svg" width="100%">
+     <img class="background-image" src="/static/sponsors-2021.png" width="100%">
+     <!--
      <div class="upper-fridge">
        <div class="logo">
          <img class="logo-image" src="/static/sponsor-logos/2021/asuw-2021.png" >
@@ -31,6 +32,7 @@
            <img class="logo-image" src="/static/sponsor-logos/2021/uwmac-2021.png" >
        </div>
      </div> 
+     -->
    </div>  
     
   
