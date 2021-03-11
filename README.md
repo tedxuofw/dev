@@ -1,6 +1,6 @@
-# 2019 TEDxUofW Website
+# 20121 TEDxUofW Website
 
-> 2017-18 TEDx University of Washington website
+> 2020-21 TEDx University of Washington website
 
 ## Build Tools and Configs
 
