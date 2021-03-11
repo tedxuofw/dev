@@ -164,7 +164,7 @@ export default {
       }
 
       if (this.shownSpeakers.length != this.speakers.length) {
-        setTimeout(this.addSpeaker, 1000);
+        setTimeout(this.addSpeaker, 500);
       }
     },
     showModal(speakerNum) {

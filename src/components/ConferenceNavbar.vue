@@ -18,7 +18,7 @@
         <!-- <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" />
         <img class="footstep" src="/static/footstep.png" alt="Footstep icon" /> -->
-        <button class="tertiary cta-button no-margin" @click="() => navigateTo('/login')">LOGIN</button>
+        <button class="tertiary cta-button no-margin" @click="() => navigateTo('https://docs.google.com/forms/d/e/1FAIpQLScVzpwKwCGg5k-ojyl2CBt5unRlBLE42FfLU2LxlSmqdM0mpg/viewform?vc=0&c=0&w=1&flr=0&gxids=7628')">REGISTER</button>
       </tab-option>
     </tab-set>
   </div>
@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     navigateTo(url) {
-      this.$router.push(url);
+      window.location.replace(url);
     },
     onClickNav() {
       this.mobileShowNav = !this.mobileShowNav;
