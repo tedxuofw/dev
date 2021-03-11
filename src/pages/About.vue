@@ -1,64 +1,52 @@
 <template>
   <ConferencePage :selectedIndex="3">
-    <div class="container section-about">
-      <div style="justify-content: flex-start" class="row team-title">
-        <div class="col-8 no-margin-horizontal">
-          <h2>
-            ABOUT
-            <!-- <span class="highlightred">TEDx</span> -->
-            <span class="highlight2">TEDxUofW</span>
-            <img src="/static/wave.png" style="height: 48px" />
-          </h2>
-        </div>
-      </div>
+    <div class="container section-about" style="background-color:#F5C26A">
       <div class="row">
-        <div class="content col-7">
-          <p>
-            <span class="red">TED</span> is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to speak for 18 minutes or less. Many of these talks are then made available, free, at TED.com. TED speakers have included Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson, Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan and Daniel Kahneman. The annual TED Conference takes place each spring in Vancouver, British Columbia.
-          </p>
-        </div>
-        <div class="content col-7">
-          <p>
-            <span class="red">TEDxUofW</span> is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
-          </p>
+        <div class="img-container">
+          
+          <img id="myImg" src="../../static/Group 45.png">
+          <div class="top-left">
+            <h2 class="red">Meet the Team!</h2>
+          </div>
+
+          <div class="centered">
+            <p>
+              TED is a nonprofit organization devoted to Ideas Worth Spreading. Started as a four-day conference in California 30 years ago, TED has grown to support its mission with multiple initiatives. The two annual TED Conferences invite the world's leading thinkers and doers to Vancouver, British Columbia to speak for 18 minutes or less. 
+            </p>
+            <p>
+              TEDxUofW is established to bring inspirational and informative TED style talks to the University of Washington. Since 2012, our organization has sought to give amazing speakers a receptive audience to share their passion. Our all student-run organization has put on a sold-out event for four years in a row, gathering a collection of great creative thinkers, scientific minds, community leaders, and much more.
+            </p>
+          </div>
+
+          <div class="bottom-left">
+            <div class="about-selection">
+              <button
+                class="team-button"
+                v-for="team in teamNames"
+                :key="team"
+                :class="{ selected: team == teamSelection }"
+                @click="selectTeam(team)"
+              >{{ team }}</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="container section-team">
-      <div class="row team-title">
-        <div class="col-12 no-margin-horizontal">
-          <h2>Meet the team
-            <img src="/static/boop.png" style="height: 48px" />
-          </h2>
-          
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 no-margin-horizontal team-selection">
-          <button
-            class="team-button"
-            v-for="team in teamNames"
-            :key="team"
-            :class="{ selected: team == teamSelection }"
-            @click="selectTeam(team)"
-          >{{ team }}</button>
-        </div>
-      </div>
+    <div class="container section-team" style="background-color:#F5C26A">
       <div class="row">
         <div class="col-12 no-margin-horizontal">
           <div class="team-container">
-            <div class="person" v-for="person in filteredTeam" :key="person.name">
+            <div class="team" v-for="t in filteredTeam" :key="t.team">
+              <!-- <span class="title">{{ t.team }}</span> -->
               <img
-                :src="!person.showAlt ? person.imageUrl : person.imageUrlAlt"
-                :class="{ 'web': person.team == 'Web' }"
-                :alt="`Photo of ${person.name}`"
-                @mouseover="person.showAlt = true"
-                @mouseleave="person.showAlt = false"
+                :src="!t.showAlt ? t.imageUrl : person.imageUrlAlt"
+                :class="{ 'web': t.team == 'Web' }"
+                :alt="`Photo of a Member of ${t.team}`"
+                @mouseover="t.showAlt = true"
+                @mouseleave="t.showAlt = false"
               />
-              <span class="name">{{ person.name }}</span>
-              <span class="title">{{ person.title }}</span>
             </div>
-            <div class="person" v-for="(person, idx) in teamSpacer" :key="idx"></div>
+            <div style="padding-bottom: 25px;color:#F5C26A">bottom padding</div>
           </div>
         </div>
       </div>
@@ -73,84 +61,42 @@ export default {
   name: "AboutPage",
   components: { Arrows, ConferencePage },
   data() {
-    const makePerson = this.makePerson.bind(this);
+    const makeTeam = this.makeTeam.bind(this);
     return {
       selectedOrg: 2,
       orgs: ["TED", "TEDx", "TEDxUofW"],
       teamSelection: "All",
       team: [
-        makePerson("Miranda Reisman", "Curators", "Curator", { hasAlt: false }),
-        makePerson("Rahul Prasad", "Curators", "Curator", { hasAlt: false }),
-
-        makePerson("TJ Gascho", "Design", "Design Manager", { hasAlt: false }),
-        makePerson("Mary Sciscente Bonilla", "Design", "Photographer", { hasAlt: false }),
-        makePerson("Julia (I-Ting) Chao", "Design", "Branding Designer", { hasAlt: false }),
-        makePerson("Sarah Schmitz", "Design", "Graphic Designer", { hasAlt: false }),
-        makePerson("Emma Switzer", "Design", "Product Designer", { hasAlt: false }),
-
-        makePerson(
-          "Lily Hansen",
-          "Speaker Selection",
-          "Speaker Selection Manager", { hasAlt: false }
-        ),
-        makePerson("Claire Komori", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Jacqueline Hunter", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Karina Mendoza", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Kavya Ganesan", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Peyton Pedrozo", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-        makePerson("Suhani Dalal", "Speaker Selection", "Speaker Selection", { hasAlt: false }),
-
-        makePerson("Emma Ueda", "Finance", "Finance Manager", { hasAlt: false }),
-        makePerson("Mini Kang", "Finance", "Sponsorship Coordinator", { hasAlt: false }),
-        makePerson("Tamar Pekker", "Finance", "Sponsorship Coordinator", { hasAlt: false }),
-        makePerson("Hyesu Lee", "Finance", "Financial Logistics", { hasAlt: false }),
-        makePerson("Katherine Parks", "Finance", "Financial Analyst", { hasAlt: false }),
-
-        makePerson("Yan Zhe Ong", "Tech", "Technical Team Manager", { hasAlt: false }),
-        makePerson("Marcus King", "Tech", "Technical Coordinator", { hasAlt: false }),
-        makePerson("Ryan Horn", "Tech", "Stage Designer", { hasAlt: false }),
-        makePerson("Jacob Renn", "Tech", "Videographer", { hasAlt: false }),
-        makePerson("Arthur Liu", "Tech", "Web Lead", { hasAlt: false }),
-        makePerson("Shawn Lee", "Tech", "Web Developer", { hasAlt: false }),
-        makePerson("Mina Kang", "Tech", "UI/UX Designer", { hasAlt: false }),
-
-        makePerson("Sam Freeman", "Public Relations", "Public Relations Manager", { hasAlt: false }),
-        makePerson("Pavithra Prabhu", "Public Relations", "Outreach Coordinator", { hasAlt: false }),
-        makePerson("Angel Cheung", "Public Relations", "Communications Coordinator", { hasAlt: false }),
-        makePerson("Audrey Tjokro", "Public Relations", "Social Media Content Creator", { hasAlt: false }),
-
-        makePerson("Chloee Henley", "Guest Experience", "Guest Experience Manager", { hasAlt: false }),
-        makePerson("Ieva Karvelyte", "Guest Experience", "Campus Coordinator", { hasAlt: false }),
-        makePerson("Shania John", "Guest Experience", "Experience Parlor Developer", { hasAlt: false }),
-        makePerson("Yoshimi Hata", "Guest Experience", "Experience Parlor Developer", { hasAlt: false }),
-        makePerson("Hong Ge", "Guest Experience", "External Coordinator", { hasAlt: false }),
-        makePerson("Liuis Jiang", "Guest Experience", "Guest Experience Facilitator", { hasAlt: false }),
+        makeTeam("Curators", { hasAlt: false }),
+        makeTeam("Design", { hasAlt: false }),
+        makeTeam("Speaker Selection", { hasAlt: false }),
+        makeTeam("Finance", { hasAlt: false }),
+        makeTeam("Web", { hasAlt: false }),
+        makeTeam("Public Relations", { hasAlt: false }),
+        makeTeam("Guest Experience", { hasAlt: false })
       ]
     };
   },
   methods: {
-    makePerson(name, team, title, opts) {
+    makeTeam(team, opts) {
       opts = opts || {};
       const hasPhoto = opts.hasPhoto !== false;
       const hasAlt = opts.hasAlt !== false;
-      const fileName = title.replace("/", "_") + " - " + name;
+      const fileName = team;
 
       let imageUrl = hasPhoto
-        ? `/static/headshots/${fileName}.png`
-        : "/static/headshots/blank_face.png";
+        ? `/static/locker-headshots/${fileName}.svg`
+        : "/static/locker-headshots/blank_face.png";
 
       let imageUrlAlt = hasPhoto
-        ? `/static/headshots/${fileName}_x.jpg`
-        : "/static/headshots/happy_face.png";
+        "/static/locker-headshots/blank_face.png";
 
       if (!hasAlt) {
         imageUrlAlt = imageUrl;
       }
 
       return {
-        name,
         team,
-        title,
         showAlt: false,
         imageUrl,
         imageUrlAlt
@@ -176,22 +122,72 @@ export default {
         }
       });
       return uniqueTeams;
-    },
-    teamSpacer() {
-      const num = this.filteredTeam.length % 3;
-      const res = [];
-      for (let i = 0; i < num; i++) {
-        res.push(i);
-      }
-      return res;
     }
+   
   }
 };
+
+let imgArea = 3000 * 400;
+window.onload = function() {
+  document.getElementById("myImg").width = "100%";
+  document.getElementById("myImg").height = imgArea / (document.getElementById("myImg").width * 2);
+}
+
+window.onresize = function() {
+  document.getElementById("myImg").width = "100%";
+  document.getElementById("myImg").height = imgArea / (document.getElementById("myImg").width * 2);
+}
 </script>
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
 $about-break: 1170px;
+
+
+
+/* Container holding the image and the text */
+.img-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: black;
+
+  img {
+    width: 100%;
+  }
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 13%;
+  left: 3vw;
+
+  @media only screen and (max-width: 1000px) {
+    top: 20%
+  }
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 13%;
+  left: 3vw;
+
+  @media only screen and (max-width: 1000px) {
+    bottom: 20%
+  }
+}
 
 .team-button:focus {
   outline: none;
@@ -213,27 +209,24 @@ $about-break: 1170px;
     flex-wrap: wrap;
 
     button {
-      flex: 1 1;
       background: none;
       border: none;
-      color: $color-secondary;
+      text-transform: uppercase;
+      font-size: 1rem;
+      justify-content: center;
+      font-weight: bold;
+      color: rgb(102, 102, 102);
       white-space: nowrap;
-      border-bottom: 2px solid $color-secondary;
       border-radius: 0;
-      margin: 8px;
+      line-height: 0px;
 
       &.selected {
-        color: $color-tertiary;
-        border-bottom: 5px solid $color-secondary;
+        color: $color-primary;
+        font-weight: 900;
       }
-    }
-  }
 
-  .placeholder-image {
-    background-color: $color-tertiary;
-    margin-top: -64px;
-    width: 80%;
-    height: 400px;
+ 
+    }
   }
 
   .content {
@@ -243,7 +236,7 @@ $about-break: 1170px;
   }
 
   h2 {
-    font-size: 48px;
+    font-size: 2.5rem;
     line-height: 1em;
     margin: 16px 0;
     text-align: left;
@@ -258,7 +251,6 @@ $about-break: 1170px;
 }
 
 .section-team {
-  background-image: url('/static/background-frame-white.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: top center;
@@ -300,43 +292,22 @@ $about-break: 1170px;
     }
   }
 
-  .team-selection {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    button {
-      background: none;
-      border: none;
-      text-transform: uppercase;
-      font-weight: bold;
-      color: rgb(94, 94, 94);
-      white-space: nowrap;
-      border-radius: 0;
-      margin: 8px;
-
-      &.selected {
-        color: $color-primary;
-      }
-    }
-  }
-
   .team-container {
+    justify-content: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
     justify-content: space-between;
 
-    .person {
-      flex: 0 0 33%;
+    .team {
+      flex: 0 0 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-bottom: 36px;
+      margin-top: 36px;
       max-width: 100%;
-      text-align: center;
+      text-align: left;
 
       img,
       span {
@@ -347,28 +318,24 @@ $about-break: 1170px;
 
       img {
         margin-bottom: 8px;
-        max-width: 300px;
-      }
-
-      .name {
-        font-size: 24px;
+        max-width: 95%
       }
 
       .title {
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 2em;
+        font-weight: 24;
       }
 
-      img.web:hover {
-        animation-name: web-hover-animate;
-        animation-duration: 2s;
-        animation-iteration-count: infinite;
-      }
+      // img.web:hover {
+      //   animation-name: web-hover-animate;
+      //   animation-duration: 2s;
+      //   animation-iteration-count: infinite;
+      // }
     }
   }
 }
 
-$web-hover-animate-props: 0px 0px 40px 30px;
+$web-hover-animate-props: 0px 0px 40px 29px;
 @keyframes web-hover-animate {
   0% {
     box-shadow: $web-hover-animate-props #ff240033;
