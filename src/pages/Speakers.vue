@@ -21,29 +21,28 @@
       <h1>Speakers</h1>
       <div class="accent"></div>
     </div> -->
-    <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start" >
-      <h1 class="speakers-title">SPEAKERS</h1>
-      <!-- <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" /> -->
-    </div>
     <div class="container section-sponsors">
-      <div class="row">
-        <div class="speakers-container">
-          <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl">
-            <img :src="speaker.imageUrl" />
-            <div class="overlay show-overlay-if-mobile">
-              <div class="overlay-text">
-                <h3 style="text-transform:uppercase; font-weight: 600">{{ speaker.name }}</h3>
-                <h3>{{ speaker.title }}</h3>
-              </div>
+      <div class="banner">
+        <!-- <h1 class="speakers-title">SPEAKERS</h1>
+        <h2 class="speakers-subtitle">Meet the TEDxUofW 2021 speakers!</h2> -->
+        <!-- <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" /> -->
+      </div>
+      <div class="speakers-container">
+        <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl" :style="{visibility: shownSpeakers.includes(i) ? 'visible' : 'hidden', opacity: shownSpeakers.includes(i) ? 1 : 0}">
+          <img :src="speaker.imageUrl" />
+          <div class="overlay show-overlay-if-mobile">
+            <div class="overlay-text">
+              <h3 style="text-transform:uppercase; font-weight: 600;">{{ speaker.name }}</h3>
+              <h3>{{ speaker.title }}</h3>
             </div>
-            <!-- <div class="content">
-              <span class="name">{{ speaker.name }}</span>
-              <span class="title">{{ speaker.title }}</span>
-              <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
-            </div> -->
-          </button>
-          <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
-        </div>
+          </div>
+          <!-- <div class="content">
+            <span class="name">{{ speaker.name }}</span>
+            <span class="title">{{ speaker.title }}</span>
+            <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
+          </div> -->
+        </button>
+        <!-- div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div> -->
       </div>
     </div>
 
@@ -85,6 +84,7 @@ export default {
   data() {
     const makeSpeaker = this.makeSpeaker.bind(this);
     return {
+      shownSpeakers: [],
       isModalVisible: false,
       modalSelectedSpeaker: 1,
       selectedSpeakerIndex: -1,
@@ -153,6 +153,20 @@ export default {
     };
   },
   methods: {
+    addSpeaker() {
+      let currSize = this.shownSpeakers.length;
+      while (currSize == this.shownSpeakers.length) {
+        let randSpeaker = parseInt(Math.floor(Math.random() * Math.floor(this.speakers.length)));
+
+        if (!this.shownSpeakers.includes(randSpeaker)) {
+          this.shownSpeakers.push(randSpeaker);
+        }
+      }
+
+      if (this.shownSpeakers.length != this.speakers.length) {
+        setTimeout(this.addSpeaker, 1000);
+      }
+    },
     showModal(speakerNum) {
       this.isModalVisible = true;
       this.modalSelectedSpeaker = speakerNum;
@@ -194,12 +208,13 @@ export default {
       }
       return res;
     }
+  },
+  created: function() {
+    setTimeout(this.addSpeaker(), 500);
+    console.log("Created");
   }
 };
-
 </script>
-
-
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
@@ -211,38 +226,83 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   font-weight: normal;
 }
 
-h1 {
-  font-size: 44px;
-  font-weight: 700;
-  line-height: 1em;
-}
-
 $speakers-break: 750px;
 
 $speakers-break-1: 600px;
 $speakers-break-2: 900px;
 
 .section-sponsors {
-  background-image: url('/static/background-frame-white.png');
+  height: 150vh;
+  background-image: url('/static/speakers_2021_background.svg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
+  position: relative;
+
+  @media screen and (orientation: portrait) {
+    height: auto;
+    padding-bottom: 5vh;
+    background-image: none;
+    background-color: #f5c26a
+  }
 }
 
 button {
   padding: 0;
 }
 
-.speakers-title {
-  padding: 70px 0 0 10vw;
-  font-size: 3rem;
-  align-self: flex-start;
+.banner {
+  margin-top: 5vh;
+  background-image: url('/static/speakers_2021_premade_banner.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  display: grid;
+  grid-auto-columns: auto;
+  width: 80vw;
+  height: 16vh;
+
+  @media screen and (orientation: portrait) {
+    margin-top: 2vh;
+    height: 10vh;
+  }
+
+  @media screen and (min-width: 500px) and (max-width: 1000px) {
+    margin-top: 2vh;
+    height: 16vh;
+  }
 }
 
-.standard-hero {
-  background-image: url('/static/speakers-page-header.jpg');
-  background-position: bottom;
-}
+// .speakers-title {
+//   padding-top: 3.5vh;
+//   padding-left: 2.5vw;
+//   font-size: 3vw;
+//   font-weight: 700;
+//   line-height: 3vw;
+
+//   @media screen and (orientation: portrait) {
+//     font-size: 2.5vw;
+//   }
+
+//   @media screen and (min-width: 500px) {
+//     padding-top: 2.5vh;
+//   }
+// }
+
+// .speakers-subtitle {
+//   padding-left: 2.5vw;
+//   font-size: 2vw;
+//   line-height: 2vw;
+
+//   @media screen and (orientation: portrait) {
+//     font-size: 1vw;
+//   }
+// }
+
+// .standard-hero {
+//   background-image: url('/static/speakers-page-header.jpg');
+//   background-position: bottom;
+// }
 
 // @media screen and (max-width: 600px) {
 //   .modal {
@@ -328,31 +388,55 @@ button {
 // }
 
 .speakers-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
   justify-content: space-between;
   align-items: stretch;
-  margin-top: 64px;
-  padding: 0px;
+  margin-top: 4vh;
 
-  .speaker-filler {
-    flex: 1 1 calc(30% - 28px);
+  //.speaker-filler {
+  //  flex: 1 1 calc(30% - 28px);
+  //}
+
+  .fade-enter-active, .fade-leave-active {
+    transition: all 1.5s ease;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+
+  .fade-leave, .fade-enter-to {
+    opacity: 1;
+  }
+
+  // most mobile views which will have height > width
+  @media screen and (orientation: portrait) {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
+    margin-top: 1vh;
   }
 
   .speaker {
     position: relative;
-    flex: 1 1 calc(30% - 28px);
-    margin-left: 24px;
-    margin-right: 24px;
-    // border: 0.3px solid grey;
+    height: 13vw;
+    width: 13vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
     border: none;
-    margin-bottom: 48px;
+    margin-bottom: 2vw;
     cursor: pointer;
-    flex-grow: 1;
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+
+    @media screen and (orientation: portrait) {
+      width: 30vw;
+      height: 30vw;
+      margin-top: 2vh;
+    }
 
     .content {
       display: flex;
@@ -367,23 +451,6 @@ button {
         flex: 1;
       }
     }
-
-    @media screen and (max-width: $speakers-break-2) {
-      flex: 1 0 40%;
-    }
-
-    @media screen and (max-width: $speakers-break-1) {
-      flex: 1 0 100%;
-      margin-left: 0;
-      margin-right: 0;
-
-      // .ask-button {
-      //   background-color: $color-tertiary;
-      //   color: white !important;
-      // }
-    }
-
-
   }
 }
 
@@ -395,17 +462,6 @@ button {
   .smaller-if-mobile {
     font-size: 17px !important;
   }
-
-  .show-overlay-if-mobile {
-    opacity: 1 !important;
-    .overlay-text {
-      padding: 10px !important;
-    }
-    h3 {
-      background-color: rgba(0,0,0,0.7);
-      padding: 5px 15px;
-    }
-  }
 }
 
 .speaker .content {
@@ -413,6 +469,8 @@ button {
 }
 
 .speaker {
+  position: relative;
+
   img {
     width: 100%;
     height: auto;
@@ -420,7 +478,7 @@ button {
 
   .image {
     width: 100%;
-    height: 300px;
+    height: auto;
     background-position: top;
     background-size: cover;
   }
@@ -459,6 +517,7 @@ button {
   }
 
   .overlay {
+    display: flex;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -473,11 +532,16 @@ button {
     
 
     .overlay-text {
-      position: absolute;
+      position: relative;
+      font-size: 1vw;
+      height: 100%;
+      width: 100%;
+      top: 0;
       bottom: 0;
       left: 0;
+      right: 0;
       color: white;
-      padding: 25px;
+      padding: 15px;
       text-align: left;
     }
   }

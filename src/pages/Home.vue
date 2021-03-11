@@ -1,43 +1,97 @@
 <template>
-  <ConferencePage :selectedIndex="0" :footerMargin="false">
+  <ConferencePage :selectedIndex="0" :footerMargin="false"> 
     
-    <div class="container section section-landing">
-      <div class="animation">
+  <div class="container section section-landing">
+    <!--<div class="animation">
           <div id="Ted">
             <h7></h7>
           </div>
           <div id="X">
             <h8></h8>
           </div>
+    </div> -->
+    <div class="section-landing-child">
+      <!--
+      <video class="logo-video" autoplay="autoplay" muted loop preload="metadata">
+      -->
+      <img class="logo-video" src="/static/homepage_logo_2021.gif">
+      <!--
+      </video>
+      -->
+      <!-- <h1><a href="#">Main Logo</a></h1> -->
+      <!-- <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p> -->
+      <!--<a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a> -->
     </div>
-      <div class="section-landing-child">
-        <h1><a class="highlighted-red">2021</a></h1>
-        <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> TEDxUofW 2021 Speaker Nomination Form Now Open </p>
-        <a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a>
-      </div>
-    </div>
+  </div>
 
-    <div class="container section section-about">
-      <!-- <div class="section-about-row"> -->
-      <div class="section-about-text">
-        <h2>Ideas worth spreading at the<br/>University of Washington</h2>
-        <p>
-          For the past 7 years, TEDxUofW has been gathering a collection of great creative thinkers, scientific minds, and community leaders in our annual conference. Join us to celebrate the confidence and spread ideas that can make our future better!
-        </p>
-      </div>
-      <!-- </div> -->
-      <router-link class="home-page-button" to="login">REGISTER</router-link>
+  <!-- <div class="container section section-details">
+    <div class="section-details-child">
+      <img class="event-details" src="/static/event_details_2021.svg">
+      <img class="what-is-tedx" src="/static/what_is_tedx_2021.svg">
     </div>
+    <router-link class="home-page-button" to="login">REGISTER</router-link>
+  </div> -->
+
+  <div class="container section section-building">
+    <div class="section-building-container">
+      <div class="top-banner">
+        <img class="banner-image" src="/static/details_and_description_2021.svg">
+      </div>
+      <div class="homepage-banner">
+        <a href="#/speakers">
+          <img class="banner-image" src="/static/speakers_homepage_banner_2021.png">
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Speakers</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="homepage-banner">
+        <a href="#/sponsors">
+          <img class="banner-image" src="/static/sponsors_homepage_banner_2021.png">
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Sponsors</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="homepage-banner">
+        <a href="#/about">
+          <img class="banner-image" src="/static/about_homepage_banner_2021.png">
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>About</h3>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container section section-speakers">
     
-    <div class="container section section-speakers">
-      <h2>FEATURING</h2>
-      <div class="carousel-container">
+    <div class="carousel-container">
       <SpeakerCarousel />
-      </div>
-  
-      <router-link class="view-speakers-button" to="speakers">VIEW ALL SPEAKERS</router-link>
     </div>
-    
+    <router-link class="view-speakers-button" to="speakers">VIEW ALL SPEAKERS</router-link>
+  </div> -->
+
+  <!-- <div class="container section section-landing">
+    <div class="section-landing-child">
+      
+      <p style="color: #999997; font-size: 1.1rem; padding-top: 0.5rem"> </p>
+      <a class="home-page-button" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScFL9fvlKXcNOck3b7rW2JcsMAHdYHqSvrL6B7CzjHO17sKJw/viewform?usp=sf_link">NOMINATE</a>
+    </div>
+  </div> -->
+
+  <!-- <div class="container section section-about">
+    <div class="section-about-row">
+    <div class="section-about-text">
+    <h2><a class="highlighted-red"> <a href="http://localhost:8080/#/about">About</a></a></h2>
+  </div> -->
+
   </ConferencePage>
 </template>
 
@@ -111,33 +165,33 @@ export default {
       speakers: speakers.sort(() => Math.random() - 0.5)
     }
   },
-  mounted:function(){
-    this.animateText();
-  },
+  // mounted:function(){
+  //   this.animateText();
+  // },
   methods: {
     getFileName: function(name) {
       return "/static/speaker-headshots/" + name.toLowerCase().replace(" ", '_') + ".jpg";
     },
     getSpeakerCarouselSlide: function(name) {
       return name + " " + speakers.name;
-    },
-    myMethod:function(){
-      console.log("My method")
-      document.getElementById("Ted").textContent += "TEDx "   
-      counter++  
-      if (counter === 10){
-        clearInterval(intervalId)
-        document.getElementById("Ted").textContent += "TED"
-        document.getElementById("X").textContent = "X"
-      }
-    },
-    animateText:function() { 
-      if (intervalId === null) {
-        console.log(intervalId)
-        intervalId = setInterval(this.myMethod, 450);
-        console.log("if statement")
-      }
     }
+    // myMethod:function(){
+    //   console.log("My method")
+    //   document.getElementById("Ted").textContent += "TEDx "   
+    //   counter++  
+    //   if (counter === 10){
+    //     clearInterval(intervalId)
+    //     document.getElementById("Ted").textContent += "TED"
+    //     document.getElementById("X").textContent = "X"
+    //   }
+    // },
+    // animateText:function() { 
+    //   if (intervalId === null) {
+    //     console.log(intervalId)
+    //     intervalId = setInterval(this.myMethod, 450);
+    //     console.log("if statement")
+    //   }
+    // }
   },
   beforeMount(){
     console.log("beforeMount");
@@ -251,22 +305,27 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
 
 .section-landing-child {
   //background-image: url('/static/HomeGif.gif');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
+  // background-repeat: no-repeat;
+  // background-size: contain;
+  // background-position: center center;
   width: 100%;
-  //min-height: 90vh;
+  height: auto;
+  // min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  .logo-video {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .section-landing {
+  width: 100%;
   text-align: center;
-  min-height: 90vh;
-  
-
+  // min-height: 90vh;
   
   h6 {
     color: #999997;
@@ -341,8 +400,113 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   }
 }
 
+.section-building {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-items: center;
+
+  .section-building-container {
+    background-color: #e62b1e;
+    border-color: black;
+    border-style: solid;
+    border-width: 5%;
+    border-radius: 1%;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto;
+    justify-items: center;
+    width: 82.5%;
+    height: auto;
+    margin-bottom: 5vh;
+  }
+
+  .section-building-container .homepage-banner {
+    margin-top: 1.25vh;
+    margin-bottom: 1.25vh;
+    position: relative;
+    width: 95%;
+    height: auto;
+  }
+
+  .section-building-container .top-banner {
+    margin-top: 10vh;
+    margin-bottom: 1.25vh;
+    position: relative;
+    width: 95%;
+    height: auto;
+
+    @media screen and (orientation: portrait) {
+      margin-top: 2.5vh;
+    }
+  }
+
+  .section-building-container .homepage-banner a {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .section-building-container .homepage-banner .banner-image {
+    display: flex;
+    width: 100%;
+    height: auto;
+  }
+
+  .section-building-container .top-banner .banner-image {
+    display: flex;
+    width: 100%;
+    height: auto;
+  }
+
+  .section-building-container .homepage-banner a .banner-image {
+    display: flex;
+    width: 100%;
+    height: auto;
+  }
+
+  .section-building-container .homepage-banner a .overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    border-radius: 2.5%;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .1s ease;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0);
+
+    .overlay-text {
+      display: flex;
+      position: relative;
+      font-size: 7.5vw;
+      height: 100%;
+      width: 100%;
+      color: white;
+      align-items: center;
+      justify-content: center;
+
+      h3 {
+        text-transform:uppercase; 
+        font-weight: 600;
+      }
+    }
+  }
+
+  .section-building-container .homepage-banner:hover a .overlay {
+    background: rgba(0,0,0,0.5);
+    opacity: 1;
+  }
+}
+
 .section-about {
-  background-image: url('/static/background-frame-gray.png');
+  background-color: #fefbd8;
+  //background-image: url('/static/background-frame-gray.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -372,6 +536,74 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   }
 
 
+}
+
+.section-details {
+  background-color: #fefbd8;
+  width: 100%;
+  //background-image: url('/static/background-frame-gray.png');
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  //padding: 30px 0px;
+
+  @media screen and (orientation: portrait) {
+    max-height: 20vh;
+  }
+
+  h2 {
+    color: $color-tertiary;
+    margin-bottom: 30px;
+  }
+
+  .left{
+      width: 100vw;
+      background-color: #aabbcc;
+  }
+  .right{
+      width: 100vw;
+      background-color: #fefbd8;
+  }
+
+  .section-details-child {
+    display: grid;
+    grid-template-columns: auto auto;
+    height: auto;
+    width: 80%;
+    justify-items: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    column-gap: 5vw;
+
+    @media screen and (orientation: portrait) {
+      column-gap: 2vw;
+    }
+
+    .event-details {
+      width: auto;
+      height: 40vh;
+
+      @media screen and (orientation: portrait) {
+        max-width: 25vw;
+      }
+    }
+
+    .what-is-tedx {
+      width: auto;
+      height: 40vh;
+
+      @media screen and (orientation: portrait) {
+        max-width: 50vw;
+      }
+    }
+  }
 }
 
 .section-accent {
@@ -405,6 +637,10 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     color: white;
   }
 
+  a {
+    margin: 0;
+  }
+
   .button-container {
     background-color: yellow;
   }
@@ -414,7 +650,6 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
     color: white;
     background-color: purple;
   }
-
 
   .carousel-container {
     width: 100%;
