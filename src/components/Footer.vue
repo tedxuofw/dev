@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="main-part">
     <h2 class="our-name">TEDxUofW 2021</h2>
-    <h3 class="our-event-date">APRIL 17th, 2021 <br>10:00 AM to 2:00 PM</h3>
+    <h3 class="our-event-date">APRIL 17th, 2021 <br>10:00 AM to 2:00 PM PDT</h3>
 
     <a class="home-page-button" href="#">
       <img class="our-logo" src="/static/logo_2021.svg" alt="TEDxUofW logo"/>
@@ -103,15 +103,15 @@ $footer-tiny-break: 515px;
   text-align: center;
   margin: 0px;
   padding: 0px;
-  padding-bottom: 15px;
-  font-size: 18px;
+  padding-bottom: 25px;
+  font-size: 28px;
   font-weight: 900;
   color: $color-primary;
 }
 
 .our-event-date {
   text-align: center;
-  font-size: 12px;
+  font-size: 20px;
   margin: 0px;
   padding: 0px;
   line-height: 1.1em;
