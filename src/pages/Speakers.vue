@@ -22,12 +22,12 @@
       <div class="accent"></div>
     </div> -->
     <div class="container section-sponsors">
-      <div class="banner">
-        <!-- <h1 class="speakers-title">SPEAKERS</h1>
-        <h2 class="speakers-subtitle">Meet the TEDxUofW 2021 speakers!</h2> -->
-        <!-- <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" /> -->
-      </div>
-      <div class="speakers-container">
+      <!-- <div class="banner">
+        <h1 class="speakers-title">SPEAKERS</h1>
+        <h2 class="speakers-subtitle">Meet the TEDxUofW 2021 speakers!</h2>
+        <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" />
+      </div> -->
+      <!-- <div class="speakers-container">
         <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl" :style="{visibility: shownSpeakers.includes(i) ? 'visible' : 'hidden', opacity: shownSpeakers.includes(i) ? 1 : 0}">
           <img :src="speaker.imageUrl" />
           <div class="overlay show-overlay-if-mobile">
@@ -36,14 +36,15 @@
               <h3>{{ speaker.title }}</h3>
             </div>
           </div>
-          <!-- <div class="content">
+          <div class="content">
             <span class="name">{{ speaker.name }}</span>
             <span class="title">{{ speaker.title }}</span>
             <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
-          </div> -->
+          </div>
         </button>
-        <!-- div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div> -->
-      </div>
+        <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
+      </div> -->
+      <div class="temporary-message"><div class="temp-msg">Speakers coming soon!</div></div>
     </div>
 
     <modal
@@ -244,6 +245,27 @@ $speakers-break-2: 900px;
     padding-bottom: 5vh;
     background-image: none;
     background-color: #f5c26a
+  }
+
+  .temporary-message {
+    width: 100%;
+    height: 150vh;
+    position: relative;
+    display: grid;
+    grid-auto-columns: auto;
+    grid-auto-rows: auto;
+
+    .temp-msg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 200%;
+      font-weight: 200;
+    }
   }
 }
 
