@@ -9,7 +9,7 @@
         <div class="col-8 no-margin message">
           <h2 style="margin-bottom: 40px;">Message</h2>
           <!-- <div class="accent"></div> -->
-          <p> Please email us directly at <a href="mailto:tedxuofw@uw.edu">tedxuofw@uw.edu</a>, and we will get back to you ASAP! <br><br> <br><br><br><br><br></p>
+          <p> Please email us directly at <a href="mailto:tedxuofw@uw.edu">tedxuofw@uw.edu</a>, and we will get back to you ASAP! <br><br><br><br><br><br><br><br><br><br></p>
           <!--
           <template v-if="formState == STATES.NOT_SUBMITTED">
             <input type="text" placeholder="Name" v-model="name" class="half-width" />
