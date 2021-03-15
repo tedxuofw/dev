@@ -44,7 +44,7 @@
         </button>
         <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
       </div> -->
-      <div class="temporary-message"><div class="temp-msg">Speakers coming soon!</div></div>
+      <div class="temporary-message"><div class="temp-msg">Speakers Coming Soon...</div></div>
     </div>
 
     <modal
@@ -254,6 +254,7 @@ $speakers-break-2: 900px;
     display: grid;
     grid-auto-columns: auto;
     grid-auto-rows: auto;
+    
 
     .temp-msg {
       display: flex;
@@ -263,8 +264,10 @@ $speakers-break-2: 900px;
       position: relative;
       text-align: center;
       text-transform: uppercase;
-      font-size: 200%;
+      font-size: 5vw;
       font-weight: 200;
+      color: black;
+      font-weight: bold;
     }
   }
 }

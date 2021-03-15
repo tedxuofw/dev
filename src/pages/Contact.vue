@@ -9,6 +9,8 @@
         <div class="col-8 no-margin message">
           <h2 style="margin-bottom: 40px;">Message</h2>
           <!-- <div class="accent"></div> -->
+          <p> Please email us directly at <a href="mailto:tedxuofw@uw.edu">tedxuofw@uw.edu</a>, and we will get back to you ASAP!</p>
+          <!--
           <template v-if="formState == STATES.NOT_SUBMITTED">
             <input type="text" placeholder="Name" v-model="name" class="half-width" />
             <input type="email" placeholder="Email" v-model="email" class="half-width" />
@@ -21,11 +23,12 @@
             <p>Sending...</p>
           </template>
           <template v-if="formState == STATES.ERROR">
-            <p>There was an error in submitting this form. Instead, email us directly: <a href="mailto:tedxuofw@uw.edu">tedxuofw@uw.edu</a></p>
+            0<p>There was an error in submitting this form. Instead, email us directly: <a href="mailto:tedxuofw@uw.edu">tedxuofw@uw.edu</a></p>
           </template>
           <template v-if="formState == STATES.SUCCESS">
             <p>Email sent! Thank you.</p>
           </template>
+          -->
         </div>
         <div class="col-4 no-margin social">
           <h2>Social</h2>
