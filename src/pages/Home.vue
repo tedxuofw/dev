@@ -35,7 +35,7 @@
   <div class="container section section-building">
     <div class="section-building-container">
       <div class="top-banner">
-        <img class="banner-image" src="/static/details_and_description_2021.svg">
+        <img class="banner-image" src="/static/details_and_description_2021.png">
       </div>
       <div class="homepage-banner">
         <a href="#/speakers">
