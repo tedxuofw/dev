@@ -22,12 +22,12 @@
       <div class="accent"></div>
     </div> -->
     <div class="container section-sponsors">
-      <!-- <div class="banner">
-        <h1 class="speakers-title">SPEAKERS</h1>
+      <div class="banner">
+        <!-- <h1 class="speakers-title">SPEAKERS</h1>
         <h2 class="speakers-subtitle">Meet the TEDxUofW 2021 speakers!</h2>
-        <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" />
-      </div> -->
-      <!-- <div class="speakers-container">
+        <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" /> -->
+      </div>
+      <div class="speakers-container">
         <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl" :style="{visibility: shownSpeakers.includes(i) ? 'visible' : 'hidden', opacity: shownSpeakers.includes(i) ? 1 : 0}">
           <img :src="speaker.imageUrl" />
           <div class="overlay show-overlay-if-mobile">
@@ -36,15 +36,15 @@
               <h3>{{ speaker.title }}</h3>
             </div>
           </div>
-          <div class="content">
+          <!-- <div class="content">
             <span class="name">{{ speaker.name }}</span>
             <span class="title">{{ speaker.title }}</span>
             <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
-          </div>
+          </div> -->
         </button>
         <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
-      </div> -->
-      <div class="temporary-message"><div class="temp-msg">Speakers Coming Soon...</div></div>
+      </div>
+      <!-- <div class="temporary-message"><div class="temp-msg">Speakers Coming Soon...</div></div> -->
     </div>
 
     <modal
@@ -91,64 +91,54 @@ export default {
       selectedSpeakerIndex: -1,
       speakers: [
         makeSpeaker(
-          'Venus Rekow',
-          'The Power of Inclusion',
-          '<a href="https://www.linkedin.com/in/venusrekow/" target="_blank">Venus Rekow</a> is the founder of <a href="https://neuralshifts.com" target="_blank">Neural Shifts</a>, a consulting firm specialized in helping leaders foster diverse, equitable and inclusive workforces. She designs & implements effective global diversity and inclusion programs, conducts organizational assessments & employs analytics to measure business results. Venus is well known for her ability to translate research insights from Neuroscience & Behavioral economics into practical management strategies that enable behavior change. Her clients include Fortune 500 companies & non-profit organizations. Venus earned an M.S. in Organizational Development from Seattle University, completed coursework for an M.S. in Neuroscience from the University of Oberta, Spain. In addition, she is a certified executive coach.'
+          'Ashley McGirt',
+          '...',
+          '<p>Ashley McGirt is the founder and President of the WA Therapy Fund Foundation. She is a psychotherapist, Tedx international speaker, and author who has been featured in Forbes, MSNBC, The young turks, Bravo, & more. Ashley has received a Masters of Social Work from the University of Washington. She also holds a Bachelor of Science in Psychology. Ashley currently works as a full-time hospice therapist and owns and operates her own private practice. In her private practice she focuses primarily on racial trauma, depression, and anxiety. Ashley actively works toward de-stigmatizing mental illness, and reducing high rates of recidivism in American prisons, in an attempt to create a more socially just society for all. Ashley offers presentations, workshops, group facilitation, and consultation specializing in racial trauma, mental health, crisis response, social justice and racial equity. Ashley strives to help others find happiness and healing within themselves through unpacking their baggage, resting, reflecting, and restoring themselves to be who they were intended to be on this earth.</p>'
         ),
         makeSpeaker(
-          'Nathan Vass',
-          'Why We Need Strangers',
-          'Nathan Vass has had work displayed in over thirty photography shows and is the director of nine films, six of which have shown at festivals and one of which premiered at Henry Art Gallery. Born in South Central LA, he holds a Bachelor of Fine Arts from the University of Washington. His blog, The View From Nathan\'s Bus, details his adventures as a public bus driver and has been featured in more than fifteen news outlets including NPR and The Seattle Times. His new book, The Lines That Make Us, is a Seattle bestseller.'
+          'Casey Dreier',
+          '...',
+          '<p>Casey is the Chief Advocate and Senior Space Policy Adviser for The Planetary Society, the world\'s largest independent pro-space organization. He writes, teaches, and speaks about the importance, relevancy, and excitement of space exploration to the organization\'s members, the public, and elected officials. He is a trusted source for journalists and has been featured in many publications, including The New York Times, The Washington Post, The Atlantic, Scientific American, Vox, and The Verge, to name a few. He also has appeared as an expert on BBC News and both seasons of National Geographic\'s MARS series as a \"MARS Big Thinker\". Casey is also co-host of the podcast, Planetary Radio: Space Policy Edition, which has been published monthly since 2016.</p>'
         ),
         makeSpeaker(
-          'Nat Puff',
-          'The Dos and Dont\'s of Breakup Songs',
-          'Also known for her internet presence, Left At London (sometimes stylized and shortened as /@/), is the stage name of singer/songwriter Nat Puff (she/her), a trans woman from Seattle, Washington who is not afraid to let herself be known intimately through her music, while still remaining accessible.'
+          'Dee Dwyer',
+          'Humanity at the Forefront of Photojournalism',
+          '<p>Dee Dwyer is a diversified Photographer from Southeast, Washington, D.C who produces awe-inspiring images. She has been anointed by her community as "The Visual Voice for the People”. Her goal is to show all aspects of human life with the primary focus being humanity. Dwyer’s raw and compelling candids unveil the souls of people. The images expose many subject’s truth, adversities, beauty, and culture. As a teenager, she developed her fascination for photography. Dee never left the house without her disposable camera to capture daily life of family and friends. Receiving her BFA in Filmmaking and Digital Production helped to develop her keen eye and technical skills. While taking a required Black & White photography class, she had to shoot and develop her own film. This is how the love for photography blossomed. She’d spend half her days snapping candids and the other half in the dark room. Having a love for travel and community she continues to use her camera to, "Show the World What it\'s Made of." Her work has been shown in exhibitions such as PhotoSCHWEIZ, Photoville, Catchlight amongst many others and featured in publications such as Vogue, The Wall Street Journal, The New York Times, BET, The Guardian, Bloomberg Businessweek and more. Dee Dwyer currently resides in Washington, DC with her two children.</p>'
         ),
         makeSpeaker(
-          'Julio Covarrubias',
-          'Setting the Record Straight: The Latin American Mind in Global Context',
-          'Julio Covarrubias is a doctoral candidate and teaching assistant in the department of philosophy at UW. He is the recipient of the American Philosophical Association\'s 2018 Prize Essay on Latin American Thought for “the best unpublished, English-language, philosophical essay in Latin American thought.” His research focuses on Latinx identity and racial oppression. Currently, he is writing a dissertation on the ethics and politics of inter- and intra-personal relationships in the wake of colonial violence.'
+          'Samer Fouad',
+          'Comfort Kills Creativity',
+          '<p>Samer Fouad is an artist and graphic designer. Although his degree is in graphic design, Fouad considers himself a mixed media artist, combining sculpture, video, graphic design, photography, digital college, and various printmaking methods. His work has been showcased around the world, including New York City, Tokyo, Doha, France, Spain, Italy and Budapest. Fouad has been published in The AIGA, Adweek, Beautiful Bizarre Magazine and Design Sponge. Fouad was an artist-in-residence for the Mana BSMT program, located at Mana Contemporary, Jersey City, Palazzo Monti in Brescia, Italy, and Nouvelle Vague Gallery in Marbella, Spain. He is a co-founder of the Newark Print Shop in New Jersey.</p><p>Simultaneous to his career as an artist, Fouad taught advanced printmaking and graphic design for the undergraduate BFA Program and book arts for the MFA Program, at Rutgers University in New Jersey. He was also a teaching assistant in visual communication design for the Undergraduate School of Art and Design and was a lecturer for the masters program of the School of Human Centered Design and Engineering, at The University of Washington.</p><p>Samer Fouad holds an Arts, Culture, Media degree with a Bachelors in Fine Art within a concentration of graphic design and a minor in art history from Rutgers University. He also holds a Master of Design degree from the University of Washington.</p>'
         ),
         makeSpeaker(
-          'John Vallier',
-          'Ethnomusicology 2.0',
-          'John Vallier is head of media and ethnomusicology curator at the University of Washington Libraries. In these roles he oversees the Libraries\' Ethnomusicology Archives and audio/video makerspace: Media Arcade. As an affiliate professor of ethnomusicology John teaches on topics such as music of Seattle, remix studies, and sound of cinema for UW Honors, Cinema and Media Studies, and Ethnomusicology. Before coming to UW, John was ethnomusicology archivist at UCLA, a composer for Activision, and drummer for bands such as Swell and Santa Cruise Control.'
+          'Kathleen Bogart',
+          'The Psychology of Ableism',
+          '<p>Kathleen Bogart, Ph.D., is an Associate Professor of Psychology at Oregon State University. As a person with a disability, she is passionate about researching, educating, and writing about ableism, or disability prejudice. Her research focuses on the psychosocial implications of living with disability, rare disorders, or facial differences such as Moebius syndrome. An advocate for people with disabilities, she has served on the American Psychological Association Committee on Disability Issues in Psychology, the Rehabilitation Psychology editorial board, and the Moebius Syndrome Foundation Scientific Advisory Board.</p><p>She is a 2021 Public Voices Fellow with the OpEd Project. Her work has been featured in the New York Times, Time, The Conversation, the Financial Times, and Huffington Post, and she blogs for Psychology Today at https://www.psychologytoday.com/us/blog/disability-is-diversity. In 2019, she co-edited the Journal of Social Issues special issue on Ableism. Dr. Bogart presents internationally to academic, general, and stakeholder audiences about disability awareness, disability as diversity, and facial paralysis. She consults with organizations on disability advocacy.</p>'
         ),
         makeSpeaker(
-          'Debi Talukdar',
-          'Philosophy Is for Everyone',
-          'Debi Talukdar is the Philosopher-in-Residence at Thurgood Marshall Elementary School. She has been facilitating philosophical discussions with K-12 students and educators in Seattle for several years and serves on the boards of the UW Center for Philosophy for Children, and the Philosophy Learning and Teaching Organization (PLATO). Debi is also the Program Coordinator and an ensemble member of Theater for Change UW at the Center for Teaching and Learning. They do anti-oppressive professional development using interactive theater. Debi is graduating with a Ph.D. in Education this summer. In her free time, she enjoys board games, yoga, and sleeping in.'
+          'Christina Scheppelmann',
+          'Living My Passion',
+          '<p>As Director of Artistic Operations at Washington National Opera, Scheppelmann oversaw the artistic planning for 11 years. She was instrumental in fundraising efforts, leading to grants for individual productions, ongoing projects and renovations. Her passion for the artform and interest to see it flourish into the future led her to conceive of and secure funding for WNO’s American Opera Initiative, offering young composers and librettists a developmental forum in which to bridge the gap between conservatory training and full-length commissions.</p><p>A long-time champion of young artists, she has led masterclasses, lectured at artist training programs, and judged vocal competitions around the world.</p><p>Scheppelmann began her career in the arts early-on, performing in the children’s choir of the Hamburg State Opera. After completing a degree in banking, she left her home country of Germany in 1988 to work in an Artist Management agency in Milan. Fluent in five languages, she quickly became known for her communication skills and was soon offered a job in arts administration at the Gran Teatre del Liceu.</p><p>In 1994, she was recruited by Lotfi Mansouri to assist him at San Francisco Opera where, as one of the youngest artistic administrators at the time, she continued her work in planning seasons and hiring singers, conductors, directors and designers. Ms. Scheppelmann prides herself on having built solid collaborative relationships with union and civic leaders, members of the diplomatic corps, and national and international press.</p><p>Scheppelmann was previously awarded the rank of Commendatore in the Order of the Star of Solidarity by the Italian government for her career-long work promoting opera and Italian culture. She also served as the Vice President for the board of Opera Europa, the professional organization of opera houses and festivals.</p>'
         ),
         makeSpeaker(
-          'Brad Finegood',
-          'Unlocking the Cure to Substance Use Disorder',
-          'Demystifying Stigma is based on a lifetime of experience that Brad Finegood has been through. He works as a Strategic Advisor in Public Health - Seattle & King County. Brad recently served as a co-chair of the King County Opiate Task Force and was the Alcohol and Drug Coordinator for King County. His Bachelor\'s Degree is from Michigan State and his Master\'s Degree in Counseling, Specialty in Alcohol and Drug Abuse from Western Michigan. He has worked in the behavioral health field for 20 years. He is the sibling and survivor of a younger brother that died from an overdose.'
+          'Aidan Key',
+          'The Heart of the Matter',
+          '<p>Aidan Key is the founder and president of Trans Families, an organization that provides online support to families of gender diverse children across the nation. Key, the principal trainer at Gender Diversity, has served as a consultant to hundreds of K-12 schools and other youth-based agencies across the US and has provided districts with training, strategic planning, policy development, and staff, parent, and student education. Key’s workplace trainings have included companies like Amazon, Lighthouse, Milliman, Grange, Cigna, Mithun Architects, Price Waterhouse Cooper, SAP Concur, and more.</p><p>Key is currently authoring a book, Trans Children in Today’s Schools (Oxford University Press, expected publication date, early 2022). He is the co-author of Trans Bodies, Trans Selves (Oxford University Press, 1st and 2nd editions) and Gender Cognition in Transgender Children (Psychological Science). Past speaking/keynote engagements include the Children’s Justice Conference, the National Women’s Judges Conference, the Adolescent Medicine Conference, and the University of Alaska’s 1st Power & Privilege conference.</p><p>The Greater Seattle Business Association honored Key as the Humanitarian of the Year (2017) and The Pride Foundation, Ingersoll Gender Center, Chicago Black Pride, Seattle Out and Proud, have praised Key’s work as well. He has often been featured in the national media, including the Oprah Winfrey Show, NPR’s Diane Rehm Show, Al Jazeera America, Larry King Live, and Fresh Air with Terry Gross.  More recently, Aidan was selected as one of Seattle magazine\'s 2019 Most Influential People of the Year.</p>'
         ),
         makeSpeaker(
-          'Steven Quay',
-          'How to Be Smart When You\'re Dense: Preventing Breast Cancer by 2030',
-          'Steven Quay is the founder of Seattle-based Atossa Genetics, dedicated to breast cancer prevention. He received his Ph.D. in Biological Chemistry, M.D. from the University of Michigan, postdoc at MIT and Harvard, and was a faculty member at Stanford Medical School. His contributions to medicine, cancer, and biochemistry have been cited over 9,300 times. Since entering biotech in 1983, he has founded six startups, invented seven FDA-approved pharmaceuticals, and holds 87 US patents. Over 80 million people have benefited from the medicines he invented. His current passion is the prevention of the two million yearly breast cancer cases worldwide.'
+          'Whitnee Hawthorne',
+          'What Corporate America Needs To Know About Working Moms',
+          '<p>Whitnee Hawthorne is a dynamic professional speaker, informative podcaster, and inspiring Fortune 500 company executive. She founded The Savvy Working Mom as a platform dedicated to helping working moms thrive in every arena. Her easy to follow digital courses have helped countless working mothers find harmony across all areas of their life. At the root of everything she does is the belief that working moms are the backbone of our society, and she wants to support as many women as possible in creating a vibrant, joyful life.</p>'
         ),
         makeSpeaker(
-          'Tamuka Chidyausiku',
-          'Leveraging Privilege to Amplify the Voices of the Underprivileged',
-          'Tamuka Martin Chidyausiku is the 1st black PhD candidate in his Biological Physics Structure and Design program, Biochemistry lab and at the Institute for Protein Design where he is studying computational biology with applications in agriculture. Tamuka, (aka Muk) is graduating Spring 2019 from the UW Biochemistry department where he is launching his social media class on “Hip Hop Biochemistry @TamukaInvestments”. As an openly gay student from Zimbabwe, Tamuka believes that representation matters and visibility is the key to STEM-ulating the future generation. He is also the founder Chibage Chip; an Agri-tech startup aimed at helping farmers combat climate change.'
+          'Dagan Kay',
+          'Start with Food: Mending Our Fractured Relationship to the Food We Eat',
+          '<p>Dagan Kay is the cofounder and CEO of Produce Mate, a mission-driven startup company dedicated to reducing food waste and it’s massive impact on our planet. He started working on Produce Mate while still a full-time Philosophy student at the University of Portland. After graduating in 2019, Dagan remained in the foodie-capital of Portland, Oregon, where his work now largely revolves around raising food preservation awareness, designing innovative products that help food last longer, and building a team of like-minded people at Produce Mate. In a world threatened by the existential threat of climate change, Dagan remains eternally optimistic, throwing himself in at the deep end to work alongside the people working on creative solutions to our planet\'s biggest problem.</p>'
         ),
         makeSpeaker(
-          'Susanne Rafelski',
-          'In Search of Patterns inside the Cell through Space and Time',
-          'Susanne Rafelski is a quantitative cell biologist and a Director at the Allen Institute for Cell Science in Seattle. Susanne has been imaging the structures inside living cells since she was 17. Her life-long scientific goal is to decipher the patterns and rules that transform the overwhelming complexity found inside cells into functioning units of life. The quest to unlock the secrets of the cell requires there to be no boundaries between scientific fields. Susanne is always looking for ways to incorporate interdisciplinary approaches into her research including data science analyses, image processing, mathematical modeling, computational simulations, and modern machine learning.'
-        ),
-        makeSpeaker(
-          'Nicole McNichols',
-          'Students on Top: A Vision for 21st Century Sex Education',
-          'Nicole McNichols is a Lecturer in the Psychology Department at the University of Washington, where she also received her PhD in Social Psychology. Over the past five years, Nicole has built her class, The Diversity of Human Sexuality, into the University’s largest and most popular undergraduate course with over two thousand enrolled students each year. She is the co-author of A Critical Introduction to Human Sexuality, an online, interactive textbook that stresses a sex-positive approach to sex education. Her research focuses on the role of interactive platforms in understanding undergraduates’ attitudes surrounding Human Sexuality topics. She is married and has three children.'
-        ),
-        makeSpeaker(
-          'James Keblas',
-          'How Kevin Bacon Saved Seattle: The Seattle Music Story You Never Heard and Why It Matters Today',
-          'James Keblas is a celebrated economic development leader in the areas of arts and entertainment. He got his start in the music business in 1991 working in hip hop at NastyMix Records, pushing artists like Sir Mix-a-Lot. He was Director of Seattle’s Office of Film, Music and Special Events for 9 years, where he earned the title “Punk Rocker in a Suit.” His favorite professional achievement will always be Co-Founding The Vera Project, a music and arts center in Seattle run by and for youth.'
+          'Lexi Walls',
+          'The Future of Pandemic Preparedness',
+          '<p>Dr. Lexi Walls grew up in Massachusetts and moved to Seattle to start graduate school and follow both her scientific and hiking dreams. She started studying coronaviruses in 2015: learning what they looked like, how they functioned, and what kinds of therapeutics could be useful. She had no idea that her years of work would help prepare her and the scientific and medical communities for the COVID-19 pandemic. She is currently a scientist at the University of Washington working on next generation vaccines and therapeutics against this current pandemic as well as against potential future ones. She works hard to make sure that the work she and others are doing can be communicated to the broad public, and has spoken at high schools, community colleges, universities, on podcasts, and at Seattle town hall to share the work with the community. She spends her free time exploring the beautiful mountains of the Pacific Northwest.</p>'
         )
       ]
     };
