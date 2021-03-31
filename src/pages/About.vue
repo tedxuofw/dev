@@ -85,7 +85,7 @@ export default {
       const fileName = team;
 
       let imageUrl = hasPhoto
-        ? `/static/locker-headshots/${fileName}.svg`
+        ? `/static/locker-headshots/${fileName}.png`
         : "/static/locker-headshots/blank_face.png";
 
       let imageUrlAlt = hasPhoto
@@ -318,7 +318,8 @@ $about-break: 1170px;
 
       img {
         margin-bottom: 8px;
-        max-width: 95%
+        width: 75%;
+        
       }
 
       .title {
