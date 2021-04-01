@@ -39,9 +39,9 @@
             <div class="team" v-for="t in filteredTeam" :key="t.team">
               <!-- <span class="title">{{ t.team }}</span> -->
               <img
-                :src="!t.showAlt ? t.imageUrl : person.imageUrlAlt"
+                :src="t.imageUrl"
                 :class="{ 'web': t.team == 'Web' }"
-                :alt="`Photo of a Member of ${t.team}`"
+                :alt="`Photo of ${t.team}`"
                 @mouseover="t.showAlt = true"
                 @mouseleave="t.showAlt = false"
               />
@@ -127,15 +127,28 @@ export default {
   }
 };
 
-let imgArea = 3000 * 400;
+let imgArea = 1500 * 400;
 window.onload = function() {
   document.getElementById("myImg").width = "100%";
-  document.getElementById("myImg").height = imgArea / (document.getElementById("myImg").width * 2);
+  document.getElementById("myImg").height = imgArea / (document.getElementById("myImg").width);
 }
 
 window.onresize = function() {
+  let multiplier;
+  if (window.innerWidth < 760) {
+    multiplier = 1.5;
+  }
+  else if (window.innerWidth < 1000) {
+    multiplier = 1.25;
+  }
+  else {
+    multiplier = 1;
+  }
+
   document.getElementById("myImg").width = "100%";
-  document.getElementById("myImg").height = imgArea / (document.getElementById("myImg").width * 2);
+  document.getElementById("myImg").height = imgArea / (document.getElementById("myImg").width * multiplier);
+
+  
 }
 </script>
 
@@ -173,8 +186,8 @@ $about-break: 1170px;
   top: 13%;
   left: 3vw;
 
-  @media only screen and (max-width: 1000px) {
-    top: 20%
+  @media only screen and (max-width: 760px) {
+    top: 8%
   }
 }
 
@@ -184,8 +197,8 @@ $about-break: 1170px;
   bottom: 13%;
   left: 3vw;
 
-  @media only screen and (max-width: 1000px) {
-    bottom: 20%
+  @media only screen and (max-width: 760px) {
+    bottom: 8%
   }
 }
 
@@ -318,7 +331,7 @@ $about-break: 1170px;
 
       img {
         margin-bottom: 8px;
-        width: 75%;
+        width: 85%;
         
       }
 
