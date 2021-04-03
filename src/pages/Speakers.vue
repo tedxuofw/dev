@@ -92,12 +92,12 @@ export default {
       speakers: [
         makeSpeaker(
           'Ashley McGirt',
-          'TO BE ANNOUNCED',
+          'Understanding and Healing from Racial Trauma',
           '<p>Ashley McGirt is the founder and President of the WA Therapy Fund Foundation. She is a psychotherapist, Tedx international speaker, and author who has been featured in Forbes, MSNBC, The young turks, Bravo, & more. Ashley has received a Masters of Social Work from the University of Washington. She also holds a Bachelor of Science in Psychology. Ashley currently works as a full-time hospice therapist and owns and operates her own private practice. In her private practice she focuses primarily on racial trauma, depression, and anxiety. Ashley actively works toward de-stigmatizing mental illness, and reducing high rates of recidivism in American prisons, in an attempt to create a more socially just society for all. Ashley offers presentations, workshops, group facilitation, and consultation specializing in racial trauma, mental health, crisis response, social justice and racial equity. Ashley strives to help others find happiness and healing within themselves through unpacking their baggage, resting, reflecting, and restoring themselves to be who they were intended to be on this earth.</p><p>Instagram: <a href="https://www.instagram.com/therapywithash/" style="color: #e62b1e;">@therapywithash</a><br>Facebook: <a href="https://www.facebook.com/McGirtCounselingServices/" style="color: #e62b1e;">@McGirtCounselingServices</a><br>Website: <a href="https://ashleymcgirt.com/" style="color: #e62b1e;">https://ashleymcgirt.com/</a></p>'
         ),
         makeSpeaker(
           'Casey Dreier',
-          'TO BE ANNOUNCED',
+          'The Space Race in Your Own Backyard',
           '<p>Casey is the Chief Advocate and Senior Space Policy Adviser for The Planetary Society, the world\'s largest independent pro-space organization. He writes, teaches, and speaks about the importance, relevancy, and excitement of space exploration to the organization\'s members, the public, and elected officials. He is a trusted source for journalists and has been featured in many publications, including The New York Times, The Washington Post, The Atlantic, Scientific American, Vox, and The Verge, to name a few. He also has appeared as an expert on BBC News and both seasons of National Geographic\'s MARS series as a \"MARS Big Thinker\". Casey is also co-host of the podcast, Planetary Radio: Space Policy Edition, which has been published monthly since 2016.</p><p>Twitter: <a href="https://twitter.com/CaseyDreier" style="color: #e62b1e;">@CaseyDreier</a></p>'
         ),
         makeSpeaker(
