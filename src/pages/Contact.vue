@@ -79,7 +79,6 @@ export default {
   methods: {
     submit() {
       this.eligibleForErrorMessages = true;
-
       if(this.validationError === false) {
         this.formState = STATES.LOADING;
         emailjs.send('default_service', 'tedxuofw_default_template', this.formBody, 'user_zY7RrDDliqSGIWcjz5lC5')
@@ -98,12 +97,10 @@ export default {
       if(this.name.length == 0 || this.email.length == 0 || this.subject.length == 0 || this.body.length == 0) {
         return 'Please fill all inputs.'
       }
-
       const emailRe = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA(-Z]{2,}))$/;
       if(!emailRe.test(this.email)) {
         return 'Please enter a valid email.'
       }
-
       return false;
     },
     formBody() {
@@ -120,70 +117,56 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/styles/_variables.scss";
-
 .standard-hero {
   background-image: url('/static/contact-page-header.jpg');
   background-position: center;
 }
-
 .section-contact {
   margin-top: 64px;
-
   .message,
   .social {
     padding: 16px 32px;
   }
-
   .accent {
     width: 48px;
     height: 14px;
     margin-bottom: 24px;
   }
-
   h2 {
     text-transform: uppercase;
     font-size: 32px;
     margin-bottom: 8px;
   }
-
   .message {
     background-color: $color-secondary-2;
     margin-bottom: 50px;
-
     .accent {
       background-color: $color-tertiary;
     }
-
     textarea {
       min-height: 8em;
     }
   }
-
   button:hover {
     color: white;
     background-color: $color-primary;
     transition: ease 0.3s;
   }
-
   .social {
     // background-color: $color-tertiary;
     background-color: transparent;
     margin-bottom: 100px;
-
     h2 {
       color: black;
     }
-
     p {
       font-size: 1rem;
       line-height: 1rem;
     }
-
     .accent {
       background-color: $color-tertiary-2;
       display: none;
     }
-
     .social-bubbles {
       .social-bubble {
         display: inline-flex;
@@ -194,17 +177,14 @@ export default {
         border-radius: 20px;
         text-decoration: none;
         background-color: black;
-
         &:hover {
           filter: brightness(80%);
         }
-
         img {
           height: 60%;
         }
       }
     }
-
     button {
       color: black;
     }

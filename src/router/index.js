@@ -11,6 +11,7 @@ import TicketsPage from '@/pages/Tickets'
 import Dashboard from '@/pages/Dashboard'
 import QAPage from '@/pages/QA'
 import WatchPage from '@/pages/Watch'
+import LiveStream from '@/pages/LiveStream'
 
 import VerificationPage from '@/pages/Verification'
 import CheckoutPage from '@/pages/Checkout'
@@ -62,6 +63,11 @@ export default new Router({
       path: '/tickets',
       name: 'TicketsPage',
       component: TicketsPage
+    },
+    {
+      path: '/livestream',
+      name: 'Livestream',
+      component: LiveStream
     },
     {
       path: '/dashboard',
