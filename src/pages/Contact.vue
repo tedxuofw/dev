@@ -140,6 +140,7 @@ export default {
   .message {
     background-color: $color-secondary-2;
     margin-bottom: 50px;
+
     .accent {
       background-color: $color-tertiary;
     }

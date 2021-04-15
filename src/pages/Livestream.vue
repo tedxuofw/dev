@@ -3,7 +3,7 @@
   <ConferencePage :selectedIndex="5">
     <div class="outer">
       <div class="position">
-        <iframe class="video" src="https://www.youtube.com/embed/H2tuKiiznsY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
+        <iframe class="video" src="https://www.youtube.com/embed/TDDeGxZBCDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>       
         <h3> SCHEDULE OF EVENTS: </h3>
         <div class="break">
           <h1> INTRODUCTION</h1>
@@ -160,7 +160,7 @@ export default {
 
 .outer {
   width:100%;
-  height: 500vh;
+  height: 350vh;
   background-color: #F5C26A;
 
   /*.img{
@@ -206,7 +206,7 @@ export default {
 .break{
   background-color: maroon;
   width: 89vw;
-  height: 12vh;
+  height: 8vh;
   color: white;
   font-size: 10vw;
   border-color: black;
@@ -217,7 +217,8 @@ export default {
 }
 
 h3{
-  font-size: 2vw;
+  padding-left: 1vw;
+  font-size: 5vh;
   color: white;
 }
 h1 {
@@ -241,7 +242,7 @@ h4{
 .presenter {
   background-color: lightblue;
   width: 89vw;
-  height: 15vh;
+  height: 12vh;
   color: white;
   font-size: 10vw;
   border-color: black;
