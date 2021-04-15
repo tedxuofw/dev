@@ -28,7 +28,7 @@
         <img src="/static/gardenunderline.png" style="max-height: 80px; margin-top: -40px; padding: 0 0 0 10vw" /> -->
       </div>
       <div class="speakers-container">
-        <button @click="showModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl" :style="{visibility: shownSpeakers.includes(i) ? 'visible' : 'hidden', opacity: shownSpeakers.includes(i) ? 1 : 0}">
+        <button @click="showSpeakerModal(i)" class="speaker" v-for="(speaker, i) in speakers" :key="speaker.name" :to="speaker.askUrl" :style="{visibility: shownSpeakers.includes(i) ? 'visible' : 'hidden', opacity: shownSpeakers.includes(i) ? 1 : 0}">
           <img :src="speaker.imageUrl" />
           <div class="overlay show-overlay-if-mobile">
             <div class="overlay-text">
@@ -44,11 +44,27 @@
         </button>
         <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
       </div>
+      <div class="speakers-container">
+        <button @click="showPerformerModal(i)" class="speaker" v-for="(performer, i) in performers" :key="performer.name" :to="performer.askUrl" :style="{visibility: shownPerformers.includes(i) ? 'visible' : 'hidden', opacity: shownPerformers.includes(i) ? 1 : 0}">
+          <img :src="performer.imageUrl" />
+          <div class="overlay show-overlay-if-mobile">
+            <div class="overlay-text">
+              <h3 style="text-transform:uppercase; font-weight: 600;">{{ performer.name }}</h3>
+              <h3>{{ performer.title }}</h3>
+            </div>
+          </div>
+          <!-- <div class="content">
+            <span class="name">{{ speaker.name }}</span>
+            <span class="title">{{ speaker.title }}</span>
+            <router-link class="ask-button" :to="speaker.askUrl">Ask Question</router-link>
+          </div> -->
+        </button>
+      </div>
       <!-- <div class="temporary-message"><div class="temp-msg">Speakers Coming Soon...</div></div> -->
     </div>
 
     <modal
-      v-show="isModalVisible"
+      v-show="isSpeakerModalVisible"
       @close="closeModal"
       style="z-index: 9999;"
     >
@@ -72,6 +88,32 @@
       <p style="font-size: 15px; color:grey">click anywhere to close...</p>
     </div>
     </modal>
+
+    <modal
+      v-show="isPerformerModalVisible"
+      @close="closeModal"
+      style="z-index: 9999;"
+    >
+    <div slot="header">
+      <div style="display: flex; flex-direction: row; flex-wrap; wrap">
+      <img class="hide-if-mobile" style="object-fit: cover; max-width: 50vw; max-height: 35vh;" :src="this.performers[this.modalSelectedPerformer].imageUrl" />
+      <div style="background-color: #e62b1e; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+      <h3 style="color:white; padding: 40px 25px 25px; font-size: 30px; font-weight: 700; text-transform: uppercase;">
+      {{ this.performers[this.modalSelectedPerformer].name }}
+      </h3>
+      <h3 class="smaller-if-mobile" style="color:white; padding: 0px 25px 35px; font-size: 20px; font-weight: 500; text-transform: uppercase;">
+      {{ this.performers[this.modalSelectedPerformer].title }}
+      </h3>
+      </div>
+      </div>
+    </div>
+    <div slot="body">
+      <p v-html="this.performers[this.modalSelectedPerformer].description"></p>
+    </div>
+    <div slot="footer">
+      <p style="font-size: 15px; color:grey">click anywhere to close...</p>
+    </div>
+    </modal>
   </ConferencePage>
 </template>
 
@@ -86,14 +128,37 @@ export default {
     const makeSpeaker = this.makeSpeaker.bind(this);
     return {
       shownSpeakers: [],
-      isModalVisible: false,
+      shownPerformers: [],
+      isSpeakerModalVisible: false,
+      isPerformerModalVisible: false,
       modalSelectedSpeaker: 1,
+      modalSelectedPerformer: 1,
       selectedSpeakerIndex: -1,
       speakers: [
+        makeSpeaker(
+          'Samer Fouad',
+          'Comfort Kills Creativity',
+          '<p>Samer Fouad is an artist and graphic designer. Although his degree is in graphic design, Fouad considers himself a mixed media artist, combining sculpture, video, graphic design, photography, digital college, and various printmaking methods. His work has been showcased around the world, including New York City, Tokyo, Doha, France, Spain, Italy and Budapest. Fouad has been published in The AIGA, Adweek, Beautiful Bizarre Magazine and Design Sponge. Fouad was an artist-in-residence for the Mana BSMT program, located at Mana Contemporary, Jersey City, Palazzo Monti in Brescia, Italy, and Nouvelle Vague Gallery in Marbella, Spain. He is a co-founder of the Newark Print Shop in New Jersey.</p><p>Simultaneous to his career as an artist, Fouad taught advanced printmaking and graphic design for the undergraduate BFA Program and book arts for the MFA Program, at Rutgers University in New Jersey. He was also a teaching assistant in visual communication design for the Undergraduate School of Art and Design and was a lecturer for the masters program of the School of Human Centered Design and Engineering, at The University of Washington. He is currently an Assistant Professor of Design at Pacific Lutheran University.</p><p>Samer Fouad holds an Arts, Culture, Media degree with a Bachelors in Fine Art within a concentration of graphic design and a minor in art history from Rutgers University. He also holds a Master of Design degree from the University of Washington.</p><p>Website: <a href="https://www.samerfouad.com/" style="color: #e62b1e;">https://www.samerfouad.com/</a></p>'
+        ),
+        makeSpeaker(
+          'Whitnee Hawthorne',
+          'What Corporate America Needs To Know About Working Moms',
+          '<p>Whitnee Hawthorne is a dynamic professional speaker, informative podcaster, and inspiring Fortune 500 company executive. She founded The Savvy Working Mom as a platform dedicated to helping working moms thrive in every arena. Her easy to follow digital courses have helped countless working mothers find harmony across all areas of their life. At the root of everything she does is the belief that working moms are the backbone of our society, and she wants to support as many women as possible in creating a vibrant, joyful life.</p><p>Instagram: <a href="https://www.instagram.com/thesavvyworkingmom/" style="color: #e62b1e;">@thesavvyworkingmom</a><br>Facebook: <a href="https://www.facebook.com/thesavvyworkingmom" style="color: #e62b1e;">@thesavvyworkingmom</a><br>Twitter: <a href="https://twitter.com/SavvyWorking" style="color: #e62b1e;">@SavvyWorking</a></p>'
+        ),
         makeSpeaker(
           'Ashley McGirt',
           'Understanding and Healing from Racial Trauma',
           '<p>Ashley McGirt is the founder and President of the WA Therapy Fund Foundation. She is a psychotherapist, Tedx international speaker, and author who has been featured in Forbes, MSNBC, The young turks, Bravo, & more. Ashley has received a Masters of Social Work from the University of Washington. She also holds a Bachelor of Science in Psychology. Ashley currently works as a full-time hospice therapist and owns and operates her own private practice. In her private practice she focuses primarily on racial trauma, depression, and anxiety. Ashley actively works toward de-stigmatizing mental illness, and reducing high rates of recidivism in American prisons, in an attempt to create a more socially just society for all. Ashley offers presentations, workshops, group facilitation, and consultation specializing in racial trauma, mental health, crisis response, social justice and racial equity. Ashley strives to help others find happiness and healing within themselves through unpacking their baggage, resting, reflecting, and restoring themselves to be who they were intended to be on this earth.</p><p>Instagram: <a href="https://www.instagram.com/therapywithash/" style="color: #e62b1e;">@therapywithash</a><br>Facebook: <a href="https://www.facebook.com/McGirtCounselingServices/" style="color: #e62b1e;">@McGirtCounselingServices</a><br>Website: <a href="https://ashleymcgirt.com/" style="color: #e62b1e;">https://ashleymcgirt.com/</a></p>'
+        ),
+        makeSpeaker(
+          'Christina Scheppelmann',
+          'The Power of Opera',
+          '<p>As Director of Artistic Operations at Washington National Opera, Scheppelmann oversaw the artistic planning for 11 years. She was instrumental in fundraising efforts, leading to grants for individual productions, ongoing projects and renovations. Her passion for the artform and interest to see it flourish into the future led her to conceive of and secure funding for WNO’s American Opera Initiative, offering young composers and librettists a developmental forum in which to bridge the gap between conservatory training and full-length commissions.</p><p>A long-time champion of young artists, she has led masterclasses, lectured at artist training programs, and judged vocal competitions around the world.</p><p>Scheppelmann began her career in the arts early-on, performing in the children’s choir of the Hamburg State Opera. After completing a degree in banking, she left her home country of Germany in 1988 to work in an Artist Management agency in Milan. Fluent in five languages, she quickly became known for her communication skills and was soon offered a job in arts administration at the Gran Teatre del Liceu.</p><p>In 1994, she was recruited by Lotfi Mansouri to assist him at San Francisco Opera where, as one of the youngest artistic administrators at the time, she continued her work in planning seasons and hiring singers, conductors, directors and designers. Ms. Scheppelmann prides herself on having built solid collaborative relationships with union and civic leaders, members of the diplomatic corps, and national and international press.</p><p>Scheppelmann was previously awarded the rank of Commendatore in the Order of the Star of Solidarity by the Italian government for her career-long work promoting opera and Italian culture. She also served as the Vice President for the board of Opera Europa, the professional organization of opera houses and festivals.</p><p>Instagram: <a href="https://www.instagram.com/scheppelmannch/" style="color: #e62b1e;">@scheppelmannch</a><br>Twitter: <a href="https://twitter.com/ScheppelmannCh" style="color: #e62b1e;">@ScheppelmannCh</a></p>'
+        ),
+        makeSpeaker(
+          'Dagan Kay',
+          'Surplus Food: Why I’m an Optimist about Climate Change',
+          '<p>Dagan Kay is the cofounder and CEO of <a href="https://producemate.com/" style="color: #e62b1e;">Produce Mate</a>, a mission-driven startup company dedicated to reducing food waste and it’s massive impact on our planet. He started working on Produce Mate while still a full-time Philosophy student at the University of Portland. After graduating in 2019, Dagan remained in the foodie-capital of Portland, Oregon, where his work now largely revolves around raising food preservation awareness, designing innovative products that help food last longer, and building a team of like-minded people at Produce Mate. In a world threatened by the existential threat of climate change, Dagan remains eternally optimistic, throwing himself in at the deep end to work alongside the people working on creative solutions to our planet\'s biggest problem.</p><p>Instagram: <a href="https://www.instagram.com/dagankay/" style="color: #e62b1e;">@dagankay</a> / <a href="https://www.instagram.com/producemate/" style="color: #e62b1e;">@producemate</a><br>Facebook: <a href="https://www.facebook.com/ProduceMate" style="color: #e62b1e;">@ProduceMate</a></p>'
         ),
         makeSpeaker(
           'Casey Dreier',
@@ -106,15 +171,17 @@ export default {
           '<p>Dee Dwyer is a diversified Photographer from Southeast, Washington, D.C who produces awe-inspiring images. She has been anointed by her community as "The Visual Voice for the People”. Her goal is to show all aspects of human life with the primary focus being humanity. Dwyer’s raw and compelling candids unveil the souls of people. The images expose many subject’s truth, adversities, beauty, and culture. As a teenager, she developed her fascination for photography. Dee never left the house without her disposable camera to capture daily life of family and friends. Receiving her BFA in Filmmaking and Digital Production helped to develop her keen eye and technical skills. While taking a required Black & White photography class, she had to shoot and develop her own film. This is how the love for photography blossomed. She’d spend half her days snapping candids and the other half in the dark room. Having a love for travel and community she continues to use her camera to, "Show the World What it\'s Made of." Her work has been shown in exhibitions such as PhotoSCHWEIZ, Photoville, Catchlight amongst many others and featured in publications such as Vogue, The Wall Street Journal, The New York Times, BET, The Guardian, Bloomberg Businessweek and more. Dee Dwyer currently resides in Washington, DC with her two children.</p><p>Instagram: <a href="https://www.instagram.com/deedwyerjonts/" style="color: #e62b1e;">@deedwyerjonts</a><br>Twitter: <a href="https://twitter.com/deedwyerjonts" style="color: #e62b1e;">@deedwyerjonts</a></p>'
         ),
         makeSpeaker(
-          'Samer Fouad',
-          'Comfort Kills Creativity',
-          '<p>Samer Fouad is an artist and graphic designer. Although his degree is in graphic design, Fouad considers himself a mixed media artist, combining sculpture, video, graphic design, photography, digital college, and various printmaking methods. His work has been showcased around the world, including New York City, Tokyo, Doha, France, Spain, Italy and Budapest. Fouad has been published in The AIGA, Adweek, Beautiful Bizarre Magazine and Design Sponge. Fouad was an artist-in-residence for the Mana BSMT program, located at Mana Contemporary, Jersey City, Palazzo Monti in Brescia, Italy, and Nouvelle Vague Gallery in Marbella, Spain. He is a co-founder of the Newark Print Shop in New Jersey.</p><p>Simultaneous to his career as an artist, Fouad taught advanced printmaking and graphic design for the undergraduate BFA Program and book arts for the MFA Program, at Rutgers University in New Jersey. He was also a teaching assistant in visual communication design for the Undergraduate School of Art and Design and was a lecturer for the masters program of the School of Human Centered Design and Engineering, at The University of Washington. He is currently an Assistant Professor of Design at Pacific Lutheran University.</p><p>Samer Fouad holds an Arts, Culture, Media degree with a Bachelors in Fine Art within a concentration of graphic design and a minor in art history from Rutgers University. He also holds a Master of Design degree from the University of Washington.</p><p>Website: <a href="https://www.samerfouad.com/" style="color: #e62b1e;">https://www.samerfouad.com/</a></p>'        ),
+          'Aidan Key',
+          'The Heart of the Matter',
+          '<p>Aidan Key is the founder and president of <a href="https://transfamilies.org/" style="color: #e62b1e;">Trans Families</a>, an organization that provides online support to families of gender diverse children across the nation. Key, the principal trainer at <a href="http://genderdiversity.org/" style="color: #e62b1e;">Gender Diversity</a>, has served as a consultant to hundreds of K-12 schools and other youth-based agencies across the US and has provided districts with training, strategic planning, policy development, and staff, parent, and student education. Key’s workplace trainings have included companies like Amazon, Lighthouse, Milliman, Grange, Cigna, Mithun Architects, Price Waterhouse Cooper, SAP Concur, and more.</p><p>Key is currently authoring a book, Trans Children in Today’s Schools (Oxford University Press, expected publication date, early 2022). He is the co-author of Trans Bodies, Trans Selves (Oxford University Press, 1st and 2nd editions) and Gender Cognition in Transgender Children (Psychological Science). Past speaking/keynote engagements include the Children’s Justice Conference, the National Women’s Judges Conference, the Adolescent Medicine Conference, and the University of Alaska’s 1st Power & Privilege conference.</p><p>The Greater Seattle Business Association honored Key as the Humanitarian of the Year (2017) and The Pride Foundation, Ingersoll Gender Center, Chicago Black Pride, Seattle Out and Proud, have praised Key’s work as well. He has often been featured in the national media, including the Oprah Winfrey Show, NPR’s Diane Rehm Show, Al Jazeera America, Larry King Live, and Fresh Air with Terry Gross. More recently, Aidan was selected as one of Seattle magazine\'s 2019 Most Influential People of the Year.</p><p>Website: <a href="http://www.genderdiversity.org/" style="color: #e62b1e;">http://www.genderdiversity.org/</a><br>Facebook: <a href="https://www.facebook.com/GenderDiversityInc" style="color: #e62b1e;">@GenderDiversityInc</a></p>'
+        ),
         makeSpeaker(
           'Kathleen Bogart',
           'The Psychology of Ableism',
           '<p>Kathleen Bogart, Ph.D., is an Associate Professor of Psychology at Oregon State University. As a person with a disability, she is passionate about researching, educating, and writing about ableism, or disability prejudice. Her research focuses on the psychosocial implications of living with disability, rare disorders, or facial differences such as Moebius syndrome. An advocate for people with disabilities, she has served on the American Psychological Association Committee on Disability Issues in Psychology, the Rehabilitation Psychology editorial board, and the Moebius Syndrome Foundation Scientific Advisory Board.</p><p>She is a 2021 Public Voices Fellow with the OpEd Project. Her work has been featured in the New York Times, Time, The Conversation, the Financial Times, and Huffington Post, and she blogs for Psychology Today at https://www.psychologytoday.com/us/blog/disability-is-diversity. In 2019, she co-edited the Journal of Social Issues special issue on Ableism. Dr. Bogart presents internationally to academic, general, and stakeholder audiences about disability awareness, disability as diversity, and facial paralysis. She consults with organizations on disability advocacy.</p><p>Twitter: <a href="https://twitter.com/kathleen_bogart" style="color: #e62b1e;">@kathleen_bogart</a><br>Blog: <a href="https://www.psychologytoday.com/us/blog/disability-is-diversity" style="color: #e62b1e;">Disability is Diversity</a></p>'
         ),
         makeSpeaker(
+<<<<<<< Updated upstream
           'Christina Scheppelmann',
           'The Power of Opera',
           '<p>Born in Hamburg, Germany, Christina Scheppelmann is the fourth General Director to lead Seattle Opera.</p> <p>As the Artistic Director General at the Gran Teatre del Liceu in Barcelona, a position she held from 2015-2019, Scheppelmann was responsible for programming, casting, and overall artistic direction.</p> <p>Prior to that, she was the first Director General of the Royal Opera House Muscat (Oman), the first theater of its kind in the Gulf Region, where her mission was to present high-quality music, opera, and dance from around the world. Under her leadership, ROHM established an excellent reputation as a cultural destination in Oman and opened doors for international musical and cultural relations.</p> <p>As Director of Artistic Operations at Washington National Opera, Scheppelmann oversaw the artistic planning for 11 years. She was instrumental in fundraising efforts, leading to grants for individual productions, ongoing projects and renovations. Her passion for the artform and interest to see it flourish into the future led her to conceive of and secure funding for WNO’s American Opera Initiative, offering young composers and librettists a developmental forum in which to bridge the gap between conservatory training and full-length commissions.</p> <p>A long-time champion of young artists, she has led masterclasses, lectured at artist training programs, and judged vocal competitions around the world.</p> <p>Scheppelmann began her career in the arts early-on, performing in the children’s choir of the Hamburg State Opera. After completing a degree in banking, she left her home country of Germany in 1988 to work in an Artist Management agency in Milan. Fluent in five languages, she quickly became known for her communication skills and was soon offered a job in arts administration at the Gran Teatre del Liceu.</p> <p>In 1994, she was recruited by Lotfi Mansouri to assist him at San Francisco Opera where, as one of the youngest artistic administrators at the time, she continued her work in planning seasons and hiring singers, conductors, directors and designers. Ms. Scheppelmann prides herself on having built solid collaborative relationships with union and civic leaders, members of the diplomatic corps, and national and international press.</p> <p>Scheppelmann was previously awarded the rank of Commendatore in the Order of the Star of Solidarity by the Italian government for her career-long work promoting opera and Italian culture. She also served as the Vice President for the board of Opera Europa, the professional organization of opera houses and festivals.</p><p>Instagram: <a href="https://www.instagram.com/scheppelmannch/" style="color: #e62b1e;">@scheppelmannch</a><br>Twitter: <a href="https://twitter.com/ScheppelmannCh" style="color: #e62b1e;">@ScheppelmannCh</a></p>'
@@ -124,20 +191,28 @@ export default {
           'The Heart of the Matter',
           '<p>Aidan Key is the founder and president of <a href="https://transfamilies.org/" style="color: #e62b1e;">Trans Families</a>, an organization that provides online support to families of gender diverse children across the nation. Key, the principal trainer at <a href="http://genderdiversity.org/" style="color: #e62b1e;">Gender Diversity</a>, has served as a consultant to hundreds of K-12 schools and other youth-based agencies across the US and has provided districts with training, strategic planning, policy development, and staff, parent, and student education. Key’s workplace trainings have included companies like Amazon, Lighthouse, Milliman, Grange, Cigna, Mithun Architects, Price Waterhouse Cooper, SAP Concur, and more.</p><p>Key is currently authoring a book, Trans Children in Today’s Schools (Oxford University Press, expected publication date, early 2022). He is the co-author of Trans Bodies, Trans Selves (Oxford University Press, 1st and 2nd editions) and Gender Cognition in Transgender Children (Psychological Science). Past speaking/keynote engagements include the Children’s Justice Conference, the National Women’s Judges Conference, the Adolescent Medicine Conference, and the University of Alaska’s 1st Power & Privilege conference.</p><p>The Greater Seattle Business Association honored Key as the Humanitarian of the Year (2017) and The Pride Foundation, Ingersoll Gender Center, Chicago Black Pride, Seattle Out and Proud, have praised Key’s work as well. He has often been featured in the national media, including the Oprah Winfrey Show, NPR’s Diane Rehm Show, Al Jazeera America, Larry King Live, and Fresh Air with Terry Gross. More recently, Aidan was selected as one of Seattle magazine\'s 2019 Most Influential People of the Year.</p><p>Website: <a href="http://www.genderdiversity.org/" style="color: #e62b1e;">http://www.genderdiversity.org/</a><br>Facebook: <a href="https://www.facebook.com/GenderDiversityInc" style="color: #e62b1e;">@GenderDiversityInc</a></p>'
         ),
-        makeSpeaker(
-          'Whitnee Hawthorne',
-          'What Corporate America Needs To Know About Working Moms',
-          '<p>Whitnee Hawthorne is a dynamic professional speaker, informative podcaster, and inspiring Fortune 500 company executive. She founded The Savvy Working Mom as a platform dedicated to helping working moms thrive in every arena. Her easy to follow digital courses have helped countless working mothers find harmony across all areas of their life. At the root of everything she does is the belief that working moms are the backbone of our society, and she wants to support as many women as possible in creating a vibrant, joyful life.</p><p>Instagram: <a href="https://www.instagram.com/thesavvyworkingmom/" style="color: #e62b1e;">@thesavvyworkingmom</a><br>Facebook: <a href="https://www.facebook.com/thesavvyworkingmom" style="color: #e62b1e;">@thesavvyworkingmom</a><br>Twitter: <a href="https://twitter.com/SavvyWorking" style="color: #e62b1e;">@SavvyWorking</a></p>'
-        ),
-        makeSpeaker(
-          'Dagan Kay',
-          'Surplus Food: Why I’m an Optimist about Climate Change',
-          '<p>Dagan Kay is the cofounder and CEO of <a href="https://producemate.com/" style="color: #e62b1e;">Produce Mate</a>, a mission-driven startup company dedicated to reducing food waste and it’s massive impact on our planet. He started working on Produce Mate while still a full-time Philosophy student at the University of Portland. After graduating in 2019, Dagan remained in the foodie-capital of Portland, Oregon, where his work now largely revolves around raising food preservation awareness, designing innovative products that help food last longer, and building a team of like-minded people at Produce Mate. In a world threatened by the existential threat of climate change, Dagan remains eternally optimistic, throwing himself in at the deep end to work alongside the people working on creative solutions to our planet\'s biggest problem.</p><p>Instagram: <a href="https://www.instagram.com/dagankay/" style="color: #e62b1e;">@dagankay</a> / <a href="https://www.instagram.com/producemate/" style="color: #e62b1e;">@producemate</a><br>Facebook: <a href="https://www.facebook.com/ProduceMate" style="color: #e62b1e;">@ProduceMate</a></p>'
-        ),
-        makeSpeaker(
+=======
           'Lexi Walls',
           'The Future of Pandemic Preparedness',
           '<p>Dr. Lexi Walls grew up in Massachusetts and moved to Seattle to start graduate school and follow both her scientific and hiking dreams. She started studying coronaviruses in 2015: learning what they looked like, how they functioned, and what kinds of therapeutics could be useful. She had no idea that her years of work would help prepare her and the scientific and medical communities for the COVID-19 pandemic. She is currently a scientist at the University of Washington working on next generation vaccines and therapeutics against this current pandemic as well as against potential future ones. She works hard to make sure that the work she and others are doing can be communicated to the broad public, and has spoken at high schools, community colleges, universities, on podcasts, and at Seattle town hall to share the work with the community. She spends her free time exploring the beautiful mountains of the Pacific Northwest.</p><p>Twitter: <a href="https://twitter.com/coronalexington" style="color: #e62b1e;">@coronalexington</a></p>'
+        )
+      ],
+      performers: [
+>>>>>>> Stashed changes
+        makeSpeaker(
+          'Liv Victorino',
+          'Sheer Force of Will',
+          '<p>Liv Victorino, a junior at UW, is an indie-folk guitarist and singer/songwriter, as well as the drummer for local all-girl rock band Cherry Tomato. She will be playing from her debut EP called \"Sheer Force of Will\" which was recorded and released over the lockdown.</p>'
+        ),
+        makeSpeaker(
+          'Unplugged',
+          'TBD',
+          '<p>Unplugged arranges and performs mixes Eastern and Western music to celebrate the diverse backgrounds of the UW community, and create a welcoming and fun musical experience for the audience and members. We hope you enjoy our music as much as we do.</p>'
+        ),
+        makeSpeaker(
+          'Adrianne Watson',
+          'TBD',
+          '<p>Adrianne Watson is a young poet based out of Seattle, Washington who focuses on creating inclusive space through art. Adrianne will be presenting an original poem centered around self-love and acceptance.</p>'
         )
       ]
     };
@@ -157,12 +232,31 @@ export default {
         setTimeout(this.addSpeaker, 500);
       }
     },
-    showModal(speakerNum) {
-      this.isModalVisible = true;
+    addPerformer() {
+      let currSize = this.shownPerformers.length;
+      while (currSize == this.shownPerformers.length) {
+        let randPerformer = parseInt(Math.floor(Math.random() * Math.floor(this.performers.length)));
+
+        if (!this.shownPerformers.includes(randPerformer)) {
+          this.shownPerformers.push(randPerformer);
+        }
+      }
+
+      if (this.shownPerformers.length != this.performers.length) {
+        setTimeout(this.addPerformer, 500);
+      }
+    },
+    showSpeakerModal(speakerNum) {
+      this.isSpeakerModalVisible = true;
       this.modalSelectedSpeaker = speakerNum;
     },
+    showPerformerModal(performerNum) {
+      this.isPerformerModalVisible = true;
+      this.modalSelectedPerformer = performerNum;
+    },
     closeModal() {
-      this.isModalVisible = false;
+      this.isPerformerModalVisible = false;
+      this.isSpeakerModalVisible = false;
     },
     makeSpeaker(name, title, description) {
       const fileName = name.toLowerCase().replace(' ', '_').replace(' ', '_');
@@ -201,6 +295,7 @@ export default {
   },
   created: function() {
     setTimeout(this.addSpeaker(), 500);
+    setTimeout(this.addPerformer(), 500);
     console.log("Created");
   }
 };
