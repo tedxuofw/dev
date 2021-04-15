@@ -44,13 +44,13 @@
         </button>
         <div class="speaker-filler" v-for="(speaker, i) in speakerSpacer" :key="i"></div>
       </div>
-      <div class="speakers-container">
+      <div class="performers-banner"></div>
+      <div class="performers-container">
         <button @click="showPerformerModal(i)" class="speaker" v-for="(performer, i) in performers" :key="performer.name" :to="performer.askUrl" :style="{visibility: shownPerformers.includes(i) ? 'visible' : 'hidden', opacity: shownPerformers.includes(i) ? 1 : 0}">
           <img :src="performer.imageUrl" />
           <div class="overlay show-overlay-if-mobile">
             <div class="overlay-text">
               <h3 style="text-transform:uppercase; font-weight: 600;">{{ performer.name }}</h3>
-              <h3>{{ performer.title }}</h3>
             </div>
           </div>
           <!-- <div class="content">
@@ -101,9 +101,6 @@
       <h3 style="color:white; padding: 40px 25px 25px; font-size: 30px; font-weight: 700; text-transform: uppercase;">
       {{ this.performers[this.modalSelectedPerformer].name }}
       </h3>
-      <h3 class="smaller-if-mobile" style="color:white; padding: 0px 25px 35px; font-size: 20px; font-weight: 500; text-transform: uppercase;">
-      {{ this.performers[this.modalSelectedPerformer].title }}
-      </h3>
       </div>
       </div>
     </div>
@@ -153,7 +150,7 @@ export default {
         makeSpeaker(
           'Christina Scheppelmann',
           'The Power of Opera',
-          '<p>As Director of Artistic Operations at Washington National Opera, Scheppelmann oversaw the artistic planning for 11 years. She was instrumental in fundraising efforts, leading to grants for individual productions, ongoing projects and renovations. Her passion for the artform and interest to see it flourish into the future led her to conceive of and secure funding for WNO’s American Opera Initiative, offering young composers and librettists a developmental forum in which to bridge the gap between conservatory training and full-length commissions.</p><p>A long-time champion of young artists, she has led masterclasses, lectured at artist training programs, and judged vocal competitions around the world.</p><p>Scheppelmann began her career in the arts early-on, performing in the children’s choir of the Hamburg State Opera. After completing a degree in banking, she left her home country of Germany in 1988 to work in an Artist Management agency in Milan. Fluent in five languages, she quickly became known for her communication skills and was soon offered a job in arts administration at the Gran Teatre del Liceu.</p><p>In 1994, she was recruited by Lotfi Mansouri to assist him at San Francisco Opera where, as one of the youngest artistic administrators at the time, she continued her work in planning seasons and hiring singers, conductors, directors and designers. Ms. Scheppelmann prides herself on having built solid collaborative relationships with union and civic leaders, members of the diplomatic corps, and national and international press.</p><p>Scheppelmann was previously awarded the rank of Commendatore in the Order of the Star of Solidarity by the Italian government for her career-long work promoting opera and Italian culture. She also served as the Vice President for the board of Opera Europa, the professional organization of opera houses and festivals.</p><p>Instagram: <a href="https://www.instagram.com/scheppelmannch/" style="color: #e62b1e;">@scheppelmannch</a><br>Twitter: <a href="https://twitter.com/ScheppelmannCh" style="color: #e62b1e;">@ScheppelmannCh</a></p>'
+          '<p>Born in Hamburg, Germany, Christina Scheppelmann is the fourth General Director to lead Seattle Opera.</p><p>As the Artistic Director General at the Gran Teatre del Liceu in Barcelona, a position she held from 2015-2019, Scheppelmann was responsible for programming, casting, and overall artistic direction.</p><p>Prior to that, she was the first Director General of the Royal Opera House Muscat (Oman), the first theater of its kind in the Gulf Region, where her mission was to present high-quality music, opera, and dance from around the world. Under her leadership, ROHM established an excellent reputation as a cultural destination in Oman and opened doors for international musical and cultural relations.</p><p>As Director of Artistic Operations at Washington National Opera, Scheppelmann oversaw the artistic planning for 11 years. She was instrumental in fundraising efforts, leading to grants for individual productions, ongoing projects and renovations. Her passion for the artform and interest to see it flourish into the future led her to conceive of and secure funding for WNO’s American Opera Initiative, offering young composers and librettists a developmental forum in which to bridge the gap between conservatory training and full-length commissions.</p><p>A long-time champion of young artists, she has led masterclasses, lectured at artist training programs, and judged vocal competitions around the world.</p><p>Scheppelmann began her career in the arts early-on, performing in the children’s choir of the Hamburg State Opera. After completing a degree in banking, she left her home country of Germany in 1988 to work in an Artist Management agency in Milan. Fluent in five languages, she quickly became known for her communication skills and was soon offered a job in arts administration at the Gran Teatre del Liceu.</p><p>In 1994, she was recruited by Lotfi Mansouri to assist him at San Francisco Opera where, as one of the youngest artistic administrators at the time, she continued her work in planning seasons and hiring singers, conductors, directors and designers. Ms. Scheppelmann prides herself on having built solid collaborative relationships with union and civic leaders, members of the diplomatic corps, and national and international press.</p><p>Scheppelmann was previously awarded the rank of Commendatore in the Order of the Star of Solidarity by the Italian government for her career-long work promoting opera and Italian culture. She also served as the Vice President for the board of Opera Europa, the professional organization of opera houses and festivals.</p><p>Instagram: <a href="https://www.instagram.com/scheppelmannch/" style="color: #e62b1e;">@scheppelmannch</a><br>Twitter: <a href="https://twitter.com/ScheppelmannCh" style="color: #e62b1e;">@ScheppelmannCh</a></p>'
         ),
         makeSpeaker(
           'Dagan Kay',
@@ -189,18 +186,18 @@ export default {
       performers: [
         makeSpeaker(
           'Liv Victorino',
-          'Sheer Force of Will',
-          '<p>Liv Victorino, a junior at UW, is an indie-folk guitarist and singer/songwriter, as well as the drummer for local all-girl rock band Cherry Tomato. She will be playing from her debut EP called \"Sheer Force of Will\" which was recorded and released over the lockdown.</p>'
+          'TBD',
+          '<p>Liv Victorino, a junior at UW, is an indie-folk guitarist and singer/songwriter, as well as the drummer for local all-girl rock band Cherry Tomato. She\'ll be playing songs from her debut EP called \"Sheer Force of Will\" which was recorded and released over the lockdown.</p>'
         ),
         makeSpeaker(
           'Unplugged',
           'TBD',
-          '<p>Unplugged arranges and performs mixes Eastern and Western music to celebrate the diverse backgrounds of the UW community, and create a welcoming and fun musical experience for the audience and members. We hope you enjoy our music as much as we do.</p>'
+          '<p>Unplugged is UW\'s premier East-meets-West fusion music ensemble with a focus on Bollywood/Indian classical music and western pop. We feature a diverse range of instrumental and vocal styles, with an emphasis on creating unique arrangements and mashups. Our mission is to help unify the UW international community through music, and our instruments range from Indian classical drums (tabla) to modern 7-string guitars. Throughout our 5 years as a group, we have performed at events big and small, from local gigs to CulturalFest and countrywide Expos. With fewer live performance opportunities this year, we have shifted our focus to online platforms, so be sure to check us out on YouTube and Spotify!</p>'
         ),
         makeSpeaker(
-          'Adrianne Watson',
+          'Adriane Watson',
           'TBD',
-          '<p>Adrianne Watson is a young poet based out of Seattle, Washington who focuses on creating inclusive space through art. Adrianne will be presenting an original poem centered around self-love and acceptance.</p>'
+          '<p>Adriane Watson is an artist originally from central California. She is a poet, singer, and actor. She is currently an intern with Youth Speaks Seattle. She also acts in an indie queer series called Hetero, a show written and geared towards queer youth. Some of their poetic influences include Maya Angelou, Robert Frost, and Hanif Abdurraqib. Their art is meant to unite those going through similar experiences and enlighten those who are not. She also hopes her poetry can help give a bigger voice to marginalized people. Poetry is meant to help individuals on their journey towards self-love and create a different worldview for those searching for it. Adriane hopes their work can inspire others to express themselves and speak their truth.</p>'
         )
       ]
     };
@@ -311,10 +308,11 @@ $speakers-break-2: 900px;
   background-size: cover;
   background-position: center center;
   position: relative;
+  padding-bottom: 65vh;
 
   @media screen and (orientation: portrait) {
     height: auto;
-    padding-bottom: 5vh;
+    padding-bottom: 3vh;
     background-image: none;
     background-color: #f5c26a
   }
@@ -351,6 +349,27 @@ button {
 .banner {
   margin-top: 5vh;
   background-image: url('/static/speakers_2021_premade_banner.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  display: grid;
+  grid-auto-columns: auto;
+  width: 80vw;
+  height: 16vh;
+
+  @media screen and (orientation: portrait) {
+    margin-top: 2vh;
+    height: 10vh;
+  }
+
+  @media screen and (min-width: 500px) and (max-width: 1000px) {
+    margin-top: 2vh;
+    height: 16vh;
+  }
+}
+
+.performers-banner {
+  background-image: url('/static/performers_2021_premade_banner.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -487,7 +506,7 @@ button {
 .speakers-container {
   position: relative;
   display: grid;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto;
   grid-template-columns: auto auto auto auto;
   justify-content: space-between;
   align-items: stretch;
@@ -512,8 +531,75 @@ button {
   // most mobile views which will have height > width
   @media screen and (orientation: portrait) {
     grid-template-columns: auto auto;
-    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
     margin-top: 1vh;
+  }
+
+  .speaker {
+    position: relative;
+    height: 13vw;
+    width: 13vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    border: none;
+    margin-bottom: 2vw;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+
+    @media screen and (orientation: portrait) {
+      width: 30vw;
+      height: 30vw;
+      margin-top: 2vh;
+    }
+
+    .content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      span {
+        display: block;
+      }
+
+      .title {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.performers-container {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 4vh;
+
+  //.speaker-filler {
+  //  flex: 1 1 calc(30% - 28px);
+  //}
+
+  .fade-enter-active, .fade-leave-active {
+    transition: all 1.5s ease;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+
+  .fade-leave, .fade-enter-to {
+    opacity: 1;
+  }
+
+  // most mobile views which will have height > width
+  @media screen and (orientation: portrait) {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    margin-top: 0.5vh;
   }
 
   .speaker {
