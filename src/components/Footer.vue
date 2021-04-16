@@ -7,14 +7,24 @@
     <a class="home-page-button" href="#">
       <img class="our-logo" src="/static/logo_2021.svg" alt="TEDxUofW logo"/>
     </a>
-    <div class="social">
-      <div class="social-bubbles">
-        <a href="https://www.facebook.com/TEDxUofW/" target="_blank" class="social-bubble"><img src="/static/06-facebook.svg" alt="Facebook logo" /></a>
-        <a href="https://www.instagram.com/tedxuofw/" target="_blank" class="social-bubble"><img src="/static/38-instagram.svg" alt="Instagram logo" /></a>
-        <a href="https://www.youtube.com/channel/UCGmFbWHkkgWwA8iw9Ap11vw" target="_blank" class="social-bubble"><img src="/static/18-youtube.svg" alt="Youtube logo" /></a>
+      <div class="social">
+        <div class="social-bubbles">
+          <a href="https://www.facebook.com/TEDxUofW/" target="_blank" class="social-bubble"><img src="/static/06-facebook.svg" alt="Facebook logo" /></a>
+          <a href="https://www.instagram.com/tedxuofw/" target="_blank" class="social-bubble"><img src="/static/38-instagram.svg" alt="Instagram logo" /></a>
+          <a href="https://www.youtube.com/channel/UCGmFbWHkkgWwA8iw9Ap11vw" target="_blank" class="social-bubble"><img src="/static/18-youtube.svg" alt="Youtube logo" /></a>
+        </div>
+        <!-- <button @click="$router.push('/login')">Get your tickets now</button> -->
       </div>
-      <!-- <button @click="$router.push('/login')">Get your tickets now</button> -->
     </div>
+    <div class="sponsors">
+      <h3 class="sponsor-message">TEDxUofW is made possible with the help of our sponsors below!</h3>
+      <div class="icons">
+        <a href="https://wsecu.org/" target="_blank" class="sponsor-redirect"><img src="/static/wsecu_logo.png"></a>
+        <a href="http://www.roverdeja.com/" target="_blank" class="sponsor-redirect"><img src="/static/ppt_tips_logo.png"></a>
+        <a href="https://www.wellsfargo.com/" target="_blank" class="sponsor-redirect"><img src="/static/wells_fargo_logo.png"></a>
+        <a href="https://hub.washington.edu/" target="_blank" class="sponsor-redirect"><img src="/static/the_hub_logo.png"></a>
+        <a href="https://www.washington.edu/alumni/" target="_blank" class="sponsor-redirect"><img src="/static/uw_alum_association_logo.png"></a>
+      </div>
     </div>
     <p class="small-license">This independent TEDx event is operated under license from TED ©2021 TEDxUofW</p>
   </div>
@@ -96,7 +106,35 @@ $footer-tiny-break: 515px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0px 75px;
+  padding: 20px 0px 25px;
+}
+
+.sponsors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .sponsor-message {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+  }
+
+  .icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 150px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    .sponsor-redirect {
+      height: 140px;
+      width: 140px;
+    }
+  }
 }
 
 .our-name {

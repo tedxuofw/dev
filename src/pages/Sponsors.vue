@@ -33,10 +33,7 @@
        </div>
      </div> 
      -->
-   </div>  
-    
-  
-   
+   </div>
  </ConferencePage>
 </template>
  
@@ -94,8 +91,8 @@ export default {
 @import "@/styles/_variables.scss";
  
  
-  .fridge{
-   width:100%;
+  .fridge {
+   width: 100%;
  
    .upper-fridge {
      //display: grid;
