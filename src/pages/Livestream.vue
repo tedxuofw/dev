@@ -15,7 +15,7 @@
           </div>
 
           <div class="right">
-            <a href="/static/pdf/SAMER.pdf">
+            <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -26,7 +26,7 @@
             <h2> What Corporate America Needs to Know About Working Moms</h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/WHITNEE.pdf">
+            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/WHITNEE.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -37,7 +37,7 @@
             <h2> Understanding and Healing from Racial Trauma</h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/SPONSORS-v4.pdf">
+            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -55,7 +55,7 @@
             <h2> The Power of the Opera</h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/SPONSORS-v4.pdf">
+            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -66,7 +66,7 @@
             <h2> Surplus Food: Why I'm an Optomist About Climate Change</h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/SPONSORS-v4.pdf">
+            <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -80,7 +80,7 @@
             <h2> The Space Race in Your Own Backyard </h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/SPONSORS-v4.pdf">
+            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -95,7 +95,7 @@
             <h2> Humanity at the Forefront of Photojournalism</h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/SPONSORS-v4.pdf">
+            <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -106,7 +106,7 @@
             <h2> The Heart of the Matter</h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/SPONSORS-v4.pdf">
+            <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -124,7 +124,7 @@
             <h2> The Psychology of Ableism</h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/SPONSORS-v4.pdf">
+            <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
@@ -135,7 +135,7 @@
             <h2> The Future of Pandemic Preparedness</h2>
           </div>
           <div class="right">
-            <a href="/static/pdf/SPONSORS-v4.pdf">
+            <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           </div>
