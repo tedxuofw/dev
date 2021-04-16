@@ -263,7 +263,7 @@ export default {
 .speaker{
   background-color: #e62b1e;
   width: 89vw;
-  height: 15vh;
+  height: 17vh;
   color: white;
   font-size: 10vw;
   border-color: black;
@@ -329,7 +329,7 @@ a {
 h2 {
   //padding-bottom: 0.5vw;
   padding-left: 0.5vw;
-  font-size: 1.8vh;
+  font-size: 1.6vh;
 }
 
 
