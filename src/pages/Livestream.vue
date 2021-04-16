@@ -231,7 +231,7 @@ export default {
 
 .outer {
   width:100%;
-  height: 380vh;
+  height: 400vh;
   background-color: #F5C26A;
 
   /*.img{
