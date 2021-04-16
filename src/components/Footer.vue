@@ -19,11 +19,11 @@
     <div class="sponsors">
       <h3 class="sponsor-message">TEDxUofW is made possible with the help of our sponsors below!</h3>
       <div class="icons">
-        <a href="https://wsecu.org/" target="_blank" class="sponsor-redirect"><img src="/static/wsecu_logo.png"></a>
-        <a href="http://www.roverdeja.com/" target="_blank" class="sponsor-redirect"><img src="/static/ppt_tips_logo.png"></a>
-        <a href="https://www.wellsfargo.com/" target="_blank" class="sponsor-redirect"><img src="/static/wells_fargo_logo.png"></a>
-        <a href="https://hub.washington.edu/" target="_blank" class="sponsor-redirect"><img src="/static/the_hub_logo.png"></a>
-        <a href="https://www.washington.edu/alumni/" target="_blank" class="sponsor-redirect"><img src="/static/uw_alum_association_logo.png"></a>
+        <a href="https://wsecu.org/" target="_blank" class="sponsor-redirect"><img style="max-width: 10vw" src="/static/wsecu_logo.png"></a>
+        <a href="http://www.roverdeja.com/" target="_blank" class="sponsor-redirect"><img style="max-width: 10vw" src="/static/ppt_tips_logo.png"></a>
+        <a href="https://www.wellsfargo.com/" target="_blank" class="sponsor-redirect"><img style="max-width: 10vw" src="/static/wells_fargo_logo.png"></a>
+        <a href="https://hub.washington.edu/" target="_blank" class="sponsor-redirect"><img style="max-width: 10vw" src="/static/the_hub_logo.png"></a>
+        <a href="https://www.washington.edu/alumni/" target="_blank" class="sponsor-redirect"><img style="max-width: 10vw" src="/static/uw_alum_association_logo.png"></a>
       </div>
     </div>
     <p class="small-license">This independent TEDx event is operated under license from TED ©2021 TEDxUofW</p>
@@ -125,14 +125,13 @@ $footer-tiny-break: 515px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 150px;
+    height: 15vw;
     width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
 
     .sponsor-redirect {
-      height: 140px;
-      width: 140px;
+      width: 10vw;
     }
   }
 }
