@@ -9,16 +9,38 @@
           <h1> INTRODUCTION</h1>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: SAMER FOUD</h1>
-          <h2> Comfort Kills Creativity</h2>
+          <div class="left">
+            <h1> SPEAKER: SAMER FOUD</h1> 
+            <h2> Comfort Kills Creativity </h2> 
+          </div>
+
+          <div class="right">
+            <a href="/static/pdf/SAMER.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: WHITNEE HAWTHORNE</h1>
-          <h2> What Corporate America Needs to Know About Working Moms</h2>
+          <div class="left">
+            <h1> SPEAKER: WHITNEE HAWTHORNE</h1>
+            <h2> What Corporate America Needs to Know About Working Moms</h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/WHITNEE.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: SAMER FOUD</h1>
-          <h2> Understanding and Healing from Racial Trauma</h2>
+          <div class="left">
+            <h1> SPEAKER: ASHLEE MCGIRT</h1>
+            <h2> Understanding and Healing from Racial Trauma</h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/SPONSORS-v4.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="presenter">
           <h1> PERFORMER: LIV VICTORINO </h1>
@@ -28,31 +50,66 @@
           <h1> 5 MINUTE BREAK</h1>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: CRISTINA SCHEPPELMANN</h1>
-          <h2> The Power of the Opera</h2>
+          <div class="left">
+            <h1> SPEAKER: CRISTINA SCHEPPELMANN</h1>
+            <h2> The Power of the Opera</h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/SPONSORS-v4.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: DAGAN KEY</h1>
-          <h2> Surplus Food: Why I'm an Optomist About Climate Change</h2>
+          <div class="left">
+            <h1> SPEAKER: DAGAN KEY</h1>
+            <h2> Surplus Food: Why I'm an Optomist About Climate Change</h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/SPONSORS-v4.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="break">
           <h1> 10 MINUTE BREAK</h1>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: CASEY DRIER</h1>
-          <h2> The Space Race in Your Own Backyard </h2>
+          <div class="left">
+            <h1> SPEAKER: CASEY DRIER</h1>
+            <h2> The Space Race in Your Own Backyard </h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/SPONSORS-v4.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="presenter">
           <h1> PERFORMER: UNPLUGGED </h1>
           <h2> Musical Performance</h2>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: DEE DWYER</h1>
-          <h2> Humanity at the Forefront of Photojournalism</h2>
+          <div class="left">
+            <h1> SPEAKER: DEE DWYER</h1>
+            <h2> Humanity at the Forefront of Photojournalism</h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/SPONSORS-v4.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: AIDEN KEY</h1>
-          <h2> The Heart of the Matter</h2>
+          <div class="left">
+            <h1> SPEAKER: AIDEN KEY</h1>
+            <h2> The Heart of the Matter</h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/SPONSORS-v4.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="presenter">
           <h1> PERFORMER: LIV VICTORINO </h1>
@@ -62,12 +119,26 @@
           <h1> 5 MINUTE BREAK</h1>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: KATHLEEN BOGART</h1>
-          <h2> The Psychology of Ableism</h2>
+          <div class="left">
+            <h1> SPEAKER: KATHLEEN BOGART</h1>
+            <h2> The Psychology of Ableism</h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/SPONSORS-v4.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="speaker" >
-          <h1> SPEAKER: LEXI WALLS</h1>
-          <h2> The Future of Pandemic Preparedness</h2>
+          <div class="left">
+            <h1> SPEAKER: LEXI WALLS</h1>
+            <h2> The Future of Pandemic Preparedness</h2>
+          </div>
+          <div class="right">
+            <a href="/static/pdf/SPONSORS-v4.pdf">
+          <h4> TRANSCRIPT </h4>
+          </a>
+          </div>
         </div>
         <div class="break">
           <h1> CLOSING</h1>
@@ -160,7 +231,7 @@ export default {
 
 .outer {
   width:100%;
-  height: 350vh;
+  height: 380vh;
   background-color: #F5C26A;
 
   /*.img{
@@ -192,7 +263,7 @@ export default {
 .speaker{
   background-color: #e62b1e;
   width: 89vw;
-  height: 12vh;
+  height: 15vh;
   color: white;
   font-size: 10vw;
   border-color: black;
@@ -200,6 +271,16 @@ export default {
   border-width: 3px;
   border-radius: 1%;
   margin: 10px;
+  display:flex;
+  justify-content: space-between;
+  .right{
+    text-align: right;
+    
+    //position: relative;
+    //float: right;
+
+  }
+  
   
 }
 
@@ -222,20 +303,35 @@ h3{
   color: white;
 }
 h1 {
-    font-size: 2vh;
+    font-size: 2.5vh;
     //padding-top: 0.5vw;
     padding-left: 0.5vw;
     padding-bottom: -0.5vw;
+}
+a {
+    font-size: 1.5vh;
+    text-align: right;
+    // padding-top: 0.5vw;
+    // padding-right: 0.8vw;
+    // padding-left: 0.5vw;
+    // padding-bottom: -0.5vw;
+    h4{
+      //padding-left: 0.5vw;
+      font-size: 2.5vh;
+      padding-right: 3vw;
+      color: white;
+      // padding-right: 1.5vw;
+      padding-top: -20vh;
+
+  }
 }
 
 h2 {
   //padding-bottom: 0.5vw;
   padding-left: 0.5vw;
-  font-size: 1.5vh;
+  font-size: 1.8vh;
 }
-h4{
-    visibility: hidden;
-}
+
 
 
 
