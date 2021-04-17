@@ -4,8 +4,10 @@
     <div class="outer">
       <div class="position">
         <!-- <iframe class="video" src="https://www.youtube.com/embed/TDDeGxZBCDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-        <iframe class="video" src="/static/Coming_Soon.gif" frameBorder="0" ></iframe><p></p>      
-        <h3> SCHEDULE OF EVENTS: </h3>
+        <div class="gif">
+          <h4> LIVESTREAM COMING SOON ... </h4>   
+        </div>  
+        <!-- <h3> SCHEDULE OF EVENTS: </h3> -->
         <div class="break">
           <h1> INTRODUCTION</h1>
         </div>
@@ -14,11 +16,12 @@
             <h1> SPEAKER: SAMER FOUD</h1> 
             <h2> Comfort Kills Creativity </h2> 
           </div>
-
+        
           <div class="right">
             <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
+              <h4> TRANSCRIPT </h4>
+             </a>
+            <h5> 10:10 AM </h5>
           </div>
         </div>
         <div class="speaker" >
@@ -30,6 +33,7 @@
             <a target="_blank" style="color: #FFFFFF" href="/static/pdf/WHITNEE.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+            <h5> 10:25 AM </h5>
           </div>
         </div>
         <div class="speaker" >
@@ -41,6 +45,7 @@
             <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+            <h5> 10:40 AM </h5>
           </div>
         </div>
         <div class="presenter">
@@ -59,6 +64,7 @@
             <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+          <h5> 11:10 AM </h5>
           </div>
         </div>
         <div class="speaker" >
@@ -70,6 +76,7 @@
             <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+          <h5> 11:25 AM </h5>
           </div>
         </div>
         <div class="break">
@@ -84,6 +91,7 @@
             <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+          <h5> 11:50 AM </h5>
           </div>
         </div>
         <div class="presenter">
@@ -99,6 +107,7 @@
             <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+          <h5> 12:15 PM </h5>
           </div>
         </div>
         <div class="speaker" >
@@ -110,6 +119,7 @@
             <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+          <h5> 12:30 AM </h5>
           </div>
         </div>
         <div class="presenter">
@@ -128,6 +138,7 @@
             <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+          <h5> 1:00 PM </h5>
           </div>
         </div>
         <div class="speaker" >
@@ -139,6 +150,7 @@
             <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
+          <h5> 1:15 PM </h5>
           </div>
         </div>
         <div class="break">
@@ -232,7 +244,7 @@ export default {
 
 .outer {
   width:100%;
-  height: 400vh;
+  height: 335vh;
   background-color: #F5C26A;
 
   /*.img{
@@ -248,19 +260,34 @@ export default {
   padding-top: 5vw;
   padding-left: 4%;
 }
-.video{
-    //width: 50vw;
-    // padding-left: 22vw;
-    // padding-top: 10vh;   
-    // min-width: 100%; 
-    // min-height: 100%;
-    // background-size: cover;
-    // overflow: hidden;
-    width: 89vw;
-    height: 89vh;
-    padding-left: 35vw;
-    //padding-top: 10vh;
+
+.gif{
+    font-size: 5vw;
+    color: black;
+    padding-left: 2vw;
+    // min-height: 90vh;
+    //display: flex;
+    //flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //background-color: red;
+    //display:flex;
+    //height: 20vh;
+
+  .video{
+      //width: 50vw;
+      // padding-left: 22vw;
+      // padding-top: 10vh;   
+      // min-width: 100%; 
+      // min-height: 100%;
+      // background-size: cover;
+      // overflow: hidden;
+      //width: 100%;
+      //height: auto;
+      //padding-left: 35vw;
+      //padding-top: 10vh;
   }
+}
 
 .speaker{
   background-color: #e62b1e;
@@ -282,6 +309,9 @@ export default {
     //float: right;
 
   }
+  .middle {
+    padding-top: 3vh;
+  }
   
   
 }
@@ -300,15 +330,20 @@ export default {
 }
 
 h3{
-  padding-left: 1vw;
+  padding-left: 15px;
   font-size: 5vh;
   color: white;
 }
 h1 {
-    font-size: 2.5vh;
+    font-size: 25px;
     //padding-top: 0.5vw;
     padding-left: 0.5vw;
     padding-bottom: -0.5vw;
+}
+h5{
+  font-size: 25px;
+  padding-right: 3vw;
+  color:black;
 }
 a {
     font-size: 1.5vh;
@@ -319,7 +354,7 @@ a {
     // padding-bottom: -0.5vw;
     h4{
       //padding-left: 0.5vw;
-      font-size: 2.5vh;
+      font-size: 25px;
       padding-right: 3vw;
       color: white;
       // padding-right: 1.5vw;
@@ -331,7 +366,7 @@ a {
 h2 {
   //padding-bottom: 0.5vw;
   padding-left: 0.5vw;
-  font-size: 1.6vh;
+  font-size: 15px;
 }
 
 
