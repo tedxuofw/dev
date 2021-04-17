@@ -18,7 +18,7 @@
               <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/INTRODUCTION.pdf">
                 <h4> TRANSCRIPT </h4>
               </a>
-              <h5> 10:00 AM </h5>
+              <h5> 10:10 AM </h5>
             </div>
           </div>
           <div class="speaker" >
@@ -31,7 +31,7 @@
               <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
                 <h4> TRANSCRIPT </h4>
               </a>
-              <h5> 10:10 AM </h5>
+              <h5> 10:20 AM </h5>
             </div>
           </div>
           <div class="speaker" >
@@ -43,7 +43,7 @@
               <a target="_blank" style="color: #FFFFFF" href="/static/pdf/WHITNEE.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-              <h5> 10:25 AM </h5>
+              <h5> 10:35 AM </h5>
             </div>
           </div>
           <div class="speaker" >
@@ -55,7 +55,7 @@
               <a target="_blank" style="color: #FFFFFF" href="/static/pdf/ASHLEY.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-              <h5> 10:40 AM </h5>
+              <h5> 10:55 AM </h5>
             </div>
           </div>
           <div class="presenter">
@@ -68,7 +68,7 @@
               <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/LIV.pdf">
               <h4> TRANSCRIPT </h4>
               </a>
-              <h5> 10:55 AM </h5>
+              <h5> 11:10 AM </h5>
             </div>
           </div>
           <div class="break">
@@ -83,7 +83,7 @@
               <a target="_blank" style="color: #FFFFFF" href="/static/pdf/CHRISTINA.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-            <h5> 11:10 AM </h5>
+            <h5> 11:20 AM </h5>
             </div>
           </div>
           <div class="speaker" >
@@ -95,7 +95,7 @@
               <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/DAGAN.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-            <h5> 11:25 AM </h5>
+            <h5> 11:35 AM </h5>
             </div>
           </div>
           <div class="break">
@@ -110,7 +110,7 @@
               <a target="_blank" style="color: #FFFFFF" href="/static/pdf/CASEY.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-            <h5> 11:50 AM </h5>
+            <h5> 12:00 PM </h5>
             </div>
           </div>
           <div class="presenter">
@@ -122,7 +122,7 @@
               <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/ADRIANE.pdf">
                 <h4> TRANSCRIPT </h4>
               </a>
-              <h5> 12:00 PM </h5>
+              <h5> 12:20 PM </h5>
             </div>
           </div>
           <div class="speaker" >
@@ -134,7 +134,7 @@
               <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/DEE.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-            <h5> 12:15 PM </h5>
+            <h5> 12:30 PM </h5>
             </div>
           </div>
           <div class="speaker" >
@@ -146,7 +146,7 @@
               <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/AIDAN.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-            <h5> 12:30 PM </h5>
+            <h5> 12:50 PM </h5>
             </div>
           </div>
           <div class="presenter">
@@ -158,7 +158,7 @@
               <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/UNPLUGGED.pdf">
               <h4> TRANSCRIPT </h4>
               </a>
-              <h5> 12:40 PM </h5>
+              <h5> 1:10 PM </h5>
             </div>
           </div>
           <div class="break">
@@ -173,7 +173,7 @@
               <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/KATHLEEN.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-            <h5> 1:00 PM </h5>
+            <h5> 1:20 PM </h5>
             </div>
           </div>
           <div class="speaker" >
@@ -185,7 +185,7 @@
               <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/LEXI.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-            <h5> 1:15 PM </h5>
+            <h5> 1:35 PM </h5>
             </div>
           </div>
           <div class="break">
@@ -196,6 +196,7 @@
               <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/CONCLUSION.pdf">
                 <h4> TRANSCRIPT </h4>
               </a>
+              <h5> 1:50 PM </h5>
             </div>
           </div>
           </div>
