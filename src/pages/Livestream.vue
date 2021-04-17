@@ -244,7 +244,7 @@ export default {
 
 .outer {
   width:100%;
-  height: 370vh;
+  height: 380vh;
   background-color: #F5C26A;
 
   /*.img{
@@ -319,7 +319,7 @@ export default {
 .break{
   background-color: maroon;
   width: 89vw;
-  height: 8vh;
+  height: 10vh;
   color: white;
   font-size: 10vw;
   border-color: black;
@@ -329,21 +329,27 @@ export default {
   margin: 10px;
 }
 
-h3{
-  padding-left: 15px;
-  font-size: 5vh;
-  color: white;
-}
+
 h1 {
     font-size: 1.3rem;
     //padding-top: 0.5vw;
     padding-left: 0.5vw;
     padding-bottom: -0.5vw;
+    @media screen and (min-width: 400px) {
+      font-size: 1.5rem;
+    }
+    @media screen and (min-width: 700px) {
+      font-size: 2.5rem;
+    }
+    
 }
 h5{
   font-size: 0.8rem;
   padding-right: 3vw;
   color:black;
+  @media screen and (min-width: 700px) {
+    font-size: 2rem;
+  }
 }
 a {
     font-size: 1.5vh;
@@ -354,11 +360,14 @@ a {
     // padding-bottom: -0.5vw;
     h4{
       //padding-left: 0.5vw;
-      font-size: 1rem;
+      font-size: 0.8rem;
       padding-right: 3vw;
       color: white;
       // padding-right: 1.5vw;
       padding-top: -20vh;
+      @media screen and (min-width: 700px) {
+        font-size: 2rem;
+      }
 
   }
 }
@@ -367,6 +376,13 @@ h2 {
   //padding-bottom: 0.5vw;
   padding-left: 0.5vw;
   font-size: 0.7rem;
+  @media screen and (min-width: 400px) {
+      font-size: 1rem;
+  }
+  @media screen and (min-width: 700px) {
+    font-size: 1.5rem;
+  }
+  
 }
 
 
@@ -375,7 +391,7 @@ h2 {
 .presenter {
   background-color: lightblue;
   width: 89vw;
-  height: 12vh;
+  height: 15vh;
   color: white;
   font-size: 10vw;
   border-color: black;
