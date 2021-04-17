@@ -335,13 +335,13 @@ h3{
   color: white;
 }
 h1 {
-    font-size: 21px;
+    font-size: 1.3rem;
     //padding-top: 0.5vw;
     padding-left: 0.5vw;
     padding-bottom: -0.5vw;
 }
 h5{
-  font-size: 25px;
+  font-size: 1rem;
   padding-right: 3vw;
   color:black;
 }
@@ -354,7 +354,7 @@ a {
     // padding-bottom: -0.5vw;
     h4{
       //padding-left: 0.5vw;
-      font-size: 20px;
+      font-size: 1rem;
       padding-right: 3vw;
       color: white;
       // padding-right: 1.5vw;
@@ -366,7 +366,7 @@ a {
 h2 {
   //padding-bottom: 0.5vw;
   padding-left: 0.5vw;
-  font-size: 14px;
+  font-size: 0.8rem;
 }
 
 
