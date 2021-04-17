@@ -187,7 +187,7 @@ export default {
         makeSpeaker(
           'Liv Victorino',
           'TBD',
-          '<p>Liv Victorino, a junior at UW, is an indie-folk guitarist and singer/songwriter, as well as the drummer for local all-girl rock band Cherry Tomato. She\'ll be playing songs from her debut EP called \"Sheer Force of Will\" which was recorded and released over the lockdown.</p><p>Instagram: <a target="_blank" href="https://www.instagram.com/awats.adriane/?hl=en" style="color: #e62b1e;">@awats.adriane</a></p>'
+          '<p>Liv Victorino, a junior at UW, is an indie-folk guitarist and singer/songwriter, as well as the drummer for local all-girl rock band Cherry Tomato. She\'ll be playing songs from her debut EP called \"Sheer Force of Will\" which was recorded and released over the lockdown.</p><p>Instagram: <a target="_blank" href="https://www.instagram.com/liv_victorino/" style="color: #e62b1e;">@liv_victorino</a></p>'
         ),
         makeSpeaker(
           'Unplugged',
