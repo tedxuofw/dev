@@ -14,7 +14,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> Speaker: SAMER FOUD</h1> 
+            <h1> Speaker: SAMER FOUAD</h1> 
             <h2> Comfort Kills Creativity </h2> 
           </div>
         
@@ -43,7 +43,7 @@
             <h2> Understanding and Healing from Racial Trauma</h2>
           </div>
           <div class="right">
-            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
+            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/ASHLEE.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
             <h5> 10:40 AM </h5>
@@ -58,11 +58,11 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> Speaker: CRISTINA SCHEPPELMANN</h1>
+            <h1> Speaker: CHRISTINA SCHEPPELMANN</h1>
             <h2> The Power of the Opera</h2>
           </div>
           <div class="right">
-            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
+            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/CHRISTINA.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           <h5> 11:10 AM </h5>
@@ -74,7 +74,7 @@
             <h2> Surplus Food: Why I'm an Optomist About Climate Change</h2>
           </div>
           <div class="right">
-            <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
+            <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/DAGAN.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           <h5> 11:25 AM </h5>
@@ -85,11 +85,11 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> Speaker: CASEY DRIER</h1>
+            <h1> Speaker: CASEY DREIER</h1>
             <h2> The Space Race in Your Own Backyard </h2>
           </div>
           <div class="right">
-            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
+            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/CASEY.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           <h5> 11:50 AM </h5>
@@ -105,7 +105,7 @@
             <h2> Humanity at the Forefront of Photojournalism</h2>
           </div>
           <div class="right">
-            <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
+            <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/DEE.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           <h5> 12:15 PM </h5>
@@ -113,18 +113,18 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> Speaker: AIDEN KEY</h1>
+            <h1> Speaker: AIDAN KEY</h1>
             <h2> The Heart of the Matter</h2>
           </div>
           <div class="right">
-            <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
+            <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/AIDAN.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           <h5> 12:30 AM </h5>
           </div>
         </div>
         <div class="presenter">
-          <h1> PERFORMER: LIV VICTORINO </h1>
+          <h1> PERFORMER: ADRIENNE WATSON </h1>
           <h2> Original Poem</h2>
         </div>
         <div class="break">
@@ -136,7 +136,7 @@
             <h2> The Psychology of Ableism</h2>
           </div>
           <div class="right">
-            <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
+            <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/KATHLEEN.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           <h5> 1:00 PM </h5>
@@ -148,7 +148,7 @@
             <h2> The Future of Pandemic Preparedness</h2>
           </div>
           <div class="right">
-            <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/SAMER.pdf">
+            <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/LEXI.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
           <h5> 1:15 PM </h5>
