@@ -10,7 +10,7 @@
         <div class="gif">
           <h4> LIVESTREAM COMING SOON ... </h4>   
         </div>  -->
-        <!-- <h3> SCHEDULE OF EVENTS: </h3> -->
+          <h3> SCHEDULE OF EVENTS: </h3>
           <div class="break">
             <div class="left">
               <h1> INTRODUCTION</h1>
