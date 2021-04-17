@@ -2,161 +2,204 @@
 <<template>
   <ConferencePage :selectedIndex="5">
     <div class="outer">
+
       <div class="position">
-        <!-- <iframe class="video" src="https://www.youtube.com/embed/TDDeGxZBCDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-        
+        <iframe class="video" src="https://www.youtube.com/embed/o5lEIOzEls8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="inner-position">
+        <!--
         <div class="gif">
           <h4> LIVESTREAM COMING SOON ... </h4>   
         </div>  -->
         <!-- <h3> SCHEDULE OF EVENTS: </h3> -->
-        <div class="break">
-          <h1> INTRODUCTION</h1>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: SAMER FOUAD</h1> 
-            <h2> Comfort Kills Creativity </h2> 
+          <div class="break">
+            <div class="left">
+              <h1> INTRODUCTION</h1>
+            </div>
+            <div class="right">
+              <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/INTRODUCTION.pdf">
+                <h4> TRANSCRIPT </h4>
+              </a>
+              <h5> 10:00 AM </h5>
+            </div>
           </div>
-        
-          <div class="right">
-            <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: SAMER FOUAD</h1> 
+              <h2> Comfort Kills Creativity </h2> 
+            </div>
+          
+            <div class="right">
+              <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/SAMER.pdf">
+                <h4> TRANSCRIPT </h4>
+              </a>
+              <h5> 10:10 AM </h5>
+            </div>
+          </div>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: WHITNEE HAWTHORNE</h1>
+              <h2> What Corporate America Needs to Know About Working Moms</h2>
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF" href="/static/pdf/WHITNEE.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+              <h5> 10:25 AM </h5>
+            </div>
+          </div>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: ASHLEY MCGIRT</h1>
+              <h2> Understanding and Healing from Racial Trauma</h2>
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF" href="/static/pdf/ASHLEY.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+              <h5> 10:40 AM </h5>
+            </div>
+          </div>
+          <div class="presenter">
+            <div class="left">
+              <h1> PERFORMER: LIV VICTORINO </h1>
+              <h2> Original Song - "Sheer Force of Will"</h2>
+              
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/LIV.pdf">
               <h4> TRANSCRIPT </h4>
-             </a>
-            <h5> 10:10 AM </h5>
+              </a>
+              <h5> 10:55 AM </h5>
+            </div>
           </div>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: WHITNEE HAWTHORNE</h1>
-            <h2> What Corporate America Needs to Know About Working Moms</h2>
+          <div class="break">
+            <h1> 5 MINUTE BREAK</h1>
           </div>
-          <div class="right">
-            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/WHITNEE.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-            <h5> 10:25 AM </h5>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: CHRISTINA SCHEPPELMANN</h1>
+              <h2> The Power of the Opera</h2>
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF" href="/static/pdf/CHRISTINA.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+            <h5> 11:10 AM </h5>
+            </div>
           </div>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: ASHLEY MCGIRT</h1>
-            <h2> Understanding and Healing from Racial Trauma</h2>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: DAGAN KAY</h1>
+              <h2> Surplus Food: Why I'm an Optomist About Climate Change</h2>
+            </div>
+            <div class="right">
+              <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/DAGAN.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+            <h5> 11:25 AM </h5>
+            </div>
           </div>
-          <div class="right">
-            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/ASHLEY.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-            <h5> 10:40 AM </h5>
+          <div class="break">
+            <h1> 10 MINUTE BREAK</h1>
           </div>
-        </div>
-        <div class="presenter">
-          <h1> PERFORMER: LIV VICTORINO </h1>
-          <h2> Original Song - "Sheer Force of Will"</h2>
-        </div>
-        <div class="break">
-          <h1> 5 MINUTE BREAK</h1>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: CHRISTINA SCHEPPELMANN</h1>
-            <h2> The Power of the Opera</h2>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: CASEY DREIER</h1>
+              <h2> The Space Race in Your Own Backyard </h2>
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF" href="/static/pdf/CASEY.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+            <h5> 11:50 AM </h5>
+            </div>
           </div>
-          <div class="right">
-            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/CHRISTINA.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-          <h5> 11:10 AM </h5>
+          <div class="presenter">
+            <div class="left">
+              <h1> PERFORMER: UNPLUGGED </h1>
+              <h2> Musical Performance</h2>
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/UNPLUGGED.pdf">
+              <h4> TRANSCRIPT </h4>
+              </a>
+              <h5> Noon </h5>
+            </div>
           </div>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: DAGAN KAY</h1>
-            <h2> Surplus Food: Why I'm an Optomist About Climate Change</h2>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: DEE DWYER</h1>
+              <h2> Humanity at the Forefront of Photojournalism</h2>
+            </div>
+            <div class="right">
+              <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/DEE.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+            <h5> 12:15 PM </h5>
+            </div>
           </div>
-          <div class="right">
-            <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/DAGAN.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-          <h5> 11:25 AM </h5>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: AIDAN KEY</h1>
+              <h2> The Heart of the Matter</h2>
+            </div>
+            <div class="right">
+              <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/AIDAN.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+            <h5> 12:30 AM </h5>
+            </div>
           </div>
-        </div>
-        <div class="break">
-          <h1> 10 MINUTE BREAK</h1>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: CASEY DREIER</h1>
-            <h2> The Space Race in Your Own Backyard </h2>
+          <div class="presenter">
+            <div class="left">
+              <h1> PERFORMER: ADRIANE WATSON </h1>
+              <h2> Original Poem</h2>
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/ADRIANE.pdf">
+                <h4> TRANSCRIPT </h4>
+              </a>
+              <h5> 12:40 PM </h5>
+            </div>
           </div>
-          <div class="right">
-            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/CASEY.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-          <h5> 11:50 AM </h5>
+          <div class="break">
+            <h1> 5 MINUTE BREAK</h1>
           </div>
-        </div>
-        <div class="presenter">
-          <h1> PERFORMER: UNPLUGGED </h1>
-          <h2> Musical Performance</h2>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: DEE DWYER</h1>
-            <h2> Humanity at the Forefront of Photojournalism</h2>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: KATHLEEN BOGART</h1>
+              <h2> The Psychology of Ableism</h2>
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/KATHLEEN.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+            <h5> 1:00 PM </h5>
+            </div>
           </div>
-          <div class="right">
-            <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/DEE.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-          <h5> 12:15 PM </h5>
+          <div class="speaker" >
+            <div class="left">
+              <h1> Speaker: LEXI WALLS</h1>
+              <h2> The Future of Pandemic Preparedness</h2>
+            </div>
+            <div class="right">
+              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/LEXI.pdf">
+            <h4> TRANSCRIPT </h4>
+            </a>
+            <h5> 1:15 PM </h5>
+            </div>
           </div>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: AIDAN KEY</h1>
-            <h2> The Heart of the Matter</h2>
+          <div class="break">
+            <div class="left">
+              <h1> CLOSING</h1>
+            </div>
+            <div class="right">
+              <a target="_blank"  style="color: #FFFFFF" href="/static/pdf/CONCLUSION.pdf">
+                <h4> TRANSCRIPT </h4>
+              </a>
+            </div>
           </div>
-          <div class="right">
-            <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/AIDAN.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-          <h5> 12:30 AM </h5>
           </div>
-        </div>
-        <div class="presenter">
-          <h1> PERFORMER: ADRIANE WATSON </h1>
-          <h2> Original Poem</h2>
-        </div>
-        <div class="break">
-          <h1> 5 MINUTE BREAK</h1>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: KATHLEEN BOGART</h1>
-            <h2> The Psychology of Ableism</h2>
-          </div>
-          <div class="right">
-            <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/KATHLEEN.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-          <h5> 1:00 PM </h5>
-          </div>
-        </div>
-        <div class="speaker" >
-          <div class="left">
-            <h1> Speaker: LEXI WALLS</h1>
-            <h2> The Future of Pandemic Preparedness</h2>
-          </div>
-          <div class="right">
-            <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/LEXI.pdf">
-          <h4> TRANSCRIPT </h4>
-          </a>
-          <h5> 1:15 PM </h5>
-          </div>
-        </div>
-        <div class="break">
-          <h1> CLOSING</h1>
-        </div>
         </div>
       </div>
       <!--   
@@ -249,7 +292,7 @@ export default {
   padding-bottom: 10vh;
   background-color: #F5C26A;
   display:flex;
-  justify-content: center;
+  justify-items: center;
 
   /*.img{
       height: 100%;
@@ -263,6 +306,10 @@ export default {
 .position{
   
   padding-left: 4%;
+  display: grid;
+  justify-items: center;
+
+  
   h3{
     padding-left: 1rem;
     font-size: 4rem;
@@ -270,33 +317,18 @@ export default {
   }
 }
 
-.gif{
-    font-size: 5vw;
-    color: black;
-    padding-left: 2vw;
-    // min-height: 90vh;
-    //display: flex;
-    //flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    //background-color: red;
-    //display:flex;
-    //height: 20vh;
-
-  .video{
-      //width: 50vw;
-      // padding-left: 22vw;
-      // padding-top: 10vh;   
-      // min-width: 100%; 
-      // min-height: 100%;
-      // background-size: cover;
-      // overflow: hidden;
-      //width: 100%;
-      //height: auto;
-      //padding-left: 35vw;
-      //padding-top: 10vh;
+.video{
+    //width: 50vw;
+    // padding-left: 22vw;
+    // padding-top: 10vh;   
+    // min-width: 100%; 
+    // min-height: 100%;
+    // background-size: cover;
+    // overflow: hidden;
+    width: 89vw;
+    height: 89vh;
+    
   }
-}
 
 .speaker{
   background-color: #e62b1e;
@@ -311,20 +343,19 @@ export default {
   display:flex;
   justify-content: space-between;
   max-width:1000px;
-  .right{
+  
+ 
+  
+}
+
+.right{
     text-align: right;
     padding-right: 1rem;
     //position: relative;
     //float: right;
-    visibility: hidden;
-
+    //visibility: hidden;
+    padding-top: 0.5rh;
   }
-  .middle {
-    padding-top: 3vh;
-  }
-  
-  
-}
 
 .break{
   background-color: maroon;
@@ -337,6 +368,9 @@ export default {
   border-radius: 1%;
   margin: 10px;
   max-width:1000px;
+  display:flex;
+  justify-content: space-between;
+
 }
 
 
@@ -356,7 +390,7 @@ h1 {
 h5{
   font-size: 0.8rem;
   padding-right: 3vw;
-  color:black;
+  color:	#f8f8ff;
   @media screen and (min-width: 700px) {
     font-size: 1.3rem;
   }
@@ -411,6 +445,8 @@ h2 {
   border-radius: 1%;
   margin: 10px;
   max-width:1000px;
+  display:flex;
+  justify-content: space-between;
 
 }
 
