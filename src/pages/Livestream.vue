@@ -244,7 +244,7 @@ export default {
 
 .outer {
   width:100%;
-  height: 335vh;
+  height: 345vh;
   background-color: #F5C26A;
 
   /*.img{
@@ -292,7 +292,7 @@ export default {
 .speaker{
   background-color: #e62b1e;
   width: 89vw;
-  height: 17vh;
+  height: 18vh;
   color: white;
   font-size: 10vw;
   border-color: black;
@@ -335,7 +335,7 @@ h3{
   color: white;
 }
 h1 {
-    font-size: 25px;
+    font-size: 21px;
     //padding-top: 0.5vw;
     padding-left: 0.5vw;
     padding-bottom: -0.5vw;
@@ -354,7 +354,7 @@ a {
     // padding-bottom: -0.5vw;
     h4{
       //padding-left: 0.5vw;
-      font-size: 25px;
+      font-size: 20px;
       padding-right: 3vw;
       color: white;
       // padding-right: 1.5vw;
@@ -366,7 +366,7 @@ a {
 h2 {
   //padding-bottom: 0.5vw;
   padding-left: 0.5vw;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 
