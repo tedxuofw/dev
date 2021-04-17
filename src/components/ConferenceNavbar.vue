@@ -48,7 +48,7 @@ export default {
         { name: 'Sponsors', url: '/sponsors' },
         { name: 'About', url: '/about' },
         { name: 'Contact', url: '/contact' },
-        /*{ name: 'LiveStream', url: '/livestream' },*/
+        { name: 'Schedule', url: '/livestream' },
       ],
       mobileShowNav: false
     }

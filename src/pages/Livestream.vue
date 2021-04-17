@@ -3,10 +3,11 @@
   <ConferencePage :selectedIndex="5">
     <div class="outer">
       <div class="position">
-        <!-- <iframe class="video" src="https://www.youtube.com/embed/TDDeGxZBCDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+        <!-- <iframe class="video" src="https://www.youtube.com/embed/TDDeGxZBCDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+        
         <div class="gif">
           <h4> LIVESTREAM COMING SOON ... </h4>   
-        </div>  
+        </div>  -->
         <!-- <h3> SCHEDULE OF EVENTS: </h3> -->
         <div class="break">
           <h1> INTRODUCTION</h1>
@@ -244,8 +245,11 @@ export default {
 
 .outer {
   width:100%;
+  padding-top: 10vh;
   padding-bottom: 10vh;
   background-color: #F5C26A;
+  display:flex;
+  justify-content: center;
 
   /*.img{
       height: 100%;
@@ -257,8 +261,13 @@ export default {
 }
 
 .position{
-  padding-top: 5vw;
+  
   padding-left: 4%;
+  h3{
+    padding-left: 1rem;
+    font-size: 4rem;
+    color: black;
+  }
 }
 
 .gif{
@@ -301,11 +310,13 @@ export default {
   margin: 10px;
   display:flex;
   justify-content: space-between;
+  max-width:1000px;
   .right{
     text-align: right;
     padding-right: 1rem;
     //position: relative;
     //float: right;
+    visibility: hidden;
 
   }
   .middle {
@@ -325,6 +336,7 @@ export default {
   border-width: 3px;
   border-radius: 1%;
   margin: 10px;
+  max-width:1000px;
 }
 
 
@@ -337,7 +349,7 @@ h1 {
       font-size: 1.5rem;
     }
     @media screen and (min-width: 700px) {
-      font-size: 2.5rem;
+      font-size: 1.8rem;
     }
     
 }
@@ -346,7 +358,7 @@ h5{
   padding-right: 3vw;
   color:black;
   @media screen and (min-width: 700px) {
-    font-size: 2rem;
+    font-size: 1.3rem;
   }
 }
 a {
@@ -364,7 +376,7 @@ a {
       // padding-right: 1.5vw;
       padding-top: -20vh;
       @media screen and (min-width: 700px) {
-        font-size: 2rem;
+        font-size: 1.3rem;
       }
 
   }
@@ -378,10 +390,12 @@ h2 {
       font-size: 1rem;
   }
   @media screen and (min-width: 700px) {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
 }
+
+
 
 
 
@@ -396,6 +410,8 @@ h2 {
   border-width: 3px;
   border-radius: 1%;
   margin: 10px;
+  max-width:1000px;
+
 }
 
 
