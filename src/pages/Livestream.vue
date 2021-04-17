@@ -70,7 +70,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> Speaker: DAGAN KEY</h1>
+            <h1> Speaker: DAGAN KAY</h1>
             <h2> Surplus Food: Why I'm an Optomist About Climate Change</h2>
           </div>
           <div class="right">
