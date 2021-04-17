@@ -2,7 +2,7 @@
 <<template>
   <ConferencePage :selectedIndex="5">
     <div class="outer">
-      <iframe class="video" src="https://www.youtube.com/embed/o5lEIOzEls8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe class="video" src="https://www.youtube.com/embed/oehO7FmiPak" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="position">
         <div class="inner-position">
         <!--
