@@ -115,14 +115,14 @@
           </div>
           <div class="presenter">
             <div class="left">
-              <h1> PERFORMER: UNPLUGGED </h1>
-              <h2> Musical Performance</h2>
+              <h1> PERFORMER: ADRIANE WATSON </h1>
+              <h2> Original Poem</h2>
             </div>
             <div class="right">
-              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/UNPLUGGED.pdf">
-              <h4> TRANSCRIPT </h4>
+              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/ADRIANE.pdf">
+                <h4> TRANSCRIPT </h4>
               </a>
-              <h5> Noon </h5>
+              <h5> 12:00 PM </h5>
             </div>
           </div>
           <div class="speaker" >
@@ -146,17 +146,17 @@
               <a target="_blank"  style="color: #FFFFFF"  href="/static/pdf/AIDAN.pdf">
             <h4> TRANSCRIPT </h4>
             </a>
-            <h5> 12:30 AM </h5>
+            <h5> 12:30 PM </h5>
             </div>
           </div>
           <div class="presenter">
             <div class="left">
-              <h1> PERFORMER: ADRIANE WATSON </h1>
-              <h2> Original Poem</h2>
+              <h1> PERFORMER: UNPLUGGED </h1>
+              <h2> Musical Performance</h2>
             </div>
             <div class="right">
-              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/ADRIANE.pdf">
-                <h4> TRANSCRIPT </h4>
+              <a target="_blank" style="color: #FFFFFF"  href="/static/pdf/UNPLUGGED.pdf">
+              <h4> TRANSCRIPT </h4>
               </a>
               <h5> 12:40 PM </h5>
             </div>
