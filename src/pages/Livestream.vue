@@ -13,7 +13,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: SAMER FOUD</h1> 
+            <h1> Speaker: SAMER FOUD</h1> 
             <h2> Comfort Kills Creativity </h2> 
           </div>
         
@@ -26,7 +26,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: WHITNEE HAWTHORNE</h1>
+            <h1> Speaker: WHITNEE HAWTHORNE</h1>
             <h2> What Corporate America Needs to Know About Working Moms</h2>
           </div>
           <div class="right">
@@ -38,7 +38,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: ASHLEE MCGIRT</h1>
+            <h1> Speaker: ASHLEE MCGIRT</h1>
             <h2> Understanding and Healing from Racial Trauma</h2>
           </div>
           <div class="right">
@@ -57,7 +57,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: CRISTINA SCHEPPELMANN</h1>
+            <h1> Speaker: CRISTINA SCHEPPELMANN</h1>
             <h2> The Power of the Opera</h2>
           </div>
           <div class="right">
@@ -69,7 +69,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: DAGAN KEY</h1>
+            <h1> Speaker: DAGAN KEY</h1>
             <h2> Surplus Food: Why I'm an Optomist About Climate Change</h2>
           </div>
           <div class="right">
@@ -84,7 +84,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: CASEY DRIER</h1>
+            <h1> Speaker: CASEY DRIER</h1>
             <h2> The Space Race in Your Own Backyard </h2>
           </div>
           <div class="right">
@@ -100,7 +100,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: DEE DWYER</h1>
+            <h1> Speaker: DEE DWYER</h1>
             <h2> Humanity at the Forefront of Photojournalism</h2>
           </div>
           <div class="right">
@@ -112,7 +112,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: AIDEN KEY</h1>
+            <h1> Speaker: AIDEN KEY</h1>
             <h2> The Heart of the Matter</h2>
           </div>
           <div class="right">
@@ -131,7 +131,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: KATHLEEN BOGART</h1>
+            <h1> Speaker: KATHLEEN BOGART</h1>
             <h2> The Psychology of Ableism</h2>
           </div>
           <div class="right">
@@ -143,7 +143,7 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> SPEAKER: LEXI WALLS</h1>
+            <h1> Speaker: LEXI WALLS</h1>
             <h2> The Future of Pandemic Preparedness</h2>
           </div>
           <div class="right">
@@ -244,7 +244,7 @@ export default {
 
 .outer {
   width:100%;
-  height: 345vh;
+  height: 370vh;
   background-color: #F5C26A;
 
   /*.img{
@@ -292,7 +292,7 @@ export default {
 .speaker{
   background-color: #e62b1e;
   width: 89vw;
-  height: 18vh;
+  height: 20vh;
   color: white;
   font-size: 10vw;
   border-color: black;
@@ -304,7 +304,7 @@ export default {
   justify-content: space-between;
   .right{
     text-align: right;
-    
+    padding-right: 1rem;
     //position: relative;
     //float: right;
 
@@ -341,7 +341,7 @@ h1 {
     padding-bottom: -0.5vw;
 }
 h5{
-  font-size: 1rem;
+  font-size: 0.8rem;
   padding-right: 3vw;
   color:black;
 }
@@ -366,7 +366,7 @@ a {
 h2 {
   //padding-bottom: 0.5vw;
   padding-left: 0.5vw;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 
