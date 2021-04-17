@@ -357,7 +357,7 @@ button {
   width: 80vw;
   height: 16vh;
   min-height: 50px;
-  max-height: 100px;
+  max-height: 150px;
 
   @media screen and (orientation: portrait) {
     margin-top: 2vh;
@@ -379,8 +379,8 @@ button {
   grid-auto-columns: auto;
   width: 80vw;
   height: 16vh;
-  min-height: 100px;
-  max-height: 200px;
+  min-height: 50px;
+  max-height: 150px;
 
   @media screen and (orientation: portrait) {
     margin-top: 2vh;
