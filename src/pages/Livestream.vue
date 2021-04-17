@@ -124,7 +124,7 @@
           </div>
         </div>
         <div class="presenter">
-          <h1> PERFORMER: ADRIANNE WATSON </h1>
+          <h1> PERFORMER: ADRIANE WATSON </h1>
           <h2> Original Poem</h2>
         </div>
         <div class="break">
