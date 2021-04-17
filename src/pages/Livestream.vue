@@ -2,9 +2,8 @@
 <<template>
   <ConferencePage :selectedIndex="5">
     <div class="outer">
-
+      <iframe class="video" src="https://www.youtube.com/embed/o5lEIOzEls8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="position">
-        <iframe class="video" src="https://www.youtube.com/embed/o5lEIOzEls8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class="inner-position">
         <!--
         <div class="gif">
@@ -293,7 +292,8 @@ export default {
   background-color: #F5C26A;
   display:flex;
   justify-items: center;
-
+  flex-direction: column;
+  align-items: center;
   /*.img{
       height: 100%;
       background-position: center;
@@ -305,15 +305,16 @@ export default {
 
 .position{
   
-  padding-left: 4%;
+  //padding-left: 4%;
+  padding-top: 50px;
   display: grid;
   justify-items: center;
 
   
   h3{
     padding-left: 1rem;
-    font-size: 4rem;
-    color: black;
+    font-size: 2.5rem;
+    color: white;
   }
 }
 
@@ -325,8 +326,10 @@ export default {
     // min-height: 100%;
     // background-size: cover;
     // overflow: hidden;
-    width: 89vw;
-    height: 89vh;
+    width: 90vw;
+    height: 50vw;
+    max-width: 1200px;
+    max-height: 625px;
     
   }
 
