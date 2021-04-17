@@ -39,11 +39,11 @@
         </div>
         <div class="speaker" >
           <div class="left">
-            <h1> Speaker: ASHLEE MCGIRT</h1>
+            <h1> Speaker: ASHLEY MCGIRT</h1>
             <h2> Understanding and Healing from Racial Trauma</h2>
           </div>
           <div class="right">
-            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/ASHLEE.pdf">
+            <a target="_blank" style="color: #FFFFFF" href="/static/pdf/ASHLEY.pdf">
           <h4> TRANSCRIPT </h4>
           </a>
             <h5> 10:40 AM </h5>
@@ -124,7 +124,7 @@
           </div>
         </div>
         <div class="presenter">
-          <h1> PERFORMER: ADRIENNE WATSON </h1>
+          <h1> PERFORMER: ADRIANNE WATSON </h1>
           <h2> Original Poem</h2>
         </div>
         <div class="break">
