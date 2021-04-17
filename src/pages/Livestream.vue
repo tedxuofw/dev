@@ -244,7 +244,7 @@ export default {
 
 .outer {
   width:100%;
-  height: 380vh;
+  padding-bottom: 10vh;
   background-color: #F5C26A;
 
   /*.img{
@@ -292,7 +292,6 @@ export default {
 .speaker{
   background-color: #e62b1e;
   width: 89vw;
-  height: 20vh;
   color: white;
   font-size: 10vw;
   border-color: black;
@@ -319,7 +318,6 @@ export default {
 .break{
   background-color: maroon;
   width: 89vw;
-  height: 10vh;
   color: white;
   font-size: 10vw;
   border-color: black;
@@ -391,7 +389,6 @@ h2 {
 .presenter {
   background-color: lightblue;
   width: 89vw;
-  height: 15vh;
   color: white;
   font-size: 10vw;
   border-color: black;
