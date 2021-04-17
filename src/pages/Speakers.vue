@@ -302,7 +302,7 @@ $speakers-break-1: 600px;
 $speakers-break-2: 900px;
 
 .section-sponsors {
-  height: 150vh;
+  //height: 150vh;
   background-image: url('/static/speakers_2021_background_lower_res.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -356,8 +356,8 @@ button {
   grid-auto-columns: auto;
   width: 80vw;
   height: 16vh;
-  min-height: 200px;
-  max-height: 300px;
+  min-height: 50px;
+  max-height: 100px;
 
   @media screen and (orientation: portrait) {
     margin-top: 2vh;
@@ -379,6 +379,8 @@ button {
   grid-auto-columns: auto;
   width: 80vw;
   height: 16vh;
+  min-height: 100px;
+  max-height: 200px;
 
   @media screen and (orientation: portrait) {
     margin-top: 2vh;
