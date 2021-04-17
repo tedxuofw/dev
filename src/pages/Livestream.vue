@@ -3,7 +3,8 @@
   <ConferencePage :selectedIndex="5">
     <div class="outer">
       <div class="position">
-        <iframe class="video" src="https://www.youtube.com/embed/TDDeGxZBCDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>       
+        <!-- <iframe class="video" src="https://www.youtube.com/embed/TDDeGxZBCDY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+        <iframe class="video" src="/static/Coming_Soon.gif" frameBorder="0" ></iframe><p></p>      
         <h3> SCHEDULE OF EVENTS: </h3>
         <div class="break">
           <h1> INTRODUCTION</h1>
@@ -257,7 +258,8 @@ export default {
     // overflow: hidden;
     width: 89vw;
     height: 89vh;
-    
+    padding-left: 35vw;
+    //padding-top: 10vh;
   }
 
 .speaker{
